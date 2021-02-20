@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://www.jenkins.io/doc/book/pipeline/shared-libraries/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+Extending with Shared Libraries
+</title>
+
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<!-- Favicons -->
+<link href="https://www.jenkins.io/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="https://www.jenkins.io/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="https://www.jenkins.io/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://www.jenkins.io/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://www.jenkins.io/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="https://www.jenkins.io/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Extending with Shared Libraries" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Extending with Shared Libraries" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://www.jenkins.io/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Extending with Shared Libraries" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://www.jenkins.io/doc/book/pipeline/shared-libraries/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Extending with Shared Libraries" property="og:site_name">
+<meta content="https://www.jenkins.io/images/logo-title-opengraph.png" name="og:image">
+<style class="anchorjs"></style><link href="./Extending with Shared Libraries_files/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="./Extending with Shared Libraries_files/tether.min.css" media="screen" rel="stylesheet">
+<link href="./Extending with Shared Libraries_files/font-icons.css" media="screen" rel="stylesheet">
+<link href="./Extending with Shared Libraries_files/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="./Extending with Shared Libraries_files/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="./Extending with Shared Libraries_files/footer.css" media="screen" rel="stylesheet">
+<link href="./Extending with Shared Libraries_files/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script id="twitter-wjs" src="./Extending with Shared Libraries_files/widgets.js.download"></script><script async="" src="./Extending with Shared Libraries_files/analytics.js.download"></script><script src="./Extending with Shared Libraries_files/jquery.min.js.download"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://www.jenkins.io/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><lineargradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"></stop><stop offset="1" stop-color="#f7941d"></stop></lineargradient><lineargradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"></lineargradient><lineargradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"></lineargradient><lineargradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"></lineargradient></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"></path><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"></path><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"></path><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"></path><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"></path></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://cloud.google.com/tekton/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://www.jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/doc/book">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/pipeline">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/system-administration">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/solutions">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/doc/developer">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/participate">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.jenkins.io/security">
+Security
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/press">
+Press
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.jenkins.io/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://www.jenkins.io/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="https://www.jenkins.io/doc" class="">&gt; User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/book/getting-started" class="">User Handbook overview</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/installing" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/using" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline" class="active">Pipeline</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/getting-started" class="">Getting started with Pipeline</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/jenkinsfile" class="">Using a Jenkinsfile</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/running-pipelines" class="">Running Pipelines</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/multibranch" class="">Branches and Pull Requests</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/docker" class="">Using Docker with Pipeline</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries" class="active">Extending with Shared Libraries</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/development" class="">Pipeline Development Tools</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/syntax" class="">Pipeline Syntax</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/pipeline-best-practices" class="">Pipeline Best Practices</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/scaling-pipeline" class="">Scaling Pipelines</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches" class="">Pipeline CPS Method Mismatches</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/system-administration" class="">System Administration</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/scaling" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/appendix" class="">Appendix</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/glossary" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/pipeline/tour/getting-started" class="">Guided Tour</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/syntax" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/upgrade-guide" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/docker">
+⇐ Using Docker with Pipeline
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/">
+⇑ Pipeline
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="https://www.jenkins.io/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/development">
+Pipeline Development Tools ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1 id="extending-with-shared-libraries">
+Extending with Shared Libraries
+<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#extending-with-shared-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-shared-libraries">Defining Shared Libraries</a>
+<ul class="sectlevel2">
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#directory-structure">Directory structure</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#global-shared-libraries">Global Shared Libraries</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#folder-level-shared-libraries">Folder-level Shared Libraries</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#automatic-shared-libraries">Automatic Shared Libraries</a></li>
+</ul>
+</li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-libraries">Using libraries</a>
+<ul class="sectlevel2">
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-libraries-dynamically">Loading libraries dynamically</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#library-versions">Library versions</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#retrieval-method">Retrieval Method</a></li>
+</ul>
+</li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#writing-libraries">Writing libraries</a>
+<ul class="sectlevel2">
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#accessing-steps">Accessing steps</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-global-variables">Defining global variables</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-custom-steps">Defining custom steps</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-a-more-structured-dsl">Defining a more structured DSL</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-third-party-libraries">Using third-party libraries</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources">Loading resources</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#pretesting-library-changes">Pretesting library changes</a></li>
+<li><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-declarative-pipelines">Defining Declarative Pipelines</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As Pipeline is adopted for more and more projects in an organization, common
+patterns are likely to emerge. Oftentimes it is useful to share parts of
+Pipelines between various projects to reduce redundancies and keep code
+"DRY"
+<sup class="footnote" id="_footnote_dry">[<a id="_footnoteref_1" class="footnote" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline has support for creating "Shared Libraries" which can be defined in
+external source control repositories and loaded into existing Pipelines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defining-shared-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-shared-libraries"></a>Defining Shared Libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-shared-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Shared Library is defined with a name, a source code retrieval method such
+as by SCM, and optionally a default version.  The name should be a short
+identifier as it will be used in scripts.</p>
+</div>
+<div class="paragraph">
+<p>The version could be anything understood by that SCM; for example, branches,
+tags, and commit hashes all work for Git.  You may also declare whether scripts
+need to explicitly request that library (detailed below), or if it is present
+by default.  Furthermore, if you specify a version in Jenkins configuration,
+you can block scripts from selecting a <em>different</em> version.</p>
+</div>
+<div class="paragraph">
+<p>The best way to specify the SCM is using an SCM plugin which has been
+specifically updated to support a new API for checking out an arbitrary named
+version (<em>Modern SCM</em> option).  As of this writing, the latest versions of the
+Git and Subversion plugins support this mode; others should follow.</p>
+</div>
+<div class="paragraph">
+<p>If your SCM plugin has not been integrated, you may select <em>Legacy SCM</em> and
+pick anything offered.  In this case, you need to include
+<code>${library.yourLibName.version}</code> somewhere in the configuration of the SCM, so
+that during checkout the plugin will expand this variable to select the desired
+version.  For example, for Subversion, you can set the <em>Repository URL</em> to
+<code><a href="https://svnserver/project/$%7Blibrary.yourLibName.version%7D" class="bare">svnserver/project/${library.yourLibName.version}</a></code> and then use
+versions such as <code>trunk</code> or <code>branches/dev</code> or <code>tags/1.0</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="directory-structure"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#directory-structure"></a>Directory structure<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#directory-structure" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>The directory structure of a Shared Library repository is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>(root)
++- src                     # Groovy source files
+|   +- org
+|       +- foo
+|           +- Bar.groovy  # for org.foo.Bar class
++- vars
+|   +- foo.groovy          # for global 'foo' variable
+|   +- foo.txt             # help for 'foo' variable
++- resources               # resource files (external libraries only)
+|   +- org
+|       +- foo
+|           +- bar.json    # static helper data for org.foo.Bar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>src</code> directory should look like standard Java source directory structure.
+This directory is added to the classpath when executing Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>The <code>vars</code> directory hosts script files that are exposed as a variable in Pipelines. The name of the file is the name of the variable in the Pipeline.
+So if you had a file called <code>vars/log.groovy</code> with a function like <code>def info(message)…​</code> in it, you can access this function like <code>log.info "hello world"</code> in the Pipeline. You can put as many functions as you like inside this file. Read on below for more examples and options.</p>
+</div>
+<div class="paragraph">
+<p>The basename of each <code>.groovy</code> file should be a Groovy (~ Java) identifier, conventionally <code>camelCased</code>.
+The matching <code>.txt</code>, if present, can contain documentation, processed through the system’s configured <a href="https://wiki.jenkins.io/display/JENKINS/Markup+formatting">markup formatter</a> (so may really be HTML, Markdown, etc., though the <code>.txt</code> extension is required). This documentation will only be visible on the <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/#global-variable-reference">Global Variable Reference</a> pages that are accessed from the navigation sidebar of Pipeline jobs that import the shared library. In addition, those jobs must run successfully once before the shared library documentation will be generated.</p>
+</div>
+<div class="paragraph">
+<p>The Groovy source files in these directories get the same “CPS transformation”
+as in Scripted Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>A <code>resources</code> directory allows the <code>libraryResource</code> step to be used from an external library to load associated non-Groovy files.
+Currently this feature is not supported for internal libraries.</p>
+</div>
+<div class="paragraph">
+<p>Other directories under the root are reserved for future enhancements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="global-shared-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#global-shared-libraries"></a>Global Shared Libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#global-shared-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>There are several places where Shared Libraries can be defined, depending on
+the use-case. <em>Manage Jenkins » Configure System » Global Pipeline Libraries</em>
+as many libraries as necessary can be configured.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./Extending with Shared Libraries_files/add-global-pipeline-libraries.png" alt="Add a Global Pipeline Library">
+</div>
+</div>
+<div class="paragraph">
+<p>Since these libraries will be globally usable, any Pipeline in the system can
+utilize functionality implemented in these libraries.</p>
+</div>
+<div class="paragraph">
+<p>These libraries are considered "trusted:" they can run any methods in Java,
+Groovy, Jenkins internal APIs, Jenkins plugins, or third-party libraries.  This
+allows you to define libraries which encapsulate individually unsafe APIs in a
+higher-level wrapper safe for use from any Pipeline.  Beware that <strong>anyone able to
+push commits to this SCM repository could obtain unlimited access to Jenkins</strong>.
+You need the <em>Overall/RunScripts</em> permission to configure these libraries
+(normally this will be granted to Jenkins administrators).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="folder-level-shared-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#folder-level-shared-libraries"></a>Folder-level Shared Libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#folder-level-shared-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Any Folder created can have Shared Libraries associated with it. This mechanism
+allows scoping of specific libraries to all the Pipelines inside of the folder
+or subfolder.</p>
+</div>
+<div class="paragraph">
+<p>Folder-based libraries are not considered "trusted:" they run in the Groovy
+sandbox just like typical Pipelines.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automatic-shared-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#automatic-shared-libraries"></a>Automatic Shared Libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#automatic-shared-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Other plugins may add ways of defining libraries on the fly.  For example, the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a> plugin provides a "GitHub
+Organization Folder" item which allows a script to use an untrusted library
+such as <code>github.com/someorg/somerepo</code> without any additional configuration.  In
+this case, the specified GitHub repository would be loaded, from the <code>master</code>
+branch, using an anonymous checkout.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-libraries"></a>Using libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Shared Libraries marked <em>Load implicitly</em> allows Pipelines to immediately use
+classes or global variables defined by any such libraries. To access other
+shared libraries, the <code>Jenkinsfile</code> needs to use the <code>@Library</code> annotation,
+specifying the library’s name:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./Extending with Shared Libraries_files/configure-global-pipeline-library.png" alt="Configuring a Global Pipeline Library">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>) _
+<span style="color:#777">/* Using a version specifier, such as branch, tag, etc */</span>
+<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library@1.0</span><span style="color:#710">'</span></span>) _
+<span style="color:#777">/* Accessing multiple libraries with one statement */</span>
+<span style="color:#007">@Library</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">otherlib@abc1234</span><span style="color:#710">'</span></span>]) _</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The annotation can be anywhere in the script where an annotation is permitted
+by Groovy.  When referring to class libraries (with <code>src/</code> directories),
+conventionally the annotation goes on an <code>import</code> statement:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.UsefulClass</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For Shared Libraries which only define Global Variables (<code>vars/</code>), or a
+<code>Jenkinsfile</code> which only needs a Global Variable, the
+<a href="http://groovy-lang.org/objectorientation.html#_annotation">annotation</a>
+pattern <code>@Library('my-shared-library') _</code> may be useful for keeping code
+concise. In essence, instead of annotating an unnecessary <code>import</code> statement,
+the symbol <code>_</code> is annotated.</p>
+</div>
+<div class="paragraph">
+<p>It is not recommended to <code>import</code> a global variable/function,
+since this will force the compiler to interpret fields and methods as <code>static</code>
+even if they were intended to be instance.
+The Groovy compiler in this case can produce confusing error messages.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Libraries are resolved and loaded during <em>compilation</em> of the script,
+before it starts executing.  This allows the Groovy compiler to understand the
+meaning of symbols used in static type checking, and permits them to be used
+in type declarations in the script, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.Helper</span>
+
+<span style="color:#339;font-weight:bold">int</span> useSomeLib(Helper helper) {
+    helper.prepare()
+    <span style="color:#080;font-weight:bold">return</span> helper.count()
+}
+
+echo useSomeLib(<span style="color:#080;font-weight:bold">new</span> Helper(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">some text</span><span style="color:#710">'</span></span>))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Global Variables however, are resolved at runtime.</p>
+</div>
+<div class="sect2">
+<h3 id="loading-libraries-dynamically"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-libraries-dynamically"></a>Loading libraries dynamically<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-libraries-dynamically" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>As of version 2.7 of the <em>Pipeline: Shared Groovy Libraries</em> plugin,
+there is a new option for loading (non-implicit) libraries in a script:
+a <code>library</code> step that loads a library <em>dynamically</em>, at any time during the build.</p>
+</div>
+<div class="paragraph">
+<p>If you are only interested in using global variables/functions (from the <code>vars/</code> directory),
+the syntax is quite simple:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thereafter, any global variables from that library will be accessible to the script.</p>
+</div>
+<div class="paragraph">
+<p>Using classes from the <code>src/</code> directory is also possible, but trickier.
+Whereas the <code>@Library</code> annotation prepares the “classpath” of the script prior to compilation,
+by the time a <code>library</code> step is encountered the script has already been compiled.
+Therefore you cannot <code>import</code> or otherwise “statically” refer to types from the library.</p>
+</div>
+<div class="paragraph">
+<p>However you may use library classes dynamically (without type checking),
+accessing them by fully-qualified name from the return value of the <code>library</code> step.
+<code>static</code> methods can be invoked using a Java-like syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>).com.mycorp.pipeline.Utils.someStaticMethod()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also access <code>static</code> fields, and call constructors as if they were <code>static</code> methods named <code>new</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">useSomeLib</span>(helper) { <span style="color:#777">// dynamic: cannot declare as Helper</span>
+    helper.prepare()
+    <span style="color:#080;font-weight:bold">return</span> helper.count()
+}
+
+<span style="color:#080;font-weight:bold">def</span> lib = library(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>).com.mycorp.pipeline <span style="color:#777">// preselect the package</span>
+
+echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="library-versions"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#library-versions"></a>Library versions<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#library-versions" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>The "Default version" for a configured Shared Library is used when "Load
+implicitly" is checked, or if a Pipeline references the library only by name,
+for example <code>@Library('my-shared-library') _</code>. If a "Default version" is <strong>not</strong>
+defined, the Pipeline must specify a version, for example
+<code>@Library('my-shared-library@master') _</code>.</p>
+</div>
+<div class="paragraph">
+<p>If "Allow default version to be overridden" is enabled in the Shared Library’s
+configuration, a <code>@Library</code> annotation may also override a default version
+defined for the library. This also allows a library with "Load implicitly" to
+be loaded from a different version if necessary.</p>
+</div>
+<div class="paragraph">
+<p>When using the <code>library</code> step you may also specify a version:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library@master</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since this is a regular step, that version could be <em>computed</em>
+rather than a constant as with the annotation; for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">my-shared-library@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>BRANCH_NAME</span><span style="color:#710">"</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>would load a library using the same SCM branch as the multibranch <code>Jenkinsfile</code>.
+As another example, you could pick a library by parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">properties([parameters([string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">LIB_VERSION</span><span style="color:#710">'</span></span>, <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">master</span><span style="color:#710">'</span></span>)])])
+library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">my-shared-library@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>params.LIB_VERSION<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the <code>library</code> step may not be used to override the version of an implicitly loaded library.
+It is already loaded by the time the script starts, and a library of a given name may not be loaded twice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="retrieval-method"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#retrieval-method"></a>Retrieval Method<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#retrieval-method" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>The best way to specify the SCM is using an SCM plugin which has been
+specifically updated to support a new API for checking out an arbitrary named
+version (<strong>Modern SCM</strong> option). As of this writing, the latest versions of the
+Git and Subversion plugins support this mode.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./Extending with Shared Libraries_files/global-pipeline-library-modern-scm.png" alt="Configuring a &#39;Modern SCM&#39; for a Pipeline Library">
+</div>
+</div>
+<div class="sect3">
+<h4 id="legacy-scm"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#legacy-scm"></a>Legacy SCM<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#legacy-scm" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<div class="paragraph">
+<p>SCM plugins which have not yet been updated to support the newer features
+required by Shared Libraries, may still be used via the <strong>Legacy SCM</strong> option.
+In this case, include <code>${library.yourlibrarynamehere.version}</code> wherever a
+branch/tag/ref may be configured for that particular SCM plugin.  This ensures
+that during checkout of the library’s source code, the SCM plugin will expand
+this variable to checkout the appropriate version of the library.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./Extending with Shared Libraries_files/global-pipeline-library-legacy-scm.png" alt="Configuring a &#39;Legacy SCM&#39; for a Pipeline Library">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dynamic-retrieval"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#dynamic-retrieval"></a>Dynamic retrieval<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#dynamic-retrieval" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<div class="paragraph">
+<p>If you only specify a library name (optionally with version after <code>@</code>) in the <code>library</code> step,
+Jenkins will look for a preconfigured library of that name.
+(Or in the case of a <code>github.com/owner/repo</code> automatic library it will load that.)</p>
+</div>
+<div class="paragraph">
+<p>But you may also specify the retrieval method dynamically,
+in which case there is no need for the library to have been predefined in Jenkins.
+Here is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="color:#606">identifier</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">custom-lib@master</span><span style="color:#710">'</span></span>, <span style="color:#606">retriever</span>: modernSCM(
+  [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GitSCMSource</span><span style="color:#710">'</span></span>,
+   <span style="color:#B06;font-weight:bold">remote</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git@git.mycorp.com:my-jenkins-utils.git</span><span style="color:#710">'</span></span>,
+   <span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-private-key</span><span style="color:#710">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is best to refer to <strong>Pipeline Syntax</strong> for the precise syntax for your SCM.</p>
+</div>
+<div class="paragraph">
+<p>Note that the library version <em>must</em> be specified in these cases.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#writing-libraries"></a>Writing libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#writing-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the base level, any valid
+<a href="http://groovy-lang.org/syntax.html">Groovy code</a>
+is okay for use. Different data structures, utility methods, etc, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Point.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo
+
+<span style="color:#777">// point in 3D space</span>
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span> {
+  <span style="color:#339;font-weight:bold">float</span> x,y,z
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accessing-steps"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#accessing-steps"></a>Accessing steps<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#accessing-steps" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Library classes cannot directly call steps such as <code>sh</code> or <code>git</code>.
+They can however implement methods, outside of the scope of an enclosing
+class, which in turn invoke Pipeline steps, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Zot.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">checkOutFrom</span>(repo) {
+  git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">git@github.com:jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>repo<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span>
+}
+
+<span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which can then be called from a Scripted Pipeline:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> z = <span style="color:#080;font-weight:bold">new</span> org.foo.Zot()
+z.checkOutFrom(repo)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This approach has limitations; for example, it prevents the declaration of a
+superclass.</p>
+</div>
+<div class="paragraph">
+<p>Alternately, a set of <code>steps</code> can be passed explicitly using <code>this</code> to a library class, in a
+constructor, or just one method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> <span style="color:#088;font-weight:bold">implements</span> <span style="color:#0a8;font-weight:bold">Serializable</span> {
+  <span style="color:#080;font-weight:bold">def</span> steps
+  <span style="color:#0a8;font-weight:bold">Utilities</span>(steps) {<span style="color:#950">this</span>.steps = steps}
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(args) {
+    steps.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>steps.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When saving state on classes, such as above, the class <strong>must</strong> implement the
+<code>Serializable</code> interface. This ensures that a Pipeline using the class, as seen
+in the example below, can properly suspend and resume in Jenkins.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities</span>
+<span style="color:#080;font-weight:bold">def</span> utils = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">Utilities</span>(<span style="color:#950">this</span>)
+node {
+  utils.mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the library needs to access global variables, such as <code>env</code>, those should be
+explicitly passed into the library classes, or methods, in a similar manner.</p>
+</div>
+<div class="paragraph">
+<p>Instead of passing numerous variables from the Scripted Pipeline into a library,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> {
+  <span style="color:#088;font-weight:bold">static</span> <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(script, args) {
+    script.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -s </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.env.HOME<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/jenkins.xml -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example shows the script being passed in to one <code>static</code> method,
+invoked from a Scripted Pipeline as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">static</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities.*</span>
+node {
+  mvn <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-global-variables"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-global-variables"></a>Defining global variables<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-global-variables" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Internally, scripts in the <code>vars</code> directory are instantiated on-demand  as
+singletons. This allows multiple methods to be defined in a
+single <code>.groovy</code> file for convenience.  For example:</p>
+</div>
+<div class="listingblock">
+<div class="title">vars/log.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message) {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">INFO: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span>
+}
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">warning</span>(message) {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">WARNING: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">"</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) _
+
+log.info <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Starting</span><span style="color:#710">'</span></span>
+log.warning <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nothing to do!</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that if you wish to use a field in your global for some state, annotate it as such:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@groovy</span>.transform.Field
+<span style="color:#080;font-weight:bold">def</span> yourField = [:]
+
+<span style="color:#080;font-weight:bold">def</span> yourFunction....</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Declarative Pipeline does not allow method calls on objects outside "script" blocks.
+(<a href="https://issues.jenkins.io/browse/JENKINS-42360">JENKINS-42360</a>).
+The method calls above would need to be put inside a <code>script</code> directive:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) _
+
+pipeline {
+    agent none
+    stages {
+        stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                <span style="color:#777">// log.info 'Starting' </span><i class="conum" data-value="1"></i><b>(1)</b>
+                script { <i class="conum" data-value="2"></i><b>(2)</b>
+                    log.info <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Starting</span><span style="color:#710">'</span></span>
+                    log.warning <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nothing to do!</span><span style="color:#710">'</span></span>
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This method call would fail because it is outside a <code>script</code> directive.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>script</code> directive required to access global variables in Declarative Pipeline.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A variable defined in a shared library will only show up in <em>Global Variables
+Reference</em> (under <em>Pipeline Syntax</em>) after Jenkins loads and uses that library
+as part of a successful Pipeline run.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Avoid preserving state in global variables</div>
+<div class="paragraph">
+<p>Avoid defining global variables with methods that interact or preserve state.
+Use a static class or instantiate a local variable of a class instead.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-custom-steps"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-custom-steps"></a>Defining custom steps<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-custom-steps" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Shared Libraries can also define global variables which behave similarly to
+built-in steps, such as <code>sh</code> or <code>git</code>. Global variables defined in Shared
+Libraries <strong>must</strong> be named with all lower-case or "camelCased" in order to be
+loaded properly by Pipeline.
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>For example, to define <code>sayHello</code>, the file <code>vars/sayHello.groovy</code>
+should be created and should implement a <code>call</code> method. The <code>call</code> method
+allows the global variable to be invoked in a manner similar to a step:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/sayHello.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">String</span> name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">human</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">// Any valid steps can be called from this code, just like in other</span>
+    <span style="color:#777">// Scripted Pipeline</span>
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">"</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Pipeline would then be able to reference and invoke this variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sayHello <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Joe</span><span style="color:#710">'</span></span>
+sayHello() <span style="color:#777">/* invoke with default arguments */</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If called with a block, the <code>call</code> method will receive a
+<a href="http://groovy-lang.org/closures.html"><code>Closure</code></a>.
+The type should be defined explicitly to clarify the intent of the step, for
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/windows.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(Closure body) {
+    node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">windows</span><span style="color:#710">'</span></span>) {
+        body()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Pipeline can then use this variable like any built-in step which
+accepts a block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">windows {
+    bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">cmd /?</span><span style="color:#710">"</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-a-more-structured-dsl"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-a-more-structured-dsl"></a>Defining a more structured DSL<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-a-more-structured-dsl" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>If you have a lot of Pipelines that are mostly similar, the global
+variable mechanism provides a handy tool to build a higher-level DSL
+that captures the similarity. For example, all Jenkins plugins are built and
+tested in the same way, so we might write a step named
+<code>buildPlugin</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/buildPlugin.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">Map</span> config) {
+    node {
+        git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">https://github.com/jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">-plugin.git</span><span style="color:#710">"</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn install</span><span style="color:#710">'</span></span>
+        mail <span style="color:#606">to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>, <span style="color:#606">subject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> plugin build</span><span style="color:#710">"</span></span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming the script has either been loaded as a
+<a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#global-shared-libraries">Global Shared Library</a> or as a
+<a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#folder-level-shared-libraries">Folder-level Shared Library</a>
+the resulting <code>Jenkinsfile</code> will be dramatically simpler:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-script" style="display: true">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">buildPlugin <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git</span><span style="color:#710">'</span></span></code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>There is also a “builder pattern” trick using Groovy’s <code>Closure.DELEGATE_FIRST</code>,
+which permits <code>Jenkinsfile</code> to look slightly more like a configuration file than a program,
+but this is more complex and error-prone and is not recommended.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-third-party-libraries"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-third-party-libraries"></a>Using third-party libraries<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-third-party-libraries" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>While possible, accessing third-party libraries using <code>@Grab</code> from trusted libraries has various issues and is not recommended.
+Instead of using <code>@Grab</code>, the recommended approach is to create a standalone executable in the programming language of your choice (using whatever third-party libraries you desire), install it on the Jenkins agents that your Pipelines use, and then invoke that executable in your Pipelines using the <code>bat</code> or <code>sh</code> step.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>It is possible to use third-party Java libraries, typically found in
+<a href="https://search.maven.org/">Maven Central</a>,
+from <strong>trusted</strong> library code using the <code>@Grab</code> annotation.  Refer to the
+<a href="https://docs.groovy-lang.org/latest/html/documentation/grape.html#_quick_start">Grape documentation</a>
+for details, but simply put:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Grab</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">org.apache.commons:commons-math3:3.4.1</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.apache.commons.math3.primes.Primes</span>
+<span style="color:#339;font-weight:bold">void</span> parallelize(<span style="color:#339;font-weight:bold">int</span> count) {
+  <span style="color:#080;font-weight:bold">if</span> (!Primes.isPrime(count)) {
+    error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> was not prime</span><span style="color:#710">"</span></span>
+  }
+  <span style="color:#777">// …</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Third-party libraries are cached by default in <code>~/.groovy/grapes/</code> on the
+Jenkins controller.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-resources"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources"></a>Loading resources<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>External libraries may load adjunct files from a <code>resources/</code> directory using
+the <code>libraryResource</code> step.  The argument is a relative pathname, akin to Java
+resource loading:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> request = libraryResource <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">com/mycorp/pipeline/somelib/request.json</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file is loaded as a string, suitable for passing to certain APIs or saving
+to a workspace using <code>writeFile</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is advisable to use an unique package structure so you do not accidentally
+conflict with another library.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pretesting-library-changes"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#pretesting-library-changes"></a>Pretesting library changes<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#pretesting-library-changes" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>If you notice a mistake in a build using an untrusted library,
+simply click the <em>Replay</em> link to try editing one or more of its source files,
+and see if the resulting build behaves as expected.
+Once you are satisfied with the result, follow the diff link from the build’s status page,
+and apply the diff to the library repository and commit.</p>
+</div>
+<div class="paragraph">
+<p>(Even if the version requested for the library was a branch, rather than a fixed version like a tag,
+replayed builds will use the exact same revision as the original build:
+library sources will not be checked out again.)</p>
+</div>
+<div class="paragraph">
+<p><em>Replay</em> is not currently supported for trusted libraries.
+Modifying resource files is also not currently supported during <em>Replay</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-declarative-pipelines"><a class="anchor" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-declarative-pipelines"></a>Defining Declarative Pipelines<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#defining-declarative-pipelines" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Starting with Declarative 1.2, released in late September, 2017, you can define
+Declarative Pipelines in your shared libraries as well. Here’s an example,
+which will execute a different Declarative Pipeline depending on whether the
+build number is odd or even:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/evenOrOdd.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#339;font-weight:bold">int</span> buildNumber) {
+  <span style="color:#080;font-weight:bold">if</span> (buildNumber % <span style="color:#00D">2</span> == <span style="color:#00D">0</span>) {
+    pipeline {
+      agent any
+      stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Even Stage</span><span style="color:#710">'</span></span>) {
+          steps {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">The build number is even</span><span style="color:#710">"</span></span>
+          }
+        }
+      }
+    }
+  } <span style="color:#080;font-weight:bold">else</span> {
+    pipeline {
+      agent any
+      stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Odd Stage</span><span style="color:#710">'</span></span>) {
+          steps {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">The build number is odd</span><span style="color:#710">"</span></span>
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// Jenkinsfile</span>
+<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>) _
+
+evenOrOdd(currentBuild.getNumber())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Only entire <code>pipeline</code>s can be defined in shared libraries as of this time.
+This can only be done in <code>vars/*.groovy</code>, and only in a <code>call</code> method. Only one
+Declarative Pipeline can be executed in a single build, and if you attempt to
+execute a second one, your build will fail as a result.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#_footnoteref_1">1</a>. <a href="https://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself" class="bare">en.wikipedia.org/wiki/Don't_repeat_yourself</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#_footnoteref_2">2</a>. <a href="https://gist.github.com/rtyler/e5e57f075af381fce4ed3ae57aa1f0c2" class="bare">gist.github.com/rtyler/e5e57f075af381fce4ed3ae57aa1f0c2</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/docker">
+⇐ Using Docker with Pipeline
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/">
+⇑ Pipeline
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="https://www.jenkins.io/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="https://www.jenkins.io/doc/book/pipeline/development">
+Pipeline Development Tools ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="./Extending with Shared Libraries_files/feedback-form-functionality.js.download"></script>
+
+<p><a href="https://www.jenkins.io/doc/book/pipeline/shared-libraries/#feedback" data-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="https://www.jenkins.io/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location=&#39;/doc/thank-you-for-your-feedback/&#39;;}" src="./Extending with Shared Libraries_files/saved_resource.html">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value="https://www.jenkins.io/doc/book/pipeline/shared-libraries/">
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required="">
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No">
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue">Type the answer to 1 plus 1 before clicking "Submit" below.</label><br>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="./Extending with Shared Libraries_files/anchor.min.js.download"></script>
+<script src="./Extending with Shared Libraries_files/tether.min.js.download"></script>
+<script src="./Extending with Shared Libraries_files/bootstrap.min.js.download"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/shared-libraries.adoc" title="Edit /doc/book/pipeline/shared-libraries.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/issues/new?labels=bug&amp;template=4-bug.md&amp;title=Extending%20with%20Shared%20Libraries%20page%20-%20TODO:%20Put%20a%20summary%20here&amp;body=Problem%20with%20the%20[Extending%20with%20Shared%20Libraries](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)%20page,%20[source%20file](https://github.com/jenkins-infra/jenkins.io/blob/master/content/doc/book/pipeline/shared-libraries.adoc)%0A%0ATODO:%20Describe%20the%20expected%20and%20actual%20behavior%20here%20%0A%0A%23%23%20Screenshots%20%0A%0A%20TODO:%20Add%20screenshots%20if%20possible%20%0A%0A%23%23%20Possible%20Solution%20%0A%0A%3C!--%20If%20you%20have%20suggestions%20on%20a%20fix%20for%20the%20bug,%20please%20describe%20it%20here.%20--%3E%20%0A%0AN/A" title="Report a problem with /doc/book/pipeline/shared-libraries.adoc">Report a problem</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="./Extending with Shared Libraries_files/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://www.jenkins.io/download">
+Downloads
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/node">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/security">
+Security
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/participate">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://www.jenkins.io/project">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io/">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io/">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io/">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://www.jenkins.io/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/mailing-lists">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/chat">
+Chats
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="https://www.jenkins.io/conduct">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/press">
+Press information
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/artwork">
+Artwork
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Extending with Shared Libraries_files/widget_iframe.6e189c4f2b6d88c453045806323cdcf3.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Extending with Shared Libraries_files/saved_resource(1).html"></iframe></body></html>

@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://www.jenkins.io/doc/book/managing/script-console/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+Script Console
+</title>
+
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<!-- Favicons -->
+<link href="https://www.jenkins.io/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="https://www.jenkins.io/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="https://www.jenkins.io/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://www.jenkins.io/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://www.jenkins.io/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="https://www.jenkins.io/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Script Console" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Script Console" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://www.jenkins.io/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Script Console" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://www.jenkins.io/doc/book/managing/script-console/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Script Console" property="og:site_name">
+<meta content="https://www.jenkins.io/images/logo-title-opengraph.png" name="og:image">
+<style class="anchorjs"></style><link href="./Script Console_files/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="./Script Console_files/tether.min.css" media="screen" rel="stylesheet">
+<link href="./Script Console_files/font-icons.css" media="screen" rel="stylesheet">
+<link href="./Script Console_files/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="./Script Console_files/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="./Script Console_files/footer.css" media="screen" rel="stylesheet">
+<link href="./Script Console_files/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script id="twitter-wjs" src="./Script Console_files/widgets.js.download"></script><script async="" src="./Script Console_files/analytics.js.download"></script><script src="./Script Console_files/jquery.min.js.download"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://www.jenkins.io/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><lineargradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"></stop><stop offset="1" stop-color="#f7941d"></stop></lineargradient><lineargradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"></lineargradient><lineargradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"></lineargradient><lineargradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"></lineargradient></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"></path><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"></path><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"></path><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"></path><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"></path></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://cloud.google.com/tekton/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://www.jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/doc/book">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/pipeline">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/system-administration">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/solutions">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/doc/developer">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/participate">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="https://www.jenkins.io/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.jenkins.io/security">
+Security
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/press">
+Press
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://www.jenkins.io/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.jenkins.io/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://www.jenkins.io/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="https://www.jenkins.io/doc" class="">&gt; User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/book/getting-started" class="">User Handbook overview</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/installing" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/using" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline" class="">Pipeline</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/system-configuration" class="">Configuring the System</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/system-properties" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/change-system-timezone" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/security" class="">Managing Security</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/tools" class="">Managing Tools</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/plugins" class="">Managing Plugins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/cli" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/script-console" class="active">Script Console</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/groovy-hook-scripts" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/nodes" class="">Managing Nodes</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/script-approval" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/users" class="">Managing Users</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/ui-themes" class="">Themes for user interface</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/managing/user-content" class="">User Content</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/system-administration" class="">System Administration</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/scaling" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/appendix" class="">Appendix</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/book/glossary" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/pipeline/tour/getting-started" class="">Guided Tour</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="https://www.jenkins.io/doc/book/pipeline/syntax" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/pipeline/steps" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc/upgrade-guide" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="https://www.jenkins.io/doc/book/managing/cli">
+⇐ Jenkins CLI
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="https://www.jenkins.io/doc/book/managing/">
+⇑ Managing Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="https://www.jenkins.io/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="https://www.jenkins.io/doc/book/managing/groovy-hook-scripts">
+Groovy Hook Scripts ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1 id="script-console">
+Script Console
+<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#script-console" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins features a Groovy script console which allows one to run
+arbitrary Groovy scripts within the Jenkins controller runtime or in the
+runtime on agents.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is&nbsp;<em>very</em> <strong>important</strong>&nbsp;to understand all of the following points
+because it affects the integrity of your Jenkins installation. The
+Jenkins Script Console:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access is controlled by the&nbsp;<code>RunScripts</code>&nbsp;permission. If any authorization strategy allows this permission to be granted to users other than Admins, then extreme care should be taken not to allow non-admins to use this.</p>
+</li>
+<li>
+<p>Is a web-based Groovy shell into the Jenkins runtime. Groovy is a very
+powerful language which offers the ability to do practically anything
+Java can do including:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create sub-processes and execute arbitrary commands on the Jenkins
+controller and agents.</p>
+</li>
+<li>
+<p>It can even read files in which the Jenkins controller has access to on
+the host (like&nbsp;<code>/etc/passwd</code>)</p>
+</li>
+<li>
+<p>Decrypt credentials configured within Jenkins.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Offers no administrative controls to stop a User (or Admin) once they
+are able to execute the Script Console from affecting all parts of the
+Jenkins infrastructure. Granting a normal Jenkins user Script Console
+Access is essentially the same as giving them Administrator rights
+within Jenkins.</p>
+</li>
+<li>
+<p>Can configure any Jenkins setting. It can disable security,
+reconfigure security, even open a backdoor on the host operating system
+completely outside of the Jenkins process. Due to the mission critical
+importance many organizations place on Jenkins in their infrastructure
+this point is especially important because it would allow an attacker to
+move laterally within infrastructure with little effort.</p>
+</li>
+<li>
+<p>Is so powerful because it was originally intended as a debugging
+interface for Jenkins developers but has since grown into an interface
+used by Jenkins Admins to configure Jenkins and debug Jenkins runtime
+issues.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because of the power offered by the Jenkins Script Console, Jenkins and
+its agents should never be run as the&nbsp;<code>root</code>&nbsp;user (on Linux) or system
+administrator on any other flavor of OS. Videos linked in this
+page demonstrate and discuss security warnings.</p>
+</div>
+<div class="paragraph">
+<p><strong>Be sure to secure your Jenkins instance</strong></p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#multiple-contexts">Multiple contexts</a>
+<ul class="sectlevel2">
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-the-controller">Running Script Console on the controller</a></li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-agents">Running Script Console on agents</a></li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#run-scripts-from-controller-script-console-on-agents">Run scripts from controller Script Console on agents</a></li>
+</ul>
+</li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#remote-access">Remote access</a></li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#shortcut-key-on-script-console-to-submit">Shortcut key on script console to submit</a></li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#video-tutorials-and-additional-learning-materials">Video Tutorials and additional learning materials</a></li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts">Example Groovy scripts</a>
+<ul class="sectlevel2">
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#out-of-date-scripts">Out of date scripts</a></li>
+</ul>
+</li>
+<li><a href="https://www.jenkins.io/doc/book/managing/script-console/#plugins-enabling-groovy-usage">Plugins enabling Groovy usage</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multiple-contexts"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#multiple-contexts"></a>Multiple contexts<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#multiple-contexts" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins Script Console can run either on the controller or any
+configured agents.</p>
+</div>
+<div class="sect2">
+<h3 id="running-script-console-on-the-controller"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-the-controller"></a>Running Script Console on the controller<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-the-controller" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>This feature can be accessed from "Manage Jenkins" &gt; "Script Console".&nbsp;
+Or by visiting the sub-URL&nbsp;<code>/script</code>&nbsp;on your Jenkins instance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running-script-console-on-agents"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-agents"></a>Running Script Console on agents<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#running-script-console-on-agents" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Visit "Manage Jenkins" &gt; "Manage Nodes".&nbsp; Select any node to view the
+status page.&nbsp; In the menu on the left, a menu item is available to open
+a "Script Console" on that specific agent.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="run-scripts-from-controller-script-console-on-agents"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#run-scripts-from-controller-script-console-on-agents"></a>Run scripts from controller Script Console on agents<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#run-scripts-from-controller-script-console-on-agents" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>It’s also possible to run scripts from the controller Script Console on
+individual agents.&nbsp; The following script is an example running a script
+on agents from the controller Script Console.</p>
+</div>
+<div class="paragraph">
+<p><strong>Script executes code on agent from Master Script Console</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">hudson.util.RemotingDiagnostics</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">jenkins.model.Jenkins</span>
+
+<span style="color:#0a8;font-weight:bold">String</span> agent_name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">your agent name</span><span style="color:#710">'</span></span>
+<span style="color:#777">//groovy script you want executed on an agent</span>
+groovy_script = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'''</span><span style="color:#D20">
+println System.getenv("PATH")
+println "uname -a".execute().text
+</span><span style="color:#710">'''</span></span>.trim()
+
+<span style="color:#0a8;font-weight:bold">String</span> result
+Jenkins.instance.slaves.find { agent -&gt;
+    agent.name == agent_name
+}.with { agent -&gt;
+    result = RemotingDiagnostics.executeGroovy(groovy_script, agent.channel)
+}
+println result</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="remote-access"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#remote-access"></a>Remote access<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#remote-access" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Jenkins Admin can execute groovy scripts remotely by sending an HTTP
+POST request to <code>/script/</code> url or <code>/scriptText/</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>curl example via bash</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="shell">curl -d "script=&lt;your_script_here&gt;" https://jenkins/script
+# or to get output as a plain text result (no HTML)
+curl -d "script=&lt;your_script_here&gt;" https://jenkins/scriptText</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also, <a href="https://www.jenkins.io/doc/book/managing/cli/">Jenkins CLI</a>
+offers the possibility to execute groovy scripts remotely using
+<code>groovy</code> command or execute groovy interactively via <code>groovysh</code>.
+However, once again curl can be used to execute groovy scripts by making
+use of bash command substitution. In the following example
+<code>somescript.groovy</code> is a groovy script in the current working
+directory.</p>
+</div>
+<div class="paragraph">
+<p><strong>Curl submitting groovy file via bash</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="shell">curl --data-urlencode "script=$(&lt; ./somescript.groovy)" https://jenkins/scriptText</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If security is configured in Jenkins, then curl can be provided options
+to authenticate using&nbsp;the&nbsp;<code>curl --user</code>&nbsp;option.</p>
+</div>
+<div class="paragraph">
+<p><strong>Curl submitting groovy file providing username and api token via bash</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="shell">curl --user 'username:api-token' --data-urlencode \
+  "script=$(&lt; ./somescript.groovy)" https://jenkins/scriptText</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is the equivalent command using python, not curl.</p>
+</div>
+<div class="paragraph">
+<p><strong>Python submitting groovy file providing username and api token</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="python"><span style="color:#080;font-weight:bold">with</span> <span style="color:#369;font-weight:bold">open</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somescript.groovy</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">r</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">as</span> fd:
+    data = fd.read()
+r = requests.post(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://jenkins/scriptText</span><span style="color:#710">'</span></span>, auth=(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">username</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">api-token</span><span style="color:#710">'</span></span>), data={<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">script</span><span style="color:#710">'</span></span>: data})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="shortcut-key-on-script-console-to-submit"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#shortcut-key-on-script-console-to-submit"></a>Shortcut key on script console to submit<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#shortcut-key-on-script-console-to-submit" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can submit a script without mouse. Jenkins has a shortcut key which
+enables to submit with keyboard.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows / Linux: Ctrl + Enter</p>
+</li>
+<li>
+<p>Mac: Command + Enter</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="video-tutorials-and-additional-learning-materials"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#video-tutorials-and-additional-learning-materials"></a>Video Tutorials and additional learning materials<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#video-tutorials-and-additional-learning-materials" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here are some recorded videos on the Jenkins Script Console:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=qaUPESDcsGg">Jenkins World 2017:
+Mastering the Jenkins Script Console</a> - 44 minutes - sample usage and
+security discussion</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=T1x2kCGRY1w">LA Jenkins Area Meetup
+2016 - Hacking on Jenkins Internals - Jenkins Script Console</a>&nbsp;- 39
+minutes - sample usage</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To expand your ability to write scripts in the script console, the following
+references are recommended:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://groovy-lang.org/learn.html">Learn Groovy</a> - Learning Groovy is
+useful for more than writing scripts for the Script Console.&nbsp; Groovy is
+also relevant for other features of Jenkins like
+<a href="https://www.jenkins.io/doc/book/pipeline/">Pipelines and shared pipeline
+libraries</a>, the
+<a href="https://plugins.jenkins.io/groovy">Groovy Plugin</a>,
+the <a href="https://plugins.jenkins.io/job-dsl">Job DSL
+plugin</a>, and many other plugins which utilize Groovy (see section
+<a href="https://www.jenkins.io/doc/book/managing/script-console/#Plugins-enabling-Groovy-usage">[Plugins-enabling-Groovy-usage]</a>).</p>
+</li>
+<li>
+<p><a href="http://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html">Write
+Groovy scripts for Jenkins with Code completion</a>&nbsp;- The gist of this is
+to create a Maven project within your IDE and to depend
+on&nbsp;org.jenkins-ci.main:jenkins-core (and any other plugins that you
+expect present). You can then write a Groovy script with code completion
+of Jenkins API objects and methods.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-groovy-scripts"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts"></a>Example Groovy scripts<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="out-of-date-scripts"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#out-of-date-scripts"></a>Out of date scripts<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#out-of-date-scripts" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<div class="paragraph">
+<p>Due to the nature of Groovy scripts accessing Jenkins source code
+directly, Script Console scripts are easily out of date from the Jenkins
+source code. It is possible to run a script and get exceptions because
+public methods and interfaces in Jenkins core or Jenkins plugins have
+changed. Keep this in mind when trying out examples. Jenkins is easily
+started from a local development machine via the following command:</p>
+</div>
+<div class="paragraph">
+<p><strong>Starting a local copy of Jenkins</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="shell">export JENKINS_HOME="./my_jenkins_home"
+java -jar jenkins.war</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use CTRL+C to stop Jenkins. It is not recommended to try Script Console
+examples in a production Jenkins instance.</p>
+</div>
+<div class="paragraph">
+<p>The following repositories offer solid examples of Groovy scripts for
+Jenkins.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/cloudbees/jenkins-scripts">CloudBees jenkins-scripts
+repository</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jenkins-scripts">Jenkins CI jenkins-scripts repository under the&nbsp;<code>scriptler/</code> directory</a>&nbsp;(scripts
+for the <a href="https://plugins.jenkins.io/scriptler">Scriptler Plugin</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/samrocketman/jenkins-script-console-scripts">Sam Gleske’s jenkins-script-console-scripts repository</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/samrocketman/jenkins-bootstrap-shared">Sam Gleske’s jenkins-bootstrap-shared repository under the&nbsp;<code>scripts/</code> directory</a>.</p>
+</li>
+<li>
+<p><a href="http://community.jboss.org/wiki/HudsonHowToDebug">Some scripts at
+JBoss.org</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Browse
+all&nbsp;<a href="https://plugins.jenkins.io/scriptler">Scriptler
+Plugin</a> Groovy Scripts and&nbsp;<strong>please share your scripts with the</strong>
+<strong><a href="https://plugins.jenkins.io/scriptler">Scriptler
+Plugin</a>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Activate+Chuck+Norris+Plugin">Activate
+Chuck Norris Plugin</a> — This script activates Chuck Norris
+plugin for all jobs in your Jenkins server</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Add+a+Maven+Installation%2C+Tool+Installation%2C+Modify+System+Config">Add
+a Maven Installation, Tool Installation, Modify System Config</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Add+a+new+label+to+slaves+meeting+a+condition">Add
+a new label to agents meeting a condition</a> — This script
+shows how to alter the agent nodes' label membership. In this case we
+create a new label if the existing label contains a string. It has been
+tested from the Jenkins command window.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Add+notification+plugin+to+every+job">Add
+notification plugin to every job</a> — This script will add
+the Notification Plugin to every job.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Allow+broken+build+claiming+on+every+jobs">Allow
+broken build claiming on every jobs</a> — With the following
+simple script, you can activate the option on every jobs of your server
+in just one go.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Batch-Update+Mercurial+branch+that+is+checked+out">Batch-Update
+Mercurial branch that is checked out</a> — Updates for
+multiple jobs which branch will be checked out from Hg</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Bulk+rename+projects">Bulk
+rename projects</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Change+JVM+Options+in+all+Maven+tasks+of+Freestyle+Jobs">Change
+JVM Options in all Maven tasks of Freestyle Jobs</a> — This
+script find all Maven Tasks registered in freestyle jobs and replace JVM
+Options by a new value.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Change+publish+over+SSH+configuration">Change
+publish over SSH configuration</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Change+SCMTrigger+for+each+project+to+disable+during+the+night+and+the+week-end">Change
+SCMTrigger for each project to disable during the night and the
+week-end</a> — This script lets you easily change all jobs
+running every minutes so that it gets disabled between 21:00 and 07:00
+and on Saturday and Sunday.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Change+Version-Number+in+SVN-path">Change
+Version-Number in SVN-path</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Clone+all+projects+in+a+View">Clone
+all projects in a View</a> — This script enumerates all
+projects belonging to a specific view and clones them.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Convert+standard+mail+notifications+to+use+the+Mail-Ext+Publisher+plugin">Convert
+standard mail notifications to use the Mail-Ext Publisher plugin</a> —
+This script replace mail notifications in all projects by
+Mail-Ext publisher plugin and re-uses existing recipients.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Delete+.tmp+files+left+in+workspace-files">Delete tmp files left in workspace-files</a> — This scripts deletes
+all the tmp files left in workspace-files directory after the build. On
+windows servers this seems pretty common.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Delete+workspace+for+all+disabled+jobs">Delete
+workspace for all disabled jobs</a> — Deletes the workspace
+for all disabled jobs to save space</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Disable+all+jobs">Disable all
+jobs</a> — This script disables all jobs in your Jenkins
+server</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+Information+About+Nodes">Display
+Information About Nodes</a> — This scripts displays a bunch of
+information about all the agent nodes.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+job+parameters">Display
+job parameters</a> — This scripts displays the parameters for
+all the jobs along with their default values (if applicable).</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+jobs+group+by+the+build+steps+they+use">Display
+jobs group by the build steps they use</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/pages/viewpage.action?pageId=67569264">Display
+list of projects that were built more than 1 day ago.</a> —
+This script to display list of projects that were built
+more than 1 day ago.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+mail+notifications+recipients">Display
+mail notifications recipients</a> — This script displays for
+all jobs the list of mail recipients used for notifications.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+monitors+status">Display
+monitors status</a> — Jenkins uses monitors to validate
+various behaviors. If you dismiss one, Jenkins will never propose you to
+reactivate it. This script allows you to check the status of all
+monitors and to reactivate them.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+the+number+of+jobs+using+SCM+Polling+from+Freestyle%2C+Pipeline+and+Maven">Display
+the number of jobs using SCM Polling from Freestyle, Pipeline and Maven</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+timer+triggers">Display
+timer triggers</a> — This scripts displays the timer triggers
+for all the jobs in order to better arrange them.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Display+Tools+Location+on+All+Nodes">Display
+Tools Location on All Nodes</a> — This script can help to get
+Jenkins tools localtion on all your agents</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Enable+Timestamper+plugin+on+all+jobs">Enable
+Timestamper plugin on all jobs</a> — With the following simple
+script, you can activate the option on every jobs of your server in just
+one go.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Failed+Jobs">Failed Jobs</a> —
+This scripts displays a list of all failed jobs. Addon:
+restart them.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Find+builds+currently+running+that+has+been+executing+for+more+than+N+seconds">Find
+builds currently running that has been executing for more than N
+seconds</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Grant+Cancel+Permission+for+user+and+group+that+have+Build+permission">Grant
+Cancel Permission for user and group that have Build permission</a> —
+This script will go through all groups and users in both
+Global security and per job security settings.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Invalidate+Jenkins+HTTP+sessions">Invalidate
+Jenkins HTTP sessions</a> — This script can monitor and
+invalidate HTTP sessions if there are many open ones on your server.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Manually+run+log+rotation+on+all+jobs">Manually
+run log rotation on all jobs</a> — Runs log rotation on all
+jobs to free space</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Monitor+and+Restart+Offline+Slaves">Monitor
+and Restart Offline Agents</a> — This script can monitor and
+restart offline nodes if they are not disconnected manually.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Monitoring+Scripts">Monitoring
+Scripts</a> — Several scripts to display data about http
+sessions, threads, memory, JVM or MBeans, when using the Monitoring
+plugin.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/My+Test+Grovvy">My Test Grovvy</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Parameterized+System+Groovy+script">Parameterized
+System Groovy script</a> — This script will demonstrate how to
+get parameters in a system groovy script.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Preselect+username+in+Maven+Release+Build">Preselect
+username in Maven Release Build</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Printing+a+list+of+credentials+and+their+IDs">Printing
+a list of credentials and their IDs</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Remove+all+disabled+modules+in+Maven+jobs">Remove
+all disabled modules in Maven jobs</a> — To remove all
+disabled modules in Maven jobs</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Remove+Deployed+Artifacts+Actions">Remove
+Deployed Artifacts Actions</a> — This script is used to remove
+the Deployed Artifacts list that is uselessly stored for each build by
+the Artifact Deployer Plugin.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Remove+Git+Plugin+BuildsByBranch+BuildData">Remove
+Git Plugin BuildsByBranch BuildData</a> — This script is used
+to remove the static list of BuildsByBranch that is uselessly stored for
+each build by the Git Plugin.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Set+GitBlitRepositoryBrowser+with+custum+settings+on+all+repos">Set
+GitBlitRepositoryBrowser with custum settings on all repos</a> —
+This scripts allows to update the repo browser. Can be
+adapted to any other browser, not only gitblit.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Update+maven+jobs+to+use+the+post+build+task+to+deploy+artifacts">Update
+maven jobs to use the post build task to deploy artifacts</a> —
+This script updates all maven jobs having a deploy goal by
+install and activate the post build step to deploy artifacts at the end
+of the build</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Update+SVN+Browser">Update SVN
+Browser</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Wipe+out+workspaces+of+all+jobs">Wipe
+out workspaces of all jobs</a> — This script wipes out the
+workspaces of all jobs on your Jenkins server</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Wipe+workspaces+for+a+set+of+jobs+on+all+nodes">Wipe
+workspaces for a set of jobs on all nodes</a> — The script
+wipes workspaces of certain jobs on all nodes.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="plugins-enabling-groovy-usage"><a class="anchor" href="https://www.jenkins.io/doc/book/managing/script-console/#plugins-enabling-groovy-usage"></a>Plugins enabling Groovy usage<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="https://www.jenkins.io/doc/book/managing/script-console/#plugins-enabling-groovy-usage" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/config-file-provider">Config
+File Provider Plugin</a> Adds the ability to provide
+configuration files (i.e., settings.xml for maven, XML, groovy, custom
+files, etc.) loaded through the Jenkins UI which will be copied to the
+job’s workspace.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/global-post-script">Global
+Post Script Plugin</a> — Execute a global configured groovy
+script after each build of each job managed by the Jenkins.<br>
+This is typical for cases when you need to do something based on a
+shared set of parameters, such as triggering downstream jobs managed by
+the same Jenkins or remote ones based on the parameters been passed to
+the parameterized jobs.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/groovy">Groovy plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/groovy-postbuild">Groovy
+Postbuild Plugin</a> — This plugin executes a groovy script in
+the Jenkins JVM. Typically, the script checks some conditions and
+changes accordingly the build result, puts badges next to the build in
+the build history and/or displays information on the build summary
+page.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/groovy-remote-control">Groovy
+Remote Control Plugin</a> — This plugin provides
+<a href="http://groovy.codehaus.org/modules/remote/">Groovy Remote Control</a>'s
+receiver, and allows to control external application from Jenkins.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/matrix-groovy-execution-strategy">Matrix
+Groovy Execution Strategy Plugin</a> — A plugin to decide the
+execution order and valid combinations of matrix projects.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pipeline-classpath-step">Pipeline
+Classpath Step Plugin</a> Pipeline DSL step to add path to
+the groovy classpath</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/scriptler">Scriptler
+Plugin</a> — Scriptler allows you to store/edit groovy scripts
+and execute it on any of the nodes…​ no need to copy/paste
+groovy code anymore.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="https://www.jenkins.io/doc/book/managing/cli">
+⇐ Jenkins CLI
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="https://www.jenkins.io/doc/book/managing/">
+⇑ Managing Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="https://www.jenkins.io/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="https://www.jenkins.io/doc/book/managing/groovy-hook-scripts">
+Groovy Hook Scripts ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="./Script Console_files/feedback-form-functionality.js.download"></script>
+
+<p><a href="https://www.jenkins.io/doc/book/managing/script-console/#feedback" data-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="https://www.jenkins.io/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location=&#39;/doc/thank-you-for-your-feedback/&#39;;}" src="./Script Console_files/saved_resource.html">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value="https://www.jenkins.io/doc/book/managing/script-console/">
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required="">
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No">
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue">Type the answer to 5 plus 1 before clicking "Submit" below.</label><br>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="./Script Console_files/anchor.min.js.download"></script>
+<script src="./Script Console_files/tether.min.js.download"></script>
+<script src="./Script Console_files/bootstrap.min.js.download"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/managing/script-console.adoc" title="Edit /doc/book/managing/script-console.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/issues/new?labels=bug&amp;template=4-bug.md&amp;title=Script%20Console%20page%20-%20TODO:%20Put%20a%20summary%20here&amp;body=Problem%20with%20the%20[Script%20Console](https://www.jenkins.io/doc/book/managing/script-console/)%20page,%20[source%20file](https://github.com/jenkins-infra/jenkins.io/blob/master/content/doc/book/managing/script-console.adoc)%0A%0ATODO:%20Describe%20the%20expected%20and%20actual%20behavior%20here%20%0A%0A%23%23%20Screenshots%20%0A%0A%20TODO:%20Add%20screenshots%20if%20possible%20%0A%0A%23%23%20Possible%20Solution%20%0A%0A%3C!--%20If%20you%20have%20suggestions%20on%20a%20fix%20for%20the%20bug,%20please%20describe%20it%20here.%20--%3E%20%0A%0AN/A" title="Report a problem with /doc/book/managing/script-console.adoc">Report a problem</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="./Script Console_files/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://www.jenkins.io/download">
+Downloads
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/node">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/security">
+Security
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/participate">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://www.jenkins.io/project">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io/">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io/">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io/">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://www.jenkins.io/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/mailing-lists">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/chat">
+Chats
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="https://www.jenkins.io/conduct">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/press">
+Press information
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/artwork">
+Artwork
+</a>
+</li>
+<li>
+<a href="https://www.jenkins.io/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Script Console_files/widget_iframe.6e189c4f2b6d88c453045806323cdcf3.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Script Console_files/saved_resource(1).html"></iframe></body></html>

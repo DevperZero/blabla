@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://jazz.net/library/article/620 -->
+<html lang="en-US" class="dj_webkit dj_chrome dj_contentbox"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="IBM.WTMSite" content="JAZZ">
+<script type="text/javascript" async="" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/analytics.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_53" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_162" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/js(1)"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_cormetrics2" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/eluminate.js.download"></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/utag.js.download" type="application/javascript" async=""></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/sync" type="application/javascript" async=""></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/lt.min.js.download" type="application/javascript" async=""></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/p_ef9ad002b5cd2786cc53a037a1aead03fa2c49b17cdae0c98371da2b921071e2.js.download" type="application/javascript" async=""></script><script id="twitter-wjs" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/widgets.js.download"></script><script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/dojo.js.download" data-dojo-config="parseOnLoad: true"></script>
+<link href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/JazzCS.css">
+<link rel="stylesheet" type="text/css" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/NavBar.css">
+<link rel="stylesheet" type="text/css" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/shared.css">
+<link rel="stylesheet" type="text/css" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/ScrollableView.css">
+<script type="text/javascript">
+	dojo.registerModulePath("jazz", "/_scripts/built/jazz");
+	dojo.registerModulePath("jazzshared", "/_scripts");
+	
+	if (window.location.href.indexOf("debug=true") >= 0) {
+		var dojoConfig = {isDebug: true, locale: "en"};
+		window.publicHostname = "jazz.net";
+	}
+</script>
+
+
+<link rel="stylesheet" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/sandbox.css" type="text/css">
+<link rel="stylesheet" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/bootstrap.min.css" type="text/css">
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jquery.min.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/bootstrap.min.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script>
+
+
+<title>Getting started with the Jazz SCM command line in Rational Team Concert - Library: Articles
+- Jazz Community Site</title>
+
+
+<meta name="keywords" content="workflow-management,rational-team-concert,command line,getting started,SCM,source control">
+
+
+<meta name="description" content="This article provides an introduction to the basic concepts and commands in the Jazz SCM command line tool. We will walk through a basic workflow that covers the typical set of activities performed by a developer in order to work on a project.">
+
+
+<!-- IBM taxonomy meta content -->
+
+	<meta name="dc.subject" scheme="IBM_SubjectTaxonomy" content="SSCP65">
+
+<meta name="dc.type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+
+	<meta name="IBM.BrandProduct" content="A057601Q81405M60">
+
+
+	<meta name="DC.Date" scheme="iso8601" content="2011-04-05">
+
+<!--<base href="#">--><base href=".">
+<link rel="stylesheet" type="text/css" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/docs.css">
+<script type="text/javascript" language="Javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/sbs.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/article.js.download"></script><link rel="stylesheet" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/article.css">
+<link rel="stylesheet" href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/bootstrap-override.css" type="text/css">
+<script type="text/javascript">
+	function init() {
+		fixAnchors();
+		ibmSBS.init();
+		setFbUrl();
+	}
+	function showPrintableVersion() {
+		location='/about/PrintableLearnItem.jsp'+location.search;
+	}
+	function setFbUrl() {
+		console.log(dojo.byId('fb-iframe'));
+		dojo.byId('fb-iframe').setAttribute("src", "//www.facebook.com/plugins/like.php?href="+document.URL +"&amp;send=false&amp;layout=button_count&amp;width=85&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21");
+	}
+	dojo.addOnLoad(init);
+</script><link href="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/sbs.css" rel="stylesheet" type="text/css"><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/usen-utf8.js.download" type="text/javascript"></script><meta property="og:title" content="Getting started with the Jazz SCM command line in Rational Team Concert - Library: Articles - Jazz Community Site"><meta property="og:image" content="https://1.cms.s81c.com/sites/default/files/2018-12-04/8_0.png"><meta property="og:type" content="website"><meta property="og:description" content="This article provides an introduction to the basic concepts and commands in the Jazz SCM command line tool. We will walk through a basic workflow that covers the typical set of activities performed by a developer in order to work on a project."><meta property="og:url" content="jazz.net/library/article/620"><meta property="og:locale" content="en-US"><meta property="og:published_time" content="2011-04-05"><meta property="article:published_time" content="2011-04-05"><script charset="utf-8" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/button.cf7aaea83eb75b84ae4508f0ceb5dc4c.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_24" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/utag.24.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_53" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/utag.53.js.download"></script><script language="javascript" type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/50200000.js.download"></script><script language="javascript" type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/dispatcher-v3.js.download"></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/yahoo-min.js.download" type="text/javascript"></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/cp-v3.js.download" type="text/javascript"></script><script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/json-min.js.download" type="text/javascript"></script><style type="text/css">@media only screen and (max-width:480px){.truste_box_overlay{width: 100%!important;margin: 0px!important;max-width: 90%!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}@media only screen and (min-width:481px){.truste_box_overlay{width: 80%!important;margin: 20px auto!important;max-width: 800px!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}</style><style type="text/css">@font-face {font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff2") format("woff2");font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff") format("woff");}</style><script type="text/javascript" async="" charset="utf-8" id="tealium_visitor_service_184main_1" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/01774901599a000c121d56d4bb6103073002506b00bd0"></script><style type="text/css">.truste_cookie_prefs,#teconsent{display:none !important}</style></head>
+
+<body class="claro">
+<div class="cs-page-wrapper" role="region" aria-label="Site navigation for home">
+
+<div id="jazz-navbar">
+
+
+<div class="cs-header-wrapper">
+	<nav class="navbar navbar-inverse navbar-fixed-top jazz-navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+          <a class="navbar-brand" href="https://jazz.net/">
+	        <img class="main-logo common-sprite jazz-wordmark-dark-med nav-logo" alt="Jazz Home" title="IBM Jazz Community Site" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif">
+	      </a>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav">
+				<li class="hidden-xs"><a id="products-button" data-dropdownnav="#product-nav" href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li class="visible-xs"><a href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li id="top-download-menu" class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/620#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Downloads <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						  <li class="dropdown-submenu">
+						  	<a href="https://jazz.net/downloads/elm" class="menu-highlight">Engineering Lifecycle Management</a>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/620#"><span class="caret-right"></span>Products</a>
+						      <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/requirements-management-doors-next" class="menu-highlight">Engineering Requirements Management DOORS Next</a></li>
+							    <li><a href="https://jazz.net/downloads/workflow-management" class="menu-highlight">Engineering Workflow Management</a></li>
+							    <li><a href="https://jazz.net/downloads/test-management" class="menu-highlight">Engineering Test Management</a></li>
+							    <li><a href="https://jazz.net/downloads/rhapsody-model-manager" class="menu-highlight">Engineering Rhapsody Model Manager</a></li>
+							    <li><a href="https://jazz.net/downloads/elo-engineering-insights" class="menu-highlight">Engineering Insights</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-method-composer" class="menu-highlight">Engineering Method Composer</a></li>							    
+						      </ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/620#"><span class="caret-right"></span>Reporting</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/elo-publishing" class="menu-highlight">Engineering Publishing</a></li>
+							    <li><a href="https://jazz.net/downloads/jazz-reporting-service" class="menu-highlight">Jazz Reporting Service</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/620#"><span class="caret-right"></span>Adapters</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/ce4iot-connector" class="menu-highlight">ELM Connector for IoT</a></li>
+							    <li><a href="https://jazz.net/downloads/integration-adapters-tasktop-edition" class="menu-highlight">Integration Adapters Tasktop Edition</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-adapters-windchill/" class="menu-highlight">Integration Adapter for Windchill</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/620#"><span class="caret-right"></span>Other Tools &amp; Products</a>
+						     <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/jazz-foundation" class=" menu-highlight">Jazz Foundation</a></li>
+							    <li><a href="https://jazz.net/downloads/ibm-installation-manager/" class="menu-highlight">Installation Manager</a></li>
+                             </ul>
+                          </li>
+                          
+			        </ul>
+			    </li>
+				<li><a href="https://jazz.net/forum" class="nav-button">Forum</a></li>
+				
+				<li><a href="https://jazz.net/blogs" class="nav-button">Blogs</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/620#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Library <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="https://jazz.net/library" class="top-menuitem menu-highlight">All media</a></li>
+							<li class="divider"></li>
+							<li class=""><a href="https://www-01.ibm.com/support/knowledgecenter/SSYMRC/clm_family_welcome.html" target="_blank" class="menu-highlight">Engineering Lifecycle Management documentation</a></li>
+						</ul>
+			   	</li>
+			   	<li class="visible-xs"><a href="https://jazz.net/library" class="nav-button">Library</a></li>
+			   	
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/620#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Deployment <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a id="deployment" class="top-menuitem menu-highlight" href="https://jazz.net/wiki/bin/view/Deployment/">Deployment wiki</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentPlanningAndDesign" class="menu-highlight">Planning and design</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentInstallingUpgradingAndMigrating" class="menu-highlight">Installing and upgrading</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMigratingAndEvolving" class="menu-highlight">Migrating and evolving</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentIntegrating" class="menu-highlight">Integrating</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentAdminstering" class="menu-highlight">Administering</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMonitoring" class="menu-highlight">Monitoring</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentTroubleshooting" class="menu-highlight">Troubleshooting</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/jazz02/web/projects/Deployment%20Wiki#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight">Deployment wiki project</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/CommunityInformation" class="menu-highlight">Community information </a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/WebSearch" class="menu-highlight">Search</a></li>
+						</ul>
+			   	</li>			   	
+			   	<li class="visible-xs"><a href="https://jazz.net/wiki/bin/view/Deployment/" class="nav-button">Deployment</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/620#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a class="top-menuitem menu-highlight" href="https://jazz.net/help">Get help</a></li>							
+							<li><a href="https://www.ibm.com/mysupport" class="menu-highlight" target="_blank">Open a support case</a>
+							</li><li><a href="https://jazz.net/jazz02/web/projects/Community%20Feedback#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight" target="_blank">Open a ticket for Jazz.net</a>	
+							</li><li class="divider"></li>
+							<li><a href="https://jazz.net/extend/integrations" class="menu-highlight">Integrations</a></li>					
+						</ul>
+			   	</li>			   
+			   	<li class="visible-xs"><a href="https://jazz.net/help" class="nav-button">Support</a></li>
+		 	</ul>
+		 	
+			<ul class="nav navbar-nav navbar-right">
+				
+					<li><a href="https://jazz.net/mystuff" class="nav-button">My Stuff</a></li>
+					<li class="dropdown hidden-xs">
+						<a href="https://jazz.net/library/article/620#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">D Z <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="https://jazz.net/action/profile/edit" class="menu-highlight">Change profile</a></li>
+								<li class="divider"></li>
+								<li><a href="https://jazz.net/logout.jsp" class="menu-highlight">Log out</a></li>
+							</ul>
+				   	</li>
+				   	<li class="visible-xs"><a href="https://jazz.net/action/profile/edit" class="nav-button menu-highlight">Change profile</a></li>
+				   	<li class="visible-xs"><a href="https://jazz.net/logout.jsp" class="nav-button menu-highlight">Log out</a></li>
+				   	
+				
+			   	<li class="hidden-xs">
+				   	<form id="search-box" class="navbar-form navbar-right" style="display: none;" method="get" action="https://jazz.net/search">
+						<input name="q" id="search-input" type="text" class="form-control search-input" placeholder="Search Jazz.net">
+					</form>
+				</li>
+			   	<li class="hidden-xs"><a id="search-button" href="https://jazz.net/library/article/620#"></a></li>
+			   	
+			   	<li class="hidden-xs"><a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM"></a>
+				</li>
+			</ul>
+			
+        </div>
+      </div>
+    </nav>
+    
+
+
+	<div id="login-box-modal" class="modal fade login-box" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content login-popup">
+      
+
+<form class="form-horizontal" id="loginForm-9122" name="LoginForm" action="https://jazz.net/auth/login" method="post">
+	<div class="form-group" style="margin-bottom: 0px !important;">
+		<div class="col-sm-12" style="text-align: center;">
+			<div id="login-error-9122" class="alert alert-danger hide" role="alert"></div>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="user-id" class="col-sm-4 control-label">User ID</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" name="j_username" id="user-id" placeholder="User ID">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="pass-word" class="col-sm-4 control-label">Password</label>
+		<div class="col-sm-8">
+			<input type="password" class="form-control" name="j_password" id="pass-word" placeholder="Password">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="jazz-button auth-button">Log in</button>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			Forgot your <a href="https://jazz.net/pub/user/retrieve-userid.jsp"><strong>user ID</strong></a> or <a href="https://jazz.net/pub/user/password-reset-request.jsp"><strong>password</strong></a>?
+		</div>
+	</div>
+	<input type="hidden" name="redirectPage" id="redirectPage-9122" value="https://jazz.net/library/article/620">
+	<input type="hidden" name="field" id="field-9122">
+</form>
+<script type="text/javascript">
+(function() {
+	dojo.addOnLoad(function() {
+		var s = location.search.substring(1);
+		var node = dojo.byId("redirectPage-9122");
+		if (!node.value || node.value == "") {
+			if (s.indexOf("errno") >= 0) {
+				s = dojo.queryToObject(location.search.substring(1));
+				delete s.errno;
+				s = dojo.objectToQuery(s);
+				node.value = window.location.href.replace(/\?.*/, "") + (s.length > 0 ? "?" + s : "");
+			} else {
+				node.value = window.location.href;
+			}
+		}
+	});	
+	
+	var errno = null;
+	if (!errno) {
+		var loc = location.search.indexOf("errno=")+6;
+		if (loc >= 6 && location.search.length >= loc+1){
+			errno = location.search.substring(loc, loc+1)	
+		}
+	}
+	
+	var userLoggedIn = true;
+	if (errno) {
+		if (!userLoggedIn && !$('#jazz-inline-login').length) {
+			$('#login-box-modal').modal('show');
+		}
+		var message = "";
+		if (errno == 1 || errno == 2) {
+			message = "Invalid user ID or password.";
+		} else if (errno == 3 || errno == 4) {
+			message = "Your account has been locked due to repeated login attempts with an invalid password.  Wait 1 hour or <a href=\"/pub/user/password-reset-request.jsp\">reset your password</a>.";
+		} else if (errno == 5 || errno == 6) {
+			message = "Unable to log in due to a server error.";
+		}
+		if (message) {
+			$('#login-error-9122').removeClass('hide');
+			$('#login-error-9122').html(message);
+			
+		} else {
+			$('#login-error-9122').addClass('hide');
+		}
+	}
+})();
+</script>
+    </div>
+  </div>
+</div>
+	<script>
+		$('#products-button').on("mouseover",function(){
+		   $('.open .dropdown-toggle').dropdown('toggle');
+		 });
+	</script>
+    <script>
+		$(document).ready(function(){
+  			$('li.dropdown-submenu a.downloads').on("click", function(e){
+  				
+  				var currentSelection = $(this).next('ul');
+  				var submenus = $('li.dropdown-submenu a.downloads').parent().not($(this));
+  				submenus.each(function(){
+  					if($(this).children('ul').is(':visible')){
+  					   $(this).children('ul').not(currentSelection).hide();
+  					}
+  				})
+
+  			    $(currentSelection).toggle();
+  				
+   			    e.stopPropagation();
+   			    e.preventDefault();
+  			});
+  			
+  			 $("#top-download-menu.dropdown").on("hidden.bs.dropdown", function(){
+  		      	var submenusParent = $('li.dropdown-submenu a.downloads').parent();
+				  	submenusParent.each(function(){
+				  	  $(this).children('ul').hide();
+					  
+					})
+  		    });
+		});
+	</script>
+    <script>
+    	$('#search-button').click(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').show("fast");
+        		$('#search-input').focus();
+				
+    		} else {
+    			$('#search-box').submit();
+    		}
+    	});
+    	$('#search-input').blur(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').hide("fast");
+    		}
+    	});
+    	
+    	// fix for anchor item hidden behind the navigation bar, scrolling upward 50px 
+    	function scroll_if_anchor(href) {
+    	   href = typeof(href) == "string" ? href : $(this).attr("href");
+    	   var fromTop = 50;
+    	   // Handle Bootstrap stuff with attributes of "data-slide" and "data-toggle"
+    	   if (!href || href.includes("=") || $(this).attr("data-slide") != null || $(this).attr("data-toggle") != null) { 
+    		   return;
+    	   }
+    	   
+    	   var $target = $(href);
+    		
+    	   if (!$target.length) {  
+    		   var subStr  =href.substring(1);
+    	       var query = "[name='" + subStr + "']";
+    		   $target = $(query);
+    	   }	   
+    	   // animate and scroll
+    	   if ($target.length) {
+    	       $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+    	   }
+    	}    
+
+    	// invoke js function
+    	scroll_if_anchor(window.location.hash);
+
+    	// intercept all anchor events
+    	$("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+</div>
+    	<div id="product-nav" class="nav-dropdown row hidden-xs container">
+    		<div class="col-xs-6 product-nav-column product-nav-names-column">    			
+     			<h2 class="products-header">IBM Engineering Products</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="DOORS" class="product-selector selected"><span></span> Requirements Management DOORS Next</a></li>
+    				<li class="product-item"><a data-product="EWM" class="product-selector"><span></span> Workflow Management</a></li>
+    				<li class="product-item"><a data-product="ETM" class="product-selector"><span></span> Test Management</a></li>
+    				<li class="product-item"><a data-product="RMM" class="product-selector"><span></span> Systems Design Rhapsody - Model Manager</a></li>
+    				<li class="product-item"><a data-product="ENI" class="product-selector"><span></span> Lifecycle Optimization - Engineering Insights</a></li>
+    				<li class="product-item"><a data-product="PUB" class="product-selector"><span></span> Lifecycle Optimization - Publishing</a></li>
+    			</ul> 
+    			<h2 class="products-header" style="padding-top:3px">IBM Engineering Solutions</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="ELM" class="product-selector"><span></span> Lifecycle Management</a></li>
+    				<li class="product-item" style="padding-bottom:7px"><a data-product="ELMSAAS" class="product-selector"><span></span> Lifecycle Management SaaS</a></li>
+     			</ul>     			
+    			<a id="explore-button" role="button" class="inline jazz-button jazz-button-clm-blue" href="https://jazz.net/products">Show all</a>
+    		</div>
+    		<div class="col-xs-6 product-nav-column product-nav-descriptor-column">
+    			<div data-product="ELM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management</h3>
+    				<div class="product-text">This solution (formerly known as Collaborative Lifecycle Management) provides a set of seamlessly integrated application lifecycle management (ALM) tools 
+    					that help teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/elm/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+	   				</div>
+    			</div>
+    			<div data-product="ELMSAAS" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management SaaS</h3>
+    				<div class="product-text">This subscription service (formerly known as IoT CE and CLM on Cloud) provides a single-tenant cloud environment with applications that help 
+    					development and engineering teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/elm-saas/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+     				</div>
+    			</div>
+    			<div data-product="EWM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Workflow Management</h3>    				
+    				<div class="product-text">This software development tool (formerly known as Rational Team Concert) helps teams manage development work, such as 
+    					iteration and release planning, change management, defect tracking, source control, and build automation.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/workflow-management/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+    				</div>
+    			</div>
+    			<div data-product="DOORS" class="product-content" style="display: block;">
+    				<h3 class="product-header">IBM Engineering  Requirements Management DOORS Next</h3>    				
+    				<div class="product-text">This requirements management tool (formerly known as Rational DOORS Next Generation) helps teams capture, trace, analyze, and manage 
+    					requirements while complying with industry standards and regulations.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/requirements-management-doors-next/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a> 
+    				</div>
+    			</div>
+    			<div data-product="ETM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Test Management</h3>    				
+    				<div class="product-text">This quality management tool (formerly known as Rational Quality Manager) helps teams plan, construct, and execute tests throughout the development lifecycle.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/test-management/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+    				</div>
+    			</div>
+    			<div data-product="RMM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Systems Design Rhapsody<br>Model Manager</h3>
+     				<div class="product-text">This design and modeling tool helps teams architect and design software and systems in an iterative and collaborative way.
+     				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/rhapsody-model-manager/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/rhapsody-model-manager">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="ENI" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Engineering Insights</h3>    				
+    				<div class="product-text">This tool (formerly known as Rational Engineering Lifecycle Manager) helps teams visualize lifecycle data to make the best engineering decisions.   
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/elo-engineering-insights/">Learn more</a>
+	    				<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-engineering-insights">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="PUB" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Publishing</h3>    				
+    				<div class="product-text">This reporting tool (formerly known as Rational Publishing Engine) automates the generation of document-style reports across deployed Jazz products and third-party tools.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/elo-publishing/">Learn more</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-publishing">Download</a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/mobile.jquery.min.js.download"></script>
+		<script type="text/javascript">
+			if (!jQuery.browser.mobile) {
+				$('a[data-dropdownnav]').each(function() {
+					if (!$("body").hasClass('products-page')) {
+						var showNavTimeout, hideNavTimeout;
+						var dropdownDelay = 250;
+						var dropdownNav = $(this).attr("data-dropdownnav");
+						$(this).mouseover(function() {
+							if (!$(this).hasClass('opened')) {
+								clearTimers();
+								showNavTimeout = setTimeout(function() {
+									$(dropdownNav).show();
+									$(dropdownNav).addClass('visible');
+									$(this).addClass('opened');
+								}.bind(this), dropdownDelay);
+							}
+						}.bind(this));
+						
+						$(this).mouseleave(function(e) {
+							clearTimers();
+							hideNavTimeout = setTimeout(function() {
+								$(dropdownNav).removeClass('visible');
+								$(this).removeClass('opened');
+							}.bind(this), dropdownDelay);
+						}.bind(this));
+					
+						$(dropdownNav).mouseleave(function(e) {
+							hideNavTimeout = setTimeout(function() {
+								var targetElement = (e.toElement || e.relatedTarget);
+								if ((targetElement != null) && (targetElement != this)) {
+									$(dropdownNav).removeClass('visible');
+									$(this).removeClass('opened');
+								};	
+							}.bind(this), dropdownDelay);
+							
+						}.bind(this));
+						
+						$(dropdownNav).mouseenter(function() {
+							clearTimers();
+							$(dropdownNav).addClass('visible');
+							$(this).addClass('opened');
+						}.bind(this));
+						
+						function clearTimers() {
+							clearTimeout(showNavTimeout);
+							clearTimeout(hideNavTimeout);
+						}
+					}
+				});
+			}
+
+			$('.nav-dropdown div[data-product=' + $('.product-selector.selected').data('product') + ']').show();
+			$('.nav-dropdown .product-selector').click(function() {
+				$('.product-content').hide();
+				$('.product-selector.selected').removeClass('selected');
+				$(this).addClass('selected');
+				$('div[data-product=' + $(this).data('product') + ']').show();
+			});
+			
+    </script></div>
+<script>
+$.get("/servlet/navbar", {pathname: window.location.pathname})
+	.done(function(data) {
+		$('#jazz-navbar').html(data);
+	}
+);
+</script>
+
+<div class="main-wrapper">
+	<div class="cs-content-wrapper" id="cs-content-wrapper">
+	<div class="breadcrumbs">
+		<a href="https://jazz.net/library/">Library</a> &gt; 
+		
+			<a href="https://jazz.net/library/article/">Articles</a> &gt;
+		
+	</div>
+	<div class="central-area no-sidebar no-left">
+	
+		<div class="icon-floating">
+			<div class="section-header">
+				<img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/bttn_article52.gif">
+			</div>
+		</div>
+	
+		
+			<h1>Getting Started With the Jazz SCM Command Line Interface</h1><p class="byline">Shashikant Padur<br> Last updated: Jun 09, 2017<br> Build basis: Rational Team Concert 6.0.4 and newer</p><p>This article provides an introduction to the basic concepts and commands in the Jazz SCM command line tool. We will walk through a basic workflow that covers the typical set of activities performed by a developer in order to work on a project. Readers are expected to be familiar with Jazz source control concepts. If not, you can refer to <a href="http://jazz.net//library/article/525">Jazz Source Control: Design Objectives</a> and <a href="http://jazz.net//library/article/41">Getting Started with Jazz Source Control</a> articles which will help you to get started.</p><p><strong>Prerequisites</strong></p><p>This article assumes that the following steps have been completed:</p><ul><li>Rational Team Concert is installed on the client and server</li><li>Jazz server is up and running</li><li>Project areas and Team areas have been created</li><li>Users have been created and given appropriate set of privileges</li></ul><p>If you do not have the client and server running please refer to the <a href="http://publib.boulder.ibm.com/infocenter/rtc/v2r0m0/index.jsp?nav=/1_0">Installing Rational Team Concert</a> guide. After that, refer to the <a href="http://publib.boulder.ibm.com/infocenter/rtc/v2r0m0/index.jsp?topic=/com.ibm.team.concert.doc/topics/tut_junit_intro.html">Jazz Tutorial</a> on how to set up the project area and team area for a team.</p><p><strong>Basic workflow</strong></p><p>The scm tool can be found at &lt;rtc install dir&gt;/jazz/scmtools/eclipse. To launch the scm tool run either <tt>scm</tt> or <tt>lscm</tt>. <tt>lscm</tt> is a launcher/wrapper for <tt>scm</tt> and starts a daemon process so that subsequent execution of commands consumes less startup time. Run ‘lscm help’ to display the list of subcommands supported by the scm tool.</p><p>The first thing we need to do is to connect to a repository where we would create our workspaces.</p><div id="code"><pre>  ~$ lscm login -r https://localhost:9443/jazz -n local -u ADMIN -P ADMIN<br>  Logged in to https://localhost:9443/jazz</pre></div><p>The <tt>-r/--repository</tt> option is the repository we are connecting to and <tt>-n/nickname</tt> option is the nickname of the repository. Here on going forward we will use the nickname in all our operations. As shown, we authenticated using the username/password but the <tt>login</tt> subcommand also supports <tt>--password-file, --certificate, --smartCard, --kerberos and --integratedWindows</tt>&nbsp;options if the jazz server is setup for the corresponding&nbsp;authentication.</p><p>To start working on a project we need to create a workspace that flows to our team’s stream. Let us start by creating a workspace in the repository named <tt>Workspace1</tt> which will flow to the stream named <tt>Stream1</tt>.</p><pre>  ~$ lscm create workspace -r local -s Stream1 Workspace1<br>  Workspace (4819) "Workspace1" successfully created</pre><p>To load the created workspace to our local file system, let us create a directory named <tt>sample</tt> and load the workspace into this directory.</p><div id="code"><pre>  ~$ mkdir sample<br><br>  ~$ cd sample<br><br>  ~/sample$ lscm load -r local --all Workspace1<br>  Successfully loaded items into the sandbox. </pre></div><p>The <tt>--all</tt> option loads all the components of this workspace. In our example there is only one component <tt>Comp1</tt> and the component has a folder named <tt>src</tt> with two files in it (index.html and cmd.java).</p><p>Let us say that we have a task assigned to modify one file (say index.html) and add a new file (say config.ini) to the component. Once we do those changes, we can confirm the changes by running the <tt>show status</tt> subcommand.</p><div id="code"><pre>  ~/sample$ lscm show status<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4816) "Stream1"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Unresolved:<br>        a-- /src/config.ini<br>        -c- /src/index.html</pre></div><p>The <a href="https://jazz.net/library/article/620#statusflags">status flag</a> “<tt>a</tt>” signifies addition and “<tt>c</tt>” signifies content change. An important point to note here is that the <tt>show status</tt> subcommand by default scans the local file system for new changes with that in the repository. This could be an expensive operation if we have a very large number of files/folders in our workspace and we ran this subcommand from the root of the sandbox. We can limit the scan to a component level by running the subcommand within the component folder. To list the changes without performing the file system scan, use the <tt>-N/--no-local-refresh</tt> option.</p><p>Now, if we want to take a look at what were the changes that we made in index.html i.e., the difference between the local version of the file and the version in the repository, we can use the <tt>diff</tt> subcommand.</p><div id="code"><pre>  ~/sample/src$ lscm diff -r local file index.html<br>  diff -u -N src/index.html src/index.html<br>  --- src/index.html	2010-11-10 12:00:36.000000000 +0530<br>  +++ src/index.html	2010-11-10 12:08:38.000000000 +0530<br>  @@ -6,6 +6,7 @@<br>   &lt;body&gt;<br>     &lt;div&gt;<br>       &lt;a href="/intl/en/about.html"&gt;About IBM&lt;/a&gt;<br>  +    &lt;a href="/intl/en/location.html"&gt;IBM locations&lt;/a&gt;<br>     &lt;/div&gt;<br>   &lt;/body&gt;</pre></div><p>The “<tt>+</tt>” indicates we have added a new line in index.html. The output of <tt>diff</tt> subcommand is displayed in unified diff format.</p><p>After we have verified our changes and are happy with it, we will go ahead and commit all the changes made in the component using the <tt>checkin</tt> subcommand.</p><div id="code"><pre>  ~/sample/src$ lscm checkin .<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4816) "Stream1"<br>    Component: (4818) "Comp1"<br>      Outgoing:<br>        Change sets:<br>          (4827)  -*--@  "&lt;No comment&gt;" 24-May-2017 03:08 PM<br>            Changes:<br>              --a-- /src/config.ini<br>              ---c- /src/index.html</pre></div><p>A new outgoing change set (<a href="https://jazz.net/library/article/620#alias">alias</a> 4827) is created and the changes are included in that change set. What this means is that the changes have been uploaded to the repository but still not available to other members of the team. The “<tt>@</tt>” after the alias signifies that the change set is active and we can still modify it. Suppose we have a lot of changes in the component but want to checkin only a few changes, we could specific the paths to those items directly in the <tt>checkin</tt> subcommand.</p><p>Once we are done with our change, we can set the comment, complete the change set to indicate that we are done with the change set and associate a work item (say workitem number 101) to the change set for traceability.</p><div id="code"><pre>  ~/sample$ lscm set changeset 4827 --comment "Modified index.html and added a new file config.ini" --complete<br>  Change set comment has been set and marked as complete successfully.<br><br>  ~/sample$ lscm add workitem 4827 101<br>  Link created.</pre></div><p>The final step is to deliver the change from our workspace to the stream so that the changes are available to all the team members of the project.</p><div id="code"><pre>  ~/sample$ lscm deliver<br>  Delivering changes:<br>    Repository: https://localhost:9443/jazz/<br>      Workspace: (4816) "Stream1"<br>        Component: (4818) "Comp1"<br>          Change sets:<br>            (4827) ----$ "Modified index.html and added a new file config.ini" 24-May-2017 03:19 PM<br>              Changes:<br>                --a-- /src/config.ini<br>                ---c- /src/index.html<br>              Work items:<br>                (4828) 101 "Define sprints/iterations"<br>  The deliver command completed successfully.</pre></div><p>If no options have been specified to the <tt>deliver</tt> subcommand, it will deliver all the changes from all the components to the stream. To deliver all the changes from a specific component use the “<tt>-C/--components</tt>” option or to deliver baselines use the “<tt>-b/--baselines</tt>” option or to deliver specific change sets use the “<tt>-c/--changes</tt>” option or to deliver work items use the “<tt>-W/--workitems</tt>”&nbsp;option.</p><p><strong>Updating the workspace</strong></p><p>In a project, team members will be working on changesets and delivering these items to the stream. We need to be always in sync with the stream so as to ensure that we are working with the latest copy of the code. Let us suppose that there were some changes made by another developer (say userB) in the <tt>src</tt> folder. To check whether our copy is up to date with that of the repository, we need to run the <tt>show status</tt> subcommand.</p><div id="code"><pre>  ~/sample$ lscm show status -C<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4816) "Stream1"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Incoming:<br>        Change sets:<br>          (4829)  ----$ userB  "new change from developer B" 24-May-2017 03:33 PM<br>            Changes:<br>              ---c- /src/cmd.java<br>              --d-- /src/config.ini</pre></div><p>As we see, there is one incoming change set (<a href="https://jazz.net/library/article/620#alias">alias</a> 4829) with 2 changes in it. The “<tt>-C/--xchangeset</tt>” option in the <tt>show status</tt> subcommand implies that the change set information be expanded to include the changes without which it will only show the change set header information. In the output, the <a href="https://jazz.net/library/article/620#statusflags">status flag</a> “<tt>d</tt>” signifies that the file was deleted. To get the latest from the repository, we use the <tt>accept</tt> subcommand.</p><div id="code"><pre>  ~/sample$ lscm accept<br>  Accepting changes:<br>    Repository: https://localhost:9443/jazz/<br>      Workspace: (4819) "Workspace1"<br>        Component: (4818) "Comp1"<br>          Change sets:<br>            (4829)  ----$ userB  "new change from developer B" 24-May-2017 03:33 PM<br>              Changes:<br>                ---c- /src/cmd.java<br>                --d-- /src/config.ini<br>  The accept command completed successfully.</pre></div><p>Similar to the <tt>deliver</tt> subcommand, the <tt>accept</tt> subcommand can accept changes from specific components or baselines or change sets or work items into the workspace.</p><p>Suppose we want to update our workspace from another stream, we do this by changing our workspace target flow to the new stream. After we change the target flow, we may see incoming and outgoing changes between our workspace and the target stream if there are any. <br> In our example, let us say developer B is working on task that is not yet delivered to the stream but would like us to test that task/change. We have to first change the <tt>Workspace1</tt> target flow (which is currently set to <tt>Stream1</tt>) to the developer B’s workspace which is let us say <tt>Workspace2</tt>.</p><div id="code"><pre>  ~/sample$ lscm set flowtarget Workspace1 Workspace2<br>  Target changed.<br><br>  ~/sample$ lscm show status<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4828) "Workspace2"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Incoming:<br>        Change sets:<br>          (4935)  ----$ userB  "&lt;No comment&gt;" 24-May-2017 03:44 PM</pre></div><p>Notice that <tt>Workspace1</tt> now flows to <tt>Workspace2</tt> and we see an incoming change that developer B had created in <tt>Workspace2</tt>. We can now accept this change and test that functionality. Once we are done with our testing we can change our target flow back to&nbsp;<tt>Stream1</tt>. If the change is localized to a particular component, we can also change the target flow of individual components using the&nbsp;<tt>-C/--component</tt> option of <tt>set flowtarget </tt>subcommand.</p><p><strong>Resolving conflicts</strong></p><p>Let us consider a scenario where there is a new incoming change (by userB) from the stream and there is also an outgoing change from our local workspace both modifying the same file. In this case, there is a conflict between the incoming change and the outgoing change that has to be resolved. The <tt>show status</tt> subcommand below shows that there is a potential conflict.</p><div id="code"><pre>  ~/sample$ lscm show status -C<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4828) "Workspace2"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Outgoing:<br>        Change sets:<br>          (4840)  -*!-@  "&lt;No comment&gt;" 24-May-2017 05:02 PM<br>            Changes:<br>              !--c- /src/cmd.java<br>      Incoming:<br>        Change sets:<br>          (4839)  --!-$ userB  "new change from developer B" 24-May-2017 03:44 PM<br>            Changes:<br>              !--c- /src/cmd.java<br><br>  ~/sample$ lscm accept<br>  Accepting changes:<br>    Repository: https://localhost:9443/jazz/<br>      Workspace: (4819) "Workspace1"<br>        Component: (4818) "Comp1"<br>          Change sets:<br>            (4839)  ---#$ userB  "another change from dev B" 24-May-2017 03:44 PM<br>              Changes:<br>                -#-c- /src/cmd.java<br>  Following workspaces still have conflicts after accept:<br>    Workspace1<br>  Run 'lscm resolve conflict' or 'lscm show conflicts' or 'lscm show status' for help in resolving the conflicts.</pre></div><p>The “<tt>!</tt>” signifies that the incoming change has a potential conflict with the local resource and “<tt>#</tt>” signifies that accepting the incoming change set caused a conflict and needs to be resolved.</p><p>To get more details on the conflicts, we can use the <tt>show conflicts</tt> subcommand. To list the local contents of the file use the <tt>-m/--mine</tt> option, to list the contents of the file in the incoming change use the <tt>-p/--proposed</tt> option and to list the original contents of the file use the <tt>-a/--ancestor</tt> option.</p><div id="code"><pre>  ~/sample$ lscm show conflicts<br>  Conflicts:<br>    Cc- /src/cmd.java (Modified &lt;-&gt; Modified)<br>  Problem running 'show conflicts':<br>  Unresolved conflicts remain.<br><br>  ~/sample/src$ lscm show conflicts -m cmd.java<br>  Content:<br>    import java.io.File;<br>    public class Cmd {<br>        public void Cmd() {<br>        }<br>        public int run() {<br>  	  return 2;<br>        }<br>        public int doSomething() {<br>          return 0;<br>        }<br>    }<br>  Properties:<br>    jazz.encoding - Cp1252<br>    jazz.executable - false<br>    jazz.line-delimiter - Platform<br>    jazz.mime - text/plain<br><br>  ~/sample/src$ lscm show conflicts -p cmd.java<br>  Content:<br>    import java.io.File;<br>    public class Cmd {<br>        public void Cmd() {<br>        }<br>        public int run() {<br>  	  return 2;<br>        }<br>        public int newMethod() {<br>          return 1;<br>        }<br>    }<br>  Properties:<br>    jazz.encoding - Cp1252<br>    jazz.executable - false<br>    jazz.line-delimiter - Platform<br>    jazz.mime - text/plain</pre></div><p>We can have user properties for files and folders. The resolve conflict subcommand behaves the same way whether it is for content conflicts or property conflicts.</p><p>It is important to note that accepting the changes will merge all non-conflicting regions automatically. To disable auto-merge, use the <tt>--no-merge</tt> option in the <tt>accept</tt> subcommand. If we choose to merge manually, we can use the <tt>-i/--in-place-markers</tt> option to mark the conflicted regions in the file. In our above example, if we had used the <tt>-i</tt> option, the merged file will have the following content:</p><div id="code"><pre>  import java.io.File;<br>    public class Cmd {<br>        public void Cmd() {<br>        }<br>        public int run() {<br>  	  return 2;<br>        }<br>  &lt;&lt;&lt;&lt;&lt;&lt;&lt; mine<br>      public int doSomething() {<br>          return 0;<br>      }<br>  =======<br>      public int newMethod() {<br>          return 1;<br>      }<br>  &gt;&gt;&gt;&gt;&gt;&gt;&gt; proposed<br>    }</pre></div><p>To resolve the conflicts, we have to run the <tt>resolve conflict</tt>&nbsp;subcommand with either the <tt>-c/--checkedin</tt> option to retain our change or <tt>-p/--proposed</tt> option to accept the incoming/proposed change. We choose to retain our change.&nbsp;<b>Note:</b> If the files were manually updated check in the changes before resolving the changes.</p><div id="code"><pre>  ~/sample/src$ lscm resolve conflict --checkedin cmd.java<br>  Conflicted items have been successfully resolved.</pre></div><p><strong>Working on multiple tasks</strong></p><p>Let us suppose we were working on a task and we are interrupted with the arrival of a critical defect that needs to be fixed immediately. To start working on the new defect we have to put our current changes in a pending/suspended state and this can be accomplished by using the <tt>suspend</tt> subcommand.</p><div id="code"><pre>  ~/sample$ lscm show status -C<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4816) "Stream1"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Outgoing:<br>        Change sets:<br>          (4940)  -*--@  "&lt;No comment&gt;" 24-May-2017 05:54 PM<br>            Changes:<br>              ---c- /src/cmd.java<br>              ---c- /src/index.html<br><br>  ~/sample$ lscm suspend 4940<br>  Change sets successfully suspended.<br><br>  ~/sample$ lscm show status<br>  Workspace: (4819) "Workspace1" &lt;-&gt; (4816) "Stream1"<br>    Component: (4818) "Comp1"<br>      Baseline: (4825) 1 "Initial Baseline"<br>      Suspended:<br>        Change sets:<br>          (4940)  ----@  "&lt;No comment&gt;" 24-May-2017 05:54 PM</pre></div><p>As we can see, the current change has been suspended. After we have completed and delivered the critical defect, we can resume our earlier suspended change by using the <tt>resume changeset</tt> subcommand. Resuming a suspended change could create conflicts and can be resolved by using the <tt>resolve conflict</tt> subcommand.</p><div id="code"><pre>  ~/sample$ lscm resume changeset 4940<br>  Resuming change sets:<br>  Repository: https://localhost:9443/jazz/<br>    Workspace: (4819) "Workspace1"<br>      Component: (4818) "Comp1"<br>        Change sets:<br>          (4940)  ----@  &lt;No comment&gt; 24-May-2017 05:54 PM<br>            Changes:<br>              ---c- /src/cmd.java<br>              ---c- /src/index.html</pre></div><p>If we forgot what changes we made in the earlier task, we can use the <tt>diff</tt> subcommand to diff all the changes in the change set. The <tt>diff</tt> subcommand not only supports comparing files and change sets but also between workspaces, streams, baselines or snapshots. In our example we had modified two files and the difference for those two files is shown below.</p><div id="code"><pre>  ~/sample$ lscm diff -r local changeset 4940<br>  diff -u -N src/cmd.java src/cmd.java<br>  --- src/cmd.java	2010-11-11 15:39:46.000000000 +0530<br>  +++ src/cmd.java	2010-11-12 11:36:37.000000000 +0530<br>  @@ -8,4 +8,7 @@<br>       public int run() {<br>         return 2;<br>       }<br>  +<br>  +    public void doSomething() {<br>  +    }<br>  }<br>  diff -u -N src/index.html src/index.html<br>  --- src/index.html	2010-11-10 12:08:38.000000000 +0530<br>  +++ src/index.html	2010-11-12 11:52:20.000000000 +0530<br>  @@ -6,7 +6,7 @@<br>   &lt;body&gt;<br>     &lt;div&gt;<br>       &lt;a href="/intl/en/about.html"&gt;About IBM&lt;/a&gt;<br>  -    &lt;a href="/intl/en/location.html"&gt;IBM locations&lt;/a&gt;<br>  +    &lt;a href="/intl/en/locations.html"&gt;IBM worldwide locations&lt;/a&gt;<br>     &lt;/div&gt;<br>   &lt;/body&gt;</pre></div><p><strong>History and Compare subcommand</strong></p><p>The <tt>history</tt> subcommand is used to examine the history of a single file or of a component in the repository workspace or of a workspace/stream. In each of these cases, what is shown is a list of change sets, in reverse chronological order according to when each change set was added to the workspace or stream. For the history of an individual file, the change set list contains only those change sets affecting that file.</p><div id="code"><pre>  ~/sample$ lscm history src/index.html<br>  Change sets:<br>    (4940) &nbsp;----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 05:54 PM) Added By: ADMIN (24-May-2017 05:54 PM) &nbsp;&nbsp;<br>    (4827) &nbsp;----$ "Modified index.html and added a new file config.ini" Created By: ADMIN (24-May-2017 03:08 PM) Added By: ADMIN (24-May-2017 03:08 PM)<br>    (4820) &nbsp;----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 02:45 PM) Added By: ADMIN (24-May-2017 02:45 PM)&nbsp;<br><br>  ~/sample$ lscm history<br>  Change sets:<br>    (4941)&nbsp;----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 05:58 PM) Added By: ADMIN (24-May-2017 05:59 PM)&nbsp;<br>    (4940) ----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 05:54 PM) Added By: ADMIN (24-May-2017 05:54 PM) &nbsp;&nbsp;<br>    (4939) ----$ "Merges" Created By: userB (24-May-2017 05:07 PM) Added By: ADMIN (24-May-2017 05:08 PM) <br>    (4830) ----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 04:33 PM) Added By: ADMIN (24-May-2017 04:33 PM) <br>    (4831) ----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 04:08 PM) Added By: ADMIN (24-May-2017 04:08 PM) <br>    (4829) ----$ "new change from developer B" Created By: userB (24-May-2017 03:33 PM) Added By: ADMIN (24-May-2017 03:36 PM)<br>    (4827) ----$ "Modified index.html and added a new file config.ini" Created By: ADMIN (24-May-2017 03:08 PM) Added By: ADMIN (24-May-2017 03:08 PM)<br>    (4820) ----$ "&lt;No comment&gt;" Created By: ADMIN (24-May-2017 02:45 PM) Added By: ADMIN (24-May-2017 02:45 PM)&nbsp;<br>    (4946) ----$ "Initial for Comp1" Created By: ADMIN (24-May-2017 02:34 PM) Added By: ADMIN (24-May-2017 02:34 PM)</pre></div><p>Notice that there are more number of change sets in the component history listing as we had couple of operations that were not related to index.html (such as added/modified cmd.java file).</p><p>Suppose we want to see the differences between two repository objects such as workspaces, streams, baselines or snapshots, we would use the <tt>compare</tt> subcommand. In our example, let us assume that we have one outgoing change in our workspace and developer B has created two new changes and a baseline in <tt>Workspace2</tt>. We can see the difference between our workspace (<tt>Workspace1</tt>) and developer B’s workspace (<tt>Workspace2</tt>) as follows:</p><div id="code"><pre>  ~/sample$ lscm compare -r local workspace Workspace1 workspace Workspace2<br>  Outgoing Changes<br>    Component (4818) "Comp1"<br>      (4944) ADMIN &lt;ADMIN&gt; &lt;No comment&gt; 2010/11/18<br>  Incoming Changes<br>    Component (4818) "Comp1"<br>      Baseline (4949) 2: Baseline10 ADMIN &lt;ADMIN&gt; 2010/11/18<br>        (4947) userB &lt;userB&gt; &lt;No comment&gt; 2010/11/18<br>        (4948) userB &lt;userB&gt; &lt;No comment&gt; 2010/11/18</pre></div><p>The <tt>compare</tt> subcommand has <tt>-I/--include-types</tt> option which can filter out what to display in the output. For example, to display only workitems we could use <tt>-I w</tt> or to display only files from all the change sets we could use <tt>-I f</tt>. The <tt>-I f</tt> is particularly useful in scenarios where we want to find out what files got changed between two builds (usually differences between two build snapshots of the workspace/stream).</p><div id="code"><pre>  ~/sample$ lscm compare -r local -I f workspace Workspace1 workspace Workspace2<br>  /src/cmd.java <br>  /src/index.html</pre></div><br><p><strong>Terminology</strong></p><p>Below you can find the meaning of a few key notations/terms that is used in the scm tool.</p><p id="statusflags"><strong>Status flags</strong><br> Several scm subcommands display the status of change sets and changes (files and folders) using the characters shown in the table below.</p><a name="null"></a><table class="gray-table"><tbody><tr><th><div><strong>Flag</strong></div></th><th align="left"><div><strong>Status</strong></div></th></tr><tr><td>*</td><td>The change set is current</td></tr><tr><td>@</td><td>The change set is active</td></tr><tr><td>#</td><td>The incoming resource conflicts with the version of the resource in the repository workspace</td></tr><tr><td>!</td><td>The incoming resource has a potential conflict with the resource in the repository workspace</td></tr><tr><td>$</td><td>The change set is completed</td></tr><tr><td>a</td><td>The resource has been added</td></tr><tr><td>c</td><td>The content of a file have been modified</td></tr><tr><td>p</td><td>The properties of a file/folder have been changed</td></tr><tr><td>d</td><td>The resource has been deleted</td></tr><tr><td>m</td><td>The resource has been renamed or moved</td></tr><tr><td>A</td><td>The change can be automatically merged</td></tr><tr><td>C</td><td>Manually merge the conflict</td></tr><tr><td>I</td><td>Apply other dependent changes or conflicts</td></tr><tr><td>G</td><td>There is a gap related to this change</td></tr><tr><td>M</td><td>A new (merged) change set that is created in a merge gap scenario</td></tr><tr><td>S</td><td>The original (source) change set that is accepted at the start of a merge gap scenario</td></tr><tr><td>l</td><td>The incoming and outgoing change sets are linked</td></tr><tr><td>&gt;</td><td>The current port target. All of the changes being ported are targeted for this change set</td></tr></tbody></table><p id="alias"><strong>UUIDs and aliases</strong><br> Many scm subcommands take an argument that refers to a repository object. These references can take the form of a name (such as the name of a workspace), a UUID (a unique identifier assigned to each repository object), or an alias. Aliases are short strings of digits that you can use to refer to repository objects wherever such references are accepted by an scm subcommand. You can specify whether aliases, UUIDs, or both are displayed by setting the -a and -u options on the scm command line.</p><hr><h2>Related Articles</h2><ul><li><a href="http://jazz.net//library/article/195/">Using the SCM Command Line Interface in builds</a></li></ul><hr><p class="copyright">&amp;copy Copyright 2011 IBM</p>
+		
+		
+
+		
+				<div class="dotted-section">
+					
+
+
+
+
+
+
+
+
+
+
+
+<div id="comments" title="Getting started with the Jazz SCM command line in Rational Team Concert" widgetid="comments">
+	<strong>Discussion</strong>
+	<a href="javascript:void(0);" class="subscribe" id="subscribe" dojoattachevent="onclick: _toggleSubscribe" dojoattachpoint="_subscribeButton">Subscribe me</a>
+	<div dojoattachpoint="_comments"><br><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="baa5b2a5-2a8b-4724-b28c-8d0e876ed71c" widgetid="baa5b2a5-2a8b-4724-b28c-8d0e876ed71c">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Vivek Pandey</strong> wrote on January 16, 2012 06:12:56:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>is it possible to do work item manipulations ( creation / modfication) through using command line or any other API is RTC ?</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="3bdb9c5b-4318-4a93-a25d-85f535516af9" widgetid="3bdb9c5b-4318-4a93-a25d-85f535516af9">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Eric Jodet</strong> wrote on January 16, 2012 06:57:35:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Hello Vivek,<br>please refer to https://jazz.net/wiki/bin/view/Main/ProgrammaticWorkItemCreation<br>Thanks</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="85a3494d-da44-4c7c-a75a-ef9f3e6496ee" widgetid="85a3494d-da44-4c7c-a75a-ef9f3e6496ee">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Vivek Pandey</strong> wrote on February 13, 2012 12:03:58:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Thanks Eric !
+<br>Another question I have is : Can scm command read the password from (encrypted) password file ? This would make it useful in calling the including scm commands from the Ant tasks otherwise it may just display password everytime command is executed.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="96498eaf-da0d-422f-98b7-f71db50a4de7" widgetid="96498eaf-da0d-422f-98b7-f71db50a4de7">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Fred Stock</strong> wrote on March 23, 2012 08:42:58:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Best article I've seen yet on using the command line.  Nice work.
+<br></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="0dccef1e-436b-43c5-9adc-ee223cf64276" widgetid="0dccef1e-436b-43c5-9adc-ee223cf64276">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>praveen patidar</strong> wrote on November 9, 2012 12:08:43:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Very Very Very Nice Article <br></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="ca033263-f071-4a2b-bf41-a1bf6ee8b30d" widgetid="ca033263-f071-4a2b-bf41-a1bf6ee8b30d">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Ankit Gupta</strong> wrote on January 7, 2013 01:45:23:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>The properties of a file/folder have been changed automatically..which I don't want...for example I f deliver the code from windows and then try to load the code to AIX then file property is changing which I don't want,could you please help me on the same.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="071758ce-7066-472a-b46c-7822f33401f4" widgetid="071758ce-7066-472a-b46c-7822f33401f4">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>suresh mekala</strong> wrote on January 11, 2013 01:09:35:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>@Ankit: I think its behaving right , since you are moving from windows to AIX and vice versa, due to unix/dos file formats, file properties should change.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="4bf9a1a4-cc9d-4bd4-a3d0-98a04d722beb" widgetid="4bf9a1a4-cc9d-4bd4-a3d0-98a04d722beb">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Ankit Gupta</strong> wrote on January 14, 2013 12:59:30:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>@Suresh: with linux system the behavior is not the same....but with AIX file properties is getting changed</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="a84a28f6-9af3-4f1a-87c4-b68229705c90" widgetid="a84a28f6-9af3-4f1a-87c4-b68229705c90">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>roger kushina</strong> wrote on April 9, 2014 10:44:04:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>How do you replace a component with a baseline in RTC using command line?<br><br>I tried this but does not seem to work:<br>lscm workspace replace-components --components "myComponent" --overwrite-uncommitted --baseline "myBaseline"  -r myRepository</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="06a687eb-cd1d-4ced-94e7-8b4a9a984bcf" widgetid="06a687eb-cd1d-4ced-94e7-8b4a9a984bcf">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>John Bayley</strong> wrote on June 9, 2014 06:02:18:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>How do you create a team-area using the command line? There is no 'lscm create teamarea|ta' command...</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="74bc81f9-0f22-4ba3-8602-a31fc33cdc8a" widgetid="74bc81f9-0f22-4ba3-8602-a31fc33cdc8a">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Tayane Fernandes</strong> wrote on August 21, 2014 10:11:20:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>How should I specify the project area in which I want to connect? Because I am member of many Project Areas that have Streams with the same name.<br></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="b4711924-9b8b-46b8-b73c-dd3b258a37d0" widgetid="b4711924-9b8b-46b8-b73c-dd3b258a37d0">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Alberto Teodoro</strong> wrote on October 6, 2015 06:25:13:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Hi,<br>It,s possible to see the "Change Summary" refferred to a Component, via command line, without loading in local the WorkSpace?<br>I would like to obtain the same log of the Change Summary that I can do by eclipse RTC Client, using commands line.<br></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="b70323c7-857f-4649-a980-604d24dbb2b8" widgetid="b70323c7-857f-4649-a980-604d24dbb2b8">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>THARUN R</strong> wrote on May 6, 2017 03:35:29:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Hi,<br>I need to add existing component from one stream to another stream by using scm command. Kindly advice how to add the component.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="f02851b4-42ea-4c3d-b0a6-7e5b2a6b48fd" widgetid="f02851b4-42ea-4c3d-b0a6-7e5b2a6b48fd">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>John Bayley</strong> wrote on May 8, 2017 09:26:49:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>@Tharun, take a look at the 'lscm set component'  command.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="c5b56437-ff24-4ee1-8a2f-bb204f3f7766" widgetid="c5b56437-ff24-4ee1-8a2f-bb204f3f7766">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Anup Nayak</strong> wrote on May 24, 2017 09:46:17:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>@Tharun<br>To add an existing component execute "lscm add component" command. If required use "-s, --source-workspace <arg>" option to specify the workspace/stream from which you want to add the component. In case there are multiple component with the same name, use the alias or UUID of the corresponding component.<br>To create a new component use "lscm create component" command.</arg></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="4e4cce56-5cc4-43ab-9606-8bdd4d44830c" widgetid="4e4cce56-5cc4-43ab-9606-8bdd4d44830c">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Norman Dignard</strong> wrote on June 28, 2017 07:14:33:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>We are migration our code from Rational Apex to RTC. We've been scripting SCM cmdline  functions to extract the code and its histories from Apex for import into RTC. Part of our import process requires visibility from one workspace to another. Workspaces are created on the fly using different user accounts in order to speed up the import process using multiple workspaces as RTC SCM functions are single threaded.   <br><br>Is there a way to set/define the workspace visibility for these workspaces  being created as "project scoped" in stead of their default "private" setting?<br>   </blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="5c2c180f-d783-4d6b-9ba1-7ec1960be4fa" widgetid="5c2c180f-d783-4d6b-9ba1-7ec1960be4fa">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Shashikant Padur</strong> wrote on June 30, 2017 02:40:07:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Norman,<br>Yes you can set the 'owned by' and 'visibility' of a workspace and stream. Take a look at the 'scm set attributes' command which has --workspace, --ownedby and --visibility options.</blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="4b108a15-74e4-47f8-befd-83b3743f5082" widgetid="4b108a15-74e4-47f8-befd-83b3743f5082">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Raghu Hanumanthappa</strong> wrote on November 20, 2018 03:23:37:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Do we have a command to copy the source files from one component of a project to different component of a other project?<br>Input will be from project, from component, to project , to component<br></blockquote>
+	</div>
+</div></div>
+	
+	<div dojoattachpoint="_loggedInBlock" style="display: block;">
+		<label for="comment-field">Add a comment:</label>
+		<textarea dojoattachpoint="_commentField" id="comment-field"></textarea>
+		<br>
+		<input type="button" value="Submit" dojoattachevent="onclick: _submitComment">
+		<span dojoattachpoint="_notify" class="notify"><input type="checkbox" checked="" dojoattachpoint="_checkNotify" id="check-notify"><label for="check-notify">Notify me when a reply is posted</label></span>
+		<div dojoattachpoint="_subscriptionInfo" class="subscription-info" style="clear: both; display: none;">You are following this discussion. <a href="javascript: void(0);" dojoattachevent="onclick: _toggleSubscribe">Unsubscribe</a>.</div>
+	</div>
+	<div dojoattachpoint="_login" style="display: none;"><a onclick="jazz.cs.showLogin(event)" href="https://jazz.net/library/article/620#" "="">Log in</a> to submit a comment.</div>
+
+<br clear="all">
+<div dojoattachpoint="_commentFeedback" class="comment-success" style="display: none;"></div>
+	
+</div>
+
+<script type="text/javascript">
+dojo.addOnLoad(function() {
+	var commentWidget = new jazz.cs.Comments({isSubscribed: false, isLoggedIn: true, isAdmin: false, itemId: "620", title: "Getting started with the Jazz SCM command line in Rational Team Concert", username: "Devper Zero", userId: "devperzero"}, dojo.byId("comments"));
+	
+			commentWidget.addComment("Vivek Pandey", "January 16, 2012 06:12:56", "is it possible to do work item manipulations ( creation \/ modfication) through using command line or any other API is RTC ?", "baa5b2a5-2a8b-4724-b28c-8d0e876ed71c", false);
+			
+			commentWidget.addComment("Eric Jodet", "January 16, 2012 06:57:35", "Hello Vivek,<br \/>please refer to https:\/\/jazz.net\/wiki\/bin\/view\/Main\/ProgrammaticWorkItemCreation<br \/>Thanks", "3bdb9c5b-4318-4a93-a25d-85f535516af9", false);
+			
+			commentWidget.addComment("Vivek Pandey", "February 13, 2012 12:03:58", "Thanks Eric !\r<br \/>Another question I have is : Can scm command read the password from (encrypted) password file ? This would make it useful in calling the including scm commands from the Ant tasks otherwise it may just display password everytime command is executed.", "85a3494d-da44-4c7c-a75a-ef9f3e6496ee", false);
+			
+			commentWidget.addComment("Fred Stock", "March 23, 2012 08:42:58", "Best article I\'ve seen yet on using the command line.  Nice work.\r<br \/>", "96498eaf-da0d-422f-98b7-f71db50a4de7", false);
+			
+			commentWidget.addComment("praveen patidar", "November 9, 2012 12:08:43", "Very Very Very Nice Article <br \/>", "0dccef1e-436b-43c5-9adc-ee223cf64276", false);
+			
+			commentWidget.addComment("Ankit Gupta", "January 7, 2013 01:45:23", "The properties of a file\/folder have been changed automatically..which I don\'t want...for example I f deliver the code from windows and then try to load the code to AIX then file property is changing which I don\'t want,could you please help me on the same.", "ca033263-f071-4a2b-bf41-a1bf6ee8b30d", false);
+			
+			commentWidget.addComment("suresh mekala", "January 11, 2013 01:09:35", "@Ankit: I think its behaving right , since you are moving from windows to AIX and vice versa, due to unix\/dos file formats, file properties should change.", "071758ce-7066-472a-b46c-7822f33401f4", false);
+			
+			commentWidget.addComment("Ankit Gupta", "January 14, 2013 12:59:30", "@Suresh: with linux system the behavior is not the same....but with AIX file properties is getting changed", "4bf9a1a4-cc9d-4bd4-a3d0-98a04d722beb", false);
+			
+			commentWidget.addComment("roger kushina", "April 9, 2014 10:44:04", "How do you replace a component with a baseline in RTC using command line?<br \/><br \/>I tried this but does not seem to work:<br \/>lscm workspace replace-components --components \"myComponent\" --overwrite-uncommitted --baseline \"myBaseline\"  -r myRepository", "a84a28f6-9af3-4f1a-87c4-b68229705c90", false);
+			
+			commentWidget.addComment("John Bayley", "June 9, 2014 06:02:18", "How do you create a team-area using the command line? There is no \'lscm create teamarea|ta\' command...", "06a687eb-cd1d-4ced-94e7-8b4a9a984bcf", false);
+			
+			commentWidget.addComment("Tayane Fernandes", "August 21, 2014 10:11:20", "How should I specify the project area in which I want to connect? Because I am member of many Project Areas that have Streams with the same name.<br \/>", "74bc81f9-0f22-4ba3-8602-a31fc33cdc8a", false);
+			
+			commentWidget.addComment("Alberto Teodoro", "October 6, 2015 06:25:13", "Hi,<br \/>It,s possible to see the \"Change Summary\" refferred to a Component, via command line, without loading in local the WorkSpace?<br \/>I would like to obtain the same log of the Change Summary that I can do by eclipse RTC Client, using commands line.<br \/>", "b4711924-9b8b-46b8-b73c-dd3b258a37d0", false);
+			
+			commentWidget.addComment("THARUN R", "May 6, 2017 03:35:29", "Hi,<br \/>I need to add existing component from one stream to another stream by using scm command. Kindly advice how to add the component.", "b70323c7-857f-4649-a980-604d24dbb2b8", false);
+			
+			commentWidget.addComment("John Bayley", "May 8, 2017 09:26:49", "@Tharun, take a look at the \'lscm set component\'  command.", "f02851b4-42ea-4c3d-b0a6-7e5b2a6b48fd", false);
+			
+			commentWidget.addComment("Anup Nayak", "May 24, 2017 09:46:17", "@Tharun<br \/>To add an existing component execute \"lscm add component\" command. If required use \"-s, --source-workspace <arg>\" option to specify the workspace\/stream from which you want to add the component. In case there are multiple component with the same name, use the alias or UUID of the corresponding component.<br \/>To create a new component use \"lscm create component\" command.", "c5b56437-ff24-4ee1-8a2f-bb204f3f7766", false);
+			
+			commentWidget.addComment("Norman Dignard", "June 28, 2017 07:14:33", "We are migration our code from Rational Apex to RTC. We\'ve been scripting SCM cmdline  functions to extract the code and its histories from Apex for import into RTC. Part of our import process requires visibility from one workspace to another. Workspaces are created on the fly using different user accounts in order to speed up the import process using multiple workspaces as RTC SCM functions are single threaded.   <br \/><br \/>Is there a way to set\/define the workspace visibility for these workspaces  being created as \"project scoped\" in stead of their default \"private\" setting?<br \/>   ", "4e4cce56-5cc4-43ab-9606-8bdd4d44830c", false);
+			
+			commentWidget.addComment("Shashikant Padur", "June 30, 2017 02:40:07", "Norman,<br \/>Yes you can set the \'owned by\' and \'visibility\' of a workspace and stream. Take a look at the \'scm set attributes\' command which has --workspace, --ownedby and --visibility options.", "5c2c180f-d783-4d6b-9ba1-7ec1960be4fa", false);
+			
+			commentWidget.addComment("Raghu Hanumanthappa", "November 20, 2018 03:23:37", "Do we have a command to copy the source files from one component of a project to different component of a other project?<br \/>Input will be from project, from component, to project , to component<br \/>", "4b108a15-74e4-47f8-befd-83b3743f5082", false);
+			
+});
+</script>
+
+				</div>
+				<div class="dotted-section">
+					
+
+<script type="text/javascript">dojo.addOnLoad(function() { jazz.cs.ratings.currentRating = 25; });</script>
+<strong>Feedback</strong><br>
+<div class="item-rating" id="item-rating">
+	Was this information helpful? <span id="helpful"> <a href="javascript:void(0);" onclick="jazz.cs.ratings.submitRating(&#39;true&#39;, jazz.cs.ratings.currentRating, &#39;620&#39;);"><img class="common-sprite icons-thumb_up-gif" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">Yes</a> <a href="javascript:void(0);" onclick="jazz.cs.ratings.feedbackDialog();jazz.cs.ratings.submitRating(&#39;false&#39;, &#39;25&#39;, &#39;620&#39;);"><img class="common-sprite icons-thumb_down-gif" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">No</a> </span> <strong style="margin-left: 6px;" id="currentRating">25 people</strong> rated this as helpful.
+	<div style="display: none;">
+	<div id="FeedbackDialog" class="rating-dialog">
+		<label for="FeedbackBody"><strong>Let us know how we can improve this information.</strong></label>
+		<textarea id="FeedbackBody"></textarea>
+		<p><input type="submit" value="Submit" onclick="jazz.cs.ratings.submitFeedback(&#39;620&#39;, &#39;Getting started with the Jazz SCM command line in Rational Team Concert&#39;);"></p><br>
+	</div>
+	</div>
+</div>
+
+
+				</div>
+			
+		<div class="dotted-section">
+			
+			<div style="float:left">
+				<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/tweet_button.6e189c4f2b6d88c453045806323cdcf3.en.html"></iframe>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			
+			<div>
+				<iframe id="fb-iframe" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px; float: left;" allowtransparency="true"></iframe>
+			</div>
+			
+		</div>
+	</div>
+<!-- Close off cs-page-wrapper, main-wrapper, and cs-content-wrapper divs -->
+</div>
+</div>
+</div>
+<!-- End -->
+<div id="jazz-footer"><div class="content container-fluid jazz-footer">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="logos-and-links">
+				<a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM" style="position: relative; bottom: 1px"></a>
+				<a href="https://jazz.net/legal/contact.jsp">Contact</a>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.ibm.com/privacy/us/en/" target="_blank">Privacy Policy</a> 
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="https://jazz.net/pub/terms.jsp">Terms of Use</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="socialize">
+				<a title="Facebook" href="https://www.facebook.com/jazzdotnet"><img alt="Facebook" class="connect-icon" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/facebook.png"></a>
+				<a title="Twitter" href="https://twitter.com/jazzdotnet"><img alt="Twitter" class="connect-icon" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/twitter.png"></a>
+				<a title="LinkedIn" href="https://www.linkedin.com/groups/1822932/"><img alt="LinkedIn" class="connect-icon" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/linkedin.png"></a>
+				<a title="YouTube" href="https://www.youtube.com/ibmjazz"><img alt="YouTube" class="connect-icon" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/youtube.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script></div>
+<script>
+$.get("/servlet/footer")
+	.done(function(data) {
+		$('#jazz-footer').html(data);
+	}
+);
+</script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+
+	<script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/jazznetarticles.js.download"></script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/widget_iframe.6e189c4f2b6d88c453045806323cdcf3.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="teconsent" data-source="dbdm" class="truste_cookie_prefs" style="position: fixed; height: 40px; background-color: rgb(255, 255, 255); z-index: 2147483647; bottom: 0px; right: 0px; margin: 0px; padding: 0px 16px; line-height: 40px; vertical-align: middle; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 3px; display: block;" consent="0|1|2" aria-label="Open Cookie Preferences Modal" role="complementary"><script type="text/javascript" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/notice" id="truste_0.7480698964210659"></script><script async="async" type="text/javascript" crossorigin="" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/v1.7-226"></script><a role="link" id="icon-id05847995467056291" tabindex="0" lang="en" aria-label="Cookie Preferences" style="cursor: pointer; font-family: ibm-plex-sans; font-size: 12pt; color: #3d3d3d; text-decoration: none">Cookie Preferences</a></div><iframe name="trustarc_notice" id="trustarcNoticeFrame" title="Trustarc Cross-Domain Consent Frame" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/get.html" style="display: none;"></iframe><script async="" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/js(2)" id="mm_pp_background"></script><iframe src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/iframe.html" id="mm_sync_back_ground" title="MediaMath Advertising" style="visibility: hidden; display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Getting started with the Jazz SCM command line in Rational Team Concert - Library_ Articles - Jazz Community Site_files/saved_resource.html"></iframe></body></html>

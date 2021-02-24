@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://metacpan.org/pod/HTML::Parser -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <title>HTML::Parser - HTML parser class - metacpan.org</title>
+        <link rel="alternate" type="application/rss+xml" title="Recent CPAN Uploads of HTML-Parser - MetaCPAN" href="https://metacpan.org/feed/distribution/HTML-Parser">
+        <link href="./HTML__Parser - HTML parser class - metacpan.org_files/43f1789ab677af5f49609b1c0d1b47ae2e8f8f9a.css" rel="stylesheet" type="text/css">
+        <link rel="search" href="https://metacpan.org/static/opensearch.xml" type="application/opensearchdescription+xml" title="MetaCPAN">
+        <link rel="canonical" href="https://metacpan.org/pod/HTML::Parser">
+        <meta name="description" content="HTML parser class">
+        <link rel="shortcut icon" href="https://metacpan.org/static/icons/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://metacpan.org/static/icons/apple-touch-icon.png">
+        <script async="" src="./HTML__Parser - HTML parser class - metacpan.org_files/analytics.js.download"></script><script src="./HTML__Parser - HTML parser class - metacpan.org_files/fd5168e65900c25667cf67492768981b6ae747ea.js.download" type="text/javascript" defer=""></script>
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-27829474-1', {
+              siteSpeedSampleRate : 100
+          });
+          ga('send', 'pageview');
+        </script>
+        
+        <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://metacpan.org/pod/HTML::Parser">
+<meta name="twitter:title" content="HTML::Parser">
+<meta name="twitter:description" content="HTML parser class">
+<meta name="twitter:site" content="metacpan">
+
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                <li class="visible-xs">
+                <a href="https://metacpan.org/pod/HTML::Parser#" data-toggle="slidepanel" data-target=".slidepanel">
+                  <i class="fa fa-bars icon-slidepanel"></i>
+                </a>
+                </li>
+            
+                    <li class="">
+                        <a href="https://metacpan.org/"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/metacpan-icon.png" alt="MetaCPAN icon">                            Home                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://grep.metacpan.org/"><i class="fa fa-search"></i>                            grep::cpan                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://metacpan.org/recent"><i class="fa fa-history"></i>                            Recent                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about"><i class="fa fa-info"></i>                            About                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about/faq"><i class="fa fa-question"></i>                            FAQ                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://github.com/metacpan/metacpan-web/issues"><i class="fa fa-github-alt"></i>                            GitHub Issues                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/news"><i class="fa fa-newspaper-o"></i>                            News                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/tools"><i class="fa fa-wrench"></i>                            Tools                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://fastapi.metacpan.org/"><i class="fa fa-database"></i>                            API                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form action="https://metacpan.org/account/logout" method="POST" id="metacpan-logout"></form>
+                    <li class="dropdown logged_in" style="display: none;">
+                        <a href="https://metacpan.org/pod/HTML::Parser#" class="dropdown-toggle" data-toggle="dropdown">
+                        Account
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://metacpan.org/account/identities">Identities</a></li>
+                            <li><a href="https://metacpan.org/account/profile">Profile</a></li>
+                            <li><a href="https://metacpan.org/account/favorite/list">Favorites</a></li>
+                            <li>
+                                <a href="https://metacpan.org/pod/HTML::Parser#" onclick="$(&#39;#metacpan-logout&#39;).submit(); return false">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown logged_out" style="display: inline;">
+                        <a href="https://metacpan.org/pod/HTML::Parser#" class="dropdown-toggle" data-toggle="dropdown">
+                        Sign in
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=github" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-github fa-fw"></i>
+                                GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=twitter" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-twitter fa-fw"></i>
+                                Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=google" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-google fa-fw"></i>
+                                Google
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://metacpan.org/login/openid">
+                                <i class="fa fa-openid fa-fw"></i>
+                                OpenID
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-pod">
+
+        
+
+            
+            <div class="row hidden-phone">
+                <div class="head-small-logo col-md-3">
+                    <a href="https://metacpan.org/" class="small-logo"></a>
+                </div>
+                <div class="col-md-9">
+                    <form action="https://metacpan.org/search" class="search-form form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="q" size="41" id="search-input" class="form-control" value="" autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button class="btn search-btn" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="main-content col-md-12">
+                    
+
+
+
+
+<div itemscope="" itemtype="http://schema.org/SoftwareApplication">
+  
+
+
+<div class="breadcrumbs">
+  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <a itemprop="url" data-keyboard-shortcut="g a" rel="author" href="https://metacpan.org/author/CAPOEIRAB" title="Chase Whitener" class="author-name"><span itemprop="name">Chase Whitener</span></a>
+  </span>
+  <span>&nbsp;/&nbsp;</span>
+  <div class="release status-latest maturity-released">
+    <span class="dropdown"><b class="caret"></b></span>
+    <select class="" onchange="document.location.href=this.value">
+
+  <option selected="" value="/module/CAPOEIRAB/HTML-Parser-3.75/lib/HTML/Parser.pm">
+    3.75
+      (CAPOEIRAB on 2020-08-30)
+      
+  </option>
+
+  <option value="/module/CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Parser.pm">
+    3.74
+      (CAPOEIRAB on 2020-08-30)
+      
+  </option>
+
+  <option value="/module/CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Parser.pm">
+    3.73
+      (CAPOEIRAB on 2020-08-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.72/lib/HTML/Parser.pm">
+    3.72
+      (GAAS on 2016-01-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.71/lib/HTML/Parser.pm">
+    3.71
+      (GAAS on 2013-05-08)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Parser.pm">
+    3.25-bin-1-Mac
+      (KIMURA on 2001-06-12)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Parser.pm">
+    3.23-bin-1-Mac
+      (KIMURA on 2001-05-05)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Parser.pm">
+    3.19-bin-1-Mac
+      (KIMURA on 2001-03-16)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.25/lib/HTML/Parser.pm">
+    2.25
+      (GAAS on 1999-11-05)
+      
+  </option>
+        <optgroup label="BackPAN">
+          
+
+  <option value="/module/GAAS/HTML-Parser-3.70/lib/HTML/Parser.pm">
+    3.70
+      (GAAS on 2013-03-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.69/lib/HTML/Parser.pm">
+    3.69
+      (GAAS on 2011-10-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.68/lib/HTML/Parser.pm">
+    3.68
+      (GAAS on 2010-09-01)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.67/lib/HTML/Parser.pm">
+    3.67
+      (GAAS on 2010-08-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.66/lib/HTML/Parser.pm">
+    3.66
+      (GAAS on 2010-07-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.65/lib/HTML/Parser.pm">
+    3.65
+      (GAAS on 2010-04-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.64/lib/HTML/Parser.pm">
+    3.64
+      (GAAS on 2009-10-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.63/lib/HTML/Parser.pm">
+    3.63
+      (GAAS on 2009-10-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.62/lib/HTML/Parser.pm">
+    3.62
+      (GAAS on 2009-08-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.61/lib/HTML/Parser.pm">
+    3.61
+      (GAAS on 2009-06-20)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.60/lib/HTML/Parser.pm">
+    3.60
+      (GAAS on 2009-02-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.59/lib/HTML/Parser.pm">
+    3.59
+      (GAAS on 2008-11-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.58/lib/HTML/Parser.pm">
+    3.58
+      (GAAS on 2008-11-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.57/lib/HTML/Parser.pm">
+    3.57
+      (GAAS on 2008-11-16)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.56/lib/HTML/Parser.pm">
+    3.56
+      (GAAS on 2007-01-12)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.55/lib/HTML/Parser.pm">
+    3.55
+      (GAAS on 2006-07-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.54/lib/HTML/Parser.pm">
+    3.54
+      (GAAS on 2006-04-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.53/lib/HTML/Parser.pm">
+    3.53
+      (GAAS on 2006-04-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.52/lib/HTML/Parser.pm">
+    3.52
+      (GAAS on 2006-04-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.51/lib/HTML/Parser.pm">
+    3.51
+      (GAAS on 2006-03-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.50/lib/HTML/Parser.pm">
+    3.50
+      (GAAS on 2006-02-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.49/lib/HTML/Parser.pm">
+    3.49
+      (GAAS on 2006-02-08)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.48/lib/HTML/Parser.pm">
+    3.48
+      (GAAS on 2005-12-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.47/lib/HTML/Parser.pm">
+    3.47
+      (GAAS on 2005-11-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.46/lib/HTML/Parser.pm">
+    3.46
+      (GAAS on 2005-10-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.45/lib/HTML/Parser.pm">
+    3.45
+      (GAAS on 2005-01-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.44/lib/HTML/Parser.pm">
+    3.44
+      (GAAS on 2004-12-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.43/lib/HTML/Parser.pm">
+    3.43
+      (GAAS on 2004-12-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.42/lib/HTML/Parser.pm">
+    3.42
+      (GAAS on 2004-12-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.41/lib/HTML/Parser.pm">
+    3.41
+      (GAAS on 2004-11-30)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.40/lib/HTML/Parser.pm">
+    3.40
+      (GAAS on 2004-11-29)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_92/lib/HTML/Parser.pm">
+    3.39_92 DEV
+      (GAAS on 2004-11-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_91/lib/HTML/Parser.pm">
+    3.39_91 DEV
+      (GAAS on 2004-11-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_90/lib/HTML/Parser.pm">
+    3.39_90 DEV
+      (GAAS on 2004-11-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.38/lib/HTML/Parser.pm">
+    3.38
+      (GAAS on 2004-11-11)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.37/lib/HTML/Parser.pm">
+    3.37
+      (GAAS on 2004-11-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.36/lib/HTML/Parser.pm">
+    3.36
+      (GAAS on 2004-04-01)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.35/lib/HTML/Parser.pm">
+    3.35
+      (GAAS on 2003-12-12)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.34/lib/HTML/Parser.pm">
+    3.34
+      (GAAS on 2003-10-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.33/lib/HTML/Parser.pm">
+    3.33
+      (GAAS on 2003-10-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.32/lib/HTML/Parser.pm">
+    3.32
+      (GAAS on 2003-10-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.31/lib/HTML/Parser.pm">
+    3.31
+      (GAAS on 2003-08-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.30/lib/HTML/Parser.pm">
+    3.30
+      (GAAS on 2003-08-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.29/lib/HTML/Parser.pm">
+    3.29
+      (GAAS on 2003-08-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.28/lib/HTML/Parser.pm">
+    3.28
+      (GAAS on 2003-04-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.27/lib/HTML/Parser.pm">
+    3.27
+      (GAAS on 2003-01-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.26/lib/HTML/Parser.pm">
+    3.26
+      (GAAS on 2002-03-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.25/lib/HTML/Parser.pm">
+    3.25
+      (GAAS on 2001-05-11)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.24/lib/HTML/Parser.pm">
+    3.24
+      (GAAS on 2001-05-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.23/lib/HTML/Parser.pm">
+    3.23
+      (GAAS on 2001-05-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.22/lib/HTML/Parser.pm">
+    3.22
+      (GAAS on 2001-04-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.21/lib/HTML/Parser.pm">
+    3.21
+      (GAAS on 2001-04-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.20/lib/HTML/Parser.pm">
+    3.20
+      (GAAS on 2001-04-03)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_94/lib/HTML/Parser.pm">
+    3.19_94 DEV
+      (GAAS on 2001-03-30)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_93/lib/HTML/Parser.pm">
+    3.19_93 DEV
+      (GAAS on 2001-03-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_92/lib/HTML/Parser.pm">
+    3.19_92 DEV
+      (GAAS on 2001-03-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_91/lib/HTML/Parser.pm">
+    3.19_91 DEV
+      (GAAS on 2001-03-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_90/lib/HTML/Parser.pm">
+    3.19_90 DEV
+      (GAAS on 2001-03-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19/lib/HTML/Parser.pm">
+    3.19
+      (GAAS on 2001-03-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.18/lib/HTML/Parser.pm">
+    3.18
+      (GAAS on 2001-02-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.17/lib/HTML/Parser.pm">
+    3.17
+      (GAAS on 2001-02-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.16/lib/HTML/Parser.pm">
+    3.16
+      (GAAS on 2001-02-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.15/lib/HTML/Parser.pm">
+    3.15
+      (GAAS on 2000-12-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.14/lib/HTML/Parser.pm">
+    3.14
+      (GAAS on 2000-12-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.13/lib/HTML/Parser.pm">
+    3.13
+      (GAAS on 2000-09-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.12/lib/HTML/Parser.pm">
+    3.12
+      (GAAS on 2000-09-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.11/lib/HTML/Parser.pm">
+    3.11
+      (GAAS on 2000-08-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.10/lib/HTML/Parser.pm">
+    3.10
+      (GAAS on 2000-06-29)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.09/lib/HTML/Parser.pm">
+    3.09
+      (GAAS on 2000-06-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.08/lib/HTML/Parser.pm">
+    3.08
+      (GAAS on 2000-05-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.07/lib/HTML/Parser.pm">
+    3.07
+      (GAAS on 2000-03-20)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.06/lib/HTML/Parser.pm">
+    3.06
+      (GAAS on 2000-03-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.05/lib/HTML/Parser.pm">
+    3.05
+      (GAAS on 2000-01-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.04/lib/HTML/Parser.pm">
+    3.04
+      (GAAS on 2000-01-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.02/lib/HTML/Parser.pm">
+    3.02
+      (GAAS on 1999-12-21)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.01/lib/HTML/Parser.pm">
+    3.01
+      (GAAS on 1999-12-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.00/lib/HTML/Parser.pm">
+    3.00
+      (GAAS on 1999-12-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.24/lib/HTML/Parser.pm">
+    2.24
+      (GAAS on 1999-11-03)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.23/lib/HTML/Parser.pm">
+    2.23
+      (GAAS on 1999-06-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.21/lib/HTML/Parser.pm">
+    2.21
+      (GAAS on 1998-11-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.20/lib/HTML/Parser.pm">
+    2.20
+      (GAAS on 1998-07-08)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.19/lib/HTML/Parser.pm">
+    2.19
+      (GAAS on 1998-07-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.18/lib/HTML/Parser.pm">
+    2.18
+      (GAAS on 1998-06-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.17/lib/HTML/Parser.pm">
+    2.17
+      (GAAS on 1998-04-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.16/lib/HTML/Parser.pm">
+    2.16
+      (GAAS on 1998-04-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.14/lib/HTML/Parser.pm">
+    2.14
+      (GAAS on 1998-03-31)
+      
+  </option>
+        </optgroup>
+    
+</select>
+    
+    <a data-keyboard-shortcut="g d" class="release-name" href="https://metacpan.org/release/HTML-Parser">HTML-Parser-3.75</a>
+    
+    
+  </div>
+  <!--
+  Unlike an <img>, an <object> grafts the SVG document into the DOM, which
+  means browsers will display the <title> elements of the SVG.  Yay!
+-->
+<span class="river-gauge-gauge">
+
+  <svg width="24px" height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g>
+      <!--
+        There is some careful attention below to the resulting whitespace
+        after template interpolation, ensuring that the tooltip looks good on
+        both Chrome and Firefox. Please don't adjust it blithely, thanks!
+      -->
+      <title>River stage four 
+• 570 direct dependents 
+• 9666 total dependents</title>
+
+      <!-- 5 bars, 4x15px, 1px apart, colored #e4e2e2 or #7ea3f2 -->
+      <rect x="0" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="5" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="10" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="15" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="20" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+    </g>
+  </svg>
+
+
+</span>
+<div id="HTML-Parser-fav" class="logged_in">
+<form action="https://metacpan.org/account/favorite/add" style="display: inline" onsubmit="return favDistribution(this)">
+    <input type="hidden" name="remove" value="0">
+    <input type="hidden" name="release" value="HTML-Parser-3.75">
+    <input type="hidden" name="author" value="CAPOEIRAB">
+    <input type="hidden" name="distribution" value="HTML-Parser">
+    <button type="submit" class="favorite highlight" title="Add to favorites"><span>41</span> ++</button>
+</form>
+</div>
+<div class="logged_out" style="display: inline;">
+<a href="https://metacpan.org/pod/HTML::Parser" onclick="alert(&#39;Please sign in to add favorites&#39;); return false" class="favorite highlight" title="Add to favorites">
+<span>41</span> ++</a>
+</div>
+
+  &nbsp;/&nbsp;<span itemprop="name">HTML::Parser</span>
+</div>
+
+  <ul class="nav-list slidepanel sticky-panel-top sticky-panel-sticky">
+    <li class="visible-xs">
+      <div>
+    <form action="https://metacpan.org/search">
+        <input type="search" class="form-control tool-bar-form" placeholder="Search" name="q">
+        <input type="submit" class="hidden">
+    </form>
+</div>
+
+    </li>
+    <li class="nav-header">      <time class="relatize" itemprop="dateModified" datetime="2020-08-30" title="30 Aug 2020 19:58:22 UTC">Aug 31, 2020</time>
+    </li>
+    
+    <li>
+      Distribution: HTML-Parser
+    </li>
+    
+    <li>
+      Module version: <span itemprop="softwareVersion">3.75</span>
+    </li>
+    
+        <li>
+      <a data-keyboard-shortcut="g s" href="https://metacpan.org/release/HTML-Parser/source/lib/HTML/Parser.pm"><i class="fa fa-fw fa-file-code-o black"></i>Source</a>
+      (<a href="https://metacpan.org/release/HTML-Parser/source/lib/HTML/Parser.pm?raw=1">raw</a>)
+    </li>
+    
+    <li>
+      <a data-keyboard-shortcut="g b" href="https://metacpan.org/release/HTML-Parser/source/lib/HTML"><i class="fa fa-fw fa-folder-open black"></i>Browse</a>
+      (<a href="https://metacpan.org/release/HTML-Parser/source/lib/HTML?raw=1">raw</a>)
+    </li>
+    <li>
+    <a data-keyboard-shortcut="g c" href="https://metacpan.org/changes/distribution/HTML-Parser"><i class="fa fa-fw fa-cogs black"></i>Changes</a>
+</li>
+
+<li>
+    <a rel="noopener nofollow" class="nopopup" href="https://github.com/libwww-perl/html-parser"><i class="fa fa-fw fa-external-link black"></i>Homepage</a>
+</li>
+
+<li>
+    <a class="nopopup" href="https://metacpan.org/contributing-to/HTML-Parser"><i class="fa fa-fw fa-plus-circle black"></i>How to Contribute</a>
+</li>
+
+<li>
+    
+    <a rel="noopener nofollow" data-keyboard-shortcut="g r" href="https://github.com/libwww-perl/html-parser" data-hasqtip="0"><i class="fa fa-fw fa-code-fork black"></i>Repository</a>
+    
+    
+    (<a rel="noopener nofollow" href="https://github.com/libwww-perl/html-parser.git" data-hasqtip="1">git clone</a>)
+    
+</li>
+
+<li>
+    <a rel="noopener nofollow" data-keyboard-shortcut="g i" href="https://github.com/libwww-perl/html-parser/issues" data-hasqtip="2"><i class="fa fa-fw fa-info-circle black"></i>Issues</a>
+    
+</li>
+<li>
+    
+    <a rel="noopener nofollow" href="http://matrix.cpantesters.org/?dist=HTML-Parser+3.75" title="Matrix"><i class="fa fa-fw fa-check-circle black"></i>Testers</a>
+    <span title="(pass / fail / na)">(<a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=2" style="color: #090">1718</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=3" style="color: #900">7</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=4">0</a>)</span>
+</li>
+<li>
+    <a rel="noopener nofollow" href="http://cpants.cpanauthors.org/release/CAPOEIRAB/HTML-Parser-3.75"><i class="fa fa-fw fa-line-chart black"></i>Kwalitee</a>
+</li>
+
+  <li>
+    <i class="fa fa-fw fa-pie-chart black"></i><a rel="noopener nofollow" href="http://cpancover.com/latest/HTML-Parser-3.75/index.html">83.63% Coverage </a>
+  </li>
+
+
+
+<li><i class="fa fa-fw fa-gavel black"></i>License: perl_5</li>
+
+
+<li>
+  <i class="fa fa-fw fa-greater-than-equal black"></i>Perl: v5.8.0
+</li>
+
+
+
+
+    <li class="nav-header">Activity</li>
+    <li><div class="activity-graph">
+  <img src="./HTML__Parser - HTML parser class - metacpan.org_files/activity" width="170" height="22">
+  <div align="right"><small class="comment">24 month</small></div>
+</div>
+</li>
+    <li class="nav-header">Tools</li>
+<li>
+    <a itemprop="downloadUrl" href="https://cpan.metacpan.org/authors/id/C/CA/CAPOEIRAB/HTML-Parser-3.75.tar.gz">
+    <i class="fa fa-download fa-fw black"></i>Download (<span itemprop="fileSize">117.83Kb</span>)</a>
+    
+    <span class="invisible" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <span itemprop="price">0</span>
+    </span>
+    
+</li>
+<li>
+    <a href="https://explorer.metacpan.org/?url=/module/CAPOEIRAB/HTML-Parser-3.75/lib%2FHTML%2FParser.pm">
+    <i class="fa fa-list-alt fa-fw black"></i>MetaCPAN Explorer
+    </a>
+</li>
+<li>
+  <a href="https://metacpan.org/permission/distribution/HTML-Parser">
+    <i class="fa fa-key fa-fw black"></i>Permissions
+  </a>
+</li>
+<li>
+    <a href="https://metacpan.org/feed/distribution/HTML-Parser">
+    <i class="fa fa-rss-square fa-fw black"></i>Subscribe to distribution
+    </a>
+</li>
+<li>
+    <button class="btn btn-link" data-toggle="modal" data-target="#install-instructions-dialog">
+      <i class="fa fa-terminal fa-fw black"></i>Install Instructions
+    </button>
+</li>
+<li>
+    <form action="https://metacpan.org/search">
+        <input type="hidden" name="q" value="dist:HTML-Parser">
+        <input type="search" name="q" placeholder="Search distribution" style="width: 153px" class="form-control tool-bar-form">
+        <input type="submit" style="display: none">
+    </form>
+</li>
+<li>
+    <form action="https://grep.metacpan.org/search">
+        <input type="hidden" name="qd" value="HTML-Parser">
+        <input type="hidden" name="source" value="metacpan">
+         <input type="search" name="q" placeholder="grep distribution" style="width: 153px" class="form-control tool-bar-form">
+         <input type="submit" style="display: none">
+     </form>
+</li>
+<li>
+    <select onchange="document.location.href=&#39;/module/&#39;+this.value" class="form-control tool-bar-form">
+        <option>Jump to version</option>
+    <option value="CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Parser.pm">3.74 (CAPOEIRAB on 2020-08-30)</option>
+
+    <option value="CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Parser.pm">3.73 (CAPOEIRAB on 2020-08-25)</option>
+
+    <option value="GAAS/HTML-Parser-3.72/lib/HTML/Parser.pm">3.72 (GAAS on 2016-01-19)</option>
+
+    <option value="GAAS/HTML-Parser-3.71/lib/HTML/Parser.pm">3.71 (GAAS on 2013-05-08)</option>
+
+    <option value="KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Parser.pm">3.25-bin-1-Mac (KIMURA on 2001-06-12)</option>
+
+    <option value="KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Parser.pm">3.23-bin-1-Mac (KIMURA on 2001-05-05)</option>
+
+    <option value="KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Parser.pm">3.19-bin-1-Mac (KIMURA on 2001-03-16)</option>
+
+    <option value="GAAS/HTML-Parser-2.25/lib/HTML/Parser.pm">2.25 (GAAS on 1999-11-05)</option>
+
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="GAAS/HTML-Parser-3.70/lib/HTML/Parser.pm">3.70 (GAAS on 2013-03-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.69/lib/HTML/Parser.pm">3.69 (GAAS on 2011-10-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.68/lib/HTML/Parser.pm">3.68 (GAAS on 2010-09-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.67/lib/HTML/Parser.pm">3.67 (GAAS on 2010-08-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.66/lib/HTML/Parser.pm">3.66 (GAAS on 2010-07-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.65/lib/HTML/Parser.pm">3.65 (GAAS on 2010-04-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.64/lib/HTML/Parser.pm">3.64 (GAAS on 2009-10-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.63/lib/HTML/Parser.pm">3.63 (GAAS on 2009-10-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.62/lib/HTML/Parser.pm">3.62 (GAAS on 2009-08-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.61/lib/HTML/Parser.pm">3.61 (GAAS on 2009-06-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.60/lib/HTML/Parser.pm">3.60 (GAAS on 2009-02-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.59/lib/HTML/Parser.pm">3.59 (GAAS on 2008-11-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.58/lib/HTML/Parser.pm">3.58 (GAAS on 2008-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.57/lib/HTML/Parser.pm">3.57 (GAAS on 2008-11-16)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.56/lib/HTML/Parser.pm">3.56 (GAAS on 2007-01-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.55/lib/HTML/Parser.pm">3.55 (GAAS on 2006-07-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.54/lib/HTML/Parser.pm">3.54 (GAAS on 2006-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.53/lib/HTML/Parser.pm">3.53 (GAAS on 2006-04-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.52/lib/HTML/Parser.pm">3.52 (GAAS on 2006-04-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.51/lib/HTML/Parser.pm">3.51 (GAAS on 2006-03-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.50/lib/HTML/Parser.pm">3.50 (GAAS on 2006-02-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.49/lib/HTML/Parser.pm">3.49 (GAAS on 2006-02-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.48/lib/HTML/Parser.pm">3.48 (GAAS on 2005-12-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.47/lib/HTML/Parser.pm">3.47 (GAAS on 2005-11-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.46/lib/HTML/Parser.pm">3.46 (GAAS on 2005-10-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.45/lib/HTML/Parser.pm">3.45 (GAAS on 2005-01-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.44/lib/HTML/Parser.pm">3.44 (GAAS on 2004-12-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.43/lib/HTML/Parser.pm">3.43 (GAAS on 2004-12-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.42/lib/HTML/Parser.pm">3.42 (GAAS on 2004-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.41/lib/HTML/Parser.pm">3.41 (GAAS on 2004-11-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.40/lib/HTML/Parser.pm">3.40 (GAAS on 2004-11-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_92/lib/HTML/Parser.pm">3.39_92 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_91/lib/HTML/Parser.pm">3.39_91 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_90/lib/HTML/Parser.pm">3.39_90 DEV (GAAS on 2004-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.38/lib/HTML/Parser.pm">3.38 (GAAS on 2004-11-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.37/lib/HTML/Parser.pm">3.37 (GAAS on 2004-11-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.36/lib/HTML/Parser.pm">3.36 (GAAS on 2004-04-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.35/lib/HTML/Parser.pm">3.35 (GAAS on 2003-12-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.34/lib/HTML/Parser.pm">3.34 (GAAS on 2003-10-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.33/lib/HTML/Parser.pm">3.33 (GAAS on 2003-10-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.32/lib/HTML/Parser.pm">3.32 (GAAS on 2003-10-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.31/lib/HTML/Parser.pm">3.31 (GAAS on 2003-08-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.30/lib/HTML/Parser.pm">3.30 (GAAS on 2003-08-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.29/lib/HTML/Parser.pm">3.29 (GAAS on 2003-08-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.28/lib/HTML/Parser.pm">3.28 (GAAS on 2003-04-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.27/lib/HTML/Parser.pm">3.27 (GAAS on 2003-01-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.26/lib/HTML/Parser.pm">3.26 (GAAS on 2002-03-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.25/lib/HTML/Parser.pm">3.25 (GAAS on 2001-05-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.24/lib/HTML/Parser.pm">3.24 (GAAS on 2001-05-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.23/lib/HTML/Parser.pm">3.23 (GAAS on 2001-05-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.22/lib/HTML/Parser.pm">3.22 (GAAS on 2001-04-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.21/lib/HTML/Parser.pm">3.21 (GAAS on 2001-04-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.20/lib/HTML/Parser.pm">3.20 (GAAS on 2001-04-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_94/lib/HTML/Parser.pm">3.19_94 DEV (GAAS on 2001-03-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_93/lib/HTML/Parser.pm">3.19_93 DEV (GAAS on 2001-03-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_92/lib/HTML/Parser.pm">3.19_92 DEV (GAAS on 2001-03-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_91/lib/HTML/Parser.pm">3.19_91 DEV (GAAS on 2001-03-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_90/lib/HTML/Parser.pm">3.19_90 DEV (GAAS on 2001-03-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19/lib/HTML/Parser.pm">3.19 (GAAS on 2001-03-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.18/lib/HTML/Parser.pm">3.18 (GAAS on 2001-02-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.17/lib/HTML/Parser.pm">3.17 (GAAS on 2001-02-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.16/lib/HTML/Parser.pm">3.16 (GAAS on 2001-02-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.15/lib/HTML/Parser.pm">3.15 (GAAS on 2000-12-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.14/lib/HTML/Parser.pm">3.14 (GAAS on 2000-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.13/lib/HTML/Parser.pm">3.13 (GAAS on 2000-09-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.12/lib/HTML/Parser.pm">3.12 (GAAS on 2000-09-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.11/lib/HTML/Parser.pm">3.11 (GAAS on 2000-08-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.10/lib/HTML/Parser.pm">3.10 (GAAS on 2000-06-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.09/lib/HTML/Parser.pm">3.09 (GAAS on 2000-06-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.08/lib/HTML/Parser.pm">3.08 (GAAS on 2000-05-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.07/lib/HTML/Parser.pm">3.07 (GAAS on 2000-03-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.06/lib/HTML/Parser.pm">3.06 (GAAS on 2000-03-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.05/lib/HTML/Parser.pm">3.05 (GAAS on 2000-01-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.04/lib/HTML/Parser.pm">3.04 (GAAS on 2000-01-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.02/lib/HTML/Parser.pm">3.02 (GAAS on 1999-12-21)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.01/lib/HTML/Parser.pm">3.01 (GAAS on 1999-12-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.00/lib/HTML/Parser.pm">3.00 (GAAS on 1999-12-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.24/lib/HTML/Parser.pm">2.24 (GAAS on 1999-11-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.23/lib/HTML/Parser.pm">2.23 (GAAS on 1999-06-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.21/lib/HTML/Parser.pm">2.21 (GAAS on 1998-11-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.20/lib/HTML/Parser.pm">2.20 (GAAS on 1998-07-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.19/lib/HTML/Parser.pm">2.19 (GAAS on 1998-07-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.18/lib/HTML/Parser.pm">2.18 (GAAS on 1998-06-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.17/lib/HTML/Parser.pm">2.17 (GAAS on 1998-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.16/lib/HTML/Parser.pm">2.16 (GAAS on 1998-04-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.14/lib/HTML/Parser.pm">2.14 (GAAS on 1998-03-31)
+    </option>
+
+
+    </select>
+</li>
+<li>
+    <select name="release" onchange="document.location.href=&#39;/diff/file/?target=CAPOEIRAB/HTML-Parser-3.75/lib%2FHTML%2FParser.pm&amp;source=&#39; + encodeURIComponent(this.value)" class="form-control tool-bar-form">
+        <option>Diff with version</option>
+    <option value="CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Parser.pm">3.74 (CAPOEIRAB on 2020-08-30)</option>
+
+    <option value="CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Parser.pm">3.73 (CAPOEIRAB on 2020-08-25)</option>
+
+    <option value="GAAS/HTML-Parser-3.72/lib/HTML/Parser.pm">3.72 (GAAS on 2016-01-19)</option>
+
+    <option value="GAAS/HTML-Parser-3.71/lib/HTML/Parser.pm">3.71 (GAAS on 2013-05-08)</option>
+
+    <option value="KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Parser.pm">3.25-bin-1-Mac (KIMURA on 2001-06-12)</option>
+
+    <option value="KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Parser.pm">3.23-bin-1-Mac (KIMURA on 2001-05-05)</option>
+
+    <option value="KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Parser.pm">3.19-bin-1-Mac (KIMURA on 2001-03-16)</option>
+
+    <option value="GAAS/HTML-Parser-2.25/lib/HTML/Parser.pm">2.25 (GAAS on 1999-11-05)</option>
+
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="GAAS/HTML-Parser-3.70/lib/HTML/Parser.pm">3.70 (GAAS on 2013-03-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.69/lib/HTML/Parser.pm">3.69 (GAAS on 2011-10-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.68/lib/HTML/Parser.pm">3.68 (GAAS on 2010-09-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.67/lib/HTML/Parser.pm">3.67 (GAAS on 2010-08-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.66/lib/HTML/Parser.pm">3.66 (GAAS on 2010-07-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.65/lib/HTML/Parser.pm">3.65 (GAAS on 2010-04-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.64/lib/HTML/Parser.pm">3.64 (GAAS on 2009-10-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.63/lib/HTML/Parser.pm">3.63 (GAAS on 2009-10-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.62/lib/HTML/Parser.pm">3.62 (GAAS on 2009-08-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.61/lib/HTML/Parser.pm">3.61 (GAAS on 2009-06-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.60/lib/HTML/Parser.pm">3.60 (GAAS on 2009-02-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.59/lib/HTML/Parser.pm">3.59 (GAAS on 2008-11-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.58/lib/HTML/Parser.pm">3.58 (GAAS on 2008-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.57/lib/HTML/Parser.pm">3.57 (GAAS on 2008-11-16)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.56/lib/HTML/Parser.pm">3.56 (GAAS on 2007-01-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.55/lib/HTML/Parser.pm">3.55 (GAAS on 2006-07-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.54/lib/HTML/Parser.pm">3.54 (GAAS on 2006-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.53/lib/HTML/Parser.pm">3.53 (GAAS on 2006-04-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.52/lib/HTML/Parser.pm">3.52 (GAAS on 2006-04-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.51/lib/HTML/Parser.pm">3.51 (GAAS on 2006-03-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.50/lib/HTML/Parser.pm">3.50 (GAAS on 2006-02-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.49/lib/HTML/Parser.pm">3.49 (GAAS on 2006-02-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.48/lib/HTML/Parser.pm">3.48 (GAAS on 2005-12-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.47/lib/HTML/Parser.pm">3.47 (GAAS on 2005-11-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.46/lib/HTML/Parser.pm">3.46 (GAAS on 2005-10-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.45/lib/HTML/Parser.pm">3.45 (GAAS on 2005-01-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.44/lib/HTML/Parser.pm">3.44 (GAAS on 2004-12-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.43/lib/HTML/Parser.pm">3.43 (GAAS on 2004-12-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.42/lib/HTML/Parser.pm">3.42 (GAAS on 2004-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.41/lib/HTML/Parser.pm">3.41 (GAAS on 2004-11-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.40/lib/HTML/Parser.pm">3.40 (GAAS on 2004-11-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_92/lib/HTML/Parser.pm">3.39_92 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_91/lib/HTML/Parser.pm">3.39_91 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_90/lib/HTML/Parser.pm">3.39_90 DEV (GAAS on 2004-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.38/lib/HTML/Parser.pm">3.38 (GAAS on 2004-11-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.37/lib/HTML/Parser.pm">3.37 (GAAS on 2004-11-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.36/lib/HTML/Parser.pm">3.36 (GAAS on 2004-04-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.35/lib/HTML/Parser.pm">3.35 (GAAS on 2003-12-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.34/lib/HTML/Parser.pm">3.34 (GAAS on 2003-10-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.33/lib/HTML/Parser.pm">3.33 (GAAS on 2003-10-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.32/lib/HTML/Parser.pm">3.32 (GAAS on 2003-10-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.31/lib/HTML/Parser.pm">3.31 (GAAS on 2003-08-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.30/lib/HTML/Parser.pm">3.30 (GAAS on 2003-08-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.29/lib/HTML/Parser.pm">3.29 (GAAS on 2003-08-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.28/lib/HTML/Parser.pm">3.28 (GAAS on 2003-04-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.27/lib/HTML/Parser.pm">3.27 (GAAS on 2003-01-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.26/lib/HTML/Parser.pm">3.26 (GAAS on 2002-03-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.25/lib/HTML/Parser.pm">3.25 (GAAS on 2001-05-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.24/lib/HTML/Parser.pm">3.24 (GAAS on 2001-05-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.23/lib/HTML/Parser.pm">3.23 (GAAS on 2001-05-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.22/lib/HTML/Parser.pm">3.22 (GAAS on 2001-04-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.21/lib/HTML/Parser.pm">3.21 (GAAS on 2001-04-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.20/lib/HTML/Parser.pm">3.20 (GAAS on 2001-04-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_94/lib/HTML/Parser.pm">3.19_94 DEV (GAAS on 2001-03-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_93/lib/HTML/Parser.pm">3.19_93 DEV (GAAS on 2001-03-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_92/lib/HTML/Parser.pm">3.19_92 DEV (GAAS on 2001-03-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_91/lib/HTML/Parser.pm">3.19_91 DEV (GAAS on 2001-03-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_90/lib/HTML/Parser.pm">3.19_90 DEV (GAAS on 2001-03-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19/lib/HTML/Parser.pm">3.19 (GAAS on 2001-03-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.18/lib/HTML/Parser.pm">3.18 (GAAS on 2001-02-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.17/lib/HTML/Parser.pm">3.17 (GAAS on 2001-02-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.16/lib/HTML/Parser.pm">3.16 (GAAS on 2001-02-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.15/lib/HTML/Parser.pm">3.15 (GAAS on 2000-12-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.14/lib/HTML/Parser.pm">3.14 (GAAS on 2000-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.13/lib/HTML/Parser.pm">3.13 (GAAS on 2000-09-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.12/lib/HTML/Parser.pm">3.12 (GAAS on 2000-09-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.11/lib/HTML/Parser.pm">3.11 (GAAS on 2000-08-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.10/lib/HTML/Parser.pm">3.10 (GAAS on 2000-06-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.09/lib/HTML/Parser.pm">3.09 (GAAS on 2000-06-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.08/lib/HTML/Parser.pm">3.08 (GAAS on 2000-05-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.07/lib/HTML/Parser.pm">3.07 (GAAS on 2000-03-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.06/lib/HTML/Parser.pm">3.06 (GAAS on 2000-03-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.05/lib/HTML/Parser.pm">3.05 (GAAS on 2000-01-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.04/lib/HTML/Parser.pm">3.04 (GAAS on 2000-01-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.02/lib/HTML/Parser.pm">3.02 (GAAS on 1999-12-21)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.01/lib/HTML/Parser.pm">3.01 (GAAS on 1999-12-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.00/lib/HTML/Parser.pm">3.00 (GAAS on 1999-12-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.24/lib/HTML/Parser.pm">2.24 (GAAS on 1999-11-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.23/lib/HTML/Parser.pm">2.23 (GAAS on 1999-06-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.21/lib/HTML/Parser.pm">2.21 (GAAS on 1998-11-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.20/lib/HTML/Parser.pm">2.20 (GAAS on 1998-07-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.19/lib/HTML/Parser.pm">2.19 (GAAS on 1998-07-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.18/lib/HTML/Parser.pm">2.18 (GAAS on 1998-06-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.17/lib/HTML/Parser.pm">2.17 (GAAS on 1998-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.16/lib/HTML/Parser.pm">2.16 (GAAS on 1998-04-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.14/lib/HTML/Parser.pm">2.14 (GAAS on 1998-03-31)
+    </option>
+
+
+    </select>
+</li>
+
+<li class="nav-header">Permalinks</li>
+<li>
+    <a href="https://metacpan.org/pod/release/CAPOEIRAB/HTML-Parser-3.75/lib/HTML/Parser.pm">This version</a>
+</li>
+<li>
+    <a itemprop="url" href="https://metacpan.org/pod/HTML::Parser">Latest version</a>
+</li>
+
+  </ul>
+
+  <button id="right-panel-toggle" class="btn-link" onclick="togglePanel(&#39;right&#39;); return false;"><span class="panel-hidden">Show</span><span class="panel-visible">Hide</span> Right Panel</button>
+  <div id="right-panel" class="pull-right">
+  <div class="box-right">
+  <!-- For plussers -->
+
+<div class="plussers hidden-phone">
+<div><b>++ed by:</b></div>
+
+
+
+
+<a class="display-all" href="https://metacpan.org/author/MIXAS"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/57024569984e31ce52a855c7305be66e" title="MIXAS" alt="MIXAS"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/RORYRJB"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/a0e1cae3abdc11be9fdc1ca0509f77c3" title="RORYRJB" alt="RORYRJB"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/JWANG"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/61d1e2eb0f8968080067151a9a9b5fe0" title="JWANG" alt="JWANG"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/BKB"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/191945c6c283d81db701008b2d89b68c.png" title="BKB" alt="BKB"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/DELON"><img src="./HTML__Parser - HTML parser class - metacpan.org_files/8a316157de5eaa39f351b1725c4641d0" title="DELON" alt="DELON"></a>
+
+
+
+<!-- Display counts of plussers-->
+<p>
+
+<a href="https://metacpan.org/release/HTML-Parser/plussers">20 PAUSE users</a><br>
+
+
+21 non-PAUSE users.
+
+</p>
+</div>
+
+
+<div class="author-pic">
+<a href="https://metacpan.org/author/CAPOEIRAB">
+  <img src="./HTML__Parser - HTML parser class - metacpan.org_files/912bfa255ef8161a494932af0cad48c5" alt="Author image">
+</a>
+<strong>
+  <a rel="author" href="https://metacpan.org/author/CAPOEIRAB">CAPOEIRAB</a>
+</strong>
+<span title="Chase Whitener">Chase Whitener</span>
+</div>
+
+  
+
+<div id="contributors">
+    <div class="contributors-header">and 17 contributors</div>
+    <div align="right">
+        <button class="btn-link" onclick="$(this).hide(); $(&#39;#contributors ul&#39;).slideDown(); return false;">show them</button>
+    </div>
+    <ul class="nav nav-list box-right" style="display: none">
+    
+        <li class="contributor" data-cpan-author="GAAS" data-contrib-email="gaas@cpan.org gisle@aas.no">
+        <a href="https://metacpan.org/author/GAAS" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/80ccd89a65d9faf08c2fb6be2991ba57.jpeg">        Gisle Aas</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="antonio@dyne.org">
+        Antonio Radici
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="BARBIE" data-contrib-email="barbie@missbarbell.co.uk">
+        <a href="https://metacpan.org/author/BARBIE" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/92c6c2f8be6f62c74aae398b99aefe57.png">        Barbie</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="bulk88@hotmail.com">
+        bulk88
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="CHIPS" data-contrib-email="chip@pobox.com">
+        <a href="https://metacpan.org/author/CHIPS" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/60cdb5a6d95805ffc42a674bb504bbb1">        Chip Salzenberg</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="dmn@debian.org">
+        Damyan Ivanov
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="dsteinbrunner@pobox.com">
+        David Steinbrunner
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="PERRAD" data-contrib-email="francois.perrad@gadz.org">
+        <a href="https://metacpan.org/author/PERRAD" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/4219d7ad0c9c2be2b9f3abfd68a94dd4.png">        François Perrad</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="JACQUESG" data-contrib-email="jacquesg@striata.com">
+        <a href="https://metacpan.org/author/JACQUESG" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/979fdf21a0f82c302536905d762adf75">        Jacques Germishuys</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="JONJ" data-contrib-email="jon@endpoint.com">
+        <a href="https://metacpan.org/author/JONJ" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/6becea182c4c0326e48ac2d3fc056b11">        Jon Jensen</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="MSOUTH" data-contrib-email="msouth@gmail.com">
+        <a href="https://metacpan.org/author/MSOUTH" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/db7b941f3e749b0365533e72d02db30f">        Mike South</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="nick@ccl4.org">
+        Nicholas Clark
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="nicolas@atoomic.org">
+        Nicolas R
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="salvatore.bonaccorso@gmail.com">
+        Salvatore Bonaccorso
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="SCOP" data-contrib-email="ville.skytta@iki.fi">
+        <a href="https://metacpan.org/author/SCOP" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/4623589f12ed201b060c2075fd9c0920">        Ville Skyttä</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="demerphq@gmail.com">
+        Yves Orton
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="ZEFRAM" data-contrib-email="zefram@fysh.org">
+        <a href="https://metacpan.org/author/ZEFRAM" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Parser - HTML parser class - metacpan.org_files/aab343bc3a4424dcb7f913920242f051">        Zefram</a>
+        
+        </li>
+    
+    </ul>
+</div>
+
+
+
+  </div>
+  <ul class="nav-list box-right hidden-phone dependencies">
+    <li class="nav-header">Dependencies</li>
+    <li><a href="https://metacpan.org/pod/Carp" title="Carp" class="ellipsis"><span style="max-width: calc(100% - 12px);">Ca</span><span>rp</span></a></li>
+    <li><a href="https://metacpan.org/pod/Exporter" title="Exporter" class="ellipsis"><span style="max-width: calc(100% - 20px);">Expo</span><span>rter</span></a></li>
+    <li><a href="https://metacpan.org/pod/HTML::Tagset" title="HTML::Tagset" class="ellipsis"><span style="max-width: calc(100% - 32px);">HTML::T</span><span>agset</span></a></li>
+    <li><a href="https://metacpan.org/pod/HTTP::Headers" title="HTTP::Headers" class="ellipsis"><span style="max-width: calc(100% - 40px);">HTTP::H</span><span>eaders</span></a></li>
+    <li><a href="https://metacpan.org/pod/IO::File" title="IO::File" class="ellipsis"><span style="max-width: calc(100% - 21px);">IO::</span><span>File</span></a></li>
+    <li><a href="https://metacpan.org/pod/strict" title="strict" class="ellipsis"><span style="max-width: calc(100% - 13px);">str</span><span>ict</span></a></li>
+    <li><a href="https://metacpan.org/pod/URI" title="URI" class="ellipsis"><span style="max-width: calc(100% - 13px);">U</span><span>RI</span></a></li>
+    <li><a href="https://metacpan.org/pod/URI::URL" title="URI::URL" class="ellipsis"><span style="max-width: calc(100% - 30px);">URI:</span><span>:URL</span></a></li>
+    <li><a href="https://metacpan.org/pod/vars" title="vars" class="ellipsis"><span style="max-width: calc(100% - 11px);">va</span><span>rs</span></a></li>
+    <li><a href="https://metacpan.org/pod/XSLoader" title="XSLoader" class="ellipsis"><span style="max-width: calc(100% - 26px);">XSLo</span><span>ader</span></a></li>
+    <li><hr></li>
+    <li>
+        <a href="http://deps.cpantesters.org/?module=HTML::Parser">
+        <i class="fa fa-retweet fa-fw black"></i>CPAN Testers List</a>
+    </li>
+    <li>        <a href="https://metacpan.org/requires/module/HTML::Parser">        <i class="fa fa-share fa-fw black"></i>Reverse dependencies</a>
+    </li>
+    <li>
+        <a href="https://cpandeps.grinnz.com/?dist=HTML-Parser">
+        <i class="fa fa-asterisk fa-fw black"></i>Dependency graph</a>
+    </li>
+</ul>
+
+  </div>
+  <a name="___pod"></a>
+  <div class="pod content anchors">
+
+  
+  <div id="index-container"><div class="index-border"><div class="index-header"><b>Contents</b> [ <button class="btn-link toggle-index"><span class="toggle-show">show</span><span class="toggle-hide">hide</span></button> ] <button class="btn-link toggle-index-right"><i class="fa fa-toggle-right"></i><i class="fa fa-toggle-left"></i></button></div><ul id="index">
+  <li><a href="https://metacpan.org/pod/HTML::Parser#NAME">NAME</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#METHODS">METHODS</a>
+    <ul>
+      <li><a href="https://metacpan.org/pod/HTML::Parser#Argspec">Argspec</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser#Events">Events</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser#Unicode">Unicode</a></li>
+    </ul>
+  </li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#VERSION-2-COMPATIBILITY">VERSION 2 COMPATIBILITY</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#SUBCLASSING">SUBCLASSING</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#BUGS">BUGS</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#DIAGNOSTICS">DIAGNOSTICS</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser#COPYRIGHT">COPYRIGHT</a></li>
+</ul></div></div>
+
+<h1 id="NAME"><a href="https://metacpan.org/pod/HTML::Parser#NAME" class="anchor"><span class="fa fa-bookmark black"></span></a>NAME</h1>
+
+<p>HTML::Parser - HTML parser class</p>
+
+<h1 id="SYNOPSIS"><a href="https://metacpan.org/pod/HTML::Parser#SYNOPSIS" class="anchor"><span class="fa fa-bookmark black"></span></a>SYNOPSIS</h1>
+
+<pre><div><div id="highlighter_178353" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/strict">strict</a>;</code></div><div class="line number2 index1 alt1"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/warnings">warnings</a>;</code></div><div class="line number3 index2 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Parser">HTML::Parser</a> ();</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="perl comments"># Create parser object</code></div><div class="line number6 index5 alt1"><code class="perl keyword">my</code> <code class="perl variable">$p</code> <code class="perl plain">= HTML::Parser-&gt;new(</code></div><div class="line number7 index6 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">api_version</code> <code class="perl plain">=&gt; 3,</code></div><div class="line number8 index7 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">start_h</code> <code class="perl plain">=&gt; [\</code><code class="perl variable">&amp;start</code><code class="perl plain">, </code><code class="perl string">"tagname, attr"</code><code class="perl plain">],</code></div><div class="line number9 index8 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">end_h</code>&nbsp;&nbsp; <code class="perl plain">=&gt; [\</code><code class="perl variable">&amp;end</code><code class="perl plain">,&nbsp;&nbsp; </code><code class="perl string">"tagname"</code><code class="perl plain">],</code></div><div class="line number10 index9 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">marked_sections</code> <code class="perl plain">=&gt; 1,</code></div><div class="line number11 index10 alt2"><code class="perl plain">);</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="perl comments"># Parse document text chunk by chunk</code></div><div class="line number14 index13 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse(</code><code class="perl variable">$chunk1</code><code class="perl plain">);</code></div><div class="line number15 index14 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse(</code><code class="perl variable">$chunk2</code><code class="perl plain">);</code></div><div class="line number16 index15 alt1"><code class="perl comments"># ...</code></div><div class="line number17 index16 alt2"><code class="perl comments"># signal end of document</code></div><div class="line number18 index17 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;</code><code class="perl functions">eof</code><code class="perl plain">;</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="perl comments"># Parse directly from file</code></div><div class="line number21 index20 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse_file(</code><code class="perl string">"foo.html"</code><code class="perl plain">);</code></div><div class="line number22 index21 alt1"><code class="perl comments"># or</code></div><div class="line number23 index22 alt2"><code class="perl functions">open</code><code class="perl plain">(</code><code class="perl keyword">my</code> <code class="perl variable">$fh</code><code class="perl plain">, </code><code class="perl string">"&lt;:utf8"</code><code class="perl plain">, </code><code class="perl string">"foo.html"</code><code class="perl plain">) || </code><code class="perl keyword">die</code><code class="perl plain">;</code></div><div class="line number24 index23 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse_file(</code><code class="perl variable">$fh</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<h1 id="DESCRIPTION"><a href="https://metacpan.org/pod/HTML::Parser#DESCRIPTION" class="anchor"><span class="fa fa-bookmark black"></span></a>DESCRIPTION</h1>
+
+<p>Objects of the <code>HTML::Parser</code> class will recognize markup and separate it from plain text (alias data content) in HTML documents. As different kinds of markup and text are recognized, the corresponding event handlers are invoked.</p>
+
+<p><code>HTML::Parser</code> is not a generic SGML parser. We have tried to make it able to deal with the HTML that is actually "out there", and it normally parses as closely as possible to the way the popular web browsers do it instead of strictly following one of the many HTML specifications from W3C. Where there is disagreement, there is often an option that you can enable to get the official behaviour.</p>
+
+<p>The document to be parsed may be supplied in arbitrary chunks. This makes on-the-fly parsing as documents are received from the network possible.</p>
+
+<p>If event driven parsing does not feel right for your application, you might want to use <code>HTML::PullParser</code>. This is an <code>HTML::Parser</code> subclass that allows a more conventional program structure.</p>
+
+<h1 id="METHODS"><a href="https://metacpan.org/pod/HTML::Parser#METHODS" class="anchor"><span class="fa fa-bookmark black"></span></a>METHODS</h1>
+
+<p>The following method is used to construct a new <code>HTML::Parser</code> object:</p>
+
+<dl>
+
+<dt id="$p-=-HTML::Parser-&gt;new(-%options_and_handlers-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-=-HTML::Parser-%3Enew(-%options_and_handlers-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p---HTML::Parser--new---options_and_handlers"></a>$p = HTML::Parser-&gt;new( %options_and_handlers )</dt>
+<dd>
+
+<p>This class method creates a new <code>HTML::Parser</code> object and returns it. Key/value argument pairs may be provided to assign event handlers or initialize parser options. The handlers and parser options can also be set or modified later by the method calls described below.</p>
+
+<p>If a top level key is in the form "&lt;event&gt;_h" (e.g., "text_h") then it assigns a handler to that event, otherwise it initializes a parser option. The event handler specification value must be an array reference. Multiple handlers may also be assigned with the 'handlers =&gt; [%handlers]' option. See examples below.</p>
+
+<p>If new() is called without any arguments, it will create a parser that uses callback methods compatible with version 2 of <code>HTML::Parser</code>. See the section on "version 2 compatibility" below for details.</p>
+
+<p>The special constructor option 'api_version =&gt; 2' can be used to initialize version 2 callbacks while still setting other options and handlers. The 'api_version =&gt; 3' option can be used if you don't want to set any options and don't want to fall back to v2 compatible mode.</p>
+
+<p>Examples:</p>
+
+<pre><div><div id="highlighter_493765" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code> <code class="perl plain">= HTML::Parser-&gt;new(</code></div><div class="line number2 index1 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">api_version</code> <code class="perl plain">=&gt; 3,</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">text_h</code> <code class="perl plain">=&gt; [ </code><code class="perl keyword">sub</code> <code class="perl plain">{...}, </code><code class="perl string">"dtext"</code> <code class="perl plain">]</code></div><div class="line number4 index3 alt1"><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This creates a new parser object with a text event handler subroutine that receives the original text with general entities decoded.</p>
+
+<pre><div><div id="highlighter_925902" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code> <code class="perl plain">= HTML::Parser-&gt;new(</code></div><div class="line number2 index1 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">api_version</code> <code class="perl plain">=&gt; 3,</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">start_h</code> <code class="perl plain">=&gt; [ </code><code class="perl string">'my_start'</code><code class="perl plain">, </code><code class="perl string">"self,tokens"</code> <code class="perl plain">]</code></div><div class="line number4 index3 alt1"><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This creates a new parser object with a start event handler method that receives the $p and the tokens array.</p>
+
+<pre><div><div id="highlighter_290980" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code> <code class="perl plain">= HTML::Parser-&gt;new(</code></div><div class="line number2 index1 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">api_version</code> <code class="perl plain">=&gt; 3,</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">handlers</code> <code class="perl plain">=&gt; {</code></div><div class="line number4 index3 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">text</code> <code class="perl plain">=&gt; [\</code><code class="perl variable">@array</code><code class="perl plain">, </code><code class="perl string">"event,text"</code><code class="perl plain">],</code></div><div class="line number5 index4 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">comment</code> <code class="perl plain">=&gt; [\</code><code class="perl variable">@array</code><code class="perl plain">, </code><code class="perl string">"event,text"</code><code class="perl plain">],</code></div><div class="line number6 index5 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl plain">}</code></div><div class="line number7 index6 alt2"><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This creates a new parser object that stores the event type and the original text in @array for text and comment events.</p>
+
+</dd>
+</dl>
+
+<p>The following methods feed the HTML document to the <code>HTML::Parser</code> object:</p>
+
+<dl>
+
+<dt id="$p-&gt;parse(-$string-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eparse(-$string-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--parse---string"></a>$p-&gt;parse( $string )</dt>
+<dd>
+
+<p>Parse $string as the next chunk of the HTML document. Handlers invoked should not attempt to modify the $string in-place until $p-&gt;parse returns.</p>
+
+<p>If an invoked event handler aborts parsing by calling $p-&gt;eof, then $p-&gt;parse() will return a FALSE value. Otherwise the return value is a reference to the parser object ($p).</p>
+
+</dd>
+<dt id="$p-&gt;parse(-$code_ref-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eparse(-$code_ref-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--parse---code_ref"></a>$p-&gt;parse( $code_ref )</dt>
+<dd>
+
+<p>If a code reference is passed as the argument to be parsed, then the chunks to be parsed are obtained by invoking this function repeatedly. Parsing continues until the function returns an empty (or undefined) result. When this happens $p-&gt;eof is automatically signaled.</p>
+
+<p>Parsing will also abort if one of the event handlers calls $p-&gt;eof.</p>
+
+<p>The effect of this is the same as:</p>
+
+<pre><div><div id="highlighter_104808" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">while</code> <code class="perl plain">(1) {</code></div><div class="line number2 index1 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl keyword">my</code> <code class="perl variable">$chunk</code> <code class="perl plain">= </code><code class="perl variable">&amp;$code_ref</code><code class="perl plain">();</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl keyword">if</code> <code class="perl plain">(!</code><code class="perl functions">defined</code><code class="perl plain">(</code><code class="perl variable">$chunk</code><code class="perl plain">) || !</code><code class="perl functions">length</code><code class="perl plain">(</code><code class="perl variable">$chunk</code><code class="perl plain">)) {</code></div><div class="line number4 index3 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl variable">$p</code><code class="perl plain">-&gt;</code><code class="perl functions">eof</code><code class="perl plain">;</code></div><div class="line number5 index4 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl keyword">return</code> <code class="perl variable">$p</code><code class="perl plain">;</code></div><div class="line number6 index5 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl plain">}</code></div><div class="line number7 index6 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl variable">$p</code><code class="perl plain">-&gt;parse(</code><code class="perl variable">$chunk</code><code class="perl plain">) || </code><code class="perl keyword">return</code> <code class="perl functions">undef</code><code class="perl plain">;</code></div><div class="line number8 index7 alt1"><code class="perl plain">}</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>But it is more efficient as this loop runs internally in XS code.</p>
+
+</dd>
+<dt id="$p-&gt;parse_file(-$file-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eparse_file(-$file-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--parse_file---file"></a>$p-&gt;parse_file( $file )</dt>
+<dd>
+
+<p>Parse text directly from a file. The $file argument can be a filename, an open file handle, or a reference to an open file handle.</p>
+
+<p>If $file contains a filename and the file can't be opened, then the method returns an undefined value and $! tells why it failed. Otherwise the return value is a reference to the parser object.</p>
+
+<p>If a file handle is passed as the $file argument, then the file will normally be read until EOF, but not closed.</p>
+
+<p>If an invoked event handler aborts parsing by calling $p-&gt;eof, then $p-&gt;parse_file() may not have read the entire file.</p>
+
+<p>On systems with multi-byte line terminators, the values passed for the offset and length argspecs may be too low if parse_file() is called on a file handle that is not in binary mode.</p>
+
+<p>If a filename is passed in, then parse_file() will open the file in binary mode.</p>
+
+</dd>
+<dt id="$p-&gt;eof"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eeof" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--eof"></a>$p-&gt;eof</dt>
+<dd>
+
+<p>Signals the end of the HTML document. Calling the $p-&gt;eof method outside a handler callback will flush any remaining buffered text (which triggers the <code>text</code> event if there is any remaining text).</p>
+
+<p>Calling $p-&gt;eof inside a handler will terminate parsing at that point and cause $p-&gt;parse to return a FALSE value. This also terminates parsing by $p-&gt;parse_file().</p>
+
+<p>After $p-&gt;eof has been called, the parse() and parse_file() methods can be invoked to feed new documents with the parser object.</p>
+
+<p>The return value from eof() is a reference to the parser object.</p>
+
+</dd>
+</dl>
+
+<p>Most parser options are controlled by boolean attributes. Each boolean attribute is enabled by calling the corresponding method with a TRUE argument and disabled with a FALSE argument. The attribute value is left unchanged if no argument is given. The return value from each method is the old attribute value.</p>
+
+<p>Methods that can be used to get and/or set parser options are:</p>
+
+<dl>
+
+<dt id="$p-&gt;attr_encoded"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eattr_encoded" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--attr_encoded"></a>$p-&gt;attr_encoded</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;attr_encoded(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eattr_encoded(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--attr_encoded---bool"></a>$p-&gt;attr_encoded( $bool )</dt>
+<dd>
+
+<p>By default, the <code>attr</code> and <code>@attr</code> argspecs will have general entities for attribute values decoded. Enabling this attribute leaves entities alone.</p>
+
+</dd>
+<dt id="$p-&gt;backquote"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ebackquote" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--backquote"></a>$p-&gt;backquote</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;backquote(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ebackquote(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--backquote---bool"></a>$p-&gt;backquote( $bool )</dt>
+<dd>
+
+<p>By default, only ' and " are recognized as quote characters around attribute values. MSIE also recognizes backquotes for some reason. Enabling this attribute provides compatibility with this behaviour.</p>
+
+</dd>
+<dt id="$p-&gt;boolean_attribute_value(-$val-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eboolean_attribute_value(-$val-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--boolean_attribute_value---val"></a>$p-&gt;boolean_attribute_value( $val )</dt>
+<dd>
+
+<p>This method sets the value reported for boolean attributes inside HTML start tags. By default, the name of the attribute is also used as its value. This affects the values reported for <code>tokens</code> and <code>attr</code> argspecs.</p>
+
+</dd>
+<dt id="$p-&gt;case_sensitive"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ecase_sensitive" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--case_sensitive"></a>$p-&gt;case_sensitive</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;case_sensitive(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ecase_sensitive(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--case_sensitive---bool"></a>$p-&gt;case_sensitive( $bool )</dt>
+<dd>
+
+<p>By default, tag names and attribute names are down-cased. Enabling this attribute leaves them as found in the HTML source document.</p>
+
+</dd>
+<dt id="$p-&gt;closing_plaintext"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eclosing_plaintext" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--closing_plaintext"></a>$p-&gt;closing_plaintext</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;closing_plaintext(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eclosing_plaintext(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--closing_plaintext---bool"></a>$p-&gt;closing_plaintext( $bool )</dt>
+<dd>
+
+<p>By default, <code>plaintext</code> element can never be closed. Everything up to the end of the document is parsed in CDATA mode. This historical behaviour is what at least MSIE does. Enabling this attribute makes closing <code> &lt;/plaintext</code> &gt; tag effective and the parsing process will resume after seeing this tag. This emulates early gecko-based browsers.</p>
+
+</dd>
+<dt id="$p-&gt;empty_element_tags"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eempty_element_tags" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--empty_element_tags"></a>$p-&gt;empty_element_tags</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;empty_element_tags(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eempty_element_tags(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--empty_element_tags---bool"></a>$p-&gt;empty_element_tags( $bool )</dt>
+<dd>
+
+<p>By default, empty element tags are not recognized as such and the "/" before "&gt;" is just treated like a normal name character (unless <code>strict_names</code> is enabled). Enabling this attribute make <code>HTML::Parser</code> recognize these tags.</p>
+
+<p>Empty element tags look like start tags, but end with the character sequence "/&gt;" instead of "&gt;". When recognized by <code>HTML::Parser</code> they cause an artificial end event in addition to the start event. The <code>text</code> for the artificial end event will be empty and the <code>tokenpos</code> array will be undefined even though the token array will have one element containing the tag name.</p>
+
+</dd>
+<dt id="$p-&gt;marked_sections"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Emarked_sections" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--marked_sections"></a>$p-&gt;marked_sections</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;marked_sections(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Emarked_sections(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--marked_sections---bool"></a>$p-&gt;marked_sections( $bool )</dt>
+<dd>
+
+<p>By default, section markings like &lt;![CDATA[...]]&gt; are treated like ordinary text. When this attribute is enabled section markings are honoured.</p>
+
+<p>There are currently no events associated with the marked section markup, but the text can be returned as <code>skipped_text</code>.</p>
+
+</dd>
+<dt id="$p-&gt;strict_comment"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_comment" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_comment"></a>$p-&gt;strict_comment</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;strict_comment(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_comment(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_comment---bool"></a>$p-&gt;strict_comment( $bool )</dt>
+<dd>
+
+<p>By default, comments are terminated by the first occurrence of "--&gt;". This is the behaviour of most popular browsers (like Mozilla, Opera and MSIE), but it is not correct according to the official HTML standard. Officially, you need an even number of "--" tokens before the closing "&gt;" is recognized and there may not be anything but whitespace between an even and an odd "--".</p>
+
+<p>The official behaviour is enabled by enabling this attribute.</p>
+
+<p>Enabling of 'strict_comment' also disables recognizing these forms as comments:</p>
+
+<pre><div><div id="highlighter_805096" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;/ comment&gt;</code></div><div class="line number2 index1 alt1"><code class="perl plain">&lt;! comment&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+</dd>
+<dt id="$p-&gt;strict_end"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_end" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_end"></a>$p-&gt;strict_end</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;strict_end(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_end(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_end---bool"></a>$p-&gt;strict_end( $bool )</dt>
+<dd>
+
+<p>By default, attributes and other junk are allowed to be present on end tags in a manner that emulates MSIE's behaviour.</p>
+
+<p>The official behaviour is enabled with this attribute. If enabled, only whitespace is allowed between the tagname and the final "&gt;".</p>
+
+</dd>
+<dt id="$p-&gt;strict_names"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_names" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_names"></a>$p-&gt;strict_names</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;strict_names(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Estrict_names(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--strict_names---bool"></a>$p-&gt;strict_names( $bool )</dt>
+<dd>
+
+<p>By default, almost anything is allowed in tag and attribute names. This is the behaviour of most popular browsers and allows us to parse some broken tags with invalid attribute values like:</p>
+
+<pre><div><div id="highlighter_276933" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;IMG SRC=newprevlstGr.gif ALT=[PREV LIST] BORDER=0&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>By default, "LIST]" is parsed as a boolean attribute, not as part of the ALT value as was clearly intended. This is also what Mozilla sees.</p>
+
+<p>The official behaviour is enabled by enabling this attribute. If enabled, it will cause the tag above to be reported as text since "LIST]" is not a legal attribute name.</p>
+
+</dd>
+<dt id="$p-&gt;unbroken_text"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eunbroken_text" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--unbroken_text"></a>$p-&gt;unbroken_text</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;unbroken_text(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eunbroken_text(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--unbroken_text---bool"></a>$p-&gt;unbroken_text( $bool )</dt>
+<dd>
+
+<p>By default, blocks of text are given to the text handler as soon as possible (but the parser takes care always to break text at a boundary between whitespace and non-whitespace so single words and entities can always be decoded safely). This might create breaks that make it hard to do transformations on the text. When this attribute is enabled, blocks of text are always reported in one piece. This will delay the text event until the following (non-text) event has been recognized by the parser.</p>
+
+<p>Note that the <code>offset</code> argspec will give you the offset of the first segment of text and <code>length</code> is the combined length of the segments. Since there might be ignored tags in between, these numbers can't be used to directly index in the original document file.</p>
+
+</dd>
+<dt id="$p-&gt;utf8_mode"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eutf8_mode" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--utf8_mode"></a>$p-&gt;utf8_mode</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;utf8_mode(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eutf8_mode(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--utf8_mode---bool"></a>$p-&gt;utf8_mode( $bool )</dt>
+<dd>
+
+<p>Enable this option when parsing raw undecoded UTF-8. This tells the parser that the entities expanded for strings reported by <code>attr</code>, <code>@attr</code> and <code>dtext</code> should be expanded as decoded UTF-8 so they end up compatible with the surrounding text.</p>
+
+<p>If <code>utf8_mode</code> is enabled then it is an error to pass strings containing characters with code above 255 to the parse() method, and the parse() method will croak if you try.</p>
+
+<p>Example: The Unicode character "\x{2665}" is "\xE2\x99\xA5" when UTF-8 encoded. The character can also be represented by the entity "&amp;hearts;" or "&amp;#x2665". If we feed the parser:</p>
+
+<pre><div><div id="highlighter_757562" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse(</code><code class="perl string">"\xE2\x99\xA5&amp;hearts;"</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>then <code>dtext</code> will be reported as "\xE2\x99\xA5\x{2665}" without <code>utf8_mode</code> enabled, but as "\xE2\x99\xA5\xE2\x99\xA5" when enabled. The later string is what you want.</p>
+
+<p>This option is only available with perl-5.8 or better.</p>
+
+</dd>
+<dt id="$p-&gt;xml_mode"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Exml_mode" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--xml_mode"></a>$p-&gt;xml_mode</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;xml_mode(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Exml_mode(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--xml_mode---bool"></a>$p-&gt;xml_mode( $bool )</dt>
+<dd>
+
+<p>Enabling this attribute changes the parser to allow some XML constructs. This enables the behaviour controlled by individually by the <code>case_sensitive</code>, <code>empty_element_tags</code>, <code>strict_names</code> and <code>xml_pic</code> attributes and also suppresses special treatment of elements that are parsed as CDATA for HTML.</p>
+
+</dd>
+<dt id="$p-&gt;xml_pic"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Exml_pic" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--xml_pic"></a>$p-&gt;xml_pic</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;xml_pic(-$bool-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Exml_pic(-$bool-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--xml_pic---bool"></a>$p-&gt;xml_pic( $bool )</dt>
+<dd>
+
+<p>By default, <i>processing instructions</i> are terminated by "&gt;". When this attribute is enabled, processing instructions are terminated by "?&gt;" instead.</p>
+
+</dd>
+</dl>
+
+<p>As markup and text is recognized, handlers are invoked. The following method is used to set up handlers for different events:</p>
+
+<dl>
+
+<dt id="$p-&gt;handler(-event-=&gt;-\&amp;subroutine,-$argspec-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-=%3E-\&amp;subroutine,-$argspec-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event----subroutine---argspec"></a>$p-&gt;handler( event =&gt; \&amp;subroutine, $argspec )</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;handler(-event-=&gt;-$method_name,-$argspec-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-=%3E-$method_name,-$argspec-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event----method_name---argspec"></a>$p-&gt;handler( event =&gt; $method_name, $argspec )</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;handler(-event-=&gt;-\@accum,-$argspec-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-=%3E-\@accum,-$argspec-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event----accum---argspec"></a>$p-&gt;handler( event =&gt; \@accum, $argspec )</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;handler(-event-=&gt;-&quot;&quot;-);"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-=%3E-%22%22-);" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event"></a>$p-&gt;handler( event =&gt; "" );</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;handler(-event-=&gt;-undef-);"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-=%3E-undef-);" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event---undef"></a>$p-&gt;handler( event =&gt; undef );</dt>
+<dd>
+
+</dd>
+<dt id="$p-&gt;handler(-event-);"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ehandler(-event-);" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--handler--event1"></a>$p-&gt;handler( event );</dt>
+<dd>
+
+<p>This method assigns a subroutine, method, or array to handle an event.</p>
+
+<p>Event is one of <code>text</code>, <code>start</code>, <code>end</code>, <code>declaration</code>, <code>comment</code>, <code>process</code>, <code>start_document</code>, <code>end_document</code> or <code>default</code>.</p>
+
+<p>The <code>\&amp;subroutine</code> is a reference to a subroutine which is called to handle the event.</p>
+
+<p>The <code>$method_name</code> is the name of a method of $p which is called to handle the event.</p>
+
+<p>The <code>@accum</code> is an array that will hold the event information as sub-arrays.</p>
+
+<p>If the second argument is "", the event is ignored. If it is undef, the default handler is invoked for the event.</p>
+
+<p>The <code>$argspec</code> is a string that describes the information to be reported for the event. Any requested information that does not apply to a specific event is passed as <code>undef</code>. If argspec is omitted, then it is left unchanged.</p>
+
+<p>The return value from $p-&gt;handler is the old callback routine or a reference to the accumulator array.</p>
+
+<p>Any return values from handler callback routines/methods are always ignored. A handler callback can request parsing to be aborted by invoking the $p-&gt;eof method. A handler callback is not allowed to invoke the $p-&gt;parse() or $p-&gt;parse_file() method. An exception will be raised if it tries.</p>
+
+<p>Examples:</p>
+
+<pre><div><div id="highlighter_43017" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt;&nbsp; </code><code class="perl string">"start"</code><code class="perl plain">, </code><code class="perl string">'self, attr, attrseq, text'</code> <code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This causes the "start" method of object <code>$p</code> to be called for 'start' events. The callback signature is <code>$p-&gt;start(\%attr, \@attr_seq, $text)</code>.</p>
+
+<pre><div><div id="highlighter_535159" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt;&nbsp; \</code><code class="perl variable">&amp;start</code><code class="perl plain">, </code><code class="perl string">'attr, attrseq, text'</code> <code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This causes subroutine start() to be called for 'start' events. The callback signature is start(\%attr, \@attr_seq, $text).</p>
+
+<pre><div><div id="highlighter_256277" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt;&nbsp; \</code><code class="perl variable">@accum</code><code class="perl plain">, </code><code class="perl string">'"S", attr, attrseq, text'</code> <code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This causes 'start' event information to be saved in @accum. The array elements will be ['S', \%attr, \@attr_seq, $text].</p>
+
+<pre><div><div id="highlighter_485596" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt; </code><code class="perl string">""</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This causes 'start' events to be ignored. It also suppresses invocations of any default handler for start events. It is in most cases equivalent to $p-&gt;handler(start =&gt; sub {}), but is more efficient. It is different from the empty-sub-handler in that <code>skipped_text</code> is not reset by it.</p>
+
+<pre><div><div id="highlighter_153266" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt; </code><code class="perl functions">undef</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This causes no handler to be associated with start events. If there is a default handler it will be invoked.</p>
+
+</dd>
+</dl>
+
+<p>Filters based on tags can be set up to limit the number of events reported. The main bottleneck during parsing is often the huge number of callbacks made from the parser. Applying filters can improve performance significantly.</p>
+
+<p>The following methods control filters:</p>
+
+<dl>
+
+<dt id="$p-&gt;ignore_elements(-@tags-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eignore_elements(-@tags-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--ignore_elements---tags"></a>$p-&gt;ignore_elements( @tags )</dt>
+<dd>
+
+<p>Both the <code>start</code> event and the <code>end</code> event as well as any events that would be reported in between are suppressed. The ignored elements can contain nested occurrences of itself. Example:</p>
+
+<pre><div><div id="highlighter_693566" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;ignore_elements(</code><code class="perl string">qw(script style)</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>The <code>script</code> and <code>style</code> tags will always nest properly since their content is parsed in CDATA mode. For most other tags <code>ignore_elements</code> must be used with caution since HTML is often not <i>well formed</i>.</p>
+
+</dd>
+<dt id="$p-&gt;ignore_tags(-@tags-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Eignore_tags(-@tags-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--ignore_tags---tags"></a>$p-&gt;ignore_tags( @tags )</dt>
+<dd>
+
+<p>Any <code>start</code> and <code>end</code> events involving any of the tags given are suppressed. To reset the filter (i.e. don't suppress any <code>start</code> and <code>end</code> events), call <code>ignore_tags</code> without an argument.</p>
+
+</dd>
+<dt id="$p-&gt;report_tags(-@tags-)"><a href="https://metacpan.org/pod/HTML::Parser#$p-%3Ereport_tags(-@tags-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="p--report_tags---tags"></a>$p-&gt;report_tags( @tags )</dt>
+<dd>
+
+<p>Any <code>start</code> and <code>end</code> events involving any of the tags <i>not</i> given are suppressed. To reset the filter (i.e. report all <code>start</code> and <code>end</code> events), call <code>report_tags</code> without an argument.</p>
+
+</dd>
+</dl>
+
+<p>Internally, the system has two filter lists, one for <code>report_tags</code> and one for <code>ignore_tags</code>, and both filters are applied. This effectively gives <code>ignore_tags</code> precedence over <code>report_tags</code>.</p>
+
+<p>Examples:</p>
+
+<pre><div><div id="highlighter_349264" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;ignore_tags(</code><code class="perl string">qw(style)</code><code class="perl plain">);</code></div><div class="line number2 index1 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;report_tags(</code><code class="perl string">qw(script style)</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>results in only <code>script</code> events being reported.</p>
+
+<h2 id="Argspec"><a href="https://metacpan.org/pod/HTML::Parser#Argspec" class="anchor"><span class="fa fa-bookmark black"></span></a>Argspec</h2>
+
+<p>Argspec is a string containing a comma-separated list that describes the information reported by the event. The following argspec identifier names can be used:</p>
+
+<dl>
+
+<dt id="attr"><a href="https://metacpan.org/pod/HTML::Parser#attr" class="anchor"><span class="fa fa-bookmark black"></span></a><code>attr</code></dt>
+<dd>
+
+<p>Attr causes a reference to a hash of attribute name/value pairs to be passed.</p>
+
+<p>Boolean attributes' values are either the value set by $p-&gt;boolean_attribute_value, or the attribute name if no value has been set by $p-&gt;boolean_attribute_value.</p>
+
+<p>This passes undef except for <code>start</code> events.</p>
+
+<p>Unless <code>xml_mode</code> or <code>case_sensitive</code> is enabled, the attribute names are forced to lower case.</p>
+
+<p>General entities are decoded in the attribute values and one layer of matching quotes enclosing the attribute values is removed.</p>
+
+<p>The Unicode character set is assumed for entity decoding.</p>
+
+</dd>
+<dt id="@attr"><a href="https://metacpan.org/pod/HTML::Parser#@attr" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="attr1"></a><code>@attr</code></dt>
+<dd>
+
+<p>Basically the same as <code>attr</code>, but keys and values are passed as individual arguments and the original sequence of the attributes is kept. The parameters passed will be the same as the @attr calculated here:</p>
+
+<pre><div><div id="highlighter_79998" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">@attr</code> <code class="perl plain">= </code><code class="perl functions">map</code> <code class="perl plain">{ </code><code class="perl variable">$_</code> <code class="perl plain">=&gt; </code><code class="perl variable">$attr</code><code class="perl plain">-&gt;{</code><code class="perl variable">$_</code><code class="perl plain">} } </code><code class="perl variable">@$attrseq</code><code class="perl plain">;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>assuming $attr and $attrseq here are the hash and array passed as the result of <code>attr</code> and <code>attrseq</code> argspecs.</p>
+
+<p>This passes no values for events besides <code>start</code>.</p>
+
+</dd>
+<dt id="attrseq"><a href="https://metacpan.org/pod/HTML::Parser#attrseq" class="anchor"><span class="fa fa-bookmark black"></span></a><code>attrseq</code></dt>
+<dd>
+
+<p>Attrseq causes a reference to an array of attribute names to be passed. This can be useful if you want to walk the <code>attr</code> hash in the original sequence.</p>
+
+<p>This passes undef except for <code>start</code> events.</p>
+
+<p>Unless <code>xml_mode</code> or <code>case_sensitive</code> is enabled, the attribute names are forced to lower case.</p>
+
+</dd>
+<dt id="column"><a href="https://metacpan.org/pod/HTML::Parser#column" class="anchor"><span class="fa fa-bookmark black"></span></a><code>column</code></dt>
+<dd>
+
+<p>Column causes the column number of the start of the event to be passed. The first column on a line is 0.</p>
+
+</dd>
+<dt id="dtext"><a href="https://metacpan.org/pod/HTML::Parser#dtext" class="anchor"><span class="fa fa-bookmark black"></span></a><code>dtext</code></dt>
+<dd>
+
+<p>Dtext causes the decoded text to be passed. General entities are automatically decoded unless the event was inside a CDATA section or was between literal start and end tags (<code>script</code>, <code>style</code>, <code>xmp</code>, <code>iframe</code>, <code>title</code>, <code>textarea</code> and <code>plaintext</code>).</p>
+
+<p>The Unicode character set is assumed for entity decoding. With Perl version 5.6 or earlier only the Latin-1 range is supported, and entities for characters outside the range 0..255 are left unchanged.</p>
+
+<p>This passes undef except for <code>text</code> events.</p>
+
+</dd>
+<dt id="event"><a href="https://metacpan.org/pod/HTML::Parser#event" class="anchor"><span class="fa fa-bookmark black"></span></a><code>event</code></dt>
+<dd>
+
+<p>Event causes the event name to be passed.</p>
+
+<p>The event name is one of <code>text</code>, <code>start</code>, <code>end</code>, <code>declaration</code>, <code>comment</code>, <code>process</code>, <code>start_document</code> or <code>end_document</code>.</p>
+
+</dd>
+<dt id="is_cdata"><a href="https://metacpan.org/pod/HTML::Parser#is_cdata" class="anchor"><span class="fa fa-bookmark black"></span></a><code>is_cdata</code></dt>
+<dd>
+
+<p>Is_cdata causes a TRUE value to be passed if the event is inside a CDATA section or between literal start and end tags (<code>script</code>, <code>style</code>, <code>xmp</code>, <code>iframe</code>, <code>title</code>, <code>textarea</code> and <code>plaintext</code>).</p>
+
+<p>if the flag is FALSE for a text event, then you should normally either use <code>dtext</code> or decode the entities yourself before the text is processed further.</p>
+
+</dd>
+<dt id="length"><a href="https://metacpan.org/pod/HTML::Parser#length" class="anchor"><span class="fa fa-bookmark black"></span></a><code>length</code></dt>
+<dd>
+
+<p>Length causes the number of bytes of the source text of the event to be passed.</p>
+
+</dd>
+<dt id="line"><a href="https://metacpan.org/pod/HTML::Parser#line" class="anchor"><span class="fa fa-bookmark black"></span></a><code>line</code></dt>
+<dd>
+
+<p>Line causes the line number of the start of the event to be passed. The first line in the document is 1. Line counting doesn't start until at least one handler requests this value to be reported.</p>
+
+</dd>
+<dt id="offset"><a href="https://metacpan.org/pod/HTML::Parser#offset" class="anchor"><span class="fa fa-bookmark black"></span></a><code>offset</code></dt>
+<dd>
+
+<p>Offset causes the byte position in the HTML document of the start of the event to be passed. The first byte in the document has offset 0.</p>
+
+</dd>
+<dt id="offset_end"><a href="https://metacpan.org/pod/HTML::Parser#offset_end" class="anchor"><span class="fa fa-bookmark black"></span></a><code>offset_end</code></dt>
+<dd>
+
+<p>Offset_end causes the byte position in the HTML document of the end of the event to be passed. This is the same as <code>offset</code> + <code>length</code>.</p>
+
+</dd>
+<dt id="self"><a href="https://metacpan.org/pod/HTML::Parser#self" class="anchor"><span class="fa fa-bookmark black"></span></a><code>self</code></dt>
+<dd>
+
+<p>Self causes the current object to be passed to the handler. If the handler is a method, this must be the first element in the argspec.</p>
+
+<p>An alternative to passing self as an argspec is to register closures that capture $self by themselves as handlers. Unfortunately this creates circular references which prevent the HTML::Parser object from being garbage collected. Using the <code>self</code> argspec avoids this problem.</p>
+
+</dd>
+<dt id="skipped_text"><a href="https://metacpan.org/pod/HTML::Parser#skipped_text" class="anchor"><span class="fa fa-bookmark black"></span></a><code>skipped_text</code></dt>
+<dd>
+
+<p>Skipped_text returns the concatenated text of all the events that have been skipped since the last time an event was reported. Events might be skipped because no handler is registered for them or because some filter applies. Skipped text also includes marked section markup, since there are no events that can catch it.</p>
+
+<p>If an <code>""</code>-handler is registered for an event, then the text for this event is not included in <code>skipped_text</code>. Skipped text both before and after the <code>""</code>-event is included in the next reported <code>skipped_text</code>.</p>
+
+</dd>
+<dt id="tag"><a href="https://metacpan.org/pod/HTML::Parser#tag" class="anchor"><span class="fa fa-bookmark black"></span></a><code>tag</code></dt>
+<dd>
+
+<p>Same as <code>tagname</code>, but prefixed with "/" if it belongs to an <code>end</code> event and "!" for a declaration. The <code>tag</code> does not have any prefix for <code>start</code> events, and is in this case identical to <code>tagname</code>.</p>
+
+</dd>
+<dt id="tagname"><a href="https://metacpan.org/pod/HTML::Parser#tagname" class="anchor"><span class="fa fa-bookmark black"></span></a><code>tagname</code></dt>
+<dd>
+
+<p>This is the element name (or <i>generic identifier</i> in SGML jargon) for start and end tags. Since HTML is case insensitive, this name is forced to lower case to ease string matching.</p>
+
+<p>Since XML is case sensitive, the tagname case is not changed when <code>xml_mode</code> is enabled. The same happens if the <code>case_sensitive</code> attribute is set.</p>
+
+<p>The declaration type of declaration elements is also passed as a tagname, even if that is a bit strange. In fact, in the current implementation tagname is identical to <code>token0</code> except that the name may be forced to lower case.</p>
+
+</dd>
+<dt id="token0"><a href="https://metacpan.org/pod/HTML::Parser#token0" class="anchor"><span class="fa fa-bookmark black"></span></a><code>token0</code></dt>
+<dd>
+
+<p>Token0 causes the original text of the first token string to be passed. This should always be the same as $tokens-&gt;[0].</p>
+
+<p>For <code>declaration</code> events, this is the declaration type.</p>
+
+<p>For <code>start</code> and <code>end</code> events, this is the tag name.</p>
+
+<p>For <code>process</code> and non-strict <code>comment</code> events, this is everything inside the tag.</p>
+
+<p>This passes undef if there are no tokens in the event.</p>
+
+</dd>
+<dt id="tokenpos"><a href="https://metacpan.org/pod/HTML::Parser#tokenpos" class="anchor"><span class="fa fa-bookmark black"></span></a><code>tokenpos</code></dt>
+<dd>
+
+<p>Tokenpos causes a reference to an array of token positions to be passed. For each string that appears in <code>tokens</code>, this array contains two numbers. The first number is the offset of the start of the token in the original <code>text</code> and the second number is the length of the token.</p>
+
+<p>Boolean attributes in a <code>start</code> event will have (0,0) for the attribute value offset and length.</p>
+
+<p>This passes undef if there are no tokens in the event (e.g., <code>text</code>) and for artificial <code>end</code> events triggered by empty element tags.</p>
+
+<p>If you are using these offsets and lengths to modify <code>text</code>, you should either work from right to left, or be very careful to calculate the changes to the offsets.</p>
+
+</dd>
+<dt id="tokens"><a href="https://metacpan.org/pod/HTML::Parser#tokens" class="anchor"><span class="fa fa-bookmark black"></span></a><code>tokens</code></dt>
+<dd>
+
+<p>Tokens causes a reference to an array of token strings to be passed. The strings are exactly as they were found in the original text, no decoding or case changes are applied.</p>
+
+<p>For <code>declaration</code> events, the array contains each word, comment, and delimited string starting with the declaration type.</p>
+
+<p>For <code>comment</code> events, this contains each sub-comment. If $p-&gt;strict_comments is disabled, there will be only one sub-comment.</p>
+
+<p>For <code>start</code> events, this contains the original tag name followed by the attribute name/value pairs. The values of boolean attributes will be either the value set by $p-&gt;boolean_attribute_value, or the attribute name if no value has been set by $p-&gt;boolean_attribute_value.</p>
+
+<p>For <code>end</code> events, this contains the original tag name (always one token).</p>
+
+<p>For <code>process</code> events, this contains the process instructions (always one token).</p>
+
+<p>This passes <code>undef</code> for <code>text</code> events.</p>
+
+</dd>
+<dt id="text"><a href="https://metacpan.org/pod/HTML::Parser#text" class="anchor"><span class="fa fa-bookmark black"></span></a><code>text</code></dt>
+<dd>
+
+<p>Text causes the source text (including markup element delimiters) to be passed.</p>
+
+</dd>
+<dt id="undef"><a href="https://metacpan.org/pod/HTML::Parser#undef" class="anchor"><span class="fa fa-bookmark black"></span></a><code>undef</code></dt>
+<dd>
+
+<p>Pass an undefined value. Useful as padding where the same handler routine is registered for multiple events.</p>
+
+</dd>
+<dt id="&#39;...&#39;"><a href="https://metacpan.org/pod/HTML::Parser#&#39;...&#39;" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="pod"></a><code>'...'</code></dt>
+<dd>
+
+<p>A literal string of 0 to 255 characters enclosed in single (') or double (") quotes is passed as entered.</p>
+
+</dd>
+</dl>
+
+<p>The whole argspec string can be wrapped up in <code>'@{...}'</code> to signal that the resulting event array should be flattened. This only makes a difference if an array reference is used as the handler target. Consider this example:</p>
+
+<pre><div><div id="highlighter_767318" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">text</code> <code class="perl plain">=&gt; [], </code><code class="perl string">'text'</code><code class="perl plain">);</code></div><div class="line number2 index1 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">text</code> <code class="perl plain">=&gt; [], </code><code class="perl string">'@{text}'</code><code class="perl plain">]);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>With two text events; <code>"foo"</code>, <code>"bar"</code>; then the first example will end up with [["foo"], ["bar"]] and the second with ["foo", "bar"] in the handler target array.</p>
+
+<h2 id="Events"><a href="https://metacpan.org/pod/HTML::Parser#Events" class="anchor"><span class="fa fa-bookmark black"></span></a>Events</h2>
+
+<p>Handlers for the following events can be registered:</p>
+
+<dl>
+
+<dt id="comment"><a href="https://metacpan.org/pod/HTML::Parser#comment" class="anchor"><span class="fa fa-bookmark black"></span></a><code>comment</code></dt>
+<dd>
+
+<p>This event is triggered when a markup comment is recognized.</p>
+
+<p>Example:</p>
+
+<pre><div><div id="highlighter_155444" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;!-- This is a comment -- -- So is this --&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+</dd>
+<dt id="declaration"><a href="https://metacpan.org/pod/HTML::Parser#declaration" class="anchor"><span class="fa fa-bookmark black"></span></a><code>declaration</code></dt>
+<dd>
+
+<p>This event is triggered when a <i>markup declaration</i> is recognized.</p>
+
+<p>For typical HTML documents, the only declaration you are likely to find is &lt;!DOCTYPE ...&gt;.</p>
+
+<p>Example:</p>
+
+<pre><div><div id="highlighter_506215" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;!DOCTYPE HTML PUBLIC </code><code class="perl string">"-//W3C//DTD HTML 4.01//EN"</code></div><div class="line number2 index1 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">"<a href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>"</code><code class="perl plain">&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>DTDs inside &lt;!DOCTYPE ...&gt; will confuse HTML::Parser.</p>
+
+</dd>
+<dt id="default"><a href="https://metacpan.org/pod/HTML::Parser#default" class="anchor"><span class="fa fa-bookmark black"></span></a><code>default</code></dt>
+<dd>
+
+<p>This event is triggered for events that do not have a specific handler. You can set up a handler for this event to catch stuff you did not want to catch explicitly.</p>
+
+</dd>
+<dt id="end"><a href="https://metacpan.org/pod/HTML::Parser#end" class="anchor"><span class="fa fa-bookmark black"></span></a><code>end</code></dt>
+<dd>
+
+<p>This event is triggered when an end tag is recognized.</p>
+
+<p>Example:</p>
+
+<pre><div><div id="highlighter_884063" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;/A&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+</dd>
+<dt id="end_document"><a href="https://metacpan.org/pod/HTML::Parser#end_document" class="anchor"><span class="fa fa-bookmark black"></span></a><code>end_document</code></dt>
+<dd>
+
+<p>This event is triggered when $p-&gt;eof is called and after any remaining text is flushed. There is no document text associated with this event.</p>
+
+</dd>
+<dt id="process"><a href="https://metacpan.org/pod/HTML::Parser#process" class="anchor"><span class="fa fa-bookmark black"></span></a><code>process</code></dt>
+<dd>
+
+<p>This event is triggered when a processing instructions markup is recognized.</p>
+
+<p>The format and content of processing instructions are system and application dependent.</p>
+
+<p>Examples:</p>
+
+<pre><div><div id="highlighter_823059" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;? HTML processing instructions &gt;</code></div><div class="line number2 index1 alt1"><code class="perl plain">&lt;? XML processing instructions ?&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+</dd>
+<dt id="start"><a href="https://metacpan.org/pod/HTML::Parser#start" class="anchor"><span class="fa fa-bookmark black"></span></a><code>start</code></dt>
+<dd>
+
+<p>This event is triggered when a start tag is recognized.</p>
+
+<p>Example:</p>
+
+<pre><div><div id="highlighter_717102" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;A HREF=</code><code class="perl string">"<a href="http://www.perl.com/">http://www.perl.com/</a>"</code><code class="perl plain">&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+</dd>
+<dt id="start_document"><a href="https://metacpan.org/pod/HTML::Parser#start_document" class="anchor"><span class="fa fa-bookmark black"></span></a><code>start_document</code></dt>
+<dd>
+
+<p>This event is triggered before any other events for a new document. A handler for it can be used to initialize stuff. There is no document text associated with this event.</p>
+
+</dd>
+<dt id="text1"><a href="https://metacpan.org/pod/HTML::Parser#text1" class="anchor"><span class="fa fa-bookmark black"></span></a><code>text</code></dt>
+<dd>
+
+<p>This event is triggered when plain text (characters) is recognized. The text may contain multiple lines. A sequence of text may be broken between several text events unless $p-&gt;unbroken_text is enabled.</p>
+
+<p>The parser will make sure that it does not break a word or a sequence of whitespace between two text events.</p>
+
+</dd>
+</dl>
+
+<h2 id="Unicode"><a href="https://metacpan.org/pod/HTML::Parser#Unicode" class="anchor"><span class="fa fa-bookmark black"></span></a>Unicode</h2>
+
+<p><code>HTML::Parser</code> can parse Unicode strings when running under perl-5.8 or better. If Unicode is passed to $p-&gt;parse() then chunks of Unicode will be reported to the handlers. The offset and length argspecs will also report their position in terms of characters.</p>
+
+<p>It is safe to parse raw undecoded UTF-8 if you either avoid decoding entities and make sure to not use <i>argspecs</i> that do, or enable the <code>utf8_mode</code> for the parser. Parsing of undecoded UTF-8 might be useful when parsing from a file where you need the reported offsets and lengths to match the byte offsets in the file.</p>
+
+<p>If a filename is passed to $p-&gt;parse_file() then the file will be read in binary mode. This will be fine if the file contains only ASCII or Latin-1 characters. If the file contains UTF-8 encoded text then care must be taken when decoding entities as described in the previous paragraph, but better is to open the file with the UTF-8 layer so that it is decoded properly:</p>
+
+<pre><div><div id="highlighter_538481" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl functions">open</code><code class="perl plain">(</code><code class="perl keyword">my</code> <code class="perl variable">$fh</code><code class="perl plain">, </code><code class="perl string">"&lt;:utf8"</code><code class="perl plain">, </code><code class="perl string">"index.html"</code><code class="perl plain">) || </code><code class="perl keyword">die</code> <code class="perl string">"...: $!"</code><code class="perl plain">;</code></div><div class="line number2 index1 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse_file(</code><code class="perl variable">$fh</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>If the file contains text encoded in a charset besides ASCII, Latin-1 or UTF-8 then decoding will always be needed.</p>
+
+<h1 id="VERSION-2-COMPATIBILITY"><a href="https://metacpan.org/pod/HTML::Parser#VERSION-2-COMPATIBILITY" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="VERSION"></a>VERSION 2 COMPATIBILITY</h1>
+
+<p>When an <code>HTML::Parser</code> object is constructed with no arguments, a set of handlers is automatically provided that is compatible with the old HTML::Parser version 2 callback methods.</p>
+
+<p>This is equivalent to the following method calls:</p>
+
+<pre><div><div id="highlighter_76232" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code>&nbsp;&nbsp; <code class="perl plain">=&gt; </code><code class="perl string">"start"</code><code class="perl plain">,&nbsp;&nbsp; </code><code class="perl string">"self, tagname, attr, attrseq, text"</code><code class="perl plain">);</code></div><div class="line number2 index1 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">end</code>&nbsp;&nbsp;&nbsp;&nbsp; <code class="perl plain">=&gt; </code><code class="perl string">"end"</code><code class="perl plain">,&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="perl string">"self, tagname, text"</code><code class="perl plain">);</code></div><div class="line number3 index2 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">text</code>&nbsp;&nbsp;&nbsp; <code class="perl plain">=&gt; </code><code class="perl string">"text"</code><code class="perl plain">,&nbsp;&nbsp;&nbsp; </code><code class="perl string">"self, text, is_cdata"</code><code class="perl plain">);</code></div><div class="line number4 index3 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">process</code> <code class="perl plain">=&gt; </code><code class="perl string">"process"</code><code class="perl plain">, </code><code class="perl string">"self, token0, text"</code><code class="perl plain">);</code></div><div class="line number5 index4 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code></div><div class="line number6 index5 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">comment</code> <code class="perl plain">=&gt; </code><code class="perl keyword">sub</code> <code class="perl plain">{</code></div><div class="line number7 index6 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl keyword">my</code><code class="perl plain">(</code><code class="perl variable">$self</code><code class="perl plain">, </code><code class="perl variable">$tokens</code><code class="perl plain">) = </code><code class="perl variable">@_</code><code class="perl plain">;</code></div><div class="line number8 index7 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl keyword">for</code> <code class="perl plain">(</code><code class="perl variable">@$tokens</code><code class="perl plain">) {</code><code class="perl variable">$self</code><code class="perl plain">-&gt;comment(</code><code class="perl variable">$_</code><code class="perl plain">);}</code></div><div class="line number9 index8 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl plain">},</code></div><div class="line number10 index9 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">"self, tokens"</code></div><div class="line number11 index10 alt2"><code class="perl plain">);</code></div><div class="line number12 index11 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code></div><div class="line number13 index12 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">declaration</code> <code class="perl plain">=&gt; </code><code class="perl keyword">sub</code> <code class="perl plain">{</code></div><div class="line number14 index13 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl keyword">my</code> <code class="perl variable">$self</code> <code class="perl plain">= </code><code class="perl functions">shift</code><code class="perl plain">;</code></div><div class="line number15 index14 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl variable">$self</code><code class="perl plain">-&gt;declaration(</code><code class="perl functions">substr</code><code class="perl plain">(</code><code class="perl variable">$_</code><code class="perl plain">[0], 2, -1));</code></div><div class="line number16 index15 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl plain">},</code></div><div class="line number17 index16 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">"self, text"</code></div><div class="line number18 index17 alt1"><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>Setting up these handlers can also be requested with the "api_version =&gt; 2" constructor option.</p>
+
+<h1 id="SUBCLASSING"><a href="https://metacpan.org/pod/HTML::Parser#SUBCLASSING" class="anchor"><span class="fa fa-bookmark black"></span></a>SUBCLASSING</h1>
+
+<p>The <code>HTML::Parser</code> class is able to be subclassed. Parser objects are plain hashes and <code>HTML::Parser</code> reserves only hash keys that start with "_hparser". The parser state can be set up by invoking the init() method, which takes the same arguments as new().</p>
+
+<h1 id="EXAMPLES"><a href="https://metacpan.org/pod/HTML::Parser#EXAMPLES" class="anchor"><span class="fa fa-bookmark black"></span></a>EXAMPLES</h1>
+
+<p>The first simple example shows how you might strip out comments from an HTML document. We achieve this by setting up a comment handler that does nothing and a default handler that will print out anything else:</p>
+
+<pre><div><div id="highlighter_618907" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Parser">HTML::Parser</a>;</code></div><div class="line number2 index1 alt1"><code class="perl plain">HTML::Parser-&gt;new(</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">default_h</code> <code class="perl plain">=&gt; [</code><code class="perl keyword">sub</code> <code class="perl plain">{ </code><code class="perl functions">print</code> <code class="perl functions">shift</code> <code class="perl plain">}, </code><code class="perl string">'text'</code><code class="perl plain">],</code></div><div class="line number4 index3 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">comment_h</code> <code class="perl plain">=&gt; [</code><code class="perl string">""</code><code class="perl plain">],</code></div><div class="line number5 index4 alt2"><code class="perl plain">)-&gt;parse_file(</code><code class="perl functions">shift</code> <code class="perl plain">|| </code><code class="perl keyword">die</code><code class="perl plain">) || </code><code class="perl keyword">die</code> <code class="perl plain">$!;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>An alternative implementation is:</p>
+
+<pre><div><div id="highlighter_144885" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Parser">HTML::Parser</a>;</code></div><div class="line number2 index1 alt1"><code class="perl plain">HTML::Parser-&gt;new(</code></div><div class="line number3 index2 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">end_document_h</code> <code class="perl plain">=&gt; [</code><code class="perl keyword">sub</code> <code class="perl plain">{ </code><code class="perl functions">print</code> <code class="perl functions">shift</code> <code class="perl plain">}, </code><code class="perl string">'skipped_text'</code><code class="perl plain">],</code></div><div class="line number4 index3 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl string">comment_h</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="perl plain">=&gt; [</code><code class="perl string">""</code><code class="perl plain">],</code></div><div class="line number5 index4 alt2"><code class="perl plain">)-&gt;parse_file(</code><code class="perl functions">shift</code> <code class="perl plain">|| </code><code class="perl keyword">die</code><code class="perl plain">) || </code><code class="perl keyword">die</code> <code class="perl plain">$!;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This will in most cases be much more efficient since only a single callback will be made.</p>
+
+<p>The next example prints out the text that is inside the &lt;title&gt; element of an HTML document. Here we start by setting up a start handler. When it sees the title start tag it enables a text handler that prints any text found and an end handler that will terminate parsing as soon as the title end tag is seen:</p>
+
+<pre><div><div id="highlighter_776684" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Parser">HTML::Parser</a> ();</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="perl keyword">sub</code> <code class="perl plain">start_handler {</code></div><div class="line number4 index3 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl keyword">return</code> <code class="perl keyword">if</code> <code class="perl functions">shift</code> <code class="perl plain">ne </code><code class="perl string">"title"</code><code class="perl plain">;</code></div><div class="line number5 index4 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl keyword">my</code> <code class="perl variable">$self</code> <code class="perl plain">= </code><code class="perl functions">shift</code><code class="perl plain">;</code></div><div class="line number6 index5 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl variable">$self</code><code class="perl plain">-&gt;handler(</code><code class="perl string">text</code> <code class="perl plain">=&gt; </code><code class="perl keyword">sub</code> <code class="perl plain">{ </code><code class="perl functions">print</code> <code class="perl functions">shift</code> <code class="perl plain">}, </code><code class="perl string">"dtext"</code><code class="perl plain">);</code></div><div class="line number7 index6 alt2"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl variable">$self</code><code class="perl plain">-&gt;handler(</code></div><div class="line number8 index7 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">end</code>&nbsp; <code class="perl plain">=&gt; </code><code class="perl keyword">sub</code> <code class="perl plain">{</code></div><div class="line number9 index8 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl functions">shift</code><code class="perl plain">-&gt;</code><code class="perl functions">eof</code> <code class="perl keyword">if</code> <code class="perl functions">shift</code> <code class="perl plain">eq </code><code class="perl string">"title"</code><code class="perl plain">;</code></div><div class="line number10 index9 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl plain">},</code></div><div class="line number11 index10 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">"tagname,self"</code></div><div class="line number12 index11 alt1"><code class="perl spaces">&nbsp;&nbsp;</code><code class="perl plain">);</code></div><div class="line number13 index12 alt2"><code class="perl plain">}</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="perl keyword">my</code> <code class="perl variable">$p</code> <code class="perl plain">= HTML::Parser-&gt;new(</code><code class="perl string">api_version</code> <code class="perl plain">=&gt; 3);</code></div><div class="line number16 index15 alt1"><code class="perl variable">$p</code><code class="perl plain">-&gt;handler(</code><code class="perl string">start</code> <code class="perl plain">=&gt; \</code><code class="perl variable">&amp;start_handler</code><code class="perl plain">, </code><code class="perl string">"tagname,self"</code><code class="perl plain">);</code></div><div class="line number17 index16 alt2"><code class="perl variable">$p</code><code class="perl plain">-&gt;parse_file(</code><code class="perl functions">shift</code> <code class="perl plain">|| </code><code class="perl keyword">die</code><code class="perl plain">) || </code><code class="perl keyword">die</code> <code class="perl plain">$!;</code></div><div class="line number18 index17 alt1"><code class="perl functions">print</code> <code class="perl string">"\n"</code><code class="perl plain">;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>More examples are found in the <i>eg/</i> directory of the <code>HTML-Parser</code> distribution: the program <code>hrefsub</code> shows how you can edit all links found in a document; the program <code>htextsub</code> shows how to edit the text only; the program <code>hstrip</code> shows how you can strip out certain tags/elements and/or attributes; and the program <code>htext</code> show how to obtain the plain text, but not any script/style content.</p>
+
+<p>You can browse the <i>eg/</i> directory online from the <i>[Browse]</i> link on the http://search.cpan.org/~gaas/HTML-Parser/ page.</p>
+
+<h1 id="BUGS"><a href="https://metacpan.org/pod/HTML::Parser#BUGS" class="anchor"><span class="fa fa-bookmark black"></span></a>BUGS</h1>
+
+<p>The &lt;style&gt; and &lt;script&gt; sections do not end with the first "&lt;/", but need the complete corresponding end tag. The standard behaviour is not really practical.</p>
+
+<p>When the <i>strict_comment</i> option is enabled, we still recognize comments where there is something other than whitespace between even and odd "--" markers.</p>
+
+<p>Once $p-&gt;boolean_attribute_value has been set, there is no way to restore the default behaviour.</p>
+
+<p>There is currently no way to get both quote characters into the same literal argspec.</p>
+
+<p>Empty tags, e.g. "&lt;&gt;" and "&lt;/&gt;", are not recognized. SGML allows them to repeat the previous start tag or close the previous start tag respectively.</p>
+
+<p>NET tags, e.g. "code/.../" are not recognized. This is SGML shorthand for "&lt;code&gt;...&lt;/code&gt;".</p>
+
+<p>Incomplete start or end tags, e.g. "&lt;tt&lt;b&gt;...&lt;/b&lt;/tt&gt;" are not recognized.</p>
+
+<h1 id="DIAGNOSTICS"><a href="https://metacpan.org/pod/HTML::Parser#DIAGNOSTICS" class="anchor"><span class="fa fa-bookmark black"></span></a>DIAGNOSTICS</h1>
+
+<p>The following messages may be produced by HTML::Parser. The notation in this listing is the same as used in <a href="https://metacpan.org/pod/perldiag">perldiag</a>:</p>
+
+<dl>
+
+<dt id="Not-a-reference-to-a-hash"><a href="https://metacpan.org/pod/HTML::Parser#Not-a-reference-to-a-hash" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Not"></a>Not a reference to a hash</dt>
+<dd>
+
+<p>(F) The object blessed into or subclassed from HTML::Parser is not a hash as required by the HTML::Parser methods.</p>
+
+</dd>
+<dt id="Bad-signature-in-parser-state-object-at-%p"><a href="https://metacpan.org/pod/HTML::Parser#Bad-signature-in-parser-state-object-at-%p" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Bad"></a><a id="Bad-signature-in-parser-state-object-at--p"></a>Bad signature in parser state object at %p</dt>
+<dd>
+
+<p>(F) The _hparser_xs_state element does not refer to a valid state structure. Something must have changed the internal value stored in this hash element, or the memory has been overwritten.</p>
+
+</dd>
+<dt id="_hparser_xs_state-element-is-not-a-reference"><a href="https://metacpan.org/pod/HTML::Parser#_hparser_xs_state-element-is-not-a-reference" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="_hparser_xs_state"></a><a id="hparser_xs_state-element-is-not-a-reference"></a>_hparser_xs_state element is not a reference</dt>
+<dd>
+
+<p>(F) The _hparser_xs_state element has been destroyed.</p>
+
+</dd>
+<dt id="Can&#39;t-find-&#39;_hparser_xs_state&#39;-element-in-HTML::Parser-hash"><a href="https://metacpan.org/pod/HTML::Parser#Can&#39;t-find-&#39;_hparser_xs_state&#39;-element-in-HTML::Parser-hash" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Can"></a><a id="Can-t-find--_hparser_xs_state--element-in-HTML::Parser-hash"></a>Can't find '_hparser_xs_state' element in HTML::Parser hash</dt>
+<dd>
+
+<p>(F) The _hparser_xs_state element is missing from the parser hash. It was either deleted, or not created when the object was created.</p>
+
+</dd>
+<dt id="API-version-%s-not-supported-by-HTML::Parser-%s"><a href="https://metacpan.org/pod/HTML::Parser#API-version-%s-not-supported-by-HTML::Parser-%s" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="API"></a><a id="API-version--s-not-supported-by-HTML::Parser--s"></a>API version %s not supported by HTML::Parser %s</dt>
+<dd>
+
+<p>(F) The constructor option 'api_version' with an argument greater than or equal to 4 is reserved for future extensions.</p>
+
+</dd>
+<dt id="Bad-constructor-option-&#39;%s&#39;"><a href="https://metacpan.org/pod/HTML::Parser#Bad-constructor-option-&#39;%s&#39;" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Bad1"></a><a id="Bad-constructor-option--s"></a>Bad constructor option '%s'</dt>
+<dd>
+
+<p>(F) An unknown constructor option key was passed to the new() or init() methods.</p>
+
+</dd>
+<dt id="Parse-loop-not-allowed"><a href="https://metacpan.org/pod/HTML::Parser#Parse-loop-not-allowed" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Parse"></a>Parse loop not allowed</dt>
+<dd>
+
+<p>(F) A handler invoked the parse() or parse_file() method. This is not permitted.</p>
+
+</dd>
+<dt id="marked-sections-not-supported"><a href="https://metacpan.org/pod/HTML::Parser#marked-sections-not-supported" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="marked"></a>marked sections not supported</dt>
+<dd>
+
+<p>(F) The $p-&gt;marked_sections() method was invoked in a HTML::Parser module that was compiled without support for marked sections.</p>
+
+</dd>
+<dt id="Unknown-boolean-attribute-(%d)"><a href="https://metacpan.org/pod/HTML::Parser#Unknown-boolean-attribute-(%d)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Unknown"></a><a id="Unknown-boolean-attribute--d"></a>Unknown boolean attribute (%d)</dt>
+<dd>
+
+<p>(F) Something is wrong with the internal logic that set up aliases for boolean attributes.</p>
+
+</dd>
+<dt id="Only-code-or-array-references-allowed-as-handler"><a href="https://metacpan.org/pod/HTML::Parser#Only-code-or-array-references-allowed-as-handler" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Only"></a>Only code or array references allowed as handler</dt>
+<dd>
+
+<p>(F) The second argument for $p-&gt;handler must be either a subroutine reference, then name of a subroutine or method, or a reference to an array.</p>
+
+</dd>
+<dt id="No-handler-for-%s-events"><a href="https://metacpan.org/pod/HTML::Parser#No-handler-for-%s-events" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="No"></a><a id="No-handler-for--s-events"></a>No handler for %s events</dt>
+<dd>
+
+<p>(F) The first argument to $p-&gt;handler must be a valid event name; i.e. one of "start", "end", "text", "process", "declaration" or "comment".</p>
+
+</dd>
+<dt id="Unrecognized-identifier-%s-in-argspec"><a href="https://metacpan.org/pod/HTML::Parser#Unrecognized-identifier-%s-in-argspec" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Unrecognized"></a><a id="Unrecognized-identifier--s-in-argspec"></a>Unrecognized identifier %s in argspec</dt>
+<dd>
+
+<p>(F) The identifier is not a known argspec name. Use one of the names mentioned in the argspec section above.</p>
+
+</dd>
+<dt id="Literal-string-is-longer-than-255-chars-in-argspec"><a href="https://metacpan.org/pod/HTML::Parser#Literal-string-is-longer-than-255-chars-in-argspec" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Literal"></a>Literal string is longer than 255 chars in argspec</dt>
+<dd>
+
+<p>(F) The current implementation limits the length of literals in an argspec to 255 characters. Make the literal shorter.</p>
+
+</dd>
+<dt id="Backslash-reserved-for-literal-string-in-argspec"><a href="https://metacpan.org/pod/HTML::Parser#Backslash-reserved-for-literal-string-in-argspec" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Backslash"></a>Backslash reserved for literal string in argspec</dt>
+<dd>
+
+<p>(F) The backslash character "\" is not allowed in argspec literals. It is reserved to permit quoting inside a literal in a later version.</p>
+
+</dd>
+<dt id="Unterminated-literal-string-in-argspec"><a href="https://metacpan.org/pod/HTML::Parser#Unterminated-literal-string-in-argspec" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Unterminated"></a>Unterminated literal string in argspec</dt>
+<dd>
+
+<p>(F) The terminating quote character for a literal was not found.</p>
+
+</dd>
+<dt id="Bad-argspec-(%s)"><a href="https://metacpan.org/pod/HTML::Parser#Bad-argspec-(%s)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Bad2"></a><a id="Bad-argspec--s"></a>Bad argspec (%s)</dt>
+<dd>
+
+<p>(F) Only identifier names, literals, spaces and commas are allowed in argspecs.</p>
+
+</dd>
+<dt id="Missing-comma-separator-in-argspec"><a href="https://metacpan.org/pod/HTML::Parser#Missing-comma-separator-in-argspec" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Missing"></a>Missing comma separator in argspec</dt>
+<dd>
+
+<p>(F) Identifiers in an argspec must be separated with ",".</p>
+
+</dd>
+<dt id="Parsing-of-undecoded-UTF-8-will-give-garbage-when-decoding-entities"><a href="https://metacpan.org/pod/HTML::Parser#Parsing-of-undecoded-UTF-8-will-give-garbage-when-decoding-entities" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Parsing"></a>Parsing of undecoded UTF-8 will give garbage when decoding entities</dt>
+<dd>
+
+<p>(W) The first chunk parsed appears to contain undecoded UTF-8 and one or more argspecs that decode entities are used for the callback handlers.</p>
+
+<p>The result of decoding will be a mix of encoded and decoded characters for any entities that expand to characters with code above 127. This is not a good thing.</p>
+
+<p>The recommended solution is to apply Encode::decode_utf8() on the data before feeding it to the $p-&gt;parse(). For $p-&gt;parse_file() pass a file that has been opened in ":utf8" mode.</p>
+
+<p>The alternative solution is to enable the <code>utf8_mode</code> and not decode before passing strings to $p-&gt;parse(). The parser can process raw undecoded UTF-8 sanely if the <code>utf8_mode</code> is enabled, or if the <code>attr</code>, <code>@attr</code> or <code>dtext</code> argspecs are avoided.</p>
+
+</dd>
+<dt id="Parsing-string-decoded-with-wrong-endian-selection"><a href="https://metacpan.org/pod/HTML::Parser#Parsing-string-decoded-with-wrong-endian-selection" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Parsing1"></a>Parsing string decoded with wrong endian selection</dt>
+<dd>
+
+<p>(W) The first character in the document is U+FFFE. This is not a legal Unicode character but a byte swapped <code>BOM</code>. The result of parsing will likely be garbage.</p>
+
+</dd>
+<dt id="Parsing-of-undecoded-UTF-32"><a href="https://metacpan.org/pod/HTML::Parser#Parsing-of-undecoded-UTF-32" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Parsing2"></a>Parsing of undecoded UTF-32</dt>
+<dd>
+
+<p>(W) The parser found the Unicode UTF-32 <code>BOM</code> signature at the start of the document. The result of parsing will likely be garbage.</p>
+
+</dd>
+<dt id="Parsing-of-undecoded-UTF-16"><a href="https://metacpan.org/pod/HTML::Parser#Parsing-of-undecoded-UTF-16" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Parsing3"></a>Parsing of undecoded UTF-16</dt>
+<dd>
+
+<p>(W) The parser found the Unicode UTF-16 <code>BOM</code> signature at the start of the document. The result of parsing will likely be garbage.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO"><a href="https://metacpan.org/pod/HTML::Parser#SEE-ALSO" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="SEE"></a>SEE ALSO</h1>
+
+<p><a href="https://metacpan.org/pod/HTML::Entities">HTML::Entities</a>, <a href="https://metacpan.org/pod/HTML::PullParser">HTML::PullParser</a>, <a href="https://metacpan.org/pod/HTML::TokeParser">HTML::TokeParser</a>, <a href="https://metacpan.org/pod/HTML::HeadParser">HTML::HeadParser</a>, <a href="https://metacpan.org/pod/HTML::LinkExtor">HTML::LinkExtor</a>, <a href="https://metacpan.org/pod/HTML::Form">HTML::Form</a></p>
+
+<p><a href="https://metacpan.org/pod/HTML::TreeBuilder">HTML::TreeBuilder</a> (part of the <i>HTML-Tree</i> distribution)</p>
+
+<p><a href="http://www.w3.org/TR/html4/">http://www.w3.org/TR/html4/</a></p>
+
+<p>More information about marked sections and processing instructions may be found at <a href="http://www.is-thought.co.uk/book/sgml-8.htm">http://www.is-thought.co.uk/book/sgml-8.htm</a>.</p>
+
+<h1 id="COPYRIGHT"><a href="https://metacpan.org/pod/HTML::Parser#COPYRIGHT" class="anchor"><span class="fa fa-bookmark black"></span></a>COPYRIGHT</h1>
+
+<pre><div><div id="highlighter_38875" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">Copyright 1996-2016 Gisle Aas. All rights reserved.</code></div><div class="line number2 index1 alt1"><code class="perl plain">Copyright 1999-2000 Michael A. Chase.&nbsp; All rights reserved.</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+  
+        <div id="install-instructions-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Module Install Instructions</h4>
+            </div>
+            <div class="modal-body">
+                <p>To install HTML::Parser, copy and paste the appropriate command in to your terminal.</p>
+                <p><a href="https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm">cpanm</a></p>
+                <pre>                    cpanm HTML::Parser
+                </pre>
+                <p><a href="https://metacpan.org/pod/CPAN">CPAN shell</a></p>
+                <pre>                    perl -MCPAN -e shell
+                    install HTML::Parser
+                </pre>
+                <p>For more information on module installation, please visit <a href="https://www.cpan.org/modules/INSTALL.html">the detailed CPAN module installation guide</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="https://metacpan.org/pod/HTML::Parser#" data-dismiss="modal" class="btn">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+
+                </div>
+            </div>
+
+            <div class="row footer">
+                <div class="hidden-xs hidden-sm col-md-2">&nbsp;</div>
+                <div class="col-xs-2 col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://fastapi.metacpan.org/">API</a>
+                </div>
+                <div class="col-xs-5 col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/about">About MetaCPAN</a>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/mirrors">CPAN Mirrors</a>
+                </div>
+                <div class="hidden-xs col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://github.com/metacpan/metacpan-web">Fork metacpan.org</a>
+                </div>
+                <div class="hidden-xs col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://www.perl.org/">Perl.org</a>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 50px 15px 30px">
+              <div class="col-xs-9 col-md-3" style="padding:25px">
+                <a href="https://www.bytemark.co.uk/r/metacpan.org/" target="_blank" rel="noopener">
+                  <img width="170" src="./HTML__Parser - HTML parser class - metacpan.org_files/bytemark_logo.png" alt="Bytemark logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.liquidweb.com/" rel="noopener">
+                  <img width="170" src="./HTML__Parser - HTML parser class - metacpan.org_files/liquidweb_color.png" alt="liquidweb logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.yellowbot.com/" rel="noopener">
+                  <img width="170" src="./HTML__Parser - HTML parser class - metacpan.org_files/yellowbot-small.png" alt="YellowBot logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a href="https://www.fastly.com/" target="_blank" rel="noopener">
+                  <img src="./HTML__Parser - HTML parser class - metacpan.org_files/fastly_logo.png" width="110" height="51" alt="Fastly logo">
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-18 col-xs-offset-3 col-md-6" style="padding-bottom: 20px">
+                As a valued partner and proud supporter of MetaCPAN, StickerYou is
+                happy to offer a 10% discount on all <a href="https://www.stickeryou.com/products/custom-stickers/335/" target="_blank" rel="noopener">Custom Stickers</a>,
+                <a href="https://www.stickeryou.com/products/business-labels/655" target="_blank" rel="noopener">Business Labels</a>, Roll Labels,
+                Vinyl Lettering or Custom Decals.  <a href="http://stickeryou.com/" target="_blank" rel="noopener">StickerYou.com</a>
+                is your one-stop shop to make your business stick.
+                Use code <strong>METACPAN10</strong> at checkout to apply your discount.
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="keyboard-shortcuts">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Keyboard Shortcuts</h4>
+              </div>
+              <div class="modal-body row">
+                <div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>s</kbd>
+        </td>
+        <td>Focus search bar</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>?</kbd>
+        </td>
+        <td>Bring up this help dialog</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>p</kbd>
+        </td>
+        <td>Go to pull requests</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>go to github issues (only if github is preferred repository)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>POD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>a</kbd>
+        </td>
+        <td>Go to author</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>c</kbd>
+        </td>
+        <td>Go to changes</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>Go to issues</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>d</kbd>
+        </td>
+        <td>Go to dist</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>r</kbd>
+        </td>
+        <td>Go to repository/SCM</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>s</kbd>
+        </td>
+        <td>Go to source</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>b</kbd>
+        </td>
+        <td>Go to file browse</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+    
+
+<div class="autocomplete-suggestions" style="position: absolute; display: none; width: 450px; max-height: 180px; z-index: 9999;"></div></body></html>

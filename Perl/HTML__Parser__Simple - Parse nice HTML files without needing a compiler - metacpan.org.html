@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://metacpan.org/pod/HTML::Parser::Simple -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <title>HTML::Parser::Simple - Parse nice HTML files without needing a compiler - metacpan.org</title>
+        <link rel="alternate" type="application/rss+xml" title="Recent CPAN Uploads of HTML-Parser-Simple - MetaCPAN" href="https://metacpan.org/feed/distribution/HTML-Parser-Simple">
+        <link href="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/43f1789ab677af5f49609b1c0d1b47ae2e8f8f9a.css" rel="stylesheet" type="text/css">
+        <link rel="search" href="https://metacpan.org/static/opensearch.xml" type="application/opensearchdescription+xml" title="MetaCPAN">
+        <link rel="canonical" href="https://metacpan.org/pod/HTML::Parser::Simple">
+        <meta name="description" content="Parse nice HTML files without needing a compiler">
+        <link rel="shortcut icon" href="https://metacpan.org/static/icons/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://metacpan.org/static/icons/apple-touch-icon.png">
+        <script async="" src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/analytics.js.download"></script><script src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/fd5168e65900c25667cf67492768981b6ae747ea.js.download" type="text/javascript" defer=""></script>
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-27829474-1', {
+              siteSpeedSampleRate : 100
+          });
+          ga('send', 'pageview');
+        </script>
+        
+        <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://metacpan.org/pod/HTML::Parser::Simple">
+<meta name="twitter:title" content="HTML::Parser::Simple">
+<meta name="twitter:description" content="Parse nice HTML files without needing a compiler">
+<meta name="twitter:site" content="metacpan">
+
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                <li class="visible-xs">
+                <a href="https://metacpan.org/pod/HTML::Parser::Simple#" data-toggle="slidepanel" data-target=".slidepanel">
+                  <i class="fa fa-bars icon-slidepanel"></i>
+                </a>
+                </li>
+            
+                    <li class="">
+                        <a href="https://metacpan.org/"><img src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/metacpan-icon.png" alt="MetaCPAN icon">                            Home                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://grep.metacpan.org/"><i class="fa fa-search"></i>                            grep::cpan                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://metacpan.org/recent"><i class="fa fa-history"></i>                            Recent                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about"><i class="fa fa-info"></i>                            About                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about/faq"><i class="fa fa-question"></i>                            FAQ                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://github.com/metacpan/metacpan-web/issues"><i class="fa fa-github-alt"></i>                            GitHub Issues                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/news"><i class="fa fa-newspaper-o"></i>                            News                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/tools"><i class="fa fa-wrench"></i>                            Tools                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://fastapi.metacpan.org/"><i class="fa fa-database"></i>                            API                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form action="https://metacpan.org/account/logout" method="POST" id="metacpan-logout"></form>
+                    <li class="dropdown logged_in" style="display: none;">
+                        <a href="https://metacpan.org/pod/HTML::Parser::Simple#" class="dropdown-toggle" data-toggle="dropdown">
+                        Account
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://metacpan.org/account/identities">Identities</a></li>
+                            <li><a href="https://metacpan.org/account/profile">Profile</a></li>
+                            <li><a href="https://metacpan.org/account/favorite/list">Favorites</a></li>
+                            <li>
+                                <a href="https://metacpan.org/pod/HTML::Parser::Simple#" onclick="$(&#39;#metacpan-logout&#39;).submit(); return false">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown logged_out" style="display: inline;">
+                        <a href="https://metacpan.org/pod/HTML::Parser::Simple#" class="dropdown-toggle" data-toggle="dropdown">
+                        Sign in
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=github" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-github fa-fw"></i>
+                                GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=twitter" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-twitter fa-fw"></i>
+                                Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=google" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-google fa-fw"></i>
+                                Google
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://metacpan.org/login/openid">
+                                <i class="fa fa-openid fa-fw"></i>
+                                OpenID
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-pod">
+
+        
+
+            
+            <div class="row hidden-phone">
+                <div class="head-small-logo col-md-3">
+                    <a href="https://metacpan.org/" class="small-logo"></a>
+                </div>
+                <div class="col-md-9">
+                    <form action="https://metacpan.org/search" class="search-form form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="q" size="41" id="search-input" class="form-control" value="" autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button class="btn search-btn" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="main-content col-md-12">
+                    
+
+
+
+
+<div itemscope="" itemtype="http://schema.org/SoftwareApplication">
+  
+
+
+<div class="breadcrumbs">
+  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <a itemprop="url" data-keyboard-shortcut="g a" rel="author" href="https://metacpan.org/author/RSAVAGE" title="" class="author-name"><span itemprop="name">Ron Savage</span></a>
+  </span>
+  <span>&nbsp;/&nbsp;</span>
+  <div class="release status-latest maturity-released">
+    <span class="dropdown"><b class="caret"></b></span>
+    <select class="" onchange="document.location.href=this.value">
+
+  <option selected="" value="/module/RSAVAGE/HTML-Parser-Simple-2.02/lib/HTML/Parser/Simple.pm">
+    2.02
+      (RSAVAGE on 2015-01-25)
+      
+  </option>
+        <optgroup label="BackPAN">
+          
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-2.01/lib/HTML/Parser/Simple.pm">
+    2.01
+      (RSAVAGE on 2013-10-07)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-2.00/lib/HTML/Parser/Simple.pm">
+    2.00
+      (RSAVAGE on 2012-11-20)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.07/lib/HTML/Parser/Simple.pm">
+    1.07
+      (RSAVAGE on 2012-11-18)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.06/lib/HTML/Parser/Simple.pm">
+    1.06
+      (RSAVAGE on 2011-02-05)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.05/lib/HTML/Parser/Simple.pm">
+    1.05
+      (RSAVAGE on 2010-08-24)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.04/lib/HTML/Parser/Simple.pm">
+    1.04
+      (RSAVAGE on 2010-02-02)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.03/lib/HTML/Parser/Simple.pm">
+    1.03
+      (RSAVAGE on 2009-06-12)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.02/lib/HTML/Parser/Simple.pm">
+    1.02
+      (RSAVAGE on 2009-03-02)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.01/lib/HTML/Parser/Simple.pm">
+    1.01
+      (RSAVAGE on 2009-02-25)
+      
+  </option>
+
+  <option value="/module/RSAVAGE/HTML-Parser-Simple-1.00/lib/HTML/Parser/Simple.pm">
+    1.00
+      (RSAVAGE on 2009-02-24)
+      
+  </option>
+        </optgroup>
+    
+</select>
+    
+    <a data-keyboard-shortcut="g d" class="release-name" href="https://metacpan.org/release/HTML-Parser-Simple">HTML-Parser-Simple-2.02</a>
+    
+    
+  </div>
+  <!--
+  Unlike an <img>, an <object> grafts the SVG document into the DOM, which
+  means browsers will display the <title> elements of the SVG.  Yay!
+-->
+<span class="river-gauge-gauge">
+
+  <svg width="24px" height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g>
+      <!--
+        There is some careful attention below to the resulting whitespace
+        after template interpolation, ensuring that the tooltip looks good on
+        both Chrome and Firefox. Please don't adjust it blithely, thanks!
+      -->
+      <title>River stage zero 
+No dependents</title>
+
+      <!-- 5 bars, 4x15px, 1px apart, colored #e4e2e2 or #7ea3f2 -->
+      <rect x="0" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+      <rect x="5" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+      <rect x="10" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+      <rect x="15" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+      <rect x="20" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+    </g>
+  </svg>
+
+
+</span>
+<div id="HTML-Parser-Simple-fav" class="logged_in">
+<form action="https://metacpan.org/account/favorite/add" style="display: inline" onsubmit="return favDistribution(this)">
+    <input type="hidden" name="remove" value="0">
+    <input type="hidden" name="release" value="HTML-Parser-Simple-2.02">
+    <input type="hidden" name="author" value="RSAVAGE">
+    <input type="hidden" name="distribution" value="HTML-Parser-Simple">
+    <button type="submit" class="favorite highlight" title="Add to favorites"><span>1</span> ++</button>
+</form>
+</div>
+<div class="logged_out" style="display: inline;">
+<a href="https://metacpan.org/pod/HTML::Parser::Simple" onclick="alert(&#39;Please sign in to add favorites&#39;); return false" class="favorite highlight" title="Add to favorites">
+<span>1</span> ++</a>
+</div>
+
+  &nbsp;/&nbsp;<span itemprop="name">HTML::Parser::Simple</span>
+</div>
+
+  <ul class="nav-list slidepanel sticky-panel-top sticky-panel-sticky">
+    <li class="visible-xs">
+      <div>
+    <form action="https://metacpan.org/search">
+        <input type="search" class="form-control tool-bar-form" placeholder="Search" name="q">
+        <input type="submit" class="hidden">
+    </form>
+</div>
+
+    </li>
+    <li class="nav-header">      <time class="relatize" itemprop="dateModified" datetime="2015-01-25" title="25 Jan 2015 04:44:31 UTC">Jan 25, 2015</time>
+    </li>
+    
+    <li>
+      Distribution: HTML-Parser-Simple
+    </li>
+    
+    <li>
+      Module version: <span itemprop="softwareVersion">2.02</span>
+    </li>
+    
+        <li>
+      <a data-keyboard-shortcut="g s" href="https://metacpan.org/release/HTML-Parser-Simple/source/lib/HTML/Parser/Simple.pm"><i class="fa fa-fw fa-file-code-o black"></i>Source</a>
+      (<a href="https://metacpan.org/release/HTML-Parser-Simple/source/lib/HTML/Parser/Simple.pm?raw=1">raw</a>)
+    </li>
+    
+    <li>
+      <a data-keyboard-shortcut="g b" href="https://metacpan.org/release/HTML-Parser-Simple/source/lib/HTML/Parser"><i class="fa fa-fw fa-folder-open black"></i>Browse</a>
+      (<a href="https://metacpan.org/release/HTML-Parser-Simple/source/lib/HTML/Parser?raw=1">raw</a>)
+    </li>
+    <li>
+    <a data-keyboard-shortcut="g c" href="https://metacpan.org/changes/distribution/HTML-Parser-Simple"><i class="fa fa-fw fa-cogs black"></i>Changes</a>
+</li>
+
+<li>
+    <a class="nopopup" href="https://metacpan.org/contributing-to/HTML-Parser-Simple"><i class="fa fa-fw fa-plus-circle black"></i>How to Contribute</a>
+</li>
+
+<li>
+    <a rel="noopener nofollow" data-keyboard-shortcut="g i" href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-Parser-Simple"><i class="fa fa-fw fa-info-circle black"></i>Issues</a>
+    (0)
+</li>
+<li>
+    
+    <a rel="noopener nofollow" href="http://matrix.cpantesters.org/?dist=HTML-Parser-Simple+2.02" title="Matrix"><i class="fa fa-fw fa-check-circle black"></i>Testers</a>
+    <span title="(pass / fail / na)">(<a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser-Simple.html?oncpan=1&amp;distmat=1&amp;version=2.02&amp;grade=2" style="color: #090">767</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser-Simple.html?oncpan=1&amp;distmat=1&amp;version=2.02&amp;grade=3" style="color: #900">0</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser-Simple.html?oncpan=1&amp;distmat=1&amp;version=2.02&amp;grade=4">0</a>)</span>
+</li>
+<li>
+    <a rel="noopener nofollow" href="http://cpants.cpanauthors.org/release/RSAVAGE/HTML-Parser-Simple-2.02"><i class="fa fa-fw fa-line-chart black"></i>Kwalitee</a>
+</li>
+
+  <li>
+    <i class="fa fa-fw fa-pie-chart black"></i><a rel="noopener nofollow" href="http://cpancover.com/latest/HTML-Parser-Simple-2.02/index.html">77.06% Coverage </a>
+  </li>
+
+
+
+<li><i class="fa fa-fw fa-gavel black"></i>License: artistic_2</li>
+
+
+
+
+
+    <li class="nav-header">Activity</li>
+    <li><div class="activity-graph">
+  <img src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/activity" width="170" height="22">
+  <div align="right"><small class="comment">24 month</small></div>
+</div>
+</li>
+    <li class="nav-header">Tools</li>
+<li>
+    <a itemprop="downloadUrl" href="https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/HTML-Parser-Simple-2.02.tgz">
+    <i class="fa fa-download fa-fw black"></i>Download (<span itemprop="fileSize">26.92Kb</span>)</a>
+    
+    <span class="invisible" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <span itemprop="price">0</span>
+    </span>
+    
+</li>
+<li>
+    <a href="https://explorer.metacpan.org/?url=/module/RSAVAGE/HTML-Parser-Simple-2.02/lib%2FHTML%2FParser%2FSimple.pm">
+    <i class="fa fa-list-alt fa-fw black"></i>MetaCPAN Explorer
+    </a>
+</li>
+<li>
+  <a href="https://metacpan.org/permission/distribution/HTML-Parser-Simple">
+    <i class="fa fa-key fa-fw black"></i>Permissions
+  </a>
+</li>
+<li>
+    <a href="https://metacpan.org/feed/distribution/HTML-Parser-Simple">
+    <i class="fa fa-rss-square fa-fw black"></i>Subscribe to distribution
+    </a>
+</li>
+<li>
+    <button class="btn btn-link" data-toggle="modal" data-target="#install-instructions-dialog">
+      <i class="fa fa-terminal fa-fw black"></i>Install Instructions
+    </button>
+</li>
+<li>
+    <form action="https://metacpan.org/search">
+        <input type="hidden" name="q" value="dist:HTML-Parser-Simple">
+        <input type="search" name="q" placeholder="Search distribution" style="width: 153px" class="form-control tool-bar-form">
+        <input type="submit" style="display: none">
+    </form>
+</li>
+<li>
+    <form action="https://grep.metacpan.org/search">
+        <input type="hidden" name="qd" value="HTML-Parser-Simple">
+        <input type="hidden" name="source" value="metacpan">
+         <input type="search" name="q" placeholder="grep distribution" style="width: 153px" class="form-control tool-bar-form">
+         <input type="submit" style="display: none">
+     </form>
+</li>
+<li>
+    <select onchange="document.location.href=&#39;/module/&#39;+this.value" class="form-control tool-bar-form">
+        <option>Jump to version</option>
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-2.01/lib/HTML/Parser/Simple.pm">2.01 (RSAVAGE on 2013-10-07)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-2.00/lib/HTML/Parser/Simple.pm">2.00 (RSAVAGE on 2012-11-20)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.07/lib/HTML/Parser/Simple.pm">1.07 (RSAVAGE on 2012-11-18)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.06/lib/HTML/Parser/Simple.pm">1.06 (RSAVAGE on 2011-02-05)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.05/lib/HTML/Parser/Simple.pm">1.05 (RSAVAGE on 2010-08-24)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.04/lib/HTML/Parser/Simple.pm">1.04 (RSAVAGE on 2010-02-02)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.03/lib/HTML/Parser/Simple.pm">1.03 (RSAVAGE on 2009-06-12)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.02/lib/HTML/Parser/Simple.pm">1.02 (RSAVAGE on 2009-03-02)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.01/lib/HTML/Parser/Simple.pm">1.01 (RSAVAGE on 2009-02-25)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.00/lib/HTML/Parser/Simple.pm">1.00 (RSAVAGE on 2009-02-24)
+    </option>
+
+
+    </select>
+</li>
+<li>
+    <select name="release" onchange="document.location.href=&#39;/diff/file/?target=RSAVAGE/HTML-Parser-Simple-2.02/lib%2FHTML%2FParser%2FSimple.pm&amp;source=&#39; + encodeURIComponent(this.value)" class="form-control tool-bar-form">
+        <option>Diff with version</option>
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-2.01/lib/HTML/Parser/Simple.pm">2.01 (RSAVAGE on 2013-10-07)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-2.00/lib/HTML/Parser/Simple.pm">2.00 (RSAVAGE on 2012-11-20)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.07/lib/HTML/Parser/Simple.pm">1.07 (RSAVAGE on 2012-11-18)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.06/lib/HTML/Parser/Simple.pm">1.06 (RSAVAGE on 2011-02-05)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.05/lib/HTML/Parser/Simple.pm">1.05 (RSAVAGE on 2010-08-24)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.04/lib/HTML/Parser/Simple.pm">1.04 (RSAVAGE on 2010-02-02)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.03/lib/HTML/Parser/Simple.pm">1.03 (RSAVAGE on 2009-06-12)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.02/lib/HTML/Parser/Simple.pm">1.02 (RSAVAGE on 2009-03-02)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.01/lib/HTML/Parser/Simple.pm">1.01 (RSAVAGE on 2009-02-25)
+    </option>
+
+    <option value="RSAVAGE/HTML-Parser-Simple-1.00/lib/HTML/Parser/Simple.pm">1.00 (RSAVAGE on 2009-02-24)
+    </option>
+
+
+    </select>
+</li>
+
+<li class="nav-header">Permalinks</li>
+<li>
+    <a href="https://metacpan.org/pod/release/RSAVAGE/HTML-Parser-Simple-2.02/lib/HTML/Parser/Simple.pm">This version</a>
+</li>
+<li>
+    <a itemprop="url" href="https://metacpan.org/pod/HTML::Parser::Simple">Latest version</a>
+</li>
+
+  </ul>
+
+  <button id="right-panel-toggle" class="btn-link" onclick="togglePanel(&#39;right&#39;); return false;"><span class="panel-hidden">Show</span><span class="panel-visible">Hide</span> Right Panel</button>
+  <div id="right-panel" class="pull-right">
+  <div class="box-right">
+  <!-- For plussers -->
+
+<div class="plussers hidden-phone">
+<div><b>++ed by:</b></div>
+
+
+
+
+<!-- Display counts of plussers-->
+<p>
+
+
+1 non-PAUSE user.
+
+</p>
+</div>
+
+
+<div class="author-pic">
+<a href="https://metacpan.org/author/RSAVAGE">
+  <img src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/6dffb4a7f8901481b1395ebaa4a45edf.jpeg" alt="Author image">
+</a>
+<strong>
+  <a rel="author" href="https://metacpan.org/author/RSAVAGE">RSAVAGE</a>
+</strong>
+<span title="">Ron Savage</span>
+</div>
+
+  
+
+  </div>
+  <ul class="nav-list box-right hidden-phone dependencies">
+    <li class="nav-header">Dependencies</li>
+    <li><a href="https://metacpan.org/pod/File::Spec" title="File::Spec" class="ellipsis"><span style="max-width: calc(100% - 30px);">File::</span><span>Spec</span></a></li>
+    <li><a href="https://metacpan.org/pod/lib" title="lib" class="ellipsis"><span style="max-width: calc(100% - 10px);">l</span><span>ib</span></a></li>
+    <li><a href="https://metacpan.org/pod/Moo" title="Moo" class="ellipsis"><span style="max-width: calc(100% - 14px);">M</span><span>oo</span></a></li>
+    <li><a href="https://metacpan.org/pod/strict" title="strict" class="ellipsis"><span style="max-width: calc(100% - 13px);">str</span><span>ict</span></a></li>
+    <li><a href="https://metacpan.org/pod/Tree::Simple" title="Tree::Simple" class="ellipsis"><span style="max-width: calc(100% - 31px);">Tree::S</span><span>imple</span></a></li>
+    <li><a href="https://metacpan.org/pod/warnings" title="warnings" class="ellipsis"><span style="max-width: calc(100% - 24px);">warn</span><span>ings</span></a></li>
+    <li><i class="ttip" title="" data-original-title="dynamic_config enabled">and possibly others</i></li>
+    <li><hr></li>
+    <li>
+        <a href="http://deps.cpantesters.org/?module=HTML::Parser::Simple">
+        <i class="fa fa-retweet fa-fw black"></i>CPAN Testers List</a>
+    </li>
+    <li>        <a href="https://metacpan.org/requires/module/HTML::Parser::Simple">        <i class="fa fa-share fa-fw black"></i>Reverse dependencies</a>
+    </li>
+    <li>
+        <a href="https://cpandeps.grinnz.com/?dist=HTML-Parser-Simple">
+        <i class="fa fa-asterisk fa-fw black"></i>Dependency graph</a>
+    </li>
+</ul>
+
+  </div>
+  <a name="___pod"></a>
+  <div class="pod content anchors">
+
+  
+  <div id="index-container"><div class="index-border"><div class="index-header"><b>Contents</b> [ <button class="btn-link toggle-index"><span class="toggle-show">show</span><span class="toggle-hide">hide</span></button> ] <button class="btn-link toggle-index-right"><i class="fa fa-toggle-right"></i><i class="fa fa-toggle-left"></i></button></div><ul id="index">
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#NAME">NAME</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis">Synopsis</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Description">Description</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Distributions">Distributions</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-initialization">Constructor and initialization</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Methods">Methods</a>
+    <ul>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#block()">block()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#current_node()">current_node()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#depth()">depth()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#empty()">empty()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#inline()">inline()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#input_file($in_file_name)">input_file($in_file_name)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#log($msg)">log($msg)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#new()">new()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#node_type()">node_type()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#output_file($out_file_name)">output_file($out_file_name)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#parse($html)">parse($html)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#parse_file($input_file_name,-$output_file_name)">parse_file($input_file_name, $output_file_name)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#result()">result()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#root()">root()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#self_close()">self_close()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#tagged_attribute()">tagged_attribute()</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#traverse($node)">traverse($node)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#verbose($Boolean)">verbose($Boolean)</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#xhtml($Boolean)">xhtml($Boolean)</a></li>
+    </ul>
+  </li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#FAQ">FAQ</a>
+    <ul>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#What-is-the-format-of-the-data-stored-in-each-node-of-the-tree?">What is the format of the data stored in each node of the tree?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-are-tags-and-attributes-handled?">How are tags and attributes handled?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-are-HTML-comments-handled?">How are HTML comments handled?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-DOCTYPE-handled?">How is DOCTYPE handled?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-the-XML-declaration-handled?">How is the XML declaration handled?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Does-this-module-handle-all-HTML-pages?">Does this module handle all HTML pages?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Which-versions-of-HTML-does-this-module-handle?">Which versions of HTML does this module handle?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#What-do-I-do-if-this-module-does-not-handle-my-HTML-page?">What do I do if this module does not handle my HTML page?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Does-this-validate-the-HTML-input?">Does this validate the HTML input?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-view-the-output-HTML?">How do I view the output HTML?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-test-this-module-(or-my-file)?">How do I test this module (or my file)?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Will-you-implement-a-&#39;quirks&#39;-mode-to-handle-my-special-HTML-file?">Will you implement a 'quirks' mode to handle my special HTML file?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Is-there-anything-I-should-be-aware-of?">Is there anything I should be aware of?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-did-you-use-Tree::Simple-but-not-Tree-or-Tree::Fast-or-Tree::DAG_Node?">Why did you use Tree::Simple but not Tree or Tree::Fast or Tree::DAG_Node?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-is-this-module-not-called-HTML::Parser::PurePerl?">Why is this module not called HTML::Parser::PurePerl?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-output-my-own-stuff-while-traversing-the-tree?">How do I output my own stuff while traversing the tree?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-the-source-formatted?">How is the source formatted?</a></li>
+      <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-did-you-choose-Moos?">Why did you choose Moos?</a></li>
+    </ul>
+  </li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Credits">Credits</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Repository">Repository</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Support">Support</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Author">Author</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Parser::Simple#Copyright">Copyright</a></li>
+</ul></div></div>
+
+<h1 id="NAME"><a href="https://metacpan.org/pod/HTML::Parser::Simple#NAME" class="anchor"><span class="fa fa-bookmark black"></span></a>NAME</h1>
+
+<p>HTML::Parser::Simple - Parse nice HTML files without needing a compiler</p>
+
+<h1 id="Synopsis"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis" class="anchor"><span class="fa fa-bookmark black"></span></a>Synopsis</h1>
+
+<pre><div><div id="highlighter_92395" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl preprocessor">#!/usr/bin/env perl</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/strict">strict</a>;</code></div><div class="line number4 index3 alt1"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/warnings">warnings</a>;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Parser::Simple">HTML::Parser::Simple</a>;</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="perl comments"># -------------------------</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="perl comments"># Method 1:</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="perl keyword">my</code><code class="perl plain">(</code><code class="perl variable">$p</code><code class="perl plain">) = HTML::Parser::Simple -&gt; new</code></div><div class="line number13 index12 alt2"><code class="perl plain">(</code></div><div class="line number14 index13 alt1"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">input_file</code>&nbsp; <code class="perl plain">=&gt; </code><code class="perl string">'data/s.1.html'</code><code class="perl plain">,</code></div><div class="line number15 index14 alt2"><code class="perl spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="perl string">output_file</code> <code class="perl plain">=&gt; </code><code class="perl string">'data/s.2.html'</code><code class="perl plain">,</code></div><div class="line number16 index15 alt1"><code class="perl plain">);</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="perl variable">$p</code> <code class="perl plain">-&gt; parse_file;</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="perl comments"># Method 2:</code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="perl keyword">my</code><code class="perl plain">(</code><code class="perl variable">$p</code><code class="perl plain">) = HTML::Parser::Simple -&gt; new;</code></div><div class="line number23 index22 alt2">&nbsp;</div><div class="line number24 index23 alt1"><code class="perl variable">$p</code> <code class="perl plain">-&gt; parse_file(</code><code class="perl string">'data/s.1.html'</code><code class="perl plain">, </code><code class="perl string">'data/s.2.html'</code><code class="perl plain">);</code></div><div class="line number25 index24 alt2">&nbsp;</div><div class="line number26 index25 alt1"><code class="perl comments"># Method 3:</code></div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="perl keyword">my</code><code class="perl plain">(</code><code class="perl variable">$p</code><code class="perl plain">) = HTML::Parser::Simple -&gt; new;</code></div><div class="line number29 index28 alt2">&nbsp;</div><div class="line number30 index29 alt1"><code class="perl functions">print</code> <code class="perl variable">$p</code> <code class="perl plain">-&gt; parse(</code><code class="perl string">'&lt;html&gt;...&lt;/html&gt;'</code><code class="perl plain">) -&gt; traverse(</code><code class="perl variable">$p</code> <code class="perl plain">-&gt; root) -&gt; result;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>Of course, these can be abbreviated by using method chaining. E.g. Method 2 could be:</p>
+
+<pre><div><div id="highlighter_773542" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">HTML::Parser::Simple -&gt; new -&gt; parse_file(</code><code class="perl string">'data/s.1.html'</code><code class="perl plain">, </code><code class="perl string">'data/s.2.html'</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>See scripts/parse.html.pl and scripts/parse.xhtml.pl.</p>
+
+<h1 id="Description"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Description" class="anchor"><span class="fa fa-bookmark black"></span></a>Description</h1>
+
+<p><code>HTML::Parser::Simple</code> is a pure Perl module.</p>
+
+<p>It parses HTML V 4 files, and generates a tree of nodes, with 1 node per HTML tag.</p>
+
+<p>The data associated with each node is documented in the <a href="https://metacpan.org/pod/HTML::Parser::Simple#FAQ">"FAQ"</a>.</p>
+
+<p>See also <a href="https://metacpan.org/pod/HTML::Parser::Simple::Attributes">HTML::Parser::Simple::Attributes</a> and <a href="https://metacpan.org/pod/HTML::Parser::Simple::Reporter">HTML::Parser::Simple::Reporter</a>.</p>
+
+<h1 id="Distributions"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Distributions" class="anchor"><span class="fa fa-bookmark black"></span></a>Distributions</h1>
+
+<p>This module is available as a Unix-style distro (*.tgz).</p>
+
+<p>See <a href="http://savage.net.au/Perl-modules.html">http://savage.net.au/Perl-modules.html</a> for details.</p>
+
+<p>See <a href="http://savage.net.au/Perl-modules/html/installing-a-module.html">http://savage.net.au/Perl-modules/html/installing-a-module.html</a> for help on unpacking and installing.</p>
+
+<h1 id="Constructor-and-initialization"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-initialization" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Constructor"></a>Constructor and initialization</h1>
+
+<p>new(...) returns an object of type <code>HTML::Parser::Simple</code>.</p>
+
+<p>This is the class contructor.</p>
+
+<p>Usage: <code>HTML::Parser::Simple -&gt; new</code>.</p>
+
+<p>This method takes a hash of options.</p>
+
+<p>Call <code>new()</code> as <code>new(option_1 =&gt; value_1, option_2 =&gt; value_2, ...)</code>.</p>
+
+<p>Available options (each one of which is also a method):</p>
+
+<dl>
+
+<dt id="o-input_file-=&gt;-$a_file_name"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-input_file-=%3E-$a_file_name" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o"></a><a id="o-input_file----a_file_name"></a>o input_file =&gt; $a_file_name</dt>
+<dd>
+
+<p>This takes the file name, including the path, of the input file.</p>
+
+<p>Default: '' (the empty string).</p>
+
+</dd>
+<dt id="o-output_file-=&gt;-$a_file_name"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-output_file-=%3E-$a_file_name" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o1"></a><a id="o-output_file----a_file_name"></a>o output_file =&gt; $a_file_name</dt>
+<dd>
+
+<p>This takes the file name, including the path, of the output file.</p>
+
+<p>Default: '' (the empty string).</p>
+
+</dd>
+<dt id="o-verbose-=&gt;-$Boolean"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-verbose-=%3E-$Boolean" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o2"></a><a id="o-verbose----Boolean"></a>o verbose =&gt; $Boolean</dt>
+<dd>
+
+<p>This takes either a 0 or a 1.</p>
+
+<p>Write more or less progress messages.</p>
+
+<p>Default: 0.</p>
+
+</dd>
+<dt id="o-xhtml-=&gt;-$Boolean"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-xhtml-=%3E-$Boolean" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o3"></a><a id="o-xhtml----Boolean"></a>o xhtml =&gt; $Boolean</dt>
+<dd>
+
+<p>This takes either a 0 or a 1.</p>
+
+<p>0 means do not accept an XML declaration, such as &lt;?xml version="1.0" encoding="UTF-8"?&gt; at the start of the input file, and some other XHTML features, explained next.</p>
+
+<p>1 means accept XHTML input.</p>
+
+<p>Default: 0.</p>
+
+<p>The only XHTML changes to this code, so far, are:</p>
+
+<dl>
+
+<dt id="o-Accept-the-XML-declaration"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Accept-the-XML-declaration" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o4"></a>o Accept the XML declaration</dt>
+<dd>
+
+<p>E.g.: &lt;?xml version="1.0" standalone='yes'?&gt;.</p>
+
+</dd>
+<dt id="o-Accept-attribute-names-containing-the-&#39;:&#39;-char"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Accept-attribute-names-containing-the-&#39;:&#39;-char" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o5"></a><a id="o-Accept-attribute-names-containing-the--:--char"></a>o Accept attribute names containing the ':' char</dt>
+<dd>
+
+<p>E.g.: &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;.</p>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<h1 id="Methods"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Methods" class="anchor"><span class="fa fa-bookmark black"></span></a>Methods</h1>
+
+<h2 id="block()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#block()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="block"></a>block()</h2>
+
+<p>Returns a hashref where the keys are the names of block-level HTML tags.</p>
+
+<p>The corresponding values in the hashref are just 1.</p>
+
+<p>Typical keys: address, form, p, table, tr.</p>
+
+<p>Note: Some keys, e.g. tr, are also returned by <a href="https://metacpan.org/pod/HTML::Parser::Simple#self_close()">"self_close()"</a>.</p>
+
+<h2 id="current_node()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#current_node()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="current_node"></a>current_node()</h2>
+
+<p>Returns the <a href="https://metacpan.org/pod/Tree::Simple">Tree::Simple</a> object which the parser calls the current node.</p>
+
+<h2 id="depth()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#depth()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="depth"></a>depth()</h2>
+
+<p>Returns the nesting depth of the current tag.</p>
+
+<p>The method is just here in case you need it.</p>
+
+<h2 id="empty()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#empty()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="empty"></a>empty()</h2>
+
+<p>Returns a hashref where the keys are the names of HTML tags of type empty.</p>
+
+<p>The corresponding values in the hashref are just 1.</p>
+
+<p>Typical keys: area, base, input, wbr.</p>
+
+<h2 id="inline()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#inline()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="inline"></a>inline()</h2>
+
+<p>Returns a hashref where the keys are the names of HTML tags of type inline.</p>
+
+<p>The corresponding values in the hashref are just 1.</p>
+
+<p>Typical keys: a, em, img, textarea.</p>
+
+<h2 id="input_file($in_file_name)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#input_file($in_file_name)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="input_file"></a><a id="input_file-in_file_name"></a>input_file($in_file_name)</h2>
+
+<p>Gets or sets the input file name used by <a href="https://metacpan.org/pod/HTML::Parser::Simple#parse($input_file_name,-$output_file_name)">"parse($input_file_name, $output_file_name)"</a>.</p>
+
+<p>Note: The parameters passed in to <a href="https://metacpan.org/pod/HTML::Parser::Simple#parse_file($input_file_name,-$output_file_name)">"parse_file($input_file_name, $output_file_name)"</a>, take precedence over the <i>input_file</i> and <i>output_file</i> parameters passed in to <code>new()</code>, and over the internal values set with <code>input_file($in_file_name)</code> and <code>output_file($out_file_name)</code>.</p>
+
+<p>'input_file' is a parameter to <a href="https://metacpan.org/pod/HTML::Parser::Simple#new()">"new()"</a>. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-Initialization">"Constructor and Initialization"</a> for details.</p>
+
+<h2 id="log($msg)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#log($msg)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="log"></a><a id="log-msg"></a>log($msg)</h2>
+
+<p>Print $msg to STDERR if <code>new()</code> was called as <code>new(verbose =&gt; 1)</code>, or if <code>$p -&gt; verbose(1)</code> was called.</p>
+
+<p>Otherwise, print nothing.</p>
+
+<h2 id="new()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#new()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="new"></a>new()</h2>
+
+<p>This is the constructor. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-initialization">"Constructor and initialization"</a> for details.</p>
+
+<h2 id="node_type()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#node_type()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="node_type"></a>node_type()</h2>
+
+<p>Returns the type of the most recently created node, <i>global</i>, <i>head</i>, or <i>body</i>.</p>
+
+<p>See the first question in the <a href="https://metacpan.org/pod/HTML::Parser::Simple#FAQ">"FAQ"</a> for details.</p>
+
+<h2 id="output_file($out_file_name)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#output_file($out_file_name)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="output_file"></a><a id="output_file-out_file_name"></a>output_file($out_file_name)</h2>
+
+<p>Gets or sets the output file name used by <a href="https://metacpan.org/pod/HTML::Parser::Simple#parse($input_file_name,-$output_file_name)">"parse($input_file_name, $output_file_name)"</a>.</p>
+
+<p>Note: The parameters passed in to <a href="https://metacpan.org/pod/HTML::Parser::Simple#parse_file($input_file_name,-$output_file_name)">"parse_file($input_file_name, $output_file_name)"</a>, take precedence over the <i>input_file</i> and <i>output_file</i> parameters passed in to <code>new()</code>, and over the internal values set with <code>input_file($in_file_name)</code> and <code>output_file($out_file_name)</code>.</p>
+
+<p>'output_file' is a parameter to <a href="https://metacpan.org/pod/HTML::Parser::Simple#new()">"new()"</a>. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-Initialization">"Constructor and Initialization"</a> for details.</p>
+
+<h2 id="parse($html)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#parse($html)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="parse"></a><a id="parse-html"></a>parse($html)</h2>
+
+<p>Returns the invocant. Thus <code>$p -&gt; parse</code> returns $p. This allows for method chaining. See the <a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis">"Synopsis"</a>.</p>
+
+<p>Parses the string of HTML in $html, and builds a tree of nodes.</p>
+
+<p>After calling <code>$p -&gt; parse($html)</code>, you must call <code>$p -&gt; traverse($p -&gt; root)</code> before calling <code>$p -&gt; result</code>.</p>
+
+<p>Alternately, use <code>$p -&gt; parse_file</code>, which calls all these methods for you.</p>
+
+<p>Note: <code>parse()</code> may be called directly or via <code>parse_file()</code>.</p>
+
+<h2 id="parse_file($input_file_name,-$output_file_name)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#parse_file($input_file_name,-$output_file_name)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="parse_file"></a><a id="parse_file-input_file_name---output_file_name"></a>parse_file($input_file_name, $output_file_name)</h2>
+
+<p>Returns the invocant. Thus <code>$p -&gt; parse_file</code> returns $p. This allows for method chaining. See the <a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis">"Synopsis"</a>.</p>
+
+<p>Parses the HTML in the input file, and writes the result to the output file.</p>
+
+<p><code>parse_file()</code> calls <a href="https://metacpan.org/pod/HTML::Parser::Simple#parse($html)">"parse($html)"</a> and <a href="https://metacpan.org/pod/HTML::Parser::Simple#traverse($node)">"traverse($node)"</a>, using <code>$p -&gt; root</code> for $node.</p>
+
+<p>Note: The parameters passed in to <code>parse_file($input_file_name, $output_file_name)</code>, take precedence over the <i>input_file</i> and <i>output_file</i> parameters passed in to <code>new()</code>, and over the internal values set with <code>input_file($in_file_name)</code> and <code>output_file($out_file_name)</code>.</p>
+
+<p>Lastly, the parameters passed in to <code>parse_file($input_file_name, $output_file_name)</code> are used to update the internal values set with the <i>input_file</i> and <i>output_file</i> parameters passed in to <code>new()</code>, or set with calls to <code>input_file($in_file_name)</code> and <code>output_file($out_file_name)</code>.</p>
+
+<h2 id="result()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#result()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="result"></a>result()</h2>
+
+<p>Returns the string which is the result of the parse.</p>
+
+<p>See scripts/parse.html.pl.</p>
+
+<h2 id="root()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#root()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="root"></a>root()</h2>
+
+<p>Returns the <a href="https://metacpan.org/pod/Tree::Simple">Tree::Simple</a> object which the parser calls the root of the tree of nodes.</p>
+
+<h2 id="self_close()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#self_close()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="self_close"></a>self_close()</h2>
+
+<p>Returns a hashref where the keys are the names of HTML tags of type self close.</p>
+
+<p>The corresponding values in the hashref are just 1.</p>
+
+<p>Typical keys: dd, dt, p, tr.</p>
+
+<p>Note: Some keys, e.g. tr, are also returned by <a href="https://metacpan.org/pod/HTML::Parser::Simple#block()">"block()"</a>.</p>
+
+<h2 id="tagged_attribute()"><a href="https://metacpan.org/pod/HTML::Parser::Simple#tagged_attribute()" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="tagged_attribute"></a>tagged_attribute()</h2>
+
+<p>Returns a string to be used as a regexp, to capture tags and their optional attributes.</p>
+
+<p>It does not return qr/$s/; it just returns $s.</p>
+
+<p>This regexp takes one of two forms, depending on the state of the <i>xhtml</i> option. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#xhtml($Boolean)">"xhtml($Boolean)"</a>.</p>
+
+<p>The regexp has four (4) sets of capturing parentheses:</p>
+
+<dl>
+
+<dt id="o-1-for-the-whole-tag-and-attribute-and-trailing-/-combination"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-1-for-the-whole-tag-and-attribute-and-trailing-/-combination" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o6"></a><a id="o-1-for-the-whole-tag-and-attribute-and-trailing---combination"></a>o 1 for the whole tag and attribute and trailing / combination</dt>
+<dd>
+
+<p>E.g.: &lt;(....)&gt;</p>
+
+</dd>
+<dt id="o-1-for-the-tag-itself"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-1-for-the-tag-itself" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o7"></a>o 1 for the tag itself</dt>
+<dd>
+
+<p>E.g.: &lt;(img)...&gt;</p>
+
+</dd>
+<dt id="o-1-for-the-optional-attributes-of-the-tag"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-1-for-the-optional-attributes-of-the-tag" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o8"></a>o 1 for the optional attributes of the tag</dt>
+<dd>
+
+<p>E.g.: &lt;img (src="/graph.svg" alt="A graph")&gt;</p>
+
+</dd>
+<dt id="o-1-for-the-optional-trailing-/-of-the-tag"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-1-for-the-optional-trailing-/-of-the-tag" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o9"></a><a id="o-1-for-the-optional-trailing---of-the-tag"></a>o 1 for the optional trailing / of the tag</dt>
+<dd>
+
+<p>E.g.: &lt;img ... (/)&gt;</p>
+
+</dd>
+</dl>
+
+<h2 id="traverse($node)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#traverse($node)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="traverse"></a><a id="traverse-node"></a>traverse($node)</h2>
+
+<p>Returns the invocant. Thus <code>$p -&gt; traverse</code> returns $p. This allows for method chaining. See the <a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis">"Synopsis"</a>.</p>
+
+<p>Traverses the tree of nodes, starting at $node.</p>
+
+<p>You normally call this as <code>$p -&gt; traverse($p -&gt; root)</code>, to ensure all nodes are visited.</p>
+
+<p>See the <a href="https://metacpan.org/pod/HTML::Parser::Simple#Synopsis">"Synopsis"</a> for sample code.</p>
+
+<p>Or, see scripts/traverse.file.pl, which uses <a href="https://metacpan.org/pod/HTML::Parser::Simple::Reporter">HTML::Parser::Simple::Reporter</a>, and calls <code>traverse($node)</code> via <a href="https://metacpan.org/pod/HTML::Parser::Simple::Reporter#traverse_file($input_file_name)">"traverse_file($input_file_name)" in HTML::Parser::Simple::Reporter</a>.</p>
+
+<h2 id="verbose($Boolean)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#verbose($Boolean)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="verbose"></a><a id="verbose-Boolean"></a>verbose($Boolean)</h2>
+
+<p>Gets or sets the verbose parameter.</p>
+
+<p>'verbose' is a parameter to <a href="https://metacpan.org/pod/HTML::Parser::Simple#new()">"new()"</a>. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-Initialization">"Constructor and Initialization"</a> for details.</p>
+
+<h2 id="xhtml($Boolean)"><a href="https://metacpan.org/pod/HTML::Parser::Simple#xhtml($Boolean)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="xhtml"></a><a id="xhtml-Boolean"></a>xhtml($Boolean)</h2>
+
+<p>Gets or sets the xhtml parameter.</p>
+
+<p>If you call this after object creation, the <i>trigger</i> feature of <a href="https://metacpan.org/pod/Moos">Moos</a> is used to call <a href="https://metacpan.org/pod/HTML::Parser::Simple#tagged_attribute()">"tagged_attribute()"</a> so as to correctly set the regexp which recognises xhtml.</p>
+
+<p>'xhtm'&gt; is a parameter to <a href="https://metacpan.org/pod/HTML::Parser::Simple#new()">"new()"</a>. See <a href="https://metacpan.org/pod/HTML::Parser::Simple#Constructor-and-Initialization">"Constructor and Initialization"</a> for details.</p>
+
+<h1 id="FAQ"><a href="https://metacpan.org/pod/HTML::Parser::Simple#FAQ" class="anchor"><span class="fa fa-bookmark black"></span></a>FAQ</h1>
+
+<h2 id="What-is-the-format-of-the-data-stored-in-each-node-of-the-tree?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#What-is-the-format-of-the-data-stored-in-each-node-of-the-tree?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="What"></a><a id="What-is-the-format-of-the-data-stored-in-each-node-of-the-tree"></a>What is the format of the data stored in each node of the tree?</h2>
+
+<p>The data of each node is a hash ref. The keys/values of this hash ref are:</p>
+
+<dl>
+
+<dt id="o-attributes"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-attributes" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o10"></a>o attributes</dt>
+<dd>
+
+<p>This is the string of HTML attributes associated with the HTML tag.</p>
+
+<p>Attributes are stored in lower-case.</p>
+
+<p>So, &lt;table align = 'center' summary = 'Body'&gt; will have an attributes string of " align = 'center' summary = 'body'".</p>
+
+<p>Note the leading space.</p>
+
+</dd>
+<dt id="o-content"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-content" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o11"></a>o content</dt>
+<dd>
+
+<p>This is an arrayref of bits and pieces of content.</p>
+
+<p>Consider this fragment of HTML:</p>
+
+<p>&lt;p&gt;I did &lt;i&gt;not&lt;/i&gt; say I &lt;i&gt;liked&lt;/i&gt; debugging.&lt;/p&gt;</p>
+
+<p>When parsing 'I did ', the number of child nodes (of &lt;p&gt;) is 0, since &lt;i&gt; has not yet been detected.</p>
+
+<p>So, 'I did ' is stored in the 0th element of the arrayref belonging to &lt;p&gt;.</p>
+
+<p>Likewise, 'not' is stored in the 0th element of the arrayref belonging to the node &lt;i&gt;.</p>
+
+<p>Next, ' say I ' is stored in the 1st element of the arrayref belonging to &lt;p&gt;, because it follows the 1st child node (&lt;i&gt;).</p>
+
+<p>Likewise, ' debugging' is stored in the 2nd element of the arrayref belonging to &lt;p&gt;.</p>
+
+<p>This way, the input string can be reproduced by successively outputting the elements of the arrayref of content interspersed with the contents of the child nodes (processed recusively).</p>
+
+<p>Note: If you are processing this tree, never forget that there can be content after the last child node has been closed, but before the current node is closed.</p>
+
+<p>Note: The DOCTYPE declaration is stored as the 0th element of the content of the root node.</p>
+
+</dd>
+<dt id="o-depth"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-depth" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o12"></a>o depth</dt>
+<dd>
+
+<p>The nesting depth of the tag within the document.</p>
+
+<p>The root is at depth 0, '&lt;html&gt;' is at depth 1, '&lt;head&gt;' and '&lt;body&gt;' are a depth 2, and so on.</p>
+
+<p>It is just there in case you need it.</p>
+
+</dd>
+<dt id="o-name"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-name" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o13"></a>o name</dt>
+<dd>
+
+<p>So, the tag '&lt;html&gt;' will mean the name is 'html'.</p>
+
+<p>Tag names are stored in lower-case.</p>
+
+<p>The root of the tree is called 'root', and holds the DOCTYPE, if any, as content.</p>
+
+<p>The root has the node 'html' as the only child, of course.</p>
+
+</dd>
+<dt id="o-node_type"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-node_type" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o14"></a>o node_type</dt>
+<dd>
+
+<p>This holds 'global' before '&lt;head&gt;' and between '&lt;/head&gt;' and '&lt;body&gt;', and after '&lt;/body&gt;'.</p>
+
+<p>It holds 'head' for all nodes from '&lt;head&gt;' to '&lt;/head&gt;', and holds 'body' from '&lt;body&gt;' to '&lt;/body&gt;'.</p>
+
+<p>It is just there in case you need it.</p>
+
+</dd>
+</dl>
+
+<h2 id="How-are-tags-and-attributes-handled?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-are-tags-and-attributes-handled?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How"></a><a id="How-are-tags-and-attributes-handled"></a>How are tags and attributes handled?</h2>
+
+<p>Tags are stored in lower-case, in a tree managed by <a href="https://metacpan.org/pod/Tree::Simple">Tree::Simple</a>.</p>
+
+<p>Attributes are stored in the same case as in the original HTML.</p>
+
+<p>The root of the tree is returned be <a href="https://metacpan.org/pod/HTML::Parser::Simple#root()">"root()"</a>.</p>
+
+<h2 id="How-are-HTML-comments-handled?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-are-HTML-comments-handled?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How1"></a><a id="How-are-HTML-comments-handled"></a>How are HTML comments handled?</h2>
+
+<p>They are treated as content. This includes the prefix '&lt;!--' and the suffix '--&gt;'.</p>
+
+<h2 id="How-is-DOCTYPE-handled?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-DOCTYPE-handled?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How2"></a><a id="How-is-DOCTYPE-handled"></a>How is DOCTYPE handled?</h2>
+
+<p>It is treated as content belonging to the root of the tree.</p>
+
+<h2 id="How-is-the-XML-declaration-handled?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-the-XML-declaration-handled?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How3"></a><a id="How-is-the-XML-declaration-handled"></a>How is the XML declaration handled?</h2>
+
+<p>It is treated as content belonging to the root of the tree.</p>
+
+<h2 id="Does-this-module-handle-all-HTML-pages?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Does-this-module-handle-all-HTML-pages?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Does"></a><a id="Does-this-module-handle-all-HTML-pages"></a>Does this module handle all HTML pages?</h2>
+
+<p>No, never.</p>
+
+<h2 id="Which-versions-of-HTML-does-this-module-handle?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Which-versions-of-HTML-does-this-module-handle?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Which"></a><a id="Which-versions-of-HTML-does-this-module-handle"></a>Which versions of HTML does this module handle?</h2>
+
+<p>Up to V 4.</p>
+
+<h2 id="What-do-I-do-if-this-module-does-not-handle-my-HTML-page?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#What-do-I-do-if-this-module-does-not-handle-my-HTML-page?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="What1"></a><a id="What-do-I-do-if-this-module-does-not-handle-my-HTML-page"></a>What do I do if this module does not handle my HTML page?</h2>
+
+<p>Make yourself a nice cup of tea, and then fix your page.</p>
+
+<h2 id="Does-this-validate-the-HTML-input?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Does-this-validate-the-HTML-input?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Does1"></a><a id="Does-this-validate-the-HTML-input"></a>Does this validate the HTML input?</h2>
+
+<p>No.</p>
+
+<p>For example, if you feed in a HTML page without the title tag, this module does not care.</p>
+
+<h2 id="How-do-I-view-the-output-HTML?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-view-the-output-HTML?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How4"></a><a id="How-do-I-view-the-output-HTML"></a>How do I view the output HTML?</h2>
+
+<p>There are various ways.</p>
+
+<dl>
+
+<dt id="o-See-scripts/parse.html.pl"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-See-scripts/parse.html.pl" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o15"></a><a id="o-See-scripts-parse.html.pl"></a>o See scripts/parse.html.pl</dt>
+<dd>
+
+</dd>
+<dt id="o-By-installing-HTML::Revelation,-of-course!"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-By-installing-HTML::Revelation,-of-course!" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o16"></a><a id="o-By-installing-HTML::Revelation--of-course"></a>o By installing HTML::Revelation, of course!</dt>
+<dd>
+
+<p>Sample output:</p>
+
+<p><a href="http://savage.net.au/Perl-modules/html/CreateTable.html">http://savage.net.au/Perl-modules/html/CreateTable.html</a>.</p>
+
+</dd>
+</dl>
+
+<h2 id="How-do-I-test-this-module-(or-my-file)?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-test-this-module-(or-my-file)?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How5"></a><a id="How-do-I-test-this-module--or-my-file"></a>How do I test this module (or my file)?</h2>
+
+<p>Preferably, see the previous question, or...</p>
+
+<p>Suggested steps:</p>
+
+<p>Note: There are quite a few files involved. Proceed with caution.</p>
+
+<dl>
+
+<dt id="o-Select-a-HTML-file-to-test"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Select-a-HTML-file-to-test" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o17"></a>o Select a HTML file to test</dt>
+<dd>
+
+<p>Call this input.html.</p>
+
+</dd>
+<dt id="o-Run-input.html-thru-reveal.pl"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Run-input.html-thru-reveal.pl" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o18"></a>o Run input.html thru reveal.pl</dt>
+<dd>
+
+<p>Reveal.pl ships with HTML::Revelation.</p>
+
+<p>Call the output file output.1.html.</p>
+
+</dd>
+<dt id="o-Run-input.html-thru-parse.html.pl"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Run-input.html-thru-parse.html.pl" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o19"></a>o Run input.html thru parse.html.pl</dt>
+<dd>
+
+<p>parse.html.pl ships with HTML::Parser::Simple.</p>
+
+<p>Call the output file parsed.html.</p>
+
+</dd>
+<dt id="o-Run-parsed.html-thru-reveal.pl"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Run-parsed.html-thru-reveal.pl" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o20"></a>o Run parsed.html thru reveal.pl</dt>
+<dd>
+
+<p>Call the output file output.2.html.</p>
+
+</dd>
+<dt id="o-Compare-output.1.html-and-output.2.html"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-Compare-output.1.html-and-output.2.html" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o21"></a>o Compare output.1.html and output.2.html</dt>
+<dd>
+
+<p>If they match, or even if they don't match, you're finished.</p>
+
+</dd>
+</dl>
+
+<h2 id="Will-you-implement-a-&#39;quirks&#39;-mode-to-handle-my-special-HTML-file?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Will-you-implement-a-&#39;quirks&#39;-mode-to-handle-my-special-HTML-file?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Will"></a><a id="Will-you-implement-a--quirks--mode-to-handle-my-special-HTML-file"></a>Will you implement a 'quirks' mode to handle my special HTML file?</h2>
+
+<p>No, never.</p>
+
+<p>Help with quirks: <a href="http://www.quirksmode.org/sitemap.html">http://www.quirksmode.org/sitemap.html</a>.</p>
+
+<h2 id="Is-there-anything-I-should-be-aware-of?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Is-there-anything-I-should-be-aware-of?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Is"></a><a id="Is-there-anything-I-should-be-aware-of"></a>Is there anything I should be aware of?</h2>
+
+<p>Yes. If your HTML file is not nice, the interpretation of tag nesting will not match your preconceptions.</p>
+
+<p>In such cases, do not seek to fix the code. Instead, fix your (faulty) preconceptions, and fix your HTML file.</p>
+
+<p>The 'a' tag, for example, is defined to be an inline tag, but the 'div' tag is a block-level tag.</p>
+
+<p>I do not define 'a' to be inline, others do, e.g. <a href="http://www.w3.org/TR/html401/">http://www.w3.org/TR/html401/</a> and hence <a href="https://metacpan.org/pod/HTML::Tagset">HTML::Tagset</a>.</p>
+
+<p>Inline means:</p>
+
+<pre><div><div id="highlighter_887860" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;a href = </code><code class="perl string">"#NAME"</code><code class="perl plain">&gt;&lt;div class = </code><code class="perl string">'global_toc_text'</code><code class="perl plain">&gt;NAME&lt;/div&gt;&lt;/a&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>will <i>not</i> be parsed as an 'a' containing a 'div'.</p>
+
+<p>The 'a' tag will be closed before the 'div' is opened. So, the result will look like:</p>
+
+<pre><div><div id="highlighter_895936" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;a href = </code><code class="perl string">"#NAME"</code><code class="perl plain">&gt;&lt;/a&gt;&lt;div class = </code><code class="perl string">'global_toc_text'</code><code class="perl plain">&gt;NAME&lt;/div&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>To achieve what was presumably intended, use 'span':</p>
+
+<pre><div><div id="highlighter_361328" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">&lt;a href = </code><code class="perl string">"#NAME"</code><code class="perl plain">&gt;&lt;span class = </code><code class="perl string">'global_toc_text'</code><code class="perl plain">&gt;NAME&lt;/span&gt;&lt;/a&gt;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>Some people (*cough* *cough*) have had to redo their entire websites due to this very problem.</p>
+
+<p>Of course, this is just one of a vast set of possible problems.</p>
+
+<p>You have been warned.</p>
+
+<h2 id="Why-did-you-use-Tree::Simple-but-not-Tree-or-Tree::Fast-or-Tree::DAG_Node?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-did-you-use-Tree::Simple-but-not-Tree-or-Tree::Fast-or-Tree::DAG_Node?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Why"></a><a id="Why-did-you-use-Tree::Simple-but-not-Tree-or-Tree::Fast-or-Tree::DAG_Node"></a>Why did you use Tree::Simple but not Tree or Tree::Fast or Tree::DAG_Node?</h2>
+
+<p>During testing, Tree::Fast crashed, so I replaced it with Tree and everything worked. Spooky.</p>
+
+<p>Late news: Tree does not cope with an arrayref stored in the metadata, so I have switched to <a href="https://metacpan.org/pod/Tree::DAG_Node">Tree::DAG_Node</a>.</p>
+
+<p>Stop press: As an experiment I switched to <a href="https://metacpan.org/pod/Tree::Simple">Tree::Simple</a>. Since it also works I will just keep using it.</p>
+
+<h2 id="Why-is-this-module-not-called-HTML::Parser::PurePerl?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-is-this-module-not-called-HTML::Parser::PurePerl?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Why1"></a><a id="Why-is-this-module-not-called-HTML::Parser::PurePerl"></a>Why is this module not called HTML::Parser::PurePerl?</h2>
+
+<dl>
+
+<dt id="o-The-API"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-The-API" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o22"></a>o The API</dt>
+<dd>
+
+<p>That name sounds like a pure Perl version of the same API as used by HTML::Parser.</p>
+
+<p>But the 2 APIs are not, and are not meant to be, compatible.</p>
+
+</dd>
+<dt id="o-The-tie-in"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-The-tie-in" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o23"></a>o The tie-in</dt>
+<dd>
+
+<p>Some people might falsely assume <a href="https://metacpan.org/pod/HTML::Parser">HTML::Parser</a> can automatically fall back to <a href="https://metacpan.org/pod/HTML::Parser::PurePerl">HTML::Parser::PurePerl</a> in the absence of a compiler.</p>
+
+</dd>
+</dl>
+
+<h2 id="How-do-I-output-my-own-stuff-while-traversing-the-tree?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-do-I-output-my-own-stuff-while-traversing-the-tree?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How6"></a><a id="How-do-I-output-my-own-stuff-while-traversing-the-tree"></a>How do I output my own stuff while traversing the tree?</h2>
+
+<dl>
+
+<dt id="o-The-sophisticated-way"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-The-sophisticated-way" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o24"></a>o The sophisticated way</dt>
+<dd>
+
+<p>As always with OO code, sub-class! In this case, you write a new version of the traverse() method.</p>
+
+<p>See <a href="https://metacpan.org/pod/HTML::Parser::Simple::Reporter">HTML::Parser::Simple::Reporter</a>, for example. It overrides <a href="https://metacpan.org/pod/HTML::Parser::Simple#traverse($node)">"traverse($node)"</a>.</p>
+
+</dd>
+<dt id="o-The-crude-way"><a href="https://metacpan.org/pod/HTML::Parser::Simple#o-The-crude-way" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="o25"></a>o The crude way</dt>
+<dd>
+
+<p>Alternately, implement another method in your sub-class, e.g. process(), which recurses like traverse(). Then call parse() and process().</p>
+
+</dd>
+</dl>
+
+<h2 id="How-is-the-source-formatted?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#How-is-the-source-formatted?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="How7"></a><a id="How-is-the-source-formatted"></a>How is the source formatted?</h2>
+
+<p>I edit with UltraEdit. That means, in general, leading 4-space tabs.</p>
+
+<p>All vertical alignment within lines is done manually with spaces.</p>
+
+<p>Perl::Critic is off the agenda.</p>
+
+<h2 id="Why-did-you-choose-Moos?"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Why-did-you-choose-Moos?" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="Why2"></a><a id="Why-did-you-choose-Moos"></a>Why did you choose Moos?</h2>
+
+<p>For the 2012 Google Code-in, I had a quick look at 122 class-building classes, and decided <a href="https://metacpan.org/pod/Moos">Moos</a> was suitable, given it is pure-Perl and has the trigger feature I needed.</p>
+
+<p>See <a href="http://savage.net.au/Module-reviews/html/gci.2012.class.builder.modules.html">http://savage.net.au/Module-reviews/html/gci.2012.class.builder.modules.html</a>.</p>
+
+<h1 id="Credits"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Credits" class="anchor"><span class="fa fa-bookmark black"></span></a>Credits</h1>
+
+<p>This Perl HTML parser has been converted from a JavaScript one written by John Resig.</p>
+
+<p><a href="http://ejohn.org/files/htmlparser.js">http://ejohn.org/files/htmlparser.js</a>.</p>
+
+<p>Well done John!</p>
+
+<p>Note also the comments published here:</p>
+
+<p><a href="http://groups.google.com/group/envjs/browse_thread/thread/edd9033b9273fa58">http://groups.google.com/group/envjs/browse_thread/thread/edd9033b9273fa58</a>.</p>
+
+<h1 id="Repository"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Repository" class="anchor"><span class="fa fa-bookmark black"></span></a>Repository</h1>
+
+<p><a href="https://github.com/ronsavage/HTML-Parser-Simple">https://github.com/ronsavage/HTML-Parser-Simple</a></p>
+
+<h1 id="Support"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Support" class="anchor"><span class="fa fa-bookmark black"></span></a>Support</h1>
+
+<p>Email the author, or log a bug on RT:</p>
+
+<p><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTML::Parser::Simple">https://rt.cpan.org/Public/Dist/Display.html?Name=HTML::Parser::Simple</a>.</p>
+
+<h1 id="Author"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Author" class="anchor"><span class="fa fa-bookmark black"></span></a>Author</h1>
+
+<p><code>HTML::Parser::Simple</code> was written by Ron Savage <i>&lt;ron@savage.net.au&gt;</i> in 2009.</p>
+
+<p>Home page: <a href="http://savage.net.au/index.html">http://savage.net.au/index.html</a>.</p>
+
+<h1 id="Copyright"><a href="https://metacpan.org/pod/HTML::Parser::Simple#Copyright" class="anchor"><span class="fa fa-bookmark black"></span></a>Copyright</h1>
+
+<p>Australian copyright (c) 2009 Ron Savage.</p>
+
+<pre><div><div id="highlighter_97265" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">All Programs of mine are </code><code class="perl string">'OSI Certified Open Source Software'</code><code class="perl plain">;</code></div><div class="line number2 index1 alt1"><code class="perl plain">you can redistribute them and/or modify them under the terms of</code></div><div class="line number3 index2 alt2"><code class="perl plain">The Artistic License, a copy of which is available at:</code></div><div class="line number4 index3 alt1"><code class="perl plain"><a href="http://www.opensource.org/licenses/">http://www.opensource.org/licenses/</a></code><code class="perl functions">index</code><code class="perl plain">.html</code></div></div></td></tr></tbody></table></div></div></pre>
+  
+        <div id="install-instructions-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Module Install Instructions</h4>
+            </div>
+            <div class="modal-body">
+                <p>To install HTML::Parser::Simple, copy and paste the appropriate command in to your terminal.</p>
+                <p><a href="https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm">cpanm</a></p>
+                <pre>                    cpanm HTML::Parser::Simple
+                </pre>
+                <p><a href="https://metacpan.org/pod/CPAN">CPAN shell</a></p>
+                <pre>                    perl -MCPAN -e shell
+                    install HTML::Parser::Simple
+                </pre>
+                <p>For more information on module installation, please visit <a href="https://www.cpan.org/modules/INSTALL.html">the detailed CPAN module installation guide</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="https://metacpan.org/pod/HTML::Parser::Simple#" data-dismiss="modal" class="btn">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+
+                </div>
+            </div>
+
+            <div class="row footer">
+                <div class="hidden-xs hidden-sm col-md-2">&nbsp;</div>
+                <div class="col-xs-2 col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://fastapi.metacpan.org/">API</a>
+                </div>
+                <div class="col-xs-5 col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/about">About MetaCPAN</a>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/mirrors">CPAN Mirrors</a>
+                </div>
+                <div class="hidden-xs col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://github.com/metacpan/metacpan-web">Fork metacpan.org</a>
+                </div>
+                <div class="hidden-xs col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://www.perl.org/">Perl.org</a>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 50px 15px 30px">
+              <div class="col-xs-9 col-md-3" style="padding:25px">
+                <a href="https://www.bytemark.co.uk/r/metacpan.org/" target="_blank" rel="noopener">
+                  <img width="170" src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/bytemark_logo.png" alt="Bytemark logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.liquidweb.com/" rel="noopener">
+                  <img width="170" src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/liquidweb_color.png" alt="liquidweb logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.yellowbot.com/" rel="noopener">
+                  <img width="170" src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/yellowbot-small.png" alt="YellowBot logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a href="https://www.fastly.com/" target="_blank" rel="noopener">
+                  <img src="./HTML__Parser__Simple - Parse nice HTML files without needing a compiler - metacpan.org_files/fastly_logo.png" width="110" height="51" alt="Fastly logo">
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-18 col-xs-offset-3 col-md-6" style="padding-bottom: 20px">
+                As a valued partner and proud supporter of MetaCPAN, StickerYou is
+                happy to offer a 10% discount on all <a href="https://www.stickeryou.com/products/custom-stickers/335/" target="_blank" rel="noopener">Custom Stickers</a>,
+                <a href="https://www.stickeryou.com/products/business-labels/655" target="_blank" rel="noopener">Business Labels</a>, Roll Labels,
+                Vinyl Lettering or Custom Decals.  <a href="http://stickeryou.com/" target="_blank" rel="noopener">StickerYou.com</a>
+                is your one-stop shop to make your business stick.
+                Use code <strong>METACPAN10</strong> at checkout to apply your discount.
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="keyboard-shortcuts">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Keyboard Shortcuts</h4>
+              </div>
+              <div class="modal-body row">
+                <div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>s</kbd>
+        </td>
+        <td>Focus search bar</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>?</kbd>
+        </td>
+        <td>Bring up this help dialog</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>p</kbd>
+        </td>
+        <td>Go to pull requests</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>go to github issues (only if github is preferred repository)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>POD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>a</kbd>
+        </td>
+        <td>Go to author</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>c</kbd>
+        </td>
+        <td>Go to changes</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>Go to issues</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>d</kbd>
+        </td>
+        <td>Go to dist</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>r</kbd>
+        </td>
+        <td>Go to repository/SCM</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>s</kbd>
+        </td>
+        <td>Go to source</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>b</kbd>
+        </td>
+        <td>Go to file browse</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+    
+
+<div class="autocomplete-suggestions" style="position: absolute; display: none; width: 450px; max-height: 180px; z-index: 9999;"></div></body></html>

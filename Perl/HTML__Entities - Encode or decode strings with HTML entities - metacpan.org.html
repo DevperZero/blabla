@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://metacpan.org/pod/HTML::Entities -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <title>HTML::Entities - Encode or decode strings with HTML entities - metacpan.org</title>
+        <link rel="alternate" type="application/rss+xml" title="Recent CPAN Uploads of HTML-Parser - MetaCPAN" href="https://metacpan.org/feed/distribution/HTML-Parser">
+        <link href="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/43f1789ab677af5f49609b1c0d1b47ae2e8f8f9a.css" rel="stylesheet" type="text/css">
+        <link rel="search" href="https://metacpan.org/static/opensearch.xml" type="application/opensearchdescription+xml" title="MetaCPAN">
+        <link rel="canonical" href="https://metacpan.org/pod/HTML::Entities">
+        <meta name="description" content="Encode or decode strings with HTML entities">
+        <link rel="shortcut icon" href="https://metacpan.org/static/icons/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://metacpan.org/static/icons/apple-touch-icon.png">
+        <script async="" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/analytics.js.download"></script><script src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/fd5168e65900c25667cf67492768981b6ae747ea.js.download" type="text/javascript" defer=""></script>
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://metacpan.org/static/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-27829474-1', {
+              siteSpeedSampleRate : 100
+          });
+          ga('send', 'pageview');
+        </script>
+        
+        <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://metacpan.org/pod/HTML::Entities">
+<meta name="twitter:title" content="HTML::Entities">
+<meta name="twitter:description" content="Encode or decode strings with HTML entities">
+<meta name="twitter:site" content="metacpan">
+
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                <li class="visible-xs">
+                <a href="https://metacpan.org/pod/HTML::Entities#" data-toggle="slidepanel" data-target=".slidepanel">
+                  <i class="fa fa-bars icon-slidepanel"></i>
+                </a>
+                </li>
+            
+                    <li class="">
+                        <a href="https://metacpan.org/"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/metacpan-icon.png" alt="MetaCPAN icon">                            Home                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://grep.metacpan.org/"><i class="fa fa-search"></i>                            grep::cpan                        </a>
+                    </li>
+                    <li class="">
+                        <a href="https://metacpan.org/recent"><i class="fa fa-history"></i>                            Recent                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about"><i class="fa fa-info"></i>                            About                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/about/faq"><i class="fa fa-question"></i>                            FAQ                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://github.com/metacpan/metacpan-web/issues"><i class="fa fa-github-alt"></i>                            GitHub Issues                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/news"><i class="fa fa-newspaper-o"></i>                            News                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://metacpan.org/tools"><i class="fa fa-wrench"></i>                            Tools                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="https://fastapi.metacpan.org/"><i class="fa fa-database"></i>                            API                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form action="https://metacpan.org/account/logout" method="POST" id="metacpan-logout"></form>
+                    <li class="dropdown logged_in" style="display: none;">
+                        <a href="https://metacpan.org/pod/HTML::Entities#" class="dropdown-toggle" data-toggle="dropdown">
+                        Account
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://metacpan.org/account/identities">Identities</a></li>
+                            <li><a href="https://metacpan.org/account/profile">Profile</a></li>
+                            <li><a href="https://metacpan.org/account/favorite/list">Favorites</a></li>
+                            <li>
+                                <a href="https://metacpan.org/pod/HTML::Entities#" onclick="$(&#39;#metacpan-logout&#39;).submit(); return false">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown logged_out" style="display: inline;">
+                        <a href="https://metacpan.org/pod/HTML::Entities#" class="dropdown-toggle" data-toggle="dropdown">
+                        Sign in
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=github" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-github fa-fw"></i>
+                                GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=twitter" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-twitter fa-fw"></i>
+                                Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fastapi.metacpan.org/oauth2/authorize?client_id=metacpan.org&amp;choice=google" onclick="return logInPAUSE(this)">
+                                <i class="fa fa-google fa-fw"></i>
+                                Google
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://metacpan.org/login/openid">
+                                <i class="fa fa-openid fa-fw"></i>
+                                OpenID
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-pod">
+
+        
+
+            
+            <div class="row hidden-phone">
+                <div class="head-small-logo col-md-3">
+                    <a href="https://metacpan.org/" class="small-logo"></a>
+                </div>
+                <div class="col-md-9">
+                    <form action="https://metacpan.org/search" class="search-form form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="q" size="41" id="search-input" class="form-control" value="" autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button class="btn search-btn" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="main-content col-md-12">
+                    
+
+
+
+
+<div itemscope="" itemtype="http://schema.org/SoftwareApplication">
+  
+
+
+<div class="breadcrumbs">
+  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <a itemprop="url" data-keyboard-shortcut="g a" rel="author" href="https://metacpan.org/author/CAPOEIRAB" title="Chase Whitener" class="author-name"><span itemprop="name">Chase Whitener</span></a>
+  </span>
+  <span>&nbsp;/&nbsp;</span>
+  <div class="release status-latest maturity-released">
+    <span class="dropdown"><b class="caret"></b></span>
+    <select class="" onchange="document.location.href=this.value">
+
+  <option selected="" value="/module/CAPOEIRAB/HTML-Parser-3.75/lib/HTML/Entities.pm">
+    3.75
+      (CAPOEIRAB on 2020-08-30)
+      
+  </option>
+
+  <option value="/module/CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Entities.pm">
+    3.74
+      (CAPOEIRAB on 2020-08-30)
+      
+  </option>
+
+  <option value="/module/CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Entities.pm">
+    3.73
+      (CAPOEIRAB on 2020-08-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.72/lib/HTML/Entities.pm">
+    3.72
+      (GAAS on 2016-01-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.71/lib/HTML/Entities.pm">
+    3.71
+      (GAAS on 2013-05-08)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Entities.pm">
+    3.25-bin-1-Mac
+      (KIMURA on 2001-06-12)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Entities.pm">
+    3.23-bin-1-Mac
+      (KIMURA on 2001-05-05)
+      
+  </option>
+
+  <option value="/module/KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Entities.pm">
+    3.19-bin-1-Mac
+      (KIMURA on 2001-03-16)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.25/lib/HTML/Entities.pm">
+    2.25
+      (GAAS on 1999-11-05)
+      
+  </option>
+        <optgroup label="BackPAN">
+          
+
+  <option value="/module/GAAS/HTML-Parser-3.70/lib/HTML/Entities.pm">
+    3.70
+      (GAAS on 2013-03-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.69/lib/HTML/Entities.pm">
+    3.69
+      (GAAS on 2011-10-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.68/lib/HTML/Entities.pm">
+    3.68
+      (GAAS on 2010-09-01)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.67/lib/HTML/Entities.pm">
+    3.67
+      (GAAS on 2010-08-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.66/lib/HTML/Entities.pm">
+    3.66
+      (GAAS on 2010-07-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.65/lib/HTML/Entities.pm">
+    3.65
+      (GAAS on 2010-04-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.64/lib/HTML/Entities.pm">
+    3.64
+      (GAAS on 2009-10-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.63/lib/HTML/Entities.pm">
+    3.63
+      (GAAS on 2009-10-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.62/lib/HTML/Entities.pm">
+    3.62
+      (GAAS on 2009-08-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.61/lib/HTML/Entities.pm">
+    3.61
+      (GAAS on 2009-06-20)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.60/lib/HTML/Entities.pm">
+    3.60
+      (GAAS on 2009-02-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.59/lib/HTML/Entities.pm">
+    3.59
+      (GAAS on 2008-11-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.58/lib/HTML/Entities.pm">
+    3.58
+      (GAAS on 2008-11-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.57/lib/HTML/Entities.pm">
+    3.57
+      (GAAS on 2008-11-16)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.56/lib/HTML/Entities.pm">
+    3.56
+      (GAAS on 2007-01-12)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.55/lib/HTML/Entities.pm">
+    3.55
+      (GAAS on 2006-07-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.54/lib/HTML/Entities.pm">
+    3.54
+      (GAAS on 2006-04-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.53/lib/HTML/Entities.pm">
+    3.53
+      (GAAS on 2006-04-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.52/lib/HTML/Entities.pm">
+    3.52
+      (GAAS on 2006-04-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.51/lib/HTML/Entities.pm">
+    3.51
+      (GAAS on 2006-03-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.50/lib/HTML/Entities.pm">
+    3.50
+      (GAAS on 2006-02-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.49/lib/HTML/Entities.pm">
+    3.49
+      (GAAS on 2006-02-08)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.48/lib/HTML/Entities.pm">
+    3.48
+      (GAAS on 2005-12-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.47/lib/HTML/Entities.pm">
+    3.47
+      (GAAS on 2005-11-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.46/lib/HTML/Entities.pm">
+    3.46
+      (GAAS on 2005-10-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.45/lib/HTML/Entities.pm">
+    3.45
+      (GAAS on 2005-01-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.44/lib/HTML/Entities.pm">
+    3.44
+      (GAAS on 2004-12-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.43/lib/HTML/Entities.pm">
+    3.43
+      (GAAS on 2004-12-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.42/lib/HTML/Entities.pm">
+    3.42
+      (GAAS on 2004-12-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.41/lib/HTML/Entities.pm">
+    3.41
+      (GAAS on 2004-11-30)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.40/lib/HTML/Entities.pm">
+    3.40
+      (GAAS on 2004-11-29)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_92/lib/HTML/Entities.pm">
+    3.39_92 DEV
+      (GAAS on 2004-11-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_91/lib/HTML/Entities.pm">
+    3.39_91 DEV
+      (GAAS on 2004-11-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.39_90/lib/HTML/Entities.pm">
+    3.39_90 DEV
+      (GAAS on 2004-11-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.38/lib/HTML/Entities.pm">
+    3.38
+      (GAAS on 2004-11-11)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.37/lib/HTML/Entities.pm">
+    3.37
+      (GAAS on 2004-11-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.36/lib/HTML/Entities.pm">
+    3.36
+      (GAAS on 2004-04-01)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.35/lib/HTML/Entities.pm">
+    3.35
+      (GAAS on 2003-12-12)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.34/lib/HTML/Entities.pm">
+    3.34
+      (GAAS on 2003-10-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.33/lib/HTML/Entities.pm">
+    3.33
+      (GAAS on 2003-10-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.32/lib/HTML/Entities.pm">
+    3.32
+      (GAAS on 2003-10-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.31/lib/HTML/Entities.pm">
+    3.31
+      (GAAS on 2003-08-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.30/lib/HTML/Entities.pm">
+    3.30
+      (GAAS on 2003-08-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.29/lib/HTML/Entities.pm">
+    3.29
+      (GAAS on 2003-08-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.28/lib/HTML/Entities.pm">
+    3.28
+      (GAAS on 2003-04-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.27/lib/HTML/Entities.pm">
+    3.27
+      (GAAS on 2003-01-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.26/lib/HTML/Entities.pm">
+    3.26
+      (GAAS on 2002-03-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.25/lib/HTML/Entities.pm">
+    3.25
+      (GAAS on 2001-05-11)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.24/lib/HTML/Entities.pm">
+    3.24
+      (GAAS on 2001-05-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.23/lib/HTML/Entities.pm">
+    3.23
+      (GAAS on 2001-05-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.22/lib/HTML/Entities.pm">
+    3.22
+      (GAAS on 2001-04-18)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.21/lib/HTML/Entities.pm">
+    3.21
+      (GAAS on 2001-04-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.20/lib/HTML/Entities.pm">
+    3.20
+      (GAAS on 2001-04-03)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_94/lib/HTML/Entities.pm">
+    3.19_94 DEV
+      (GAAS on 2001-03-30)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_93/lib/HTML/Entities.pm">
+    3.19_93 DEV
+      (GAAS on 2001-03-27)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_92/lib/HTML/Entities.pm">
+    3.19_92 DEV
+      (GAAS on 2001-03-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_91/lib/HTML/Entities.pm">
+    3.19_91 DEV
+      (GAAS on 2001-03-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19_90/lib/HTML/Entities.pm">
+    3.19_90 DEV
+      (GAAS on 2001-03-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.19/lib/HTML/Entities.pm">
+    3.19
+      (GAAS on 2001-03-10)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.18/lib/HTML/Entities.pm">
+    3.18
+      (GAAS on 2001-02-25)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.17/lib/HTML/Entities.pm">
+    3.17
+      (GAAS on 2001-02-24)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.16/lib/HTML/Entities.pm">
+    3.16
+      (GAAS on 2001-02-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.15/lib/HTML/Entities.pm">
+    3.15
+      (GAAS on 2000-12-26)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.14/lib/HTML/Entities.pm">
+    3.14
+      (GAAS on 2000-12-04)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.13/lib/HTML/Entities.pm">
+    3.13
+      (GAAS on 2000-09-17)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.12/lib/HTML/Entities.pm">
+    3.12
+      (GAAS on 2000-09-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.11/lib/HTML/Entities.pm">
+    3.11
+      (GAAS on 2000-08-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.10/lib/HTML/Entities.pm">
+    3.10
+      (GAAS on 2000-06-29)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.09/lib/HTML/Entities.pm">
+    3.09
+      (GAAS on 2000-06-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.08/lib/HTML/Entities.pm">
+    3.08
+      (GAAS on 2000-05-23)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.07/lib/HTML/Entities.pm">
+    3.07
+      (GAAS on 2000-03-20)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.06/lib/HTML/Entities.pm">
+    3.06
+      (GAAS on 2000-03-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.05/lib/HTML/Entities.pm">
+    3.05
+      (GAAS on 2000-01-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.04/lib/HTML/Entities.pm">
+    3.04
+      (GAAS on 2000-01-15)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.02/lib/HTML/Entities.pm">
+    3.02
+      (GAAS on 1999-12-21)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.01/lib/HTML/Entities.pm">
+    3.01
+      (GAAS on 1999-12-19)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-3.00/lib/HTML/Entities.pm">
+    3.00
+      (GAAS on 1999-12-14)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.24/lib/HTML/Entities.pm">
+    2.24
+      (GAAS on 1999-11-03)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.23/lib/HTML/Entities.pm">
+    2.23
+      (GAAS on 1999-06-09)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.21/lib/HTML/Entities.pm">
+    2.21
+      (GAAS on 1998-11-13)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.20/lib/HTML/Entities.pm">
+    2.20
+      (GAAS on 1998-07-08)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.19/lib/HTML/Entities.pm">
+    2.19
+      (GAAS on 1998-07-06)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.18/lib/HTML/Entities.pm">
+    2.18
+      (GAAS on 1998-06-22)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.17/lib/HTML/Entities.pm">
+    2.17
+      (GAAS on 1998-04-28)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.16/lib/HTML/Entities.pm">
+    2.16
+      (GAAS on 1998-04-02)
+      
+  </option>
+
+  <option value="/module/GAAS/HTML-Parser-2.14/lib/HTML/Entities.pm">
+    2.14
+      (GAAS on 1998-03-31)
+      
+  </option>
+        </optgroup>
+    
+</select>
+    
+    <a data-keyboard-shortcut="g d" class="release-name" href="https://metacpan.org/release/HTML-Parser">HTML-Parser-3.75</a>
+    
+    
+  </div>
+  <!--
+  Unlike an <img>, an <object> grafts the SVG document into the DOM, which
+  means browsers will display the <title> elements of the SVG.  Yay!
+-->
+<span class="river-gauge-gauge">
+
+  <svg width="24px" height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g>
+      <!--
+        There is some careful attention below to the resulting whitespace
+        after template interpolation, ensuring that the tooltip looks good on
+        both Chrome and Firefox. Please don't adjust it blithely, thanks!
+      -->
+      <title>River stage four 
+• 570 direct dependents 
+• 9666 total dependents</title>
+
+      <!-- 5 bars, 4x15px, 1px apart, colored #e4e2e2 or #7ea3f2 -->
+      <rect x="0" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="5" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="10" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="15" y="0" width="4" height="15" fill="#7ea3f2"></rect>
+      <rect x="20" y="0" width="4" height="15" fill="#e4e2e2"></rect>
+    </g>
+  </svg>
+
+
+</span>
+<div id="HTML-Parser-fav" class="logged_in">
+<form action="https://metacpan.org/account/favorite/add" style="display: inline" onsubmit="return favDistribution(this)">
+    <input type="hidden" name="remove" value="0">
+    <input type="hidden" name="release" value="HTML-Parser-3.75">
+    <input type="hidden" name="author" value="CAPOEIRAB">
+    <input type="hidden" name="distribution" value="HTML-Parser">
+    <button type="submit" class="favorite highlight" title="Add to favorites"><span>41</span> ++</button>
+</form>
+</div>
+<div class="logged_out" style="display: inline;">
+<a href="https://metacpan.org/pod/HTML::Entities" onclick="alert(&#39;Please sign in to add favorites&#39;); return false" class="favorite highlight" title="Add to favorites">
+<span>41</span> ++</a>
+</div>
+
+  &nbsp;/&nbsp;<span itemprop="name">HTML::Entities</span>
+</div>
+
+  <ul class="nav-list slidepanel sticky-panel-top">
+    <li class="visible-xs">
+      <div>
+    <form action="https://metacpan.org/search">
+        <input type="search" class="form-control tool-bar-form" placeholder="Search" name="q">
+        <input type="submit" class="hidden">
+    </form>
+</div>
+
+    </li>
+    <li class="nav-header">      <time class="relatize" itemprop="dateModified" datetime="2020-08-30" title="30 Aug 2020 19:58:22 UTC">Aug 31, 2020</time>
+    </li>
+    
+    <li>
+      Distribution: HTML-Parser
+    </li>
+    
+    <li>
+      Module version: <span itemprop="softwareVersion">3.75</span>
+    </li>
+    
+        <li>
+      <a data-keyboard-shortcut="g s" href="https://metacpan.org/release/HTML-Parser/source/lib/HTML/Entities.pm"><i class="fa fa-fw fa-file-code-o black"></i>Source</a>
+      (<a href="https://metacpan.org/release/HTML-Parser/source/lib/HTML/Entities.pm?raw=1">raw</a>)
+    </li>
+    
+    <li>
+      <a data-keyboard-shortcut="g b" href="https://metacpan.org/release/HTML-Parser/source/lib/HTML"><i class="fa fa-fw fa-folder-open black"></i>Browse</a>
+      (<a href="https://metacpan.org/release/HTML-Parser/source/lib/HTML?raw=1">raw</a>)
+    </li>
+    <li>
+    <a data-keyboard-shortcut="g c" href="https://metacpan.org/changes/distribution/HTML-Parser"><i class="fa fa-fw fa-cogs black"></i>Changes</a>
+</li>
+
+<li>
+    <a rel="noopener nofollow" class="nopopup" href="https://github.com/libwww-perl/html-parser"><i class="fa fa-fw fa-external-link black"></i>Homepage</a>
+</li>
+
+<li>
+    <a class="nopopup" href="https://metacpan.org/contributing-to/HTML-Parser"><i class="fa fa-fw fa-plus-circle black"></i>How to Contribute</a>
+</li>
+
+<li>
+    
+    <a rel="noopener nofollow" data-keyboard-shortcut="g r" href="https://github.com/libwww-perl/html-parser" data-hasqtip="0"><i class="fa fa-fw fa-code-fork black"></i>Repository</a>
+    
+    
+    (<a rel="noopener nofollow" href="https://github.com/libwww-perl/html-parser.git" data-hasqtip="1">git clone</a>)
+    
+</li>
+
+<li>
+    <a rel="noopener nofollow" data-keyboard-shortcut="g i" href="https://github.com/libwww-perl/html-parser/issues" data-hasqtip="2"><i class="fa fa-fw fa-info-circle black"></i>Issues</a>
+    
+</li>
+<li>
+    
+    <a rel="noopener nofollow" href="http://matrix.cpantesters.org/?dist=HTML-Parser+3.75" title="Matrix"><i class="fa fa-fw fa-check-circle black"></i>Testers</a>
+    <span title="(pass / fail / na)">(<a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=2" style="color: #090">1718</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=3" style="color: #900">7</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/H/HTML-Parser.html?oncpan=1&amp;distmat=1&amp;version=3.75&amp;grade=4">0</a>)</span>
+</li>
+<li>
+    <a rel="noopener nofollow" href="http://cpants.cpanauthors.org/release/CAPOEIRAB/HTML-Parser-3.75"><i class="fa fa-fw fa-line-chart black"></i>Kwalitee</a>
+</li>
+
+  <li>
+    <i class="fa fa-fw fa-pie-chart black"></i><a rel="noopener nofollow" href="http://cpancover.com/latest/HTML-Parser-3.75/index.html">83.63% Coverage </a>
+  </li>
+
+
+
+<li><i class="fa fa-fw fa-gavel black"></i>License: perl_5</li>
+
+
+<li>
+  <i class="fa fa-fw fa-greater-than-equal black"></i>Perl: v5.8.0
+</li>
+
+
+
+
+    <li class="nav-header">Activity</li>
+    <li><div class="activity-graph">
+  <img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/activity" width="170" height="22">
+  <div align="right"><small class="comment">24 month</small></div>
+</div>
+</li>
+    <li class="nav-header">Tools</li>
+<li>
+    <a itemprop="downloadUrl" href="https://cpan.metacpan.org/authors/id/C/CA/CAPOEIRAB/HTML-Parser-3.75.tar.gz">
+    <i class="fa fa-download fa-fw black"></i>Download (<span itemprop="fileSize">117.83Kb</span>)</a>
+    
+    <span class="invisible" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <span itemprop="price">0</span>
+    </span>
+    
+</li>
+<li>
+    <a href="https://explorer.metacpan.org/?url=/module/CAPOEIRAB/HTML-Parser-3.75/lib%2FHTML%2FEntities.pm">
+    <i class="fa fa-list-alt fa-fw black"></i>MetaCPAN Explorer
+    </a>
+</li>
+<li>
+  <a href="https://metacpan.org/permission/distribution/HTML-Parser">
+    <i class="fa fa-key fa-fw black"></i>Permissions
+  </a>
+</li>
+<li>
+    <a href="https://metacpan.org/feed/distribution/HTML-Parser">
+    <i class="fa fa-rss-square fa-fw black"></i>Subscribe to distribution
+    </a>
+</li>
+<li>
+    <button class="btn btn-link" data-toggle="modal" data-target="#install-instructions-dialog">
+      <i class="fa fa-terminal fa-fw black"></i>Install Instructions
+    </button>
+</li>
+<li>
+    <form action="https://metacpan.org/search">
+        <input type="hidden" name="q" value="dist:HTML-Parser">
+        <input type="search" name="q" placeholder="Search distribution" style="width: 153px" class="form-control tool-bar-form">
+        <input type="submit" style="display: none">
+    </form>
+</li>
+<li>
+    <form action="https://grep.metacpan.org/search">
+        <input type="hidden" name="qd" value="HTML-Parser">
+        <input type="hidden" name="source" value="metacpan">
+         <input type="search" name="q" placeholder="grep distribution" style="width: 153px" class="form-control tool-bar-form">
+         <input type="submit" style="display: none">
+     </form>
+</li>
+<li>
+    <select onchange="document.location.href=&#39;/module/&#39;+this.value" class="form-control tool-bar-form">
+        <option>Jump to version</option>
+    <option value="CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Entities.pm">3.74 (CAPOEIRAB on 2020-08-30)</option>
+
+    <option value="CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Entities.pm">3.73 (CAPOEIRAB on 2020-08-25)</option>
+
+    <option value="GAAS/HTML-Parser-3.72/lib/HTML/Entities.pm">3.72 (GAAS on 2016-01-19)</option>
+
+    <option value="GAAS/HTML-Parser-3.71/lib/HTML/Entities.pm">3.71 (GAAS on 2013-05-08)</option>
+
+    <option value="KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Entities.pm">3.25-bin-1-Mac (KIMURA on 2001-06-12)</option>
+
+    <option value="KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Entities.pm">3.23-bin-1-Mac (KIMURA on 2001-05-05)</option>
+
+    <option value="KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Entities.pm">3.19-bin-1-Mac (KIMURA on 2001-03-16)</option>
+
+    <option value="GAAS/HTML-Parser-2.25/lib/HTML/Entities.pm">2.25 (GAAS on 1999-11-05)</option>
+
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="GAAS/HTML-Parser-3.70/lib/HTML/Entities.pm">3.70 (GAAS on 2013-03-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.69/lib/HTML/Entities.pm">3.69 (GAAS on 2011-10-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.68/lib/HTML/Entities.pm">3.68 (GAAS on 2010-09-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.67/lib/HTML/Entities.pm">3.67 (GAAS on 2010-08-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.66/lib/HTML/Entities.pm">3.66 (GAAS on 2010-07-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.65/lib/HTML/Entities.pm">3.65 (GAAS on 2010-04-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.64/lib/HTML/Entities.pm">3.64 (GAAS on 2009-10-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.63/lib/HTML/Entities.pm">3.63 (GAAS on 2009-10-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.62/lib/HTML/Entities.pm">3.62 (GAAS on 2009-08-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.61/lib/HTML/Entities.pm">3.61 (GAAS on 2009-06-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.60/lib/HTML/Entities.pm">3.60 (GAAS on 2009-02-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.59/lib/HTML/Entities.pm">3.59 (GAAS on 2008-11-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.58/lib/HTML/Entities.pm">3.58 (GAAS on 2008-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.57/lib/HTML/Entities.pm">3.57 (GAAS on 2008-11-16)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.56/lib/HTML/Entities.pm">3.56 (GAAS on 2007-01-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.55/lib/HTML/Entities.pm">3.55 (GAAS on 2006-07-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.54/lib/HTML/Entities.pm">3.54 (GAAS on 2006-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.53/lib/HTML/Entities.pm">3.53 (GAAS on 2006-04-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.52/lib/HTML/Entities.pm">3.52 (GAAS on 2006-04-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.51/lib/HTML/Entities.pm">3.51 (GAAS on 2006-03-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.50/lib/HTML/Entities.pm">3.50 (GAAS on 2006-02-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.49/lib/HTML/Entities.pm">3.49 (GAAS on 2006-02-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.48/lib/HTML/Entities.pm">3.48 (GAAS on 2005-12-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.47/lib/HTML/Entities.pm">3.47 (GAAS on 2005-11-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.46/lib/HTML/Entities.pm">3.46 (GAAS on 2005-10-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.45/lib/HTML/Entities.pm">3.45 (GAAS on 2005-01-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.44/lib/HTML/Entities.pm">3.44 (GAAS on 2004-12-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.43/lib/HTML/Entities.pm">3.43 (GAAS on 2004-12-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.42/lib/HTML/Entities.pm">3.42 (GAAS on 2004-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.41/lib/HTML/Entities.pm">3.41 (GAAS on 2004-11-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.40/lib/HTML/Entities.pm">3.40 (GAAS on 2004-11-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_92/lib/HTML/Entities.pm">3.39_92 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_91/lib/HTML/Entities.pm">3.39_91 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_90/lib/HTML/Entities.pm">3.39_90 DEV (GAAS on 2004-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.38/lib/HTML/Entities.pm">3.38 (GAAS on 2004-11-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.37/lib/HTML/Entities.pm">3.37 (GAAS on 2004-11-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.36/lib/HTML/Entities.pm">3.36 (GAAS on 2004-04-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.35/lib/HTML/Entities.pm">3.35 (GAAS on 2003-12-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.34/lib/HTML/Entities.pm">3.34 (GAAS on 2003-10-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.33/lib/HTML/Entities.pm">3.33 (GAAS on 2003-10-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.32/lib/HTML/Entities.pm">3.32 (GAAS on 2003-10-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.31/lib/HTML/Entities.pm">3.31 (GAAS on 2003-08-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.30/lib/HTML/Entities.pm">3.30 (GAAS on 2003-08-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.29/lib/HTML/Entities.pm">3.29 (GAAS on 2003-08-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.28/lib/HTML/Entities.pm">3.28 (GAAS on 2003-04-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.27/lib/HTML/Entities.pm">3.27 (GAAS on 2003-01-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.26/lib/HTML/Entities.pm">3.26 (GAAS on 2002-03-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.25/lib/HTML/Entities.pm">3.25 (GAAS on 2001-05-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.24/lib/HTML/Entities.pm">3.24 (GAAS on 2001-05-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.23/lib/HTML/Entities.pm">3.23 (GAAS on 2001-05-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.22/lib/HTML/Entities.pm">3.22 (GAAS on 2001-04-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.21/lib/HTML/Entities.pm">3.21 (GAAS on 2001-04-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.20/lib/HTML/Entities.pm">3.20 (GAAS on 2001-04-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_94/lib/HTML/Entities.pm">3.19_94 DEV (GAAS on 2001-03-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_93/lib/HTML/Entities.pm">3.19_93 DEV (GAAS on 2001-03-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_92/lib/HTML/Entities.pm">3.19_92 DEV (GAAS on 2001-03-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_91/lib/HTML/Entities.pm">3.19_91 DEV (GAAS on 2001-03-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_90/lib/HTML/Entities.pm">3.19_90 DEV (GAAS on 2001-03-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19/lib/HTML/Entities.pm">3.19 (GAAS on 2001-03-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.18/lib/HTML/Entities.pm">3.18 (GAAS on 2001-02-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.17/lib/HTML/Entities.pm">3.17 (GAAS on 2001-02-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.16/lib/HTML/Entities.pm">3.16 (GAAS on 2001-02-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.15/lib/HTML/Entities.pm">3.15 (GAAS on 2000-12-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.14/lib/HTML/Entities.pm">3.14 (GAAS on 2000-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.13/lib/HTML/Entities.pm">3.13 (GAAS on 2000-09-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.12/lib/HTML/Entities.pm">3.12 (GAAS on 2000-09-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.11/lib/HTML/Entities.pm">3.11 (GAAS on 2000-08-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.10/lib/HTML/Entities.pm">3.10 (GAAS on 2000-06-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.09/lib/HTML/Entities.pm">3.09 (GAAS on 2000-06-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.08/lib/HTML/Entities.pm">3.08 (GAAS on 2000-05-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.07/lib/HTML/Entities.pm">3.07 (GAAS on 2000-03-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.06/lib/HTML/Entities.pm">3.06 (GAAS on 2000-03-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.05/lib/HTML/Entities.pm">3.05 (GAAS on 2000-01-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.04/lib/HTML/Entities.pm">3.04 (GAAS on 2000-01-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.02/lib/HTML/Entities.pm">3.02 (GAAS on 1999-12-21)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.01/lib/HTML/Entities.pm">3.01 (GAAS on 1999-12-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.00/lib/HTML/Entities.pm">3.00 (GAAS on 1999-12-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.24/lib/HTML/Entities.pm">2.24 (GAAS on 1999-11-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.23/lib/HTML/Entities.pm">2.23 (GAAS on 1999-06-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.21/lib/HTML/Entities.pm">2.21 (GAAS on 1998-11-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.20/lib/HTML/Entities.pm">2.20 (GAAS on 1998-07-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.19/lib/HTML/Entities.pm">2.19 (GAAS on 1998-07-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.18/lib/HTML/Entities.pm">2.18 (GAAS on 1998-06-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.17/lib/HTML/Entities.pm">2.17 (GAAS on 1998-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.16/lib/HTML/Entities.pm">2.16 (GAAS on 1998-04-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.14/lib/HTML/Entities.pm">2.14 (GAAS on 1998-03-31)
+    </option>
+
+
+    </select>
+</li>
+<li>
+    <select name="release" onchange="document.location.href=&#39;/diff/file/?target=CAPOEIRAB/HTML-Parser-3.75/lib%2FHTML%2FEntities.pm&amp;source=&#39; + encodeURIComponent(this.value)" class="form-control tool-bar-form">
+        <option>Diff with version</option>
+    <option value="CAPOEIRAB/HTML-Parser-3.74/lib/HTML/Entities.pm">3.74 (CAPOEIRAB on 2020-08-30)</option>
+
+    <option value="CAPOEIRAB/HTML-Parser-3.73/lib/HTML/Entities.pm">3.73 (CAPOEIRAB on 2020-08-25)</option>
+
+    <option value="GAAS/HTML-Parser-3.72/lib/HTML/Entities.pm">3.72 (GAAS on 2016-01-19)</option>
+
+    <option value="GAAS/HTML-Parser-3.71/lib/HTML/Entities.pm">3.71 (GAAS on 2013-05-08)</option>
+
+    <option value="KIMURA/HTML-Parser-3.25-bin-1-Mac/lib/HTML/Entities.pm">3.25-bin-1-Mac (KIMURA on 2001-06-12)</option>
+
+    <option value="KIMURA/HTML-Parser-3.23-bin-1-Mac/lib/HTML/Entities.pm">3.23-bin-1-Mac (KIMURA on 2001-05-05)</option>
+
+    <option value="KIMURA/HTML-Parser-3.19-bin-1-Mac/lib/HTML/Entities.pm">3.19-bin-1-Mac (KIMURA on 2001-03-16)</option>
+
+    <option value="GAAS/HTML-Parser-2.25/lib/HTML/Entities.pm">2.25 (GAAS on 1999-11-05)</option>
+
+<optgroup label="BackPAN"></optgroup>
+
+    <option value="GAAS/HTML-Parser-3.70/lib/HTML/Entities.pm">3.70 (GAAS on 2013-03-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.69/lib/HTML/Entities.pm">3.69 (GAAS on 2011-10-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.68/lib/HTML/Entities.pm">3.68 (GAAS on 2010-09-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.67/lib/HTML/Entities.pm">3.67 (GAAS on 2010-08-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.66/lib/HTML/Entities.pm">3.66 (GAAS on 2010-07-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.65/lib/HTML/Entities.pm">3.65 (GAAS on 2010-04-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.64/lib/HTML/Entities.pm">3.64 (GAAS on 2009-10-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.63/lib/HTML/Entities.pm">3.63 (GAAS on 2009-10-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.62/lib/HTML/Entities.pm">3.62 (GAAS on 2009-08-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.61/lib/HTML/Entities.pm">3.61 (GAAS on 2009-06-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.60/lib/HTML/Entities.pm">3.60 (GAAS on 2009-02-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.59/lib/HTML/Entities.pm">3.59 (GAAS on 2008-11-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.58/lib/HTML/Entities.pm">3.58 (GAAS on 2008-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.57/lib/HTML/Entities.pm">3.57 (GAAS on 2008-11-16)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.56/lib/HTML/Entities.pm">3.56 (GAAS on 2007-01-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.55/lib/HTML/Entities.pm">3.55 (GAAS on 2006-07-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.54/lib/HTML/Entities.pm">3.54 (GAAS on 2006-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.53/lib/HTML/Entities.pm">3.53 (GAAS on 2006-04-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.52/lib/HTML/Entities.pm">3.52 (GAAS on 2006-04-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.51/lib/HTML/Entities.pm">3.51 (GAAS on 2006-03-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.50/lib/HTML/Entities.pm">3.50 (GAAS on 2006-02-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.49/lib/HTML/Entities.pm">3.49 (GAAS on 2006-02-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.48/lib/HTML/Entities.pm">3.48 (GAAS on 2005-12-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.47/lib/HTML/Entities.pm">3.47 (GAAS on 2005-11-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.46/lib/HTML/Entities.pm">3.46 (GAAS on 2005-10-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.45/lib/HTML/Entities.pm">3.45 (GAAS on 2005-01-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.44/lib/HTML/Entities.pm">3.44 (GAAS on 2004-12-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.43/lib/HTML/Entities.pm">3.43 (GAAS on 2004-12-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.42/lib/HTML/Entities.pm">3.42 (GAAS on 2004-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.41/lib/HTML/Entities.pm">3.41 (GAAS on 2004-11-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.40/lib/HTML/Entities.pm">3.40 (GAAS on 2004-11-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_92/lib/HTML/Entities.pm">3.39_92 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_91/lib/HTML/Entities.pm">3.39_91 DEV (GAAS on 2004-11-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.39_90/lib/HTML/Entities.pm">3.39_90 DEV (GAAS on 2004-11-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.38/lib/HTML/Entities.pm">3.38 (GAAS on 2004-11-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.37/lib/HTML/Entities.pm">3.37 (GAAS on 2004-11-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.36/lib/HTML/Entities.pm">3.36 (GAAS on 2004-04-01)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.35/lib/HTML/Entities.pm">3.35 (GAAS on 2003-12-12)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.34/lib/HTML/Entities.pm">3.34 (GAAS on 2003-10-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.33/lib/HTML/Entities.pm">3.33 (GAAS on 2003-10-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.32/lib/HTML/Entities.pm">3.32 (GAAS on 2003-10-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.31/lib/HTML/Entities.pm">3.31 (GAAS on 2003-08-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.30/lib/HTML/Entities.pm">3.30 (GAAS on 2003-08-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.29/lib/HTML/Entities.pm">3.29 (GAAS on 2003-08-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.28/lib/HTML/Entities.pm">3.28 (GAAS on 2003-04-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.27/lib/HTML/Entities.pm">3.27 (GAAS on 2003-01-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.26/lib/HTML/Entities.pm">3.26 (GAAS on 2002-03-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.25/lib/HTML/Entities.pm">3.25 (GAAS on 2001-05-11)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.24/lib/HTML/Entities.pm">3.24 (GAAS on 2001-05-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.23/lib/HTML/Entities.pm">3.23 (GAAS on 2001-05-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.22/lib/HTML/Entities.pm">3.22 (GAAS on 2001-04-18)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.21/lib/HTML/Entities.pm">3.21 (GAAS on 2001-04-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.20/lib/HTML/Entities.pm">3.20 (GAAS on 2001-04-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_94/lib/HTML/Entities.pm">3.19_94 DEV (GAAS on 2001-03-30)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_93/lib/HTML/Entities.pm">3.19_93 DEV (GAAS on 2001-03-27)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_92/lib/HTML/Entities.pm">3.19_92 DEV (GAAS on 2001-03-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_91/lib/HTML/Entities.pm">3.19_91 DEV (GAAS on 2001-03-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19_90/lib/HTML/Entities.pm">3.19_90 DEV (GAAS on 2001-03-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.19/lib/HTML/Entities.pm">3.19 (GAAS on 2001-03-10)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.18/lib/HTML/Entities.pm">3.18 (GAAS on 2001-02-25)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.17/lib/HTML/Entities.pm">3.17 (GAAS on 2001-02-24)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.16/lib/HTML/Entities.pm">3.16 (GAAS on 2001-02-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.15/lib/HTML/Entities.pm">3.15 (GAAS on 2000-12-26)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.14/lib/HTML/Entities.pm">3.14 (GAAS on 2000-12-04)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.13/lib/HTML/Entities.pm">3.13 (GAAS on 2000-09-17)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.12/lib/HTML/Entities.pm">3.12 (GAAS on 2000-09-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.11/lib/HTML/Entities.pm">3.11 (GAAS on 2000-08-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.10/lib/HTML/Entities.pm">3.10 (GAAS on 2000-06-29)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.09/lib/HTML/Entities.pm">3.09 (GAAS on 2000-06-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.08/lib/HTML/Entities.pm">3.08 (GAAS on 2000-05-23)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.07/lib/HTML/Entities.pm">3.07 (GAAS on 2000-03-20)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.06/lib/HTML/Entities.pm">3.06 (GAAS on 2000-03-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.05/lib/HTML/Entities.pm">3.05 (GAAS on 2000-01-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.04/lib/HTML/Entities.pm">3.04 (GAAS on 2000-01-15)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.02/lib/HTML/Entities.pm">3.02 (GAAS on 1999-12-21)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.01/lib/HTML/Entities.pm">3.01 (GAAS on 1999-12-19)
+    </option>
+
+    <option value="GAAS/HTML-Parser-3.00/lib/HTML/Entities.pm">3.00 (GAAS on 1999-12-14)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.24/lib/HTML/Entities.pm">2.24 (GAAS on 1999-11-03)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.23/lib/HTML/Entities.pm">2.23 (GAAS on 1999-06-09)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.21/lib/HTML/Entities.pm">2.21 (GAAS on 1998-11-13)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.20/lib/HTML/Entities.pm">2.20 (GAAS on 1998-07-08)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.19/lib/HTML/Entities.pm">2.19 (GAAS on 1998-07-06)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.18/lib/HTML/Entities.pm">2.18 (GAAS on 1998-06-22)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.17/lib/HTML/Entities.pm">2.17 (GAAS on 1998-04-28)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.16/lib/HTML/Entities.pm">2.16 (GAAS on 1998-04-02)
+    </option>
+
+    <option value="GAAS/HTML-Parser-2.14/lib/HTML/Entities.pm">2.14 (GAAS on 1998-03-31)
+    </option>
+
+
+    </select>
+</li>
+
+<li class="nav-header">Permalinks</li>
+<li>
+    <a href="https://metacpan.org/pod/release/CAPOEIRAB/HTML-Parser-3.75/lib/HTML/Entities.pm">This version</a>
+</li>
+<li>
+    <a itemprop="url" href="https://metacpan.org/pod/HTML::Entities">Latest version</a>
+</li>
+
+  </ul>
+
+  <button id="right-panel-toggle" class="btn-link" onclick="togglePanel(&#39;right&#39;); return false;"><span class="panel-hidden">Show</span><span class="panel-visible">Hide</span> Right Panel</button>
+  <div id="right-panel" class="pull-right">
+  <div class="box-right">
+  <!-- For plussers -->
+
+<div class="plussers hidden-phone">
+<div><b>++ed by:</b></div>
+
+
+
+
+<a class="display-all" href="https://metacpan.org/author/WREIS"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/0b14bc3a0a18e795beebcffef045bbea" title="WREIS" alt="WREIS"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/CHANKEY"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/5e3dc77d6818da1eba913fe7f3fed8ce.jpeg" title="CHANKEY" alt="CHANKEY"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/JMATES"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/06accb84e6519284be3941ff72e429cb.jpeg" title="JMATES" alt="JMATES"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/FANY"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/7bc0edaceda1cb0a5b56b844a5b406c2.png" title="FANY" alt="FANY"></a>
+
+
+
+<a class="display-all" href="https://metacpan.org/author/LICHTKIND"><img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/b9e7c23657e71d73dfc0f0b049a53e66.jpeg" title="LICHTKIND" alt="LICHTKIND"></a>
+
+
+
+<!-- Display counts of plussers-->
+<p>
+
+<a href="https://metacpan.org/release/HTML-Parser/plussers">20 PAUSE users</a><br>
+
+
+21 non-PAUSE users.
+
+</p>
+</div>
+
+
+<div class="author-pic">
+<a href="https://metacpan.org/author/CAPOEIRAB">
+  <img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/912bfa255ef8161a494932af0cad48c5" alt="Author image">
+</a>
+<strong>
+  <a rel="author" href="https://metacpan.org/author/CAPOEIRAB">CAPOEIRAB</a>
+</strong>
+<span title="Chase Whitener">Chase Whitener</span>
+</div>
+
+  
+
+<div id="contributors">
+    <div class="contributors-header">and 17 contributors</div>
+    <div align="right">
+        <button class="btn-link" onclick="$(this).hide(); $(&#39;#contributors ul&#39;).slideDown(); return false;">show them</button>
+    </div>
+    <ul class="nav nav-list box-right" style="display: none">
+    
+        <li class="contributor" data-cpan-author="GAAS" data-contrib-email="gaas@cpan.org gisle@aas.no">
+        <a href="https://metacpan.org/author/GAAS" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/80ccd89a65d9faf08c2fb6be2991ba57.jpeg">        Gisle Aas</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="antonio@dyne.org">
+        Antonio Radici
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="BARBIE" data-contrib-email="barbie@missbarbell.co.uk">
+        <a href="https://metacpan.org/author/BARBIE" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/92c6c2f8be6f62c74aae398b99aefe57.png">        Barbie</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="bulk88@hotmail.com">
+        bulk88
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="CHIPS" data-contrib-email="chip@pobox.com">
+        <a href="https://metacpan.org/author/CHIPS" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/60cdb5a6d95805ffc42a674bb504bbb1">        Chip Salzenberg</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="dmn@debian.org">
+        Damyan Ivanov
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="dsteinbrunner@pobox.com">
+        David Steinbrunner
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="PERRAD" data-contrib-email="francois.perrad@gadz.org">
+        <a href="https://metacpan.org/author/PERRAD" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/4219d7ad0c9c2be2b9f3abfd68a94dd4.png">        François Perrad</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="JACQUESG" data-contrib-email="jacquesg@striata.com">
+        <a href="https://metacpan.org/author/JACQUESG" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/979fdf21a0f82c302536905d762adf75">        Jacques Germishuys</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="JONJ" data-contrib-email="jon@endpoint.com">
+        <a href="https://metacpan.org/author/JONJ" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/6becea182c4c0326e48ac2d3fc056b11">        Jon Jensen</a>
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="MSOUTH" data-contrib-email="msouth@gmail.com">
+        <a href="https://metacpan.org/author/MSOUTH" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/db7b941f3e749b0365533e72d02db30f">        Mike South</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="nick@ccl4.org">
+        Nicholas Clark
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="nicolas@atoomic.org">
+        Nicolas R
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="salvatore.bonaccorso@gmail.com">
+        Salvatore Bonaccorso
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="SCOP" data-contrib-email="ville.skytta@iki.fi">
+        <a href="https://metacpan.org/author/SCOP" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/4623589f12ed201b060c2075fd9c0920">        Ville Skyttä</a>
+        
+        </li>
+    
+        <li class="contributor" data-contrib-email="demerphq@gmail.com">
+        Yves Orton
+        
+        </li>
+    
+        <li class="contributor" data-cpan-author="ZEFRAM" data-contrib-email="zefram@fysh.org">
+        <a href="https://metacpan.org/author/ZEFRAM" class="cpan-author">        <img class="gravatar" width="20" height="20" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/aab343bc3a4424dcb7f913920242f051">        Zefram</a>
+        
+        </li>
+    
+    </ul>
+</div>
+
+
+
+  </div>
+  <ul class="nav-list box-right hidden-phone dependencies">
+    <li class="nav-header">Dependencies</li>
+    <li><a href="https://metacpan.org/pod/Carp" title="Carp" class="ellipsis"><span style="max-width: calc(100% - 12px);">Ca</span><span>rp</span></a></li>
+    <li><a href="https://metacpan.org/pod/Exporter" title="Exporter" class="ellipsis"><span style="max-width: calc(100% - 20px);">Expo</span><span>rter</span></a></li>
+    <li><a href="https://metacpan.org/pod/HTML::Tagset" title="HTML::Tagset" class="ellipsis"><span style="max-width: calc(100% - 32px);">HTML::T</span><span>agset</span></a></li>
+    <li><a href="https://metacpan.org/pod/HTTP::Headers" title="HTTP::Headers" class="ellipsis"><span style="max-width: calc(100% - 40px);">HTTP::H</span><span>eaders</span></a></li>
+    <li><a href="https://metacpan.org/pod/IO::File" title="IO::File" class="ellipsis"><span style="max-width: calc(100% - 21px);">IO::</span><span>File</span></a></li>
+    <li><a href="https://metacpan.org/pod/strict" title="strict" class="ellipsis"><span style="max-width: calc(100% - 13px);">str</span><span>ict</span></a></li>
+    <li><a href="https://metacpan.org/pod/URI" title="URI" class="ellipsis"><span style="max-width: calc(100% - 13px);">U</span><span>RI</span></a></li>
+    <li><a href="https://metacpan.org/pod/URI::URL" title="URI::URL" class="ellipsis"><span style="max-width: calc(100% - 30px);">URI:</span><span>:URL</span></a></li>
+    <li><a href="https://metacpan.org/pod/vars" title="vars" class="ellipsis"><span style="max-width: calc(100% - 11px);">va</span><span>rs</span></a></li>
+    <li><a href="https://metacpan.org/pod/XSLoader" title="XSLoader" class="ellipsis"><span style="max-width: calc(100% - 26px);">XSLo</span><span>ader</span></a></li>
+    <li><hr></li>
+    <li>
+        <a href="http://deps.cpantesters.org/?module=HTML::Parser">
+        <i class="fa fa-retweet fa-fw black"></i>CPAN Testers List</a>
+    </li>
+    <li>        <a href="https://metacpan.org/requires/module/HTML::Entities">        <i class="fa fa-share fa-fw black"></i>Reverse dependencies</a>
+    </li>
+    <li>
+        <a href="https://cpandeps.grinnz.com/?dist=HTML-Parser">
+        <i class="fa fa-asterisk fa-fw black"></i>Dependency graph</a>
+    </li>
+</ul>
+
+  </div>
+  <a name="___pod"></a>
+  <div class="pod content anchors">
+
+  
+  <div id="index-container"><div class="index-border"><div class="index-header"><b>Contents</b> [ <button class="btn-link toggle-index"><span class="toggle-show">show</span><span class="toggle-hide">hide</span></button> ] <button class="btn-link toggle-index-right"><i class="fa fa-toggle-right"></i><i class="fa fa-toggle-left"></i></button></div><ul id="index">
+  <li><a href="https://metacpan.org/pod/HTML::Entities#NAME">NAME</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Entities#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Entities#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="https://metacpan.org/pod/HTML::Entities#COPYRIGHT">COPYRIGHT</a></li>
+</ul></div></div>
+
+<h1 id="NAME"><a href="https://metacpan.org/pod/HTML::Entities#NAME" class="anchor"><span class="fa fa-bookmark black"></span></a>NAME</h1>
+
+<p>HTML::Entities - Encode or decode strings with HTML entities</p>
+
+<h1 id="SYNOPSIS"><a href="https://metacpan.org/pod/HTML::Entities#SYNOPSIS" class="anchor"><span class="fa fa-bookmark black"></span></a>SYNOPSIS</h1>
+
+<pre><div><div id="highlighter_915849" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Entities">HTML::Entities</a>;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="perl variable">$a</code> <code class="perl plain">= </code><code class="perl string">"V&amp;aring;re norske tegn b&amp;oslash;r &amp;#230res"</code><code class="perl plain">;</code></div><div class="line number4 index3 alt1"><code class="perl plain">decode_entities(</code><code class="perl variable">$a</code><code class="perl plain">);</code></div><div class="line number5 index4 alt2"><code class="perl plain">encode_entities(</code><code class="perl variable">$a</code><code class="perl plain">, </code><code class="perl string">"\200-\377"</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>For example, this:</p>
+
+<pre><div><div id="highlighter_848910" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$input</code> <code class="perl plain">= </code><code class="perl string">"vis-à-vis Beyoncé's naïve\npapier-mâché résumé"</code><code class="perl plain">;</code></div><div class="line number2 index1 alt1"><code class="perl functions">print</code> <code class="perl plain">encode_entities(</code><code class="perl variable">$input</code><code class="perl plain">), </code><code class="perl string">"\n"</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>Prints this out:</p>
+
+<pre><div><div id="highlighter_605743" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl plain">vis-</code><code class="perl variable">&amp;agrave</code><code class="perl plain">;-vis Beyonc</code><code class="perl variable">&amp;eacute</code><code class="perl plain">;'s na</code><code class="perl variable">&amp;iuml</code><code class="perl plain">;ve</code></div><div class="line number2 index1 alt1"><code class="perl plain">papier-m</code><code class="perl variable">&amp;acirc</code><code class="perl plain">;ch</code><code class="perl variable">&amp;eacute</code><code class="perl plain">; r</code><code class="perl variable">&amp;eacute</code><code class="perl plain">;sum</code><code class="perl variable">&amp;eacute</code><code class="perl plain">;</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<h1 id="DESCRIPTION"><a href="https://metacpan.org/pod/HTML::Entities#DESCRIPTION" class="anchor"><span class="fa fa-bookmark black"></span></a>DESCRIPTION</h1>
+
+<p>This module deals with encoding and decoding of strings with HTML character entities. The module provides the following functions:</p>
+
+<dl>
+
+<dt id="decode_entities(-$string,-...-)"><a href="https://metacpan.org/pod/HTML::Entities#decode_entities(-$string,-...-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="decode_entities"></a><a id="decode_entities---string"></a>decode_entities( $string, ... )</dt>
+<dd>
+
+<p>This routine replaces HTML entities found in the $string with the corresponding Unicode character. Unrecognized entities are left alone.</p>
+
+<p>If multiple strings are provided as argument they are each decoded separately and the same number of strings are returned.</p>
+
+<p>If called in void context the arguments are decoded in-place.</p>
+
+<p>This routine is exported by default.</p>
+
+</dd>
+<dt id="_decode_entities(-$string,-\%entity2char-)"><a href="https://metacpan.org/pod/HTML::Entities#_decode_entities(-$string,-\%entity2char-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="_decode_entities"></a><a id="decode_entities---string---entity2char"></a>_decode_entities( $string, \%entity2char )</dt>
+<dd>
+
+</dd>
+<dt id="_decode_entities(-$string,-\%entity2char,-$expand_prefix-)"><a href="https://metacpan.org/pod/HTML::Entities#_decode_entities(-$string,-\%entity2char,-$expand_prefix-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="_decode_entities1"></a><a id="decode_entities---string---entity2char---expand_prefix"></a>_decode_entities( $string, \%entity2char, $expand_prefix )</dt>
+<dd>
+
+<p>This will in-place replace HTML entities in $string. The %entity2char hash must be provided. Named entities not found in the %entity2char hash are left alone. Numeric entities are expanded unless their value overflow.</p>
+
+<p>The keys in %entity2char are the entity names to be expanded and their values are what they should expand into. The values do not have to be single character strings. If a key has ";" as suffix, then occurrences in $string are only expanded if properly terminated with ";". Entities without ";" will be expanded regardless of how they are terminated for compatibility with how common browsers treat entities in the Latin-1 range.</p>
+
+<p>If $expand_prefix is TRUE then entities without trailing ";" in %entity2char will even be expanded as a prefix of a longer unrecognized name. The longest matching name in %entity2char will be used. This is mainly present for compatibility with an MSIE misfeature.</p>
+
+<pre><div><div id="highlighter_989630" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$string</code> <code class="perl plain">= </code><code class="perl string">"foo&amp;nbspbar"</code><code class="perl plain">;</code></div><div class="line number2 index1 alt1"><code class="perl plain">_decode_entities(</code><code class="perl variable">$string</code><code class="perl plain">, { </code><code class="perl string">nb</code> <code class="perl plain">=&gt; </code><code class="perl string">"@"</code><code class="perl plain">, </code><code class="perl string">nbsp</code> <code class="perl plain">=&gt; </code><code class="perl string">"\xA0"</code> <code class="perl plain">}, 1);</code></div><div class="line number3 index2 alt2"><code class="perl functions">print</code> <code class="perl variable">$string</code><code class="perl plain">;&nbsp; </code><code class="perl comments"># will print "foo&nbsp;bar"</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This routine is exported by default.</p>
+
+</dd>
+<dt id="encode_entities(-$string-)"><a href="https://metacpan.org/pod/HTML::Entities#encode_entities(-$string-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="encode_entities"></a><a id="encode_entities---string"></a>encode_entities( $string )</dt>
+<dd>
+
+</dd>
+<dt id="encode_entities(-$string,-$unsafe_chars-)"><a href="https://metacpan.org/pod/HTML::Entities#encode_entities(-$string,-$unsafe_chars-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="encode_entities1"></a><a id="encode_entities---string---unsafe_chars"></a>encode_entities( $string, $unsafe_chars )</dt>
+<dd>
+
+<p>This routine replaces unsafe characters in $string with their entity representation. A second argument can be given to specify which characters to consider unsafe. The unsafe characters is specified using the regular expression character class syntax (what you find within brackets in regular expressions).</p>
+
+<p>The default set of characters to encode are control chars, high-bit chars, and the <code>&lt;</code>, <code>&amp;</code>, <code>&gt;</code>, <code>'</code> and <code>"</code> characters. But this, for example, would encode <i>just</i> the <code>&lt;</code>, <code>&amp;</code>, <code>&gt;</code>, and <code>"</code> characters:</p>
+
+<pre><div><div id="highlighter_721903" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$encoded</code> <code class="perl plain">= encode_entities(</code><code class="perl variable">$input</code><code class="perl plain">, </code><code class="perl string">'&lt;&gt;&amp;"'</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>and this would only encode non-plain ASCII:</p>
+
+<pre><div><div id="highlighter_831683" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl variable">$encoded</code> <code class="perl plain">= encode_entities(</code><code class="perl variable">$input</code><code class="perl plain">, </code><code class="perl string">'^\n\x20-\x25\x27-\x7e'</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>This routine is exported by default.</p>
+
+</dd>
+<dt id="encode_entities_numeric(-$string-)"><a href="https://metacpan.org/pod/HTML::Entities#encode_entities_numeric(-$string-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="encode_entities_numeric"></a><a id="encode_entities_numeric---string"></a>encode_entities_numeric( $string )</dt>
+<dd>
+
+</dd>
+<dt id="encode_entities_numeric(-$string,-$unsafe_chars-)"><a href="https://metacpan.org/pod/HTML::Entities#encode_entities_numeric(-$string,-$unsafe_chars-)" class="anchor"><span class="fa fa-bookmark black"></span></a><a id="encode_entities_numeric1"></a><a id="encode_entities_numeric---string---unsafe_chars"></a>encode_entities_numeric( $string, $unsafe_chars )</dt>
+<dd>
+
+<p>This routine works just like encode_entities, except that the replacement entities are always <code>&amp;#x<i>hexnum</i>;</code> and never <code>&amp;<i>entname</i>;</code>. For example, <code>encode_entities("r\xF4le")</code> returns "r&amp;ocirc;le", but <code>encode_entities_numeric("r\xF4le")</code> returns "r&amp;#xF4;le".</p>
+
+<p>This routine is <i>not</i> exported by default. But you can always export it with <code>use HTML::Entities qw(encode_entities_numeric);</code> or even <code>use HTML::Entities qw(:DEFAULT encode_entities_numeric);</code></p>
+
+</dd>
+</dl>
+
+<p>All these routines modify the string passed as the first argument, if called in a void context. In scalar and array contexts, the encoded or decoded string is returned (without changing the input string).</p>
+
+<p>If you prefer not to import these routines into your namespace, you can call them as:</p>
+
+<pre><div><div id="highlighter_526755" class="syntaxhighlighter nogutter  perl"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="perl keyword">use</code> <code class="perl plain"><a href="https://metacpan.org/pod/HTML::Entities">HTML::Entities</a> ();</code></div><div class="line number2 index1 alt1"><code class="perl variable">$decoded</code> <code class="perl plain">= HTML::Entities::decode(</code><code class="perl variable">$a</code><code class="perl plain">);</code></div><div class="line number3 index2 alt2"><code class="perl variable">$encoded</code> <code class="perl plain">= HTML::Entities::encode(</code><code class="perl variable">$a</code><code class="perl plain">);</code></div><div class="line number4 index3 alt1"><code class="perl variable">$encoded</code> <code class="perl plain">= HTML::Entities::encode_numeric(</code><code class="perl variable">$a</code><code class="perl plain">);</code></div></div></td></tr></tbody></table></div></div></pre>
+
+<p>The module can also export the %char2entity and the %entity2char hashes, which contain the mapping from all characters to the corresponding entities (and vice versa, respectively).</p>
+
+<h1 id="COPYRIGHT"><a href="https://metacpan.org/pod/HTML::Entities#COPYRIGHT" class="anchor"><span class="fa fa-bookmark black"></span></a>COPYRIGHT</h1>
+
+<p>Copyright 1995-2006 Gisle Aas. All rights reserved.</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+  
+        <div id="install-instructions-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Module Install Instructions</h4>
+            </div>
+            <div class="modal-body">
+                <p>To install HTML::Entities, copy and paste the appropriate command in to your terminal.</p>
+                <p><a href="https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm">cpanm</a></p>
+                <pre>                    cpanm HTML::Parser
+                </pre>
+                <p><a href="https://metacpan.org/pod/CPAN">CPAN shell</a></p>
+                <pre>                    perl -MCPAN -e shell
+                    install HTML::Parser
+                </pre>
+                <p>For more information on module installation, please visit <a href="https://www.cpan.org/modules/INSTALL.html">the detailed CPAN module installation guide</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="https://metacpan.org/pod/HTML::Entities#" data-dismiss="modal" class="btn">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+
+                </div>
+            </div>
+
+            <div class="row footer">
+                <div class="hidden-xs hidden-sm col-md-2">&nbsp;</div>
+                <div class="col-xs-2 col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://fastapi.metacpan.org/">API</a>
+                </div>
+                <div class="col-xs-5 col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/about">About MetaCPAN</a>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2" style="text-align: center">
+                    <a href="https://metacpan.org/mirrors">CPAN Mirrors</a>
+                </div>
+                <div class="hidden-xs col-sm-3 col-md-2" style="text-align: center">
+                    <a href="https://github.com/metacpan/metacpan-web">Fork metacpan.org</a>
+                </div>
+                <div class="hidden-xs col-sm-1 col-md-1" style="text-align: center">
+                    <a href="https://www.perl.org/">Perl.org</a>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 50px 15px 30px">
+              <div class="col-xs-9 col-md-3" style="padding:25px">
+                <a href="https://www.bytemark.co.uk/r/metacpan.org/" target="_blank" rel="noopener">
+                  <img width="170" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/bytemark_logo.png" alt="Bytemark logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.liquidweb.com/" rel="noopener">
+                  <img width="170" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/liquidweb_color.png" alt="liquidweb logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a target="_blank" href="https://www.yellowbot.com/" rel="noopener">
+                  <img width="170" src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/yellowbot-small.png" alt="YellowBot logo">
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-3" style="padding:15px">
+                <a href="https://www.fastly.com/" target="_blank" rel="noopener">
+                  <img src="./HTML__Entities - Encode or decode strings with HTML entities - metacpan.org_files/fastly_logo.png" width="110" height="51" alt="Fastly logo">
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-18 col-xs-offset-3 col-md-6" style="padding-bottom: 20px">
+                As a valued partner and proud supporter of MetaCPAN, StickerYou is
+                happy to offer a 10% discount on all <a href="https://www.stickeryou.com/products/custom-stickers/335/" target="_blank" rel="noopener">Custom Stickers</a>,
+                <a href="https://www.stickeryou.com/products/business-labels/655" target="_blank" rel="noopener">Business Labels</a>, Roll Labels,
+                Vinyl Lettering or Custom Decals.  <a href="http://stickeryou.com/" target="_blank" rel="noopener">StickerYou.com</a>
+                is your one-stop shop to make your business stick.
+                Use code <strong>METACPAN10</strong> at checkout to apply your discount.
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="keyboard-shortcuts">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Keyboard Shortcuts</h4>
+              </div>
+              <div class="modal-body row">
+                <div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>s</kbd>
+        </td>
+        <td>Focus search bar</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>?</kbd>
+        </td>
+        <td>Bring up this help dialog</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>p</kbd>
+        </td>
+        <td>Go to pull requests</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>go to github issues (only if github is preferred repository)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>POD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>a</kbd>
+        </td>
+        <td>Go to author</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>c</kbd>
+        </td>
+        <td>Go to changes</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>Go to issues</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>d</kbd>
+        </td>
+        <td>Go to dist</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>r</kbd>
+        </td>
+        <td>Go to repository/SCM</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>s</kbd>
+        </td>
+        <td>Go to source</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>b</kbd>
+        </td>
+        <td>Go to file browse</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+    
+
+<div class="autocomplete-suggestions" style="position: absolute; display: none; width: 450px; max-height: 180px; z-index: 9999;"></div></body></html>

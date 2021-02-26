@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0098)http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="distribution" content="global">
+<title>fork(), wait(), timeout and the return codes in Perl</title>
+<link rel="stylesheet" href="./fork(), wait(), timeout and the return codes in Perl_files/style.css" type="text/css" media="screen" charset="utf-8">
+<link rel="alternate" type="application/rss+xml" title="my tech blog RSS Feed" href="http://billauer.co.il/blog/feed/">
+<link rel="pingback" href="http://billauer.co.il/blog/xmlrpc.php">
+	<link rel="archives" title="February 2021" href="http://billauer.co.il/blog/2021/02/">
+	<link rel="archives" title="January 2021" href="http://billauer.co.il/blog/2021/01/">
+	<link rel="archives" title="December 2020" href="http://billauer.co.il/blog/2020/12/">
+	<link rel="archives" title="November 2020" href="http://billauer.co.il/blog/2020/11/">
+	<link rel="archives" title="October 2020" href="http://billauer.co.il/blog/2020/10/">
+	<link rel="archives" title="September 2020" href="http://billauer.co.il/blog/2020/09/">
+	<link rel="archives" title="August 2020" href="http://billauer.co.il/blog/2020/08/">
+	<link rel="archives" title="July 2020" href="http://billauer.co.il/blog/2020/07/">
+	<link rel="archives" title="June 2020" href="http://billauer.co.il/blog/2020/06/">
+	<link rel="archives" title="April 2020" href="http://billauer.co.il/blog/2020/04/">
+	<link rel="archives" title="February 2020" href="http://billauer.co.il/blog/2020/02/">
+	<link rel="archives" title="January 2020" href="http://billauer.co.il/blog/2020/01/">
+	<link rel="archives" title="December 2019" href="http://billauer.co.il/blog/2019/12/">
+	<link rel="archives" title="November 2019" href="http://billauer.co.il/blog/2019/11/">
+	<link rel="archives" title="October 2019" href="http://billauer.co.il/blog/2019/10/">
+	<link rel="archives" title="September 2019" href="http://billauer.co.il/blog/2019/09/">
+	<link rel="archives" title="August 2019" href="http://billauer.co.il/blog/2019/08/">
+	<link rel="archives" title="July 2019" href="http://billauer.co.il/blog/2019/07/">
+	<link rel="archives" title="June 2019" href="http://billauer.co.il/blog/2019/06/">
+	<link rel="archives" title="May 2019" href="http://billauer.co.il/blog/2019/05/">
+	<link rel="archives" title="April 2019" href="http://billauer.co.il/blog/2019/04/">
+	<link rel="archives" title="March 2019" href="http://billauer.co.il/blog/2019/03/">
+	<link rel="archives" title="February 2019" href="http://billauer.co.il/blog/2019/02/">
+	<link rel="archives" title="January 2019" href="http://billauer.co.il/blog/2019/01/">
+	<link rel="archives" title="December 2018" href="http://billauer.co.il/blog/2018/12/">
+	<link rel="archives" title="November 2018" href="http://billauer.co.il/blog/2018/11/">
+	<link rel="archives" title="October 2018" href="http://billauer.co.il/blog/2018/10/">
+	<link rel="archives" title="September 2018" href="http://billauer.co.il/blog/2018/09/">
+	<link rel="archives" title="August 2018" href="http://billauer.co.il/blog/2018/08/">
+	<link rel="archives" title="July 2018" href="http://billauer.co.il/blog/2018/07/">
+	<link rel="archives" title="May 2018" href="http://billauer.co.il/blog/2018/05/">
+	<link rel="archives" title="April 2018" href="http://billauer.co.il/blog/2018/04/">
+	<link rel="archives" title="February 2018" href="http://billauer.co.il/blog/2018/02/">
+	<link rel="archives" title="January 2018" href="http://billauer.co.il/blog/2018/01/">
+	<link rel="archives" title="December 2017" href="http://billauer.co.il/blog/2017/12/">
+	<link rel="archives" title="November 2017" href="http://billauer.co.il/blog/2017/11/">
+	<link rel="archives" title="September 2017" href="http://billauer.co.il/blog/2017/09/">
+	<link rel="archives" title="August 2017" href="http://billauer.co.il/blog/2017/08/">
+	<link rel="archives" title="July 2017" href="http://billauer.co.il/blog/2017/07/">
+	<link rel="archives" title="June 2017" href="http://billauer.co.il/blog/2017/06/">
+	<link rel="archives" title="May 2017" href="http://billauer.co.il/blog/2017/05/">
+	<link rel="archives" title="April 2017" href="http://billauer.co.il/blog/2017/04/">
+	<link rel="archives" title="March 2017" href="http://billauer.co.il/blog/2017/03/">
+	<link rel="archives" title="February 2017" href="http://billauer.co.il/blog/2017/02/">
+	<link rel="archives" title="January 2017" href="http://billauer.co.il/blog/2017/01/">
+	<link rel="archives" title="December 2016" href="http://billauer.co.il/blog/2016/12/">
+	<link rel="archives" title="August 2016" href="http://billauer.co.il/blog/2016/08/">
+	<link rel="archives" title="July 2016" href="http://billauer.co.il/blog/2016/07/">
+	<link rel="archives" title="June 2016" href="http://billauer.co.il/blog/2016/06/">
+	<link rel="archives" title="May 2016" href="http://billauer.co.il/blog/2016/05/">
+	<link rel="archives" title="April 2016" href="http://billauer.co.il/blog/2016/04/">
+	<link rel="archives" title="March 2016" href="http://billauer.co.il/blog/2016/03/">
+	<link rel="archives" title="February 2016" href="http://billauer.co.il/blog/2016/02/">
+	<link rel="archives" title="December 2015" href="http://billauer.co.il/blog/2015/12/">
+	<link rel="archives" title="November 2015" href="http://billauer.co.il/blog/2015/11/">
+	<link rel="archives" title="October 2015" href="http://billauer.co.il/blog/2015/10/">
+	<link rel="archives" title="September 2015" href="http://billauer.co.il/blog/2015/09/">
+	<link rel="archives" title="August 2015" href="http://billauer.co.il/blog/2015/08/">
+	<link rel="archives" title="July 2015" href="http://billauer.co.il/blog/2015/07/">
+	<link rel="archives" title="June 2015" href="http://billauer.co.il/blog/2015/06/">
+	<link rel="archives" title="May 2015" href="http://billauer.co.il/blog/2015/05/">
+	<link rel="archives" title="April 2015" href="http://billauer.co.il/blog/2015/04/">
+	<link rel="archives" title="March 2015" href="http://billauer.co.il/blog/2015/03/">
+	<link rel="archives" title="January 2015" href="http://billauer.co.il/blog/2015/01/">
+	<link rel="archives" title="December 2014" href="http://billauer.co.il/blog/2014/12/">
+	<link rel="archives" title="November 2014" href="http://billauer.co.il/blog/2014/11/">
+	<link rel="archives" title="October 2014" href="http://billauer.co.il/blog/2014/10/">
+	<link rel="archives" title="August 2014" href="http://billauer.co.il/blog/2014/08/">
+	<link rel="archives" title="July 2014" href="http://billauer.co.il/blog/2014/07/">
+	<link rel="archives" title="June 2014" href="http://billauer.co.il/blog/2014/06/">
+	<link rel="archives" title="May 2014" href="http://billauer.co.il/blog/2014/05/">
+	<link rel="archives" title="April 2014" href="http://billauer.co.il/blog/2014/04/">
+	<link rel="archives" title="March 2014" href="http://billauer.co.il/blog/2014/03/">
+	<link rel="archives" title="February 2014" href="http://billauer.co.il/blog/2014/02/">
+	<link rel="archives" title="January 2014" href="http://billauer.co.il/blog/2014/01/">
+	<link rel="archives" title="December 2013" href="http://billauer.co.il/blog/2013/12/">
+	<link rel="archives" title="November 2013" href="http://billauer.co.il/blog/2013/11/">
+	<link rel="archives" title="October 2013" href="http://billauer.co.il/blog/2013/10/">
+	<link rel="archives" title="September 2013" href="http://billauer.co.il/blog/2013/09/">
+	<link rel="archives" title="August 2013" href="http://billauer.co.il/blog/2013/08/">
+	<link rel="archives" title="July 2013" href="http://billauer.co.il/blog/2013/07/">
+	<link rel="archives" title="May 2013" href="http://billauer.co.il/blog/2013/05/">
+	<link rel="archives" title="April 2013" href="http://billauer.co.il/blog/2013/04/">
+	<link rel="archives" title="March 2013" href="http://billauer.co.il/blog/2013/03/">
+	<link rel="archives" title="February 2013" href="http://billauer.co.il/blog/2013/02/">
+	<link rel="archives" title="January 2013" href="http://billauer.co.il/blog/2013/01/">
+	<link rel="archives" title="December 2012" href="http://billauer.co.il/blog/2012/12/">
+	<link rel="archives" title="October 2012" href="http://billauer.co.il/blog/2012/10/">
+	<link rel="archives" title="September 2012" href="http://billauer.co.il/blog/2012/09/">
+	<link rel="archives" title="August 2012" href="http://billauer.co.il/blog/2012/08/">
+	<link rel="archives" title="July 2012" href="http://billauer.co.il/blog/2012/07/">
+	<link rel="archives" title="June 2012" href="http://billauer.co.il/blog/2012/06/">
+	<link rel="archives" title="May 2012" href="http://billauer.co.il/blog/2012/05/">
+	<link rel="archives" title="April 2012" href="http://billauer.co.il/blog/2012/04/">
+	<link rel="archives" title="March 2012" href="http://billauer.co.il/blog/2012/03/">
+	<link rel="archives" title="February 2012" href="http://billauer.co.il/blog/2012/02/">
+	<link rel="archives" title="December 2011" href="http://billauer.co.il/blog/2011/12/">
+	<link rel="archives" title="November 2011" href="http://billauer.co.il/blog/2011/11/">
+	<link rel="archives" title="October 2011" href="http://billauer.co.il/blog/2011/10/">
+	<link rel="archives" title="September 2011" href="http://billauer.co.il/blog/2011/09/">
+	<link rel="archives" title="August 2011" href="http://billauer.co.il/blog/2011/08/">
+	<link rel="archives" title="July 2011" href="http://billauer.co.il/blog/2011/07/">
+	<link rel="archives" title="June 2011" href="http://billauer.co.il/blog/2011/06/">
+	<link rel="archives" title="May 2011" href="http://billauer.co.il/blog/2011/05/">
+	<link rel="archives" title="April 2011" href="http://billauer.co.il/blog/2011/04/">
+	<link rel="archives" title="March 2011" href="http://billauer.co.il/blog/2011/03/">
+	<link rel="archives" title="February 2011" href="http://billauer.co.il/blog/2011/02/">
+	<link rel="archives" title="January 2011" href="http://billauer.co.il/blog/2011/01/">
+	<link rel="archives" title="December 2010" href="http://billauer.co.il/blog/2010/12/">
+	<link rel="archives" title="November 2010" href="http://billauer.co.il/blog/2010/11/">
+	<link rel="archives" title="October 2010" href="http://billauer.co.il/blog/2010/10/">
+	<link rel="archives" title="September 2010" href="http://billauer.co.il/blog/2010/09/">
+	<link rel="archives" title="August 2010" href="http://billauer.co.il/blog/2010/08/">
+	<link rel="archives" title="July 2010" href="http://billauer.co.il/blog/2010/07/">
+	<link rel="archives" title="June 2010" href="http://billauer.co.il/blog/2010/06/">
+	<link rel="archives" title="April 2010" href="http://billauer.co.il/blog/2010/04/">
+	<link rel="archives" title="March 2010" href="http://billauer.co.il/blog/2010/03/">
+	<link rel="archives" title="February 2010" href="http://billauer.co.il/blog/2010/02/">
+	<link rel="archives" title="January 2010" href="http://billauer.co.il/blog/2010/01/">
+	<link rel="archives" title="December 2009" href="http://billauer.co.il/blog/2009/12/">
+	<link rel="archives" title="October 2009" href="http://billauer.co.il/blog/2009/10/">
+	<link rel="archives" title="September 2009" href="http://billauer.co.il/blog/2009/09/">
+	<link rel="archives" title="July 2009" href="http://billauer.co.il/blog/2009/07/">
+	<link rel="archives" title="May 2009" href="http://billauer.co.il/blog/2009/05/">
+	<link rel="archives" title="April 2009" href="http://billauer.co.il/blog/2009/04/">
+	<link rel="archives" title="March 2009" href="http://billauer.co.il/blog/2009/03/">
+	<link rel="archives" title="February 2009" href="http://billauer.co.il/blog/2009/02/">
+<link rel="alternate" type="application/rss+xml" title="my tech blog » fork(), wait(), timeout and the return codes in Perl Comments Feed" href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://billauer.co.il/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://billauer.co.il/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="my tech blog" href="http://billauer.co.il/blog/">
+<link rel="start" title="Xilinx FPGA MPPR script" href="http://billauer.co.il/blog/2009/02/xilinx-fpga-mppr-script/">
+<link rel="prev" title="Making a click-for-help window with jQuery’s tooltip widget" href="http://billauer.co.il/blog/2013/02/jquery-tooltip-click-for-help/">
+<link rel="next" title="Getting the PCIe of Avnet S6LX150T Development Kit detected" href="http://billauer.co.il/blog/2013/03/xilinx-lx150t-dev-board-pci-express/">
+<meta name="generator" content="WordPress 3.1.2">
+<link rel="canonical" href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/">
+<link rel="shortlink" href="http://billauer.co.il/blog/?p=3576">
+</head>
+<body>
+<div id="container"><!--container-->
+	<div id="topbar"><!--toolbar-->
+		<ul>
+		<li><a href="http://billauer.co.il/" title="Home" id="home">Home</a></li>
+		<li class="page_item page-item-2"><a href="http://billauer.co.il/cv.html" title="My CV">My CV</a></li>
+		<li class="page_item page-item-2"><a href="http://billauer.co.il/blog/" title="Blog&#39;s home">Blog's home</a></li>
+
+				</ul>
+	</div><!--/toolbar-->
+	<div id="header" onclick="location.href=&#39;http://billauer.co.il/cv.html&#39;;"><!--header-->
+	<h1><a href="http://billauer.co.il/blog/">my tech blog</a></h1>
+	<small>Anything I found worthy to write down.</small>
+    </div><!--/header--><!-- Left Sidebar-->
+<div style="float: left">
+<div id="sidebar_l" class="sidebar">
+
+<!-- Enter Google Adsense Link Unit Here -->
+<!-- Enter Google Adsense Leadebar Image Ads -->
+<!-- Enter Google Adsense Skypaker Image Ads Here -->
+
+<div class="sidebar_box">
+	<h4>Popular Posts</h4>
+	<ul>
+			<li>
+		<a href="http://billauer.co.il/blog/2009/03/mysql-datetime-epoch-unix-time/" title="Why MySQL&#39;s (SQL) DATETIME can and should be avoided">Why MySQL's (SQL) DATETIME can and should be avoided</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2014/08/linux-ubuntu-yoga-hardware-blocked-wireless-lan/" title="SOLVED: Lenovo Yoga 2 13" with="" "hardware-disabled"="" wifi"="">SOLVED: Lenovo Yoga 2 13" with "hardware-disabled" Wifi</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2013/02/usb-reset-ehci-uhci-linux/" title="Avoiding reboot: Resetting USB on a Linux machine">Avoiding reboot: Resetting USB on a Linux machine</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2011/03/pci-express-tlp-pcie-primer-tutorial-guide-1/" title="Down to the TLP: How PCI express devices talk (Part I)">Down to the TLP: How PCI express devices talk (Part I)</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2011/03/pci-express-tlp-pcie-primer-tutorial-guide-2/" title="Down to the TLP: How PCI express devices talk (Part II)">Down to the TLP: How PCI express devices talk (Part II)</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2014/01/pa-multiple-users/" title="Pulseaudio for multiple users, without system-mode daemon">Pulseaudio for multiple users, without system-mode daemon</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2011/04/pcie-pci-express-tlp-xilinx-fpga-linux-pc-embedded-x86-arm-spartan/" title="PCI express from a Xilinx/Altera FPGA to a Linux machine: Making it easy">PCI express from a Xilinx/Altera FPGA to a Linux machine: Making it easy</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2011/08/linux-microblaze-howto-tutorial-primer-1/" title="Linux on Microblaze HOWTO (part I)">Linux on Microblaze HOWTO (part I)</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2009/07/gimp-xcf-jpg-jpeg-convert-bash-script/" title="Command-line (bash/GIMP) mass conversion and processing">Command-line (bash/GIMP) mass conversion and processing</a>
+		</li>
+				<li>
+		<a href="http://billauer.co.il/blog/2012/08/irq-zynq-dts-cortex-a9/" title="Interrupt definitions in DTS (device tree) files for Xilinx Zynq-7000 / ARM">Interrupt definitions in DTS (device tree) files for Xilinx Zynq-7000 / ARM</a>
+		</li>
+			</ul>
+</div>
+
+<div class="sidebar_box">
+		<h4>Latest Posts</h4>
+		<ul>
+				<li><a href="http://billauer.co.il/blog/2021/02/linux-doc-rst-validate/" title="Setting up a small Sphinx project for validating Linux kernel documentation RST markup">Setting up a small Sphinx project for validating Linux kernel documentation RST markup</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/02/xilinx-impact-linux/" title="Running Xilinx Impact on Linux Mint 19">Running Xilinx Impact on Linux Mint 19</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/systemd-money-saver/" title="systemd: Shut down computer at a certain uptime">systemd: Shut down computer at a certain uptime</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/air-conditioner-notes/" title="Some notes on how an air conditioner works">Some notes on how an air conditioner works</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/apache-rewriterule-percent-escape-internal-server-error/" title="Apache 2.4: RewriteRule with [NE] causing 500 Internal Server Error">Apache 2.4: RewriteRule with [NE] causing 500 Internal Server Error</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/systemd-cron-cgroups/" title="Systemd services as cronjobs: No process runs away">Systemd services as cronjobs: No process runs away</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/perl-mysql-query-time-elapsed/" title="Perl + DBI: Measuring the time of database queries">Perl + DBI: Measuring the time of database queries</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/12/mysql-index-pattern-matching-performance/" title="MySQL: LIKE vs. REGEXP() performance testing">MySQL: LIKE vs. REGEXP() performance testing</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/12/mysql-unique-index-blob-text/" title="MySQL: Enforcing long unique BLOB / TEXT columns with UNIQUE INDEX">MySQL: Enforcing long unique BLOB / TEXT columns with UNIQUE INDEX</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/12/extract-quoted-printable-html-perl/" title="Decoding email’s quoted-printable with Perl">Decoding email’s quoted-printable with Perl</a></li>
+		</ul>
+</div>
+
+<!-- Widgetized left sidebar -->
+	<!--/Widgetized left sidebar -->
+
+<div class="sidebar_box">
+	<h4>Archives</h4>
+	 <ul>
+		 	<li><a href="http://billauer.co.il/blog/2021/02/" title="February 2021">February 2021</a></li>
+	<li><a href="http://billauer.co.il/blog/2021/01/" title="January 2021">January 2021</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/12/" title="December 2020">December 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/11/" title="November 2020">November 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/10/" title="October 2020">October 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/09/" title="September 2020">September 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/08/" title="August 2020">August 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/07/" title="July 2020">July 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/06/" title="June 2020">June 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/04/" title="April 2020">April 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/02/" title="February 2020">February 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2020/01/" title="January 2020">January 2020</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/12/" title="December 2019">December 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/11/" title="November 2019">November 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/10/" title="October 2019">October 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/09/" title="September 2019">September 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/08/" title="August 2019">August 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/07/" title="July 2019">July 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/06/" title="June 2019">June 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/05/" title="May 2019">May 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/04/" title="April 2019">April 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/03/" title="March 2019">March 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/02/" title="February 2019">February 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2019/01/" title="January 2019">January 2019</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/12/" title="December 2018">December 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/11/" title="November 2018">November 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/10/" title="October 2018">October 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/09/" title="September 2018">September 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/08/" title="August 2018">August 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/07/" title="July 2018">July 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/05/" title="May 2018">May 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/04/" title="April 2018">April 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/02/" title="February 2018">February 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2018/01/" title="January 2018">January 2018</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/12/" title="December 2017">December 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/11/" title="November 2017">November 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/09/" title="September 2017">September 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/08/" title="August 2017">August 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/07/" title="July 2017">July 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/06/" title="June 2017">June 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/05/" title="May 2017">May 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/04/" title="April 2017">April 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/03/" title="March 2017">March 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/02/" title="February 2017">February 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2017/01/" title="January 2017">January 2017</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/12/" title="December 2016">December 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/08/" title="August 2016">August 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/07/" title="July 2016">July 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/06/" title="June 2016">June 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/05/" title="May 2016">May 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/04/" title="April 2016">April 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/03/" title="March 2016">March 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2016/02/" title="February 2016">February 2016</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/12/" title="December 2015">December 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/11/" title="November 2015">November 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/10/" title="October 2015">October 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/09/" title="September 2015">September 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/08/" title="August 2015">August 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/07/" title="July 2015">July 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/06/" title="June 2015">June 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/05/" title="May 2015">May 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/04/" title="April 2015">April 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/03/" title="March 2015">March 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2015/01/" title="January 2015">January 2015</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/12/" title="December 2014">December 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/11/" title="November 2014">November 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/10/" title="October 2014">October 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/08/" title="August 2014">August 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/07/" title="July 2014">July 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/06/" title="June 2014">June 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/05/" title="May 2014">May 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/04/" title="April 2014">April 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/03/" title="March 2014">March 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/02/" title="February 2014">February 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2014/01/" title="January 2014">January 2014</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/12/" title="December 2013">December 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/11/" title="November 2013">November 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/10/" title="October 2013">October 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/09/" title="September 2013">September 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/08/" title="August 2013">August 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/07/" title="July 2013">July 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/05/" title="May 2013">May 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/04/" title="April 2013">April 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/03/" title="March 2013">March 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/02/" title="February 2013">February 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2013/01/" title="January 2013">January 2013</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/12/" title="December 2012">December 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/10/" title="October 2012">October 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/09/" title="September 2012">September 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/08/" title="August 2012">August 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/07/" title="July 2012">July 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/06/" title="June 2012">June 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/05/" title="May 2012">May 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/04/" title="April 2012">April 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/03/" title="March 2012">March 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2012/02/" title="February 2012">February 2012</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/12/" title="December 2011">December 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/11/" title="November 2011">November 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/10/" title="October 2011">October 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/09/" title="September 2011">September 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/08/" title="August 2011">August 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/07/" title="July 2011">July 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/06/" title="June 2011">June 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/05/" title="May 2011">May 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/04/" title="April 2011">April 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/03/" title="March 2011">March 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/02/" title="February 2011">February 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2011/01/" title="January 2011">January 2011</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/12/" title="December 2010">December 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/11/" title="November 2010">November 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/10/" title="October 2010">October 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/09/" title="September 2010">September 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/08/" title="August 2010">August 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/07/" title="July 2010">July 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/06/" title="June 2010">June 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/04/" title="April 2010">April 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/03/" title="March 2010">March 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/02/" title="February 2010">February 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2010/01/" title="January 2010">January 2010</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/12/" title="December 2009">December 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/10/" title="October 2009">October 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/09/" title="September 2009">September 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/07/" title="July 2009">July 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/05/" title="May 2009">May 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/04/" title="April 2009">April 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/03/" title="March 2009">March 2009</a></li>
+	<li><a href="http://billauer.co.il/blog/2009/02/" title="February 2009">February 2009</a></li>
+	 </ul>
+</div>
+</div>
+<!-- Left Sidebar-->
+</div> <!--**** fix for IE6 left Float div bug *-->
+	<div id="content"><!--content-->
+				<div class="entry"><!-- Entry -->
+		<h1 class="post-title"><a href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/" rel="bookmark">fork(), wait(), timeout and the return codes in Perl</a></h1>
+		<!-- Post Author and Post Date -->
+		<div id="postmeta">This post was written by <a href="http://www.billauer.co.il/">eli</a> on March 25, 2013		<br>
+		Posted Under: <a href="http://billauer.co.il/blog/category/linux/" title="View all posts in Linux" rel="category tag">Linux</a>,<a href="http://billauer.co.il/blog/category/perl/" title="View all posts in perl" rel="category tag">perl</a>		</div>
+		<!--/Post Author and Post Date -->
+		<h3>The mission</h3>
+<p>What I really needed was a proper timeout for a certain chunk of Perl code. There is alarm() of course, but one has to watch out with certain commands that cancel it (sleep() and other less expected functions). The script also uses “system()” to run processes outside the native Perl domain, so getting a bulletproof timeout mechanism with alarm() seems even less feasible.</p>
+<p>The chosen solution was to fork(), and let the child do whatever it wants to. Let the alarm clock kill the entire process.</p>
+<p>These are my notes as I figured out how to do this.</p>
+<h3>Return values from wait()</h3>
+<p>Since there’s a fork() involved, there’s a need to tell how the child ended up. It’s documented in “man perlvar”. This is a small script for experimenting with it:</p>
+<pre>#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $child = fork();
+
+die("Failed to fork\n")
+ unless (defined $child);
+
+if ($child) { # Parent running
+ my $pid;
+
+ $pid = wait;
+ my $status = $?;
+
+ die("No child process\n")
+   if ($pid &lt; 0);
+
+ die("Child process = $child but process $pid was reaped\n")
+   unless ($child == $pid);
+
+ die("There was a core dump!\n")
+   if ($status &amp; 128);
+
+ my $exit = $? &gt;&gt; 8;
+ my $signal = $? &amp; 127;
+
+ print "Full status = $status (exit=$exit, signal=$signal)\n";
+} else { # Child running
+ die("Bye bye cruel world\n");
+}</pre>
+<h3>The results</h3>
+<p>Note: Please refer to “perldoc -f die” for an outline of the exit codes used when Perl dies. In particular, Perl dies with the current value of $! (errno), and if it happens to be zero, Perl returns with 255. This matches the results below, but it should not be concluded that Perl always dies with 255.</p>
+<p>To get unused error codes for custom use, check with the command line utility perror (254 and down are vacant).</p>
+<ul>
+<li>Termination of child due to end of script: Full status = 0 (exit=0, signal=0)</li>
+<li>Termination on “exit n” call of child: exit=n, signal=0</li>
+<li>Termination on “die()” call of child: Full status = 65280 (exit=255, signal=0)</li>
+<li>Termination on runtime error of child (division by zero, calling undefined subroutines etc.): Full status = 65280 (exit=255, signal=0)</li>
+<li>Child was killed with a signal, e.g. kill -9 {child’s pid}: Full status = 9 (exit=0, signal=9)</li>
+</ul>
+<h3>Fail #1:Using sleep() for waiting</h3>
+<p>The bottom line is that it’s a bad idea. But it’s presented here anyhow.</p>
+<p>Suppose that we want to wait() with a timeout, and continue normally (i.e. not die() ) on timeout. Using alarm() won’t help, because wait() ignores the signal. Signal handlers won’t help much, because they run asynchronously, which makes them not so reliable for anything else than calling exit() or die().</p>
+<p><em>(On afterthought, signal handlers are supposed to be reliable these days, so the handler could kill the child process and cause the wait() to return. See the aftermath below.)</em></p>
+<p>So the idea is to change the beginning of the child’s code with something like this (for a timeout of 5 seconds, which in this example calles die(), but the execution context is reliable for anything else as well):</p>
+<pre>use POSIX ":sys_wait_h";
+
+$SIG{CHLD} = sub { }; # This makes sleep() wake up on SIGCHLD
+
+[ ... ]
+
+if ($child) { # Parent running
+ my $pid;
+
+ my $endtime = time() + 5;
+
+ while (1) {
+   my $tosleep = $endtime - time();
+   print "$tosleep seconds left to sleep\n";
+
+   last unless ($tosleep &gt; 0);
+   sleep $tosleep;
+
+   $pid = waitpid(-1, WNOHANG);
+   last if ($pid &gt; 0);
+ }
+
+ if ($pid &lt;= 0) {
+   print "Timed out!\n";
+   kill 9, $child;
+   exit 0;
+ }</pre>
+<p>Two things to be aware of:</p>
+<ul>
+<li>If sleep() is called <strong>after</strong> the signal has fired off, it will be <strong>ignored</strong> by sleep(), which will sleep for the given time or until another signal  is sent to the process. This is important in particular if sleep() is  used as a combined wait-with-timeout function, which is called  “immediately” after a fork() to wait for the child. The problem may  occur if the child dies before sleep() is reached. In practice, it’s  unlikely to happen, so real tests will show that sleep() wakes up on  SIGCHLD even if the child exits right away, giving the illusion that the  concept is OK. But there is no guarantee that this will always work  this way.</li>
+<li>A handler must be defined for the signal with e.g. $SIG{CHLD}, or  the signal will not wake up sleep(). This handler may be an empty  subroutine.</li>
+</ul>
+<p>I couldn’t think of a way to make sure that sleep() before the child process can die. There’s also a possibility that another signal would wake up sleep(), which would lead to a short check with the time, and sleeping back. But if the child process dies in the middle of this check, sleep() misses it. It a rare race condition, causing very rare bugs and a royal headache.</p>
+<h3>Fail #2: Using select() for waiting</h3>
+<p>The bottom line, again, is that this is a bad idea.</p>
+<p>But the idea was to open a pipe with the child process, as if there was an intention to pass data. The nice thing is that when the child process dies, the pipe breaks. It’s hence possible to use select() with a timeout argument. The even nicer thing about select() is that it always returns immediately if it’s told to wait for a broken pipe. No matter how many times.</p>
+<p>Let’s look at the test routine, and then see why it’s worthless.</p>
+<pre>#!/usr/bin/perl
+use warnings;
+use strict;
+
+pipe R, W;
+
+my $child = fork();
+
+die("Failed to fork\n")
+ unless (defined $child);
+
+if ($child) { # Parent running
+ close W;
+
+ my $endtime = time() + 5;
+
+ while (1) {
+   my $tosleep = $endtime - time();
+
+   unless ($tosleep &gt; 0) {
+     print "Timed out!\n";
+     kill 9, $child;
+     exit 0;
+   }
+
+  my ($rin, $rout, $ein, $eout);
+  $rin = '';
+  vec($rin, fileno(R), 1) = 1;
+  $ein = $rin;
+
+  my $nfound = select($rout=$rin, undef, $eout=$ein, $tosleep);
+
+  last if (ord($rout) || ord($eout));
+ }
+
+ my $pid;
+
+ $pid = wait;
+ my $status = $?;
+
+ die("No child process\n")
+  if ($pid &lt; 0);
+
+ die("Child process = $child but process $pid was reaped\n")
+   unless ($child == $pid);
+
+ die("There was a core dump!\n")
+   if ($status &amp; 128);
+
+ my $exit = $? &gt;&gt; 8;
+ my $signal = $? &amp; 127;
+
+ print "Full status = $status (exit=$exit, signal=$signal)\n";
+} else { # Child running
+ close R;
+
+ die("Bye bye cruel world\n");
+}</pre>
+<p>The special thing here is the creation of a pipe, and closing one end on each side. And the use of select() of course. I would warmly recommend <a href="http://perldoc.perl.org/IO/Select.html" target="_blank">IO::Select</a> instead of my own hacks above. I’m not sure if referring to ord($rout) and ord($eout) is correct, and will work even for larger file numbers than 3 (which is what I got in the example). Please imitate IO::Select and not the code above, if you insist on using select() directly. I simply didn’t bother. Anyhow, just for general knowledge, ord($rin) and ord($ein) were 8 in my case (because fileno(R) = 3). Upon return of select, ord($rout) was 0 on timeout, and 8 when the child process had died. ord($eout) always turned out to be zero. Well, actually, not really. Here comes problem #1:</p>
+<p>If a signal was sent to the <strong>parent</strong> process, select() returned with both $rout and $eout turned on (that is, ord($rout)=ord($eout)=8) making it look as if the child had died. But it hadn’t, so wait() blocked.</p>
+<p>This was worked around by considering ord($eout) != 0 to say that the child hasn’t died, and hence repeat the loop. This works with a signal, but what if there is a real error condition on the file descriptor for some unforeseen reason? And endless loop.</p>
+<p>Another approach could have been using the non-blocking version of wait() (i.e. waitpid(-1, WNOHANG) ), but the child isn’t necessarily ready to be reaped by the time select() returns, so it’s too early for a non-blocking wait, which typically returns saying there’s nothing to reap, even if the child is just about to die.</p>
+<p>Problem #2 is that the exit code of the child process is lost. It was always: Full status = 7424 (exit=29, signal=0). May I guess that code 29 means “broken pipe”?</p>
+<p>All in all, this direction is too tangled for being a robust candidate for the job.</p>
+<h3>Success: Two children</h3>
+<p>Since it seems difficult to be both an alarm clock and wait for the process, the ultimate solution is to fork() twice: Once for generating the process running the task, and second for a watchdog process, which just sleeps for a given time, and then dies.</p>
+<p>The idea is simple: The parent just calls wait(). The first process to terminate causes the parent to kill the other one. If the watchdog time died first, it’s a timeout situation. If it’s the task process, check its status.</p>
+<p>Code follows.</p>
+<pre>#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $timeout = 10;
+my $was_timeout = 0;
+
+my $child = fork();
+
+die("Failed to fork\n")
+  unless (defined $child);
+
+if ($child) { # Parent running
+  my $killer = sub { kill 15, $child };
+  $SIG{HUP} = $killer;
+  $SIG{TERM} = $killer;
+  $SIG{INT} = $killer;
+  $SIG{QUIT} = $killer;
+
+  # Make the task process the head of a process group
+  setpgrp($child, 0) or die("Failed to set PGRP for process $child\n");
+  my $pgid = getpgrp($child);
+  my $watchdog = fork();
+
+  die("Failed to fork for watchdog\n")
+    unless (defined $watchdog);
+
+  if ($watchdog) { # Parent (of both processes) running
+    my $pid = wait;
+    my $status;
+
+    die("No child / watchdog process\n")
+      if ($pid &lt; 0);
+
+    if ($pid == $child) {
+      $status = $?;
+      kill 9, $watchdog;
+     } elsif ($pid == $watchdog) {
+      # If the watchdog didn't exit with 0, it was killed ==&gt; not a timeout.
+      $was_timeout = 1 if ($? == 0);
+      kill 9, $child;
+     } else {
+       die("$pid was reaped, expected $child (child process) or $watchdog (watchdog)\n");
+     }
+
+     # Reap the second process, which was just killed or happened to terminate
+     # by itself -- it doesn't matter now.
+
+     $pid = wait;
+
+     die("No child / watchdog process on second reap\n")
+       if ($pid &lt; 0);
+
+     $status = $?
+       if ($pid == $child);
+
+     warn("There was a core dump!\n")
+       if ($status &amp; 128);
+
+     if ($was_timeout) {
+       print "Timed out!\n";
+     } else {
+       my $exit = $status &gt;&gt; 8;
+       my $signal = $status &amp; 127;
+       print "Full status = $status (exit=$exit, signal=$signal)\n";
+     }
+
+    # Just before quitting, send a SIGTERM to the entire process group,
+    # in case the task process has some forgotten children. This kills
+    # only processes previously fathered by the task process.
+
+    kill -15, $pgid;
+
+  } else { # Watchdog running
+    my $endtime = time() + $timeout;
+
+    # sleep() can wake up on signals. So keep looping until the time
+    # has passed.
+
+    while (1) {
+      my $tosleep = $endtime - time();
+      print "$tosleep seconds left to sleep\n";
+
+      last unless ($tosleep &gt; 0);
+      sleep $tosleep;
+    }
+    exit 0;
+  }
+} else { # Child running
+  `sleep 1000`;
+   exit 0;
+}</pre>
+<p>First, a fork(), which creates the task process. This is followed by setting up a signal handler for the four main signals which may kill the parent process. This is necessary so that the children are killed along with the parent. CTRL-C from the console handles this automatically, but SIGTERM doesn’t. The handler only kills the task process, but that will always trigger a full wrap-up.</p>
+<p>A call to setpgrp makes sure that the task process is the  head of a new process group. This will be used later on.</p>
+<p>To see how the processes are organized, go</p>
+<pre>$ ps o pid,pgrp,ppid,sess,tpgid,euid,ruid,comm</pre>
+<p>And then comes a second fork() for the watchdog process. All it does is sleep for a known amount of time. Note that it inherited the signal handlers from its parent, so it won’t die if killed by e.g. SIGTERM. Instead, the signal handler will kills task process, resulting in the correct wrap-up sequence. This is a good thing, because it’s difficult to tell which process is which, and killing the watchdog would trigger off a false timeout error, had it not been for these signal handlers. Well, actually not, because the exit status of the watchdog process is checked.</p>
+<p>The parent process then calls wait(), and acts according to which process died first. The other process is then killed as well, and wait() is called again to collect the pieces.</p>
+<p>An important add-on is sending a SIGTERM to all processes that remained in the task process group. There may do nothing, since the two others were killed, but if the task process ran some other process (as shown in the example with an external `sleep 1000`) it is killed too.</p>
+<h3>Some aftermath</h3>
+<p>The question that rises now is: If I trust the signal handler to kill the child process, why don’t I use it for timeout? In other words, why don’t I call alarm() in the waiting parent process, and let the SIGALRM signal handler kill the child, causing wait() to return?</p>
+<p>The reason is that processes don’t always die when they get a signal, even if it’s a SIGKILL (the infamous number 9). For example, if the process is in an uninterruptible sleep (e.g. trying to access a dead NFS server), nothing happens. The timeout hence misses its purpose: The parent process remains stuck along with the child process.</p>
+<p>The routine above doesn’t solve this problem, since it always waits twice. So even if the first wait() returns on the timeout process, the second wait() blocks forever on the stuck process.</p>
+<p>But this can be worked around. For example, the <strong>second </strong>wait() can be exchanged with this:</p>
+<pre> $SIG{ALRM} = sub { die("Fatal: Child process refuses to quit\n"); };
+ alarm 30;
+ $pid = wait;
+ alarm 0;
+ undef $SIG{ALRM}</pre>
+<p>This gives the process, which has just received a signal, 30 seconds to die, or the parent process dies along with it. This is not the most elegant solution, but at least the parent process isn’t stuck.</p>
+<p>There is maybe a way to keep the parent process alive despite a stuck child, possibly with a reaper waiting for it within a signal handler for SIGCHLD. The problem is that the child process may terminate suddenly, interfering with another wait() call that may come later on. So it’s simplest to just quit the parent process, and let process number 1 handle the reaping, whenever it comes. Even though there is a workaround for the problem caused by the workaround.</p>
+<p>&nbsp;</p>
+		<!-- Post Tags -->
+		<div id="postmeta">
+		<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/"
+    dc:identifier="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/"
+    dc:title="fork(), wait(), timeout and the return codes in Perl"
+    trackback:ping="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/trackback/" />
+</rdf:RDF> -->
+		</div>
+		</div>
+		<!--/entry-->
+		<!-- Rader Comments -->
+		    <div id="comments">
+	<h4 id="comments">Reader Comments</h4>
+									 		<div class="comment" id="comment-961">     		
+			<div class="ucomment">			<img alt="" src="./fork(), wait(), timeout and the return codes in Perl_files/ad516503a11cd5ca435acc9bb6523536.png" class="avatar avatar-32 photo" height="32" width="32">		    <p>Great. Good job.</p>
+<p>Sometimes not easy to work with forks and users and data and sessions and so on in CGI. At least for me. This article is of high level and helped me a lot. </p>
+<p>Thank you for contributing.</p>
+</div>
+			<div class="ucomment_meta_dt">#1&nbsp;</div>
+			<div class="ucomment_meta">Written By js			 on July 6th, 2014 @ <a href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/#comment-961">14:44</a>
+						</div>
+		</div>
+										 		<div class="comment" id="comment-993">     		
+			<div class="ucomment">			<img alt="" src="./fork(), wait(), timeout and the return codes in Perl_files/ad516503a11cd5ca435acc9bb6523536(1).png" class="avatar avatar-32 photo" height="32" width="32">		    <p>Thanks a lot. Your two-child solution is great – it’s as elegant as is possible for something that’s a 100% hack!</p>
+</div>
+			<div class="ucomment_meta_dt">#2&nbsp;</div>
+			<div class="ucomment_meta">Written By Anon			 on September 16th, 2014 @ <a href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/#comment-993">23:45</a>
+						</div>
+		</div>
+										 		<div class="comment" id="comment-1284">     		
+			<div class="ucomment">			<img alt="" src="./fork(), wait(), timeout and the return codes in Perl_files/ad516503a11cd5ca435acc9bb6523536(2).png" class="avatar avatar-32 photo" height="32" width="32">		    <p>Nice.<br>
+It should be noted that this version shouldn’t be implemented when using portable perl, as killing child processes may have unexpected results with the portable version (See perlfork documentation).</p>
+</div>
+			<div class="ucomment_meta_dt">#3&nbsp;</div>
+			<div class="ucomment_meta">Written By BingoS			 on August 11th, 2017 @ <a href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/#comment-1284">11:12</a>
+						</div>
+		</div>
+				</div> <!--/comments-->
+	 <!-- Start of TrackBack Code -->
+				   <!-- TrackBack Code Ends here -->
+<div id="addcomment">
+<h4 id="respond">Add a Comment</h4>
+<form action="http://billauer.co.il/blog/wp-comments-post-real.php" method="post" id="commentform">
+     <div class="form-item">
+  		<label for="comment-name">Name</label>
+  		<input type="text" name="author" value="" id="comment-name">
+  		<span class="desc">required, use real name</span> 
+  	</div>
+  	<div class="form-item" style="width:170px;">
+			<label for="comment-email">Email</label>
+			<input type="text" name="email" value="" id="comment-email">
+			<span class="desc">required, will not be published</span> 
+  	</div>
+  	<div class="form-item" style="width: 156px;">
+			<label for="comment-url">Website address</label>
+			<input type="text" name="url" value="" id="comment-url">
+			<span class="desc">optional, your blog address</span> 
+		</div>
+    <div class="clear"></div>
+<textarea name="comment" rows="8" cols="40"></textarea>
+<p><input name="submit" type="submit" id="comment-submit" tabindex="5" value="Submit Comment">
+<input type="hidden" name="comment_post_ID" value="3576"></p>
+</form>
+<script language="JavaScript" type="text/javascript">
+document.getElementById("commentform").action = "http://billauer.co.il/blog/" + "wp-comments-post" + "-real." + "php";
+</script>
+</div><!--/addcomment-->
+		<!-- Comment Form -->
+				<!-- Previouse and Next Post -->
+		<div id="single_post_nav"><!-- post navigation -->
+			<div class="back">Next Post: <strong><a href="http://billauer.co.il/blog/2013/03/xilinx-lx150t-dev-board-pci-express/" rel="next">Getting the PCIe of Avnet S6LX150T Development Kit detected</a></strong></div>
+			<div class="fwrd">Previose Post: <strong><a href="http://billauer.co.il/blog/2013/02/jquery-tooltip-click-for-help/" rel="prev">Making a click-for-help window with jQuery’s tooltip widget</a></strong></div>
+		</div><!--/post navigation -->
+	</div><!--/content-->
+<!-- Right Sidebar-->
+<div id="sidebar_r" class="sidebar">
+
+	<!-- Widgetized right sidebar -->
+			<!--/Widgetized right sidebar -->
+
+	<div class="sidebar_box">
+	<h4>Quick links</h4>
+		<ul>
+		<li><a href="https://www.cvebuzz.com/">CVEbuzz</a></li>
+<li><a href="http://www.billauer.co.il/" title="This site’s home page">My home page</a></li>
+<li><a href="http://www.billauer.co.il/cv.html" title="My CV" target="_blank">My résumé</a></li>
+<li><a href="http://xillybus.com/">Xillybus</a></li>
+		</ul>
+	</div>
+
+	
+	<div class="sidebar_box">
+		<h4>Categories</h4>
+		<ul>
+					<li class="cat-item cat-item-163"><a href="http://billauer.co.il/blog/category/android/" title="View all posts filed under Android">Android</a>
+</li>
+	<li class="cat-item cat-item-152"><a href="http://billauer.co.il/blog/category/arm/" title="View all posts filed under ARM">ARM</a>
+</li>
+	<li class="cat-item cat-item-169"><a href="http://billauer.co.il/blog/category/blender-and-3d/" title="View all posts filed under Blender and 3D">Blender and 3D</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://billauer.co.il/blog/category/bluetooth/" title="View all posts filed under bluetooth">bluetooth</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://billauer.co.il/blog/category/cinnamon/" title="View all posts filed under cinnamon">cinnamon</a>
+</li>
+	<li class="cat-item cat-item-162"><a href="http://billauer.co.il/blog/category/displayport/" title="View all posts filed under Displayport">Displayport</a>
+</li>
+	<li class="cat-item cat-item-150"><a href="http://billauer.co.il/blog/category/drupal/" title="View all posts filed under Drupal">Drupal</a>
+</li>
+	<li class="cat-item cat-item-166"><a href="http://billauer.co.il/blog/category/dvb/" title="View all posts filed under DVB">DVB</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://billauer.co.il/blog/category/electronics/" title="View all posts filed under electronics">electronics</a>
+</li>
+	<li class="cat-item cat-item-171"><a href="http://billauer.co.il/blog/category/email/" title="View all posts filed under email">email</a>
+</li>
+	<li class="cat-item cat-item-165"><a href="http://billauer.co.il/blog/category/emergency/" title="View all posts filed under emergency">emergency</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://billauer.co.il/blog/category/fpga/" title="View all posts filed under FPGA">FPGA</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://billauer.co.il/blog/category/gimp/" title="View all posts filed under gimp">gimp</a>
+</li>
+	<li class="cat-item cat-item-164"><a href="http://billauer.co.il/blog/category/gtx/" title="View all posts filed under GTX">GTX</a>
+</li>
+	<li class="cat-item cat-item-154"><a href="http://billauer.co.il/blog/category/altera/" title="View all posts filed under Intel FPGA (Altera)">Intel FPGA (Altera)</a>
+</li>
+	<li class="cat-item cat-item-56"><a href="http://billauer.co.il/blog/category/internet/" title="View all posts filed under Internet">Internet</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://billauer.co.il/blog/category/kicad-and-pcb-design/" title="View all posts filed under kicad and pcb design">kicad and pcb design</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://billauer.co.il/blog/category/linux/" title="View all posts filed under Linux">Linux</a>
+</li>
+	<li class="cat-item cat-item-148"><a href="http://billauer.co.il/blog/category/linux-kernel/" title="View all posts filed under Linux kernel">Linux kernel</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://billauer.co.il/blog/category/linux-sound/" title="View all posts filed under Linux sound">Linux sound</a>
+</li>
+	<li class="cat-item cat-item-151"><a href="http://billauer.co.il/blog/category/microblaze/" title="View all posts filed under Microblaze">Microblaze</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="http://billauer.co.il/blog/category/microsoft/" title="View all posts filed under Microsoft">Microsoft</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://billauer.co.il/blog/category/misc/" title="View all posts filed under miscellaneous">miscellaneous</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://billauer.co.il/blog/category/mysql/" title="View all posts filed under MySQL">MySQL</a>
+</li>
+	<li class="cat-item cat-item-158"><a href="http://billauer.co.il/blog/category/notes-to-self/" title="View all posts filed under Notes to self">Notes to self</a>
+</li>
+	<li class="cat-item cat-item-156"><a href="http://billauer.co.il/blog/category/freescale/" title="View all posts filed under NXP (Freescale)">NXP (Freescale)</a>
+</li>
+	<li class="cat-item cat-item-130"><a href="http://billauer.co.il/blog/category/oddities/" title="View all posts filed under oddities">oddities</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://billauer.co.il/blog/category/offtopic/" title="View all posts filed under offtopic">offtopic</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://billauer.co.il/blog/category/pci-express/" title="View all posts filed under PCI express">PCI express</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://billauer.co.il/blog/category/perl/" title="View all posts filed under perl">perl</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://billauer.co.il/blog/category/server-admin/" title="View all posts filed under Server admin">Server admin</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://billauer.co.il/blog/category/signal/" title="View all posts filed under Signal Processing">Signal Processing</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://billauer.co.il/blog/category/software/" title="View all posts filed under Software">Software</a>
+</li>
+	<li class="cat-item cat-item-168"><a href="http://billauer.co.il/blog/category/systemd/" title="View all posts filed under systemd">systemd</a>
+</li>
+	<li class="cat-item cat-item-157"><a href="http://billauer.co.il/blog/category/tcl/" title="View all posts filed under Tcl">Tcl</a>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://billauer.co.il/blog/category/udev/" title="View all posts filed under udev">udev</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://billauer.co.il/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-167"><a href="http://billauer.co.il/blog/category/usb/" title="View all posts filed under USB">USB</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://billauer.co.il/blog/category/virtualization/" title="View all posts filed under Virtualization">Virtualization</a>
+</li>
+	<li class="cat-item cat-item-161"><a href="http://billauer.co.il/blog/category/vivado/" title="View all posts filed under Vivado">Vivado</a>
+</li>
+	<li class="cat-item cat-item-159"><a href="http://billauer.co.il/blog/category/wifi/" title="View all posts filed under wifi">wifi</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://billauer.co.il/blog/category/windows-device-drivers/" title="View all posts filed under Windows device drivers">Windows device drivers</a>
+</li>
+	<li class="cat-item cat-item-155"><a href="http://billauer.co.il/blog/category/zynq/" title="View all posts filed under Zynq">Zynq</a>
+</li>
+		</ul>
+	</div>
+
+	<div class="sidebar_box">
+		<h4>Meta</h4>
+		<ul>
+				<li><a href="http://billauer.co.il/blog/wp-login.php">Log in</a></li>
+				</ul>
+	</div>
+
+</div>
+<!-- Right Sidebar--><div id="footer">
+<span style="float:left;text-align:right;">
+<a href="http://billauer.co.il/blog/2013/03/fork-wait-and-the-return-values-in-perl-in-different-scenarios/#container" title="Jump to Top" id="top">Jump to Top</a>
+</span>
+<!-- Please Do Not Remove Author And Theme Link. This Theme is released under GPL License -->
+© 2008 my tech blog | <a href="http://www.blogsdna.com/cognoblue-wordpress-theme" title="CognoBlue WordPress Theme">CognoBlue WordPress Theme</a> By <a href="http://www.blogsdna.com/" title="BlogsDNA"><strong>Blogsdna</strong></a> | Powered by <a href="http://www.wordpress.org/" title="WordPress">WordPress</a>
+
+<!--Enter Your Tracking Code Here -->
+</div></div><!--/Container-->
+
+</body></html>

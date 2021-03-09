@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://jazz.net/library/article/1031 -->
+<html lang="en-US" class="dj_webkit dj_chrome dj_contentbox"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="IBM.WTMSite" content="JAZZ">
+<script type="text/javascript" async="" charset="utf-8" id="utag_24_0" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/js"></script><script type="text/javascript" async="" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/analytics.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_136" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/survey.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_53" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/js(1)"></script><script type="text/javascript" async="" charset="utf-8" id="utag_162" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/js(2)"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_cormetrics2" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/eluminate.js.download"></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/utag.js.download" type="application/javascript" async=""></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/dbdm-data" type="application/javascript" async=""></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/lt.min.js.download" type="application/javascript" async=""></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/p_29a170d8d8e06576d1b96ed30baf250e3e03a4a30c0edf3641f0b704b3f47993.js.download" type="application/javascript" async=""></script><script id="twitter-wjs" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/widgets.js.download"></script><script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/dojo.js.download" data-dojo-config="parseOnLoad: true"></script>
+<link href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/JazzCS.css">
+<link rel="stylesheet" type="text/css" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/NavBar.css">
+<link rel="stylesheet" type="text/css" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/shared.css">
+<link rel="stylesheet" type="text/css" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/ScrollableView.css">
+<script type="text/javascript">
+	dojo.registerModulePath("jazz", "/_scripts/built/jazz");
+	dojo.registerModulePath("jazzshared", "/_scripts");
+	
+	if (window.location.href.indexOf("debug=true") >= 0) {
+		var dojoConfig = {isDebug: true, locale: "en"};
+		window.publicHostname = "jazz.net";
+	}
+</script>
+
+
+<link rel="stylesheet" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/sandbox.css" type="text/css">
+<link rel="stylesheet" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/bootstrap.min.css" type="text/css">
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jquery.min.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/bootstrap.min.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script>
+
+
+<title>Scripting using the Rational Team Concert SCM Command Line Interface - Library: Articles
+- Jazz Community Site</title>
+
+
+<meta name="keywords" content="clm,elm,workflow-management,rational-team-concert,command line (CLI),SCM,scripting,source control">
+
+
+<meta name="description" content="The RTC SCM Command Line Interface (SCM CLI) tool allows users to load and accept items from the repository, commit and deliver changes to the repository.">
+
+
+<!-- IBM taxonomy meta content -->
+
+	<meta name="dc.subject" scheme="IBM_SubjectTaxonomy" content="SSR27Q, SSWMEQ, SSCP65">
+
+<meta name="dc.type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+
+	<meta name="IBM.BrandProduct" content="K245250N32785U55, T548985D01567W07, A057601Q81405M60">
+
+
+	<meta name="DC.Date" scheme="iso8601" content="2012-08-27">
+
+<!--<base href="#">--><base href=".">
+<link rel="stylesheet" type="text/css" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/docs.css">
+<script type="text/javascript" language="Javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/sbs.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/article.js.download"></script><link rel="stylesheet" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/article.css">
+<link rel="stylesheet" href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/bootstrap-override.css" type="text/css">
+<script type="text/javascript">
+	function init() {
+		fixAnchors();
+		ibmSBS.init();
+		setFbUrl();
+	}
+	function showPrintableVersion() {
+		location='/about/PrintableLearnItem.jsp'+location.search;
+	}
+	function setFbUrl() {
+		console.log(dojo.byId('fb-iframe'));
+		dojo.byId('fb-iframe').setAttribute("src", "//www.facebook.com/plugins/like.php?href="+document.URL +"&amp;send=false&amp;layout=button_count&amp;width=85&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21");
+	}
+	dojo.addOnLoad(init);
+</script><meta property="og:title" content="Scripting using the Rational Team Concert SCM Command Line Interface - Library: Articles - Jazz Community Site"><meta property="og:image" content="https://1.cms.s81c.com/sites/default/files/2018-12-04/8_0.png"><meta property="og:type" content="website"><meta property="og:description" content="The RTC SCM Command Line Interface (SCM CLI) tool allows users to load and accept items from the repository, commit and deliver changes to the repository."><meta property="og:url" content="jazz.net/library/article/1031"><meta property="og:locale" content="en-US"><meta property="og:published_time" content="2012-08-27"><meta property="article:published_time" content="2012-08-27"><link href="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/sbs.css" rel="stylesheet" type="text/css"><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/usen-utf8.js.download" type="text/javascript"></script><script charset="utf-8" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/button.75a79c54dcfc115f36a5bc654a4d6c25.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_24" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/utag.24.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_53" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/utag.53.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_136" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/utag.136.js.download"></script><script language="javascript" type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/50200000.js.download"></script><script language="javascript" type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/cookie-id.js.download"></script><script language="javascript" type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/rules_50200000.js.download"></script><script language="javascript" type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/dispatcher-v3.js.download"></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/yahoo-min.js.download" type="text/javascript"></script><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/cp-v3.js.download" type="text/javascript"></script><style type="text/css">@media only screen and (max-width:480px){.truste_box_overlay{width: 100%!important;margin: 0px!important;max-width: 90%!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}@media only screen and (min-width:481px){.truste_box_overlay{width: 80%!important;margin: 20px auto!important;max-width: 800px!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}</style><style type="text/css">@font-face {font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff2") format("woff2");font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff") format("woff");}</style><script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/json-min.js.download" type="text/javascript"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_visitor_service_184main_1" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/01774901599a000c121d56d4bb6103073002506b00bd0"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_visitor_service_184main_2" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/01774901599a000c121d56d4bb6103073002506b00bd0(1)"></script><style type="text/css">.truste_cookie_prefs,#teconsent{display:none !important}</style></head>
+
+<body class="claro">
+<div class="cs-page-wrapper" role="region" aria-label="Site navigation for home">
+
+<div id="jazz-navbar">
+
+
+<div class="cs-header-wrapper">
+	<nav class="navbar navbar-inverse navbar-fixed-top jazz-navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+          <a class="navbar-brand" href="https://jazz.net/">
+	        <img class="main-logo common-sprite jazz-wordmark-dark-med nav-logo" alt="Jazz Home" title="IBM Jazz Community Site" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif">
+	      </a>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav">
+				<li class="hidden-xs"><a id="products-button" data-dropdownnav="#product-nav" href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li class="visible-xs"><a href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li id="top-download-menu" class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/1031#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Downloads <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						  <li class="dropdown-submenu">
+						  	<a href="https://jazz.net/downloads/elm" class="menu-highlight">Engineering Lifecycle Management</a>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/1031#"><span class="caret-right"></span>Products</a>
+						      <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/requirements-management-doors-next" class="menu-highlight">Engineering Requirements Management DOORS Next</a></li>
+							    <li><a href="https://jazz.net/downloads/workflow-management" class="menu-highlight">Engineering Workflow Management</a></li>
+							    <li><a href="https://jazz.net/downloads/test-management" class="menu-highlight">Engineering Test Management</a></li>
+							    <li><a href="https://jazz.net/downloads/rhapsody-model-manager" class="menu-highlight">Engineering Rhapsody Model Manager</a></li>
+							    <li><a href="https://jazz.net/downloads/elo-engineering-insights" class="menu-highlight">Engineering Insights</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-method-composer" class="menu-highlight">Engineering Method Composer</a></li>							    
+						      </ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/1031#"><span class="caret-right"></span>Reporting</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/elo-publishing" class="menu-highlight">Engineering Publishing</a></li>
+							    <li><a href="https://jazz.net/downloads/jazz-reporting-service" class="menu-highlight">Jazz Reporting Service</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/1031#"><span class="caret-right"></span>Adapters</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/ce4iot-connector" class="menu-highlight">ELM Connector for IoT</a></li>
+							    <li><a href="https://jazz.net/downloads/integration-adapters-tasktop-edition" class="menu-highlight">Integration Adapters Tasktop Edition</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-adapters-windchill/" class="menu-highlight">Integration Adapter for Windchill</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net/library/article/1031#"><span class="caret-right"></span>Other Tools &amp; Products</a>
+						     <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/jazz-foundation" class=" menu-highlight">Jazz Foundation</a></li>
+							    <li><a href="https://jazz.net/downloads/ibm-installation-manager/" class="menu-highlight">Installation Manager</a></li>
+                             </ul>
+                          </li>
+                          
+			        </ul>
+			    </li>
+				<li><a href="https://jazz.net/forum" class="nav-button">Forum</a></li>
+				
+				<li><a href="https://jazz.net/blogs" class="nav-button">Blogs</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/1031#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Library <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="https://jazz.net/library" class="top-menuitem menu-highlight">All media</a></li>
+							<li class="divider"></li>
+							<li class=""><a href="https://www-01.ibm.com/support/knowledgecenter/SSYMRC/clm_family_welcome.html" target="_blank" class="menu-highlight">Engineering Lifecycle Management documentation</a></li>
+						</ul>
+			   	</li>
+			   	<li class="visible-xs"><a href="https://jazz.net/library" class="nav-button">Library</a></li>
+			   	
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/1031#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Deployment <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a id="deployment" class="top-menuitem menu-highlight" href="https://jazz.net/wiki/bin/view/Deployment/">Deployment wiki</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentPlanningAndDesign" class="menu-highlight">Planning and design</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentInstallingUpgradingAndMigrating" class="menu-highlight">Installing and upgrading</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMigratingAndEvolving" class="menu-highlight">Migrating and evolving</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentIntegrating" class="menu-highlight">Integrating</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentAdminstering" class="menu-highlight">Administering</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMonitoring" class="menu-highlight">Monitoring</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentTroubleshooting" class="menu-highlight">Troubleshooting</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/jazz02/web/projects/Deployment%20Wiki#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight">Deployment wiki project</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/CommunityInformation" class="menu-highlight">Community information </a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/WebSearch" class="menu-highlight">Search</a></li>
+						</ul>
+			   	</li>			   	
+			   	<li class="visible-xs"><a href="https://jazz.net/wiki/bin/view/Deployment/" class="nav-button">Deployment</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net/library/article/1031#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a class="top-menuitem menu-highlight" href="https://jazz.net/help">Get help</a></li>							
+							<li><a href="https://www.ibm.com/mysupport" class="menu-highlight" target="_blank">Open a support case</a>
+							</li><li><a href="https://jazz.net/jazz02/web/projects/Community%20Feedback#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight" target="_blank">Open a ticket for Jazz.net</a>	
+							</li><li class="divider"></li>
+							<li><a href="https://jazz.net/extend/integrations" class="menu-highlight">Integrations</a></li>					
+						</ul>
+			   	</li>			   
+			   	<li class="visible-xs"><a href="https://jazz.net/help" class="nav-button">Support</a></li>
+		 	</ul>
+		 	
+			<ul class="nav navbar-nav navbar-right">
+				
+					<li class="visible-xs"><a href="https://jazz.net/action/register" class="nav-button menu-highlight">Sign Up</a></li>
+				   	<li class="visible-xs"><a href="https://jazz.net/library/article/1031#" class="nav-button menu-highlight" data-toggle="modal" data-target=".login-box">Log in</a></li>
+				   	
+			   		<li class="hidden-xs"><a id="sign-up-button" href="https://jazz.net/action/register" class="jazz-button jazz-button-clm-orange">Sign Up</a></li>
+			   		<li class="hidden-xs"><a href="https://jazz.net/library/article/1031#" id="log-in-button" class="jazz-button jazz-button-clm-blue" data-toggle="modal" data-target=".login-box">Log in</a></li>
+				
+			   	<li class="hidden-xs">
+				   	<form id="search-box" class="navbar-form navbar-right" style="display: none;" method="get" action="https://jazz.net/search">
+						<input name="q" id="search-input" type="text" class="form-control search-input" placeholder="Search Jazz.net">
+					</form>
+				</li>
+			   	<li class="hidden-xs"><a id="search-button" href="https://jazz.net/library/article/1031#"></a></li>
+			   	
+			   	<li class="hidden-xs"><a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM"></a>
+				</li>
+			</ul>
+			
+        </div>
+      </div>
+    </nav>
+    
+
+
+	<div id="login-box-modal" class="modal fade login-box" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content login-popup">
+      
+
+<form class="form-horizontal" id="loginForm-8354" name="LoginForm" action="https://jazz.net/auth/login" method="post">
+	<div class="form-group" style="margin-bottom: 0px !important;">
+		<div class="col-sm-12" style="text-align: center;">
+			<div id="login-error-8354" class="alert alert-danger hide" role="alert"></div>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="user-id" class="col-sm-4 control-label">User ID</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" name="j_username" id="user-id" placeholder="User ID">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="pass-word" class="col-sm-4 control-label">Password</label>
+		<div class="col-sm-8">
+			<input type="password" class="form-control" name="j_password" id="pass-word" placeholder="Password">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="jazz-button auth-button">Log in</button>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			Forgot your <a href="https://jazz.net/pub/user/retrieve-userid.jsp"><strong>user ID</strong></a> or <a href="https://jazz.net/pub/user/password-reset-request.jsp"><strong>password</strong></a>?
+		</div>
+	</div>
+	<input type="hidden" name="redirectPage" id="redirectPage-8354" value="https://jazz.net/library/article/1031">
+	<input type="hidden" name="field" id="field-8354">
+</form>
+<script type="text/javascript">
+(function() {
+	dojo.addOnLoad(function() {
+		var s = location.search.substring(1);
+		var node = dojo.byId("redirectPage-8354");
+		if (!node.value || node.value == "") {
+			if (s.indexOf("errno") >= 0) {
+				s = dojo.queryToObject(location.search.substring(1));
+				delete s.errno;
+				s = dojo.objectToQuery(s);
+				node.value = window.location.href.replace(/\?.*/, "") + (s.length > 0 ? "?" + s : "");
+			} else {
+				node.value = window.location.href;
+			}
+		}
+	});	
+	
+	var errno = null;
+	if (!errno) {
+		var loc = location.search.indexOf("errno=")+6;
+		if (loc >= 6 && location.search.length >= loc+1){
+			errno = location.search.substring(loc, loc+1)	
+		}
+	}
+	
+	var userLoggedIn = false;
+	if (errno) {
+		if (!userLoggedIn && !$('#jazz-inline-login').length) {
+			$('#login-box-modal').modal('show');
+		}
+		var message = "";
+		if (errno == 1 || errno == 2) {
+			message = "Invalid user ID or password.";
+		} else if (errno == 3 || errno == 4) {
+			message = "Your account has been locked due to repeated login attempts with an invalid password.  Wait 1 hour or <a href=\"/pub/user/password-reset-request.jsp\">reset your password</a>.";
+		} else if (errno == 5 || errno == 6) {
+			message = "Unable to log in due to a server error.";
+		}
+		if (message) {
+			$('#login-error-8354').removeClass('hide');
+			$('#login-error-8354').html(message);
+			
+		} else {
+			$('#login-error-8354').addClass('hide');
+		}
+	}
+})();
+</script>
+    </div>
+  </div>
+</div>
+	<script>
+		$('#products-button').on("mouseover",function(){
+		   $('.open .dropdown-toggle').dropdown('toggle');
+		 });
+	</script>
+    <script>
+		$(document).ready(function(){
+  			$('li.dropdown-submenu a.downloads').on("click", function(e){
+  				
+  				var currentSelection = $(this).next('ul');
+  				var submenus = $('li.dropdown-submenu a.downloads').parent().not($(this));
+  				submenus.each(function(){
+  					if($(this).children('ul').is(':visible')){
+  					   $(this).children('ul').not(currentSelection).hide();
+  					}
+  				})
+
+  			    $(currentSelection).toggle();
+  				
+   			    e.stopPropagation();
+   			    e.preventDefault();
+  			});
+  			
+  			 $("#top-download-menu.dropdown").on("hidden.bs.dropdown", function(){
+  		      	var submenusParent = $('li.dropdown-submenu a.downloads').parent();
+				  	submenusParent.each(function(){
+				  	  $(this).children('ul').hide();
+					  
+					})
+  		    });
+		});
+	</script>
+    <script>
+    	$('#search-button').click(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').show("fast");
+        		$('#search-input').focus();
+				
+    		} else {
+    			$('#search-box').submit();
+    		}
+    	});
+    	$('#search-input').blur(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').hide("fast");
+    		}
+    	});
+    	
+    	// fix for anchor item hidden behind the navigation bar, scrolling upward 50px 
+    	function scroll_if_anchor(href) {
+    	   href = typeof(href) == "string" ? href : $(this).attr("href");
+    	   var fromTop = 50;
+    	   // Handle Bootstrap stuff with attributes of "data-slide" and "data-toggle"
+    	   if (!href || href.includes("=") || $(this).attr("data-slide") != null || $(this).attr("data-toggle") != null) { 
+    		   return;
+    	   }
+    	   
+    	   var $target = $(href);
+    		
+    	   if (!$target.length) {  
+    		   var subStr  =href.substring(1);
+    	       var query = "[name='" + subStr + "']";
+    		   $target = $(query);
+    	   }	   
+    	   // animate and scroll
+    	   if ($target.length) {
+    	       $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+    	   }
+    	}    
+
+    	// invoke js function
+    	scroll_if_anchor(window.location.hash);
+
+    	// intercept all anchor events
+    	$("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+</div>
+    	<div id="product-nav" class="nav-dropdown row hidden-xs container">
+    		<div class="col-xs-6 product-nav-column product-nav-names-column">    			
+     			<h2 class="products-header">IBM Engineering Products</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="DOORS" class="product-selector selected"><span></span> Requirements Management DOORS Next</a></li>
+    				<li class="product-item"><a data-product="EWM" class="product-selector"><span></span> Workflow Management</a></li>
+    				<li class="product-item"><a data-product="ETM" class="product-selector"><span></span> Test Management</a></li>
+    				<li class="product-item"><a data-product="RMM" class="product-selector"><span></span> Systems Design Rhapsody - Model Manager</a></li>
+    				<li class="product-item"><a data-product="ENI" class="product-selector"><span></span> Lifecycle Optimization - Engineering Insights</a></li>
+    				<li class="product-item"><a data-product="PUB" class="product-selector"><span></span> Lifecycle Optimization - Publishing</a></li>
+    			</ul> 
+    			<h2 class="products-header" style="padding-top:3px">IBM Engineering Solutions</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="ELM" class="product-selector"><span></span> Lifecycle Management</a></li>
+     			</ul>     			
+    			<a id="explore-button" role="button" class="inline jazz-button jazz-button-clm-blue" href="https://jazz.net/products">Show all</a>
+    		</div>
+    		<div class="col-xs-6 product-nav-column product-nav-descriptor-column">
+    			<div data-product="ELM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management</h3>
+    				<div class="product-text">This solution (formerly known as Collaborative Lifecycle Management) provides a set of seamlessly integrated application lifecycle management (ALM) tools 
+    					that help teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-management-ext">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=clm">Try</a>
+	   				</div>
+    			</div>
+    			<div data-product="ELMSAAS" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management SaaS</h3>
+    				<div class="product-text">This subscription service (formerly known as IoT CE and CLM on Cloud) provides a single-tenant cloud environment with applications that help 
+    					development and engineering teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-management-ext">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+     				</div>
+    			</div>
+    			<div data-product="EWM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Workflow Management</h3>    				
+    				<div class="product-text">This software development tool (formerly known as Rational Team Concert) helps teams manage development work, such as 
+    					iteration and release planning, change management, defect tracking, source control, and build automation.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/ibm-engineering-workflow-management">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-team-concert">Try</a>
+    				</div>
+    			</div>
+    			<div data-product="DOORS" class="product-content" style="display: block;">
+    				<h3 class="product-header">IBM Engineering  Requirements Management DOORS Next</h3>    				
+    				<div class="product-text">This requirements management tool (formerly known as Rational DOORS Next Generation) helps teams capture, trace, analyze, and manage 
+    					requirements while complying with industry standards and regulations.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/requirements-management-doors-next">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a> 
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-doors-next-generation">Try</a>
+    				</div>
+    			</div>
+    			<div data-product="ETM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Test Management</h3>    				
+    				<div class="product-text">This quality management tool (formerly known as Rational Quality Manager) helps teams plan, construct, and execute tests throughout the development lifecycle.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/ibm-engineering-test-management">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-quality-manager">Try</a>    					
+    				</div>
+    			</div>
+    			<div data-product="RMM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Systems Design Rhapsody<br>Model Manager</h3>
+     				<div class="product-text">This design and modeling tool helps teams architect and design software and systems in an iterative and collaborative way.
+     				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/rhapsody-model-manager">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/rhapsody-model-manager">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="ENI" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Engineering Insights</h3>    				
+    				<div class="product-text">This tool (formerly known as Rational Engineering Lifecycle Manager) helps teams visualize lifecycle data to make the best engineering decisions.   
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-optimization/engineering-insights">Learn more at IBM.com</a>
+	    				<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-engineering-insights">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="PUB" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Publishing</h3>    				
+    				<div class="product-text">This reporting tool (formerly known as Rational Publishing Engine) automates the generation of document-style reports across deployed Jazz products and third-party tools.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-optimization/publishing">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-publishing">Download</a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/mobile.jquery.min.js.download"></script>
+		<script type="text/javascript">
+			if (!jQuery.browser.mobile) {
+				$('a[data-dropdownnav]').each(function() {
+					if (!$("body").hasClass('products-page')) {
+						var showNavTimeout, hideNavTimeout;
+						var dropdownDelay = 250;
+						var dropdownNav = $(this).attr("data-dropdownnav");
+						$(this).mouseover(function() {
+							if (!$(this).hasClass('opened')) {
+								clearTimers();
+								showNavTimeout = setTimeout(function() {
+									$(dropdownNav).show();
+									$(dropdownNav).addClass('visible');
+									$(this).addClass('opened');
+								}.bind(this), dropdownDelay);
+							}
+						}.bind(this));
+						
+						$(this).mouseleave(function(e) {
+							clearTimers();
+							hideNavTimeout = setTimeout(function() {
+								$(dropdownNav).removeClass('visible');
+								$(this).removeClass('opened');
+							}.bind(this), dropdownDelay);
+						}.bind(this));
+					
+						$(dropdownNav).mouseleave(function(e) {
+							hideNavTimeout = setTimeout(function() {
+								var targetElement = (e.toElement || e.relatedTarget);
+								if ((targetElement != null) && (targetElement != this)) {
+									$(dropdownNav).removeClass('visible');
+									$(this).removeClass('opened');
+								};	
+							}.bind(this), dropdownDelay);
+							
+						}.bind(this));
+						
+						$(dropdownNav).mouseenter(function() {
+							clearTimers();
+							$(dropdownNav).addClass('visible');
+							$(this).addClass('opened');
+						}.bind(this));
+						
+						function clearTimers() {
+							clearTimeout(showNavTimeout);
+							clearTimeout(hideNavTimeout);
+						}
+					}
+				});
+			}
+
+			$('.nav-dropdown div[data-product=' + $('.product-selector.selected').data('product') + ']').show();
+			$('.nav-dropdown .product-selector').click(function() {
+				$('.product-content').hide();
+				$('.product-selector.selected').removeClass('selected');
+				$(this).addClass('selected');
+				$('div[data-product=' + $(this).data('product') + ']').show();
+			});
+			
+    </script></div>
+<script>
+$.get("/servlet/navbar", {pathname: window.location.pathname})
+	.done(function(data) {
+		$('#jazz-navbar').html(data);
+	}
+);
+</script>
+
+<div class="main-wrapper">
+	<div class="cs-content-wrapper" id="cs-content-wrapper">
+	<div class="breadcrumbs">
+		<a href="https://jazz.net/library/">Library</a> &gt; 
+		
+			<a href="https://jazz.net/library/article/">Articles</a> &gt;
+		
+	</div>
+	<div class="central-area no-sidebar no-left">
+	
+		<div class="icon-floating">
+			<div class="section-header">
+				<img src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/bttn_article52.gif">
+			</div>
+		</div>
+	
+		
+			  <h2>Scripting using the Rational Team Concert SCM Command Line Interface</h2>  <p class="byline">  Shashikant Padur<br>  Last updated: June 5, 2012<br>  Build basis: Rational Team Concert 4.0  </p>    <h3>Overview</h3>  <p>  The RTC SCM Command Line Interface (SCM CLI) tool allows users to load and accept items from the repository, commit and deliver changes to the repository. Most of the SCM CLI subcommands generate an output that can be consumed and used to peform follow up operations. Prior to 4.0, the output generated by the SCM CLI was plain space delimited text which was easy to view but difficult to parse by scripts. Also, whenever the subcommand output was enhanced to include more information it had the potential to break the scripts that relied on a certain output format. In order to alleviate this problem, there was a need to generate an output in a structured format that could be easily parsed and processed by scripts.</p>    <h3>JSON output</h3>  <p>  JSON or JavaScript Object Notation, is a lightweight text-based open standard designed for data interchange. JSON is language independent as well as human readable and can be read/written easily. Almost all modern programming languages have built in support for JSON or provide JSON libraries to parse JSON formatted data.  <br>  Jsawk is an utility similar to awk but for JSON that could be used to parse and process JSON data from the command line. You work with an array of JSON objects read from stdin, filter them using JavaScript to produce a results array that is printed to stdout. You can use this as a filter to manipulate data, for example, in a shell script.  <br><br>  In 4.0, the SCM CLI provides support for generating output in JSON format. The subcommands can be instructed to output data in JSON format by specifying the -j/–json option. Not all subcommands support this option. The option is supported in only those subcommands that return some data back to the user.<br>  For example: ‘lscm status –json’.  </p>    <p>  In this article we will show some Perl scripts which consume JSON output and perform certain operations that could be used in our day to day work. Readers should be familiar with RTC concepts and functionality; and comfortable scripting on the command line.  </p>    <h3> Sample output</h3>  <p>  Sample listing showing regular text output:  </p>  <div id="code"><pre>  [~/test]$ lscm status  Workspace: (1159) "Workspace1" &lt;-&gt; (1159) "Workspace1"    Component: (1160) "Comp1"      Baseline: (1161) 2 "SS1"      Unresolved:        -c- /Comp1/111/1.txt    Component: (1162) "Comp2"      Baseline: (1163) 2 "SS1"  </pre></div>    <p>  Sample listing showing jsonized output:  </p>  <div id="code"><pre>  [~/test]$ lscm status --json  {      "workspaces": [          {              "components": [                  {                      "baseline": {                          "id": 2,                          "name": "SS1",                          "uuid": "_tMTUUKsFEeGu6rQhbwU5dg"                      },                      "name": "Comp1",                      "unresolved": [                          {                              "path": "/Comp1/111/1.txt",                              "state": {                                  "add": false,                                  "content_change": true,                                  "delete": false,                                  "move": false,                                  "property_change": false                              },                              "uuid": "_jis80KsFEeGt8o_AYdWFYw"                          }                      ],                      "uuid": "_Uq0YAKsEEeGu6rQhbwU5dg"                  },                  {                      "baseline": {                          "id": 2,                          "name": "SS1",                          "uuid": "_tMaCAqsFEeGu6rQhbwU5dg"                      },                      "name": "Comp2",                      "uuid": "_XNAA4KsEEeGu6rQhbwU5dg"                  }              ],              "flow-target": {                  "name": "Workspace1",                  "type": "WORKSPACE",                  "url": "https://localhost:9443/jazz/",                  "uuid": "_Lm9f8KsGEeGu6rQhbwU5dg"              },              "name": "Workspace1",              "url": "https://localhost:9443/jazz/",              "userId": "ADMIN",              "uuid": "_Lm9f8KsGEeGu6rQhbwU5dg"          }      ]  }  </pre></div>  <br>    <h3>Example 1: Commit files to repository, set a comment and complete the change set</h3>  <p>Using the SCM CLI there are various operations that can be performed on a changeset once the changes are committed to the repository such as setting the comment, associating a workitem and completing the changeset. At times, the user may want to combine some of these individual operations and execute it as a single operation.  <br>  <br>  The below sample script, will commit the changes, set a comment and complete the change set. Listed below are the subcommands that correspond to these individual operations:</p>  <ul>  <li>‘lscm checkin’</li>  <li>‘lscm changeset comment’</li>  <li>‘lscm changeset complete’</li>  </ul>    <h4>Perl script:</h4>    <div id="code"><pre>  # Script usage: commit.pl {comment} {file paths...}  # Script usage example: commit.pl "test comment" .    use JSON;        my $comment = $ARGV[0];            my $filePattern = "";      for ($count = 1; $count &lt;= $#ARGV; $count++) {          if ($count &gt; 1) {              $filePattern = $filePattern . " ";          }          $filePattern = $filePattern . $ARGV[$count];      }            # Commit the changes      my $result = 'lscm checkin $filePattern --json';      quitOnError($?, $result);            # Decode the result      my @json = @{decode_json($result)};        # Loop through the workspaces-&gt;components-&gt;outgoingChangesets      foreach $ws (@json) {          foreach my $component (@{$ws-&gt;{components}}) {              foreach my $outgoingChangeset (@{$component-&gt;{"outgoing-changes"}}) {                  $result = 'lscm changeset comment $outgoingChangeset-&gt;{"uuid"} "$comment"';                  quitOnError($?, $result);                                    $result = 'lscm changeset complete $outgoingChangeset-&gt;{"uuid"}';                  quitOnError($?, $result);              }                  }      }        	      #      # Routine that prints the error message and quits      #      sub quitOnError {          my $error_code = shift;          my $error = shift;                    if ($error_code != 0) {              print $error . "n";              exit($error_code);          }      }  </pre></div>    <p>  <a href="https://jazz.net/wiki/pub/Main/ScriptingwithRTCSCM/commit.pl.txt">Download Example 1</a> – You’ll need to remove the .txt extension.  <br><br>  Note: In the above example we are committing all files below the current directory. If the script is run from the root of the sandbox there is a  possibility that multiple changesets will be created depending upon whether there were unresolved changes in other components. To avoid this issue, run the script within a component directory or specify individual file paths.  </p>    <br>  <h3>Example 2: Diff files recursively</h3>  <p>  The subcommand ‘lscm diff file’ is used to list the differences between an individual file in the local file system against that in the repository. The below sample script will demonstrate how to recursively diff files in the current folder and it’s child folders. The script first executes the ‘lscm status’ subcommand to find all the unresolved files in the local file system and picks the files that have content changes before diff’ing each of those files.  </p>  <h4>Perl script:</h4>    <div id="code"><pre>  # Script usage: rdiff.pl  # Script usage example: rdiff.pl    use JSON;  use Cwd;        # Get the status      my $result = 'lscm status --json';      quitOnError($?, $result);            # Decode the result      my $json = decode_json($result);        # Get the sandbox root      # This is required becuase of defect 213514 - 'lscm diff file' does not accept alias/item id      my $sandboxRoot = getSandboxRoot();        # Loop through all the workspaces, components and unresolved changes      foreach my $ws (@{$json-&gt;{workspaces}}) {          my $repoUri = $ws-&gt;{"url"};          foreach my $component (@{$ws-&gt;{components}}) {              foreach my $unresolvedChange (@{$component-&gt;{"unresolved"}}) {                  my $state = $unresolvedChange-&gt;{"state"};                  if ($state-&gt;{"content_change"} eq JSON::true) {                      my $filePath = $sandboxRoot . $unresolvedChange-&gt;{"path"};                      diffFile($filePath, $repoUri);                  }              }                  }      }            # Find the sandbox root based on the current directory      sub getSandboxRoot {          my $sandboxRoot = cwd();                    while (true) {              $sandboxMetaDir = $sandboxRoot . "/.jazz5";              if (-d $sandboxMetaDir) {                 return $sandboxRoot;               }                            # Remove the last segment              my $index = rindex($sandboxRoot, "/");              if ($index == -1) {                  last;                              }                            $sandboxRoot = substr($sandboxRoot, 0, $index);          }                    print "Could not locate the sandbox rootn";          exit(1);      }            sub diffFile() {          my $filePath = shift;          my $repoUri = shift;            while (true) {              print "Diff file: " . $filePath . " (y|n|q): ";              chomp(my $input = &lt;STDIN&gt;);                            if ($input =~ /^[Y]$/i) {                  my $result = 'lscm diff file -r $repoUri $filePath';                  print $result . "n";                  last;              } elsif ($input =~ /^[N]$/i) {                  last;              } elsif ($input =~ /^[Q]$/i) {                  exit (0);              }          }      }      	      #      # Routine that prints the error message and quits      #      sub quitOnError {          my $error_code = shift;          my $error = shift;                    if ($error_code != 0) {              print $error . "n";              exit($error_code);          }      }  </pre></div>    <p>  <a href="https://jazz.net/wiki/pub/Main/ScriptingwithRTCSCM/rdiff.pl.txt">Download Example 2</a> – You’ll need to remove the .txt extension.  </p>    <br>  <h3>Example 3: Find a file in the workspace or stream</h3>  <p>  The subcommand ‘lscm list remote-files’ provides the capability to list files in the workspace but there is a limitation that it only lists files one component at a time. The below sample script will list the files in all the components by first finding the components of a workspace/stream and then listing the files for each of those components.  </p>    <h4>Perl script:</h4>    <div id="code"><pre>  # Script usage: findfile.pl {file pattern} {workspace name/alias/uuid} {repoUri}  # Script usage example: findfile.pl my*file.txt myWorkspace1 repoUri    use JSON;        my $filePattern = $ARGV[0];      my $workspace = $ARGV[1];      my $repoUri = $ARGV[2];            # Get all the components for the workspace      my $result = 'lscm list components $workspace -r $repoUri --json';      quitOnError($?, $result);            # Decode the result      my $json = decode_json($result);        # Loop through the components      my $ws = $json-&gt;{workspaces}[0];      foreach my $component (@{$ws-&gt;{components}}) {          my $componentId = $component-&gt;{"uuid"};          findPatternInComponent($filePattern, $workspace, $componentId, $repoUri);      }            #      # Routine that prints the matching file/folder found in the component      #      sub findPatternInComponent {          my $filePattern = shift;          my $workspace = shift;          my $component = shift;          my $repoUri = shift;                    # Get all the files/folders for the component                 my $result = 'lscm list remotefiles $workspace $component -r $repoUri --depth - --json';          quitOnError($?, $result);                    # Decode the result          my $json = decode_json($result);                    # Loop through the file/folders          foreach my $entry (@{$json-&gt;{"remote-files"}}) {              # Get the file/folder name              if ($entry-&gt;{"path"} =~ "([^/]+)/?$") {                  # match the file pattern                  if ($1 =~ $filePattern) {                      print $entry-&gt;{"path"} . "n";                  }              }          }      }  	      #      # Routine that prints the error message and quits      #      sub quitOnError {          my $error_code = shift;          my $error = shift;                    if ($error_code != 0) {              print $error . "n";              exit($error_code);          }      }  </pre></div>    <p>  <a href="https://jazz.net/wiki/pub/Main/ScriptingwithRTCSCM/findfile.pl.txt">Download Example 3</a> – You’ll need to remove the .txt extension.  </p>    <h4>Shell script using jsawk:</h4>    <div id="code"><pre>  # Script usage: findfile.pl {file pattern} {workspace name/alias/uuid} {repoUri}  # Script usage example: findfile.sh my*file.txt myWorkspace1 repoUri    compArray='lscm list components $2 -r $3 --json | jsawk "return Q('$..components..uuid', this)" | jsawk -a 'return this.join(" ")''  for comp in $compArray  do      fileArray='lscm list remotefiles $2 $comp -r $3 --depth - --json | jsawk "return Q('..path', this)" | jsawk -a 'return this.join(" ")''      for file in $fileArray      do          fname='basename $file'                    # match the file pattern          if [[ $fname = $1 ]]          then              echo $fname          fi      done  done  </pre></div>    <p>  <a href="https://jazz.net/wiki/pub/Main/ScriptingwithRTCSCM/findfile.sh">Download Example 4</a>  </p>  <br>    <h3>Summary</h3>  <p>  In this article we took a look at how to process the JSON output generated by one subcommand and use it in subsequent subcommands. The above scripts touched upon basic developer usecases but more complex scripts can be written to target build/release usecases.  </p>    <h3>Related articles</h3>  <ul>      <li><a href="http://jazz.net//library/article/620/">Getting started with the Jazz SCM command line in Rational Team Concert</a></li>  	<li><a href="http://jazz.net//library/article/195/">Using the SCM Command Line Interface in builds</a></li>  </ul>  <hr>  <p class="copyright">Copyright © 2012 IBM Corporation</p>  
+		
+		
+
+		
+				<div class="dotted-section">
+					
+
+
+
+
+
+
+
+
+
+
+
+<div id="comments" title="Scripting using the Rational Team Concert SCM Command Line Interface" widgetid="comments">
+	<strong>Discussion</strong>
+	<a href="javascript:void(0);" class="subscribe" id="subscribe" dojoattachevent="onclick: _toggleSubscribe" dojoattachpoint="_subscribeButton">Subscribe me</a>
+	<div dojoattachpoint="_comments"><br><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="984ee40e-97d0-427a-a8e3-d7abc942b128" widgetid="984ee40e-97d0-427a-a8e3-d7abc942b128">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>cemile yalç?n</strong> wrote on January 2, 2018 08:48:44:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Could you explain how to run findFile.sh on windows?when i run via cygwin it gives 'lscm command not found error'</blockquote>
+	</div>
+</div></div>
+	
+	<div dojoattachpoint="_loggedInBlock" style="display: none;">
+		<label for="comment-field">Add a comment:</label>
+		<textarea dojoattachpoint="_commentField" id="comment-field"></textarea>
+		<br>
+		<input type="button" value="Submit" dojoattachevent="onclick: _submitComment">
+		<span dojoattachpoint="_notify" class="notify"><input type="checkbox" checked="" dojoattachpoint="_checkNotify" id="check-notify"><label for="check-notify">Notify me when a reply is posted</label></span>
+		<div dojoattachpoint="_subscriptionInfo" class="subscription-info" style="clear: both; display: none;">You are following this discussion. <a href="javascript: void(0);" dojoattachevent="onclick: _toggleSubscribe">Unsubscribe</a>.</div>
+	</div>
+	<div dojoattachpoint="_login" style="display: block;"><a onclick="jazz.cs.showLogin(event)" href="https://jazz.net/library/article/1031#" "="">Log in</a> to submit a comment.</div>
+
+<br clear="all">
+<div dojoattachpoint="_commentFeedback" class="comment-success" style="display: none;"></div>
+	
+</div>
+
+<script type="text/javascript">
+dojo.addOnLoad(function() {
+	var commentWidget = new jazz.cs.Comments({isSubscribed: false, isLoggedIn: false, isAdmin: false, itemId: "1031", title: "Scripting using the Rational Team Concert SCM Command Line Interface", username: "nobody", userId: "nobody"}, dojo.byId("comments"));
+	
+			commentWidget.addComment("cemile yalç?n", "January 2, 2018 08:48:44", "Could you explain how to run findFile.sh on windows?when i run via cygwin it gives \'lscm command not found error\'", "984ee40e-97d0-427a-a8e3-d7abc942b128", false);
+			
+});
+</script>
+
+				</div>
+				<div class="dotted-section">
+					
+
+<script type="text/javascript">dojo.addOnLoad(function() { jazz.cs.ratings.currentRating = 5; });</script>
+<strong>Feedback</strong><br>
+<div class="item-rating" id="item-rating">
+	Was this information helpful? <span id="helpful"> <a href="javascript:void(0);" onclick="jazz.cs.ratings.submitRating(&#39;true&#39;, jazz.cs.ratings.currentRating, &#39;1031&#39;);"><img class="common-sprite icons-thumb_up-gif" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">Yes</a> <a href="javascript:void(0);" onclick="jazz.cs.ratings.feedbackDialog();jazz.cs.ratings.submitRating(&#39;false&#39;, &#39;5&#39;, &#39;1031&#39;);"><img class="common-sprite icons-thumb_down-gif" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">No</a> </span> <strong style="margin-left: 6px;" id="currentRating">5 people</strong> rated this as helpful.
+	<div style="display: none;">
+	<div id="FeedbackDialog" class="rating-dialog">
+		<label for="FeedbackBody"><strong>Let us know how we can improve this information.</strong></label>
+		<textarea id="FeedbackBody"></textarea>
+		<p><input type="submit" value="Submit" onclick="jazz.cs.ratings.submitFeedback(&#39;1031&#39;, &#39;Scripting using the Rational Team Concert SCM Command Line Interface&#39;);"></p><br>
+	</div>
+	</div>
+</div>
+
+
+				</div>
+			
+		<div class="dotted-section">
+			
+			<div style="float:left">
+				<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/tweet_button.0edc1ef9f8b82d9b79c6115bda79f63f.en.html"></iframe>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			
+			<div>
+				<iframe id="fb-iframe" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px; float: left;" allowtransparency="true"></iframe>
+			</div>
+			
+		</div>
+	</div>
+<!-- Close off cs-page-wrapper, main-wrapper, and cs-content-wrapper divs -->
+</div>
+</div>
+</div>
+<!-- End -->
+<div id="jazz-footer"><div class="content container-fluid jazz-footer">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="logos-and-links">
+				<a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM" style="position: relative; bottom: 1px"></a>
+				<a href="https://jazz.net/legal/contact.jsp">Contact</a>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.ibm.com/privacy/us/en/" target="_blank">Privacy Policy</a> 
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="https://jazz.net/pub/terms.jsp">Terms of Use</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="socialize">
+				<a title="Facebook" href="https://www.facebook.com/jazzdotnet"><img alt="Facebook" class="connect-icon" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/facebook.png"></a>
+				<a title="Twitter" href="https://twitter.com/jazzdotnet"><img alt="Twitter" class="connect-icon" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/twitter.png"></a>
+				<a title="LinkedIn" href="https://www.linkedin.com/groups/1822932/"><img alt="LinkedIn" class="connect-icon" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/linkedin.png"></a>
+				<a title="YouTube" href="https://www.youtube.com/ibmjazz"><img alt="YouTube" class="connect-icon" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/youtube.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script></div>
+<script>
+$.get("/servlet/footer")
+	.done(function(data) {
+		$('#jazz-footer').html(data);
+	}
+);
+</script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+
+	<script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/jazznetarticles.js.download"></script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/widget_iframe.0edc1ef9f8b82d9b79c6115bda79f63f.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="lt_3p_10026" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/lt.iframe.html" title="empty" tabindex="-1" role="presentation" aria-hidden="true" style="border: 0px; width: 0px; height: 0px; display: block;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/saved_resource.html"></iframe><div id="teconsent" data-source="dbdm" class="truste_cookie_prefs" style="position: fixed; height: 40px; background-color: rgb(255, 255, 255); z-index: 2147483647; bottom: 0px; right: 0px; margin: 0px; padding: 0px 16px; line-height: 40px; vertical-align: middle; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 3px; display: block;" consent="0|1|2" aria-label="Open Cookie Preferences Modal" role="complementary"><script type="text/javascript" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/notice" id="truste_0.12445771181221854"></script><script async="async" type="text/javascript" crossorigin="" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/v1.7-226"></script><a role="link" id="icon-id040050954419686313" tabindex="0" lang="en" aria-label="Cookie Preferences" style="cursor: pointer; font-family: ibm-plex-sans; font-size: 12pt; color: #3d3d3d; text-decoration: none">Cookie Preferences</a></div><iframe name="trustarc_notice" id="trustarcNoticeFrame" title="Trustarc Cross-Domain Consent Frame" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/get.html" style="display: none;"></iframe><div id="survey-overlay-backdrop" style="opacity: 0.5;background: #111;bottom: 0;left: 0;position: fixed;right: 0; top: 0; z-index: 900; display:none"></div><script async="" src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/js(3)" id="mm_pp_background"></script><iframe src="./Scripting using the Rational Team Concert SCM Command Line Interface - Library_ Articles - Jazz Community Site_files/iframe.html" id="mm_sync_back_ground" title="MediaMath Advertising" style="visibility: hidden; display: none;"></iframe></body></html>

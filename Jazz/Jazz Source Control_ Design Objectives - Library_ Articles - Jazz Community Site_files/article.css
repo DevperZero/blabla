@@ -1,0 +1,30 @@
+/* style for images and tables with captions */
+div.image div:before {
+	content: attr(name);
+}
+table caption:before {
+	content: attr(name);
+}
+
+/* style for syntax highlighting code snippets (HTML, JavaScript, Velocity), see article.js for more details */
+span.syntax.keyword {
+    color: #A71A9C;
+}
+span.syntax.operator {
+    color: #686868;
+}
+span.syntax.literal {
+    color: #960000;
+}
+span.syntax.variable {
+    color: #2B32DE;
+}
+span.syntax.object {
+    color: #166FCB;
+}
+span.syntax.comment {
+    color: #437D32;
+}
+span.syntax.tag {
+    color: #8A452D;
+}

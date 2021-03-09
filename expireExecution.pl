@@ -8,14 +8,16 @@
 # print "$@\n";
 
 
-eval {
-    my @array;
-    local $SIG{ALRM} = sub { die "timeout\n" }; # NB: \n required
-    local $/ = "";
-    alarm 3;
-    @array = `TIMEOUT /T 5 /NOBREAK`;
-    alarm 0;
-};
-die $@ if $@ && $@ ne "timeout";
-print "end\n";
+# eval {
+#     my @array;
+#     local $SIG{ALRM} = sub { die "timeout\n" }; # NB: \n required
+#     local $/ = "";
+#     alarm 3;
+#     @array = `TIMEOUT /T 5 /NOBREAK`;
+#     alarm 0;
+# };
+# die $@ if $@ && $@ ne "timeout";
+# print "end\n";
+
+
 

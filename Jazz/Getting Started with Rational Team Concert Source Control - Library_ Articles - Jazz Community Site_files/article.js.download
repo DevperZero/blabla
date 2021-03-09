@@ -1,0 +1,210 @@
+//<![CDATA[
+// 
+// Licensed Materials - Property of IBM
+// (c) Copyright IBM Corporation 2005-2012. All Rights Reserved.
+// 
+// Note to U.S. Government Users Restricted Rights:
+// Use, duplication or disclosure restricted by GSA ADP Schedule
+// Contract with IBM Corp.
+//
+//
+// SYNTAX HIGHLIGHTING in <pre> and <code>
+//
+// Create a <pre> or <code> tag and add the following classes to it: 
+//	- "javascript" -- colorized JavaScript code
+//	- "html" -- colorized HTML code
+//	- "xml"  -- colorized XML
+//	- "vtl"  -- colorized Velocity Template code
+//
+// For example: <code class="javascript">var foo = function() { console.log("I am pretty"); }</code>
+//
+//
+// AUTO NUMBERING of figures and tables with the option to add references in the text. 
+//
+// TABLES
+// Create your table and give it a name '<table name="your-table"> ... </table>'
+// Refer to it using the same name, e.g, 'See <span class="ref" name="your-table"></span> ...'
+// You can use different markups as long as you add 'class="ref"' and a name attribute
+//
+// FIGURES
+// Create your with as follows 
+// 	<div name="your-figure" class="image">
+//		<img src="PATH_TO_YOUR_IMAGE" />
+//		<div>YOUR CAPTION</div>
+// 	</div>
+//	Don't add the second <div> if no caption should be provided.
+//
+//
+// Refer to it using the same name, e.g., 'As shown in <span class="ref" name="your-figure"></span> ...'
+
+
+if (document.createStyleSheet) {
+  document.createStyleSheet('/_css/article.css');
+}
+else {
+  var style = document.createElement('link');
+  style.rel ='stylesheet';
+  style.href ='/_css/article.css';
+  document.getElementsByTagName('head')[0].appendChild(style);
+}
+
+
+var languages = {};
+languages.vtl= [
+{p: '#if',                     c: 'keyword'},
+{p: '#end',                    c: 'keyword'},
+{p: '#else',                   c: 'keyword'},
+{p: '#foreach',                c: 'keyword'},
+{p: '#set',                    c: 'keyword'},
+{p: '\\${?\\w+(\\.\\w+)*}?',   c: 'variable'}
+];
+
+languages.html= [
+{p: '"[^\"]*"',                c: 'literal', important: true},
+{p: '\\d+',                    c: 'literal'},
+{p: '<[^><]+>',                c: 'tag'}
+];
+
+languages.xml= [
+{p: '"[^\"]*"',                c: 'variable'},
+{p: '<[^>< ]+[> ]',		       c: 'tag'},
+{p: '[/]?>',			       c: 'tag', important:true},
+{p: '[^=<>]+=',			   c: 'keyword'}
+];
+
+languages.javascript= [
+{p: '//[^\n]*',        c: 'comment'},
+{p: '/\\*[^\\*]*\\*/', c: 'comment'},
+{p: '(break|continue|do|for|import|new|this|void|case|default|else|function|in|return|typeof|while|comment|delete|export|if|label|switch|var|with|false|throws|null|undefined|true|catch|enum|throw|class|try|finally)', c: 'keyword', boundary: true},
+{p: '"[^"]*"',         c: 'literal', important: true},
+{p: '\\d+',            c: 'literal'},
+{p: '[A-Z]\\w*',       c: 'object', boundary: true},
+{p: '(\\+|-|\\*|/|%|=|<|>|&|\\||\\^|~|!|,|\\.|\\?|:|\\(|\\)|\\{|\\}|\\[|\\]|;)+', c: 'operator'}
+];
+
+function colorizeCodeSnippets(tagName) {
+    var snippets = document.getElementsByTagName(tagName);
+    for (var i = 0; i < snippets.length; i++) {
+        var snip = snippets[i];
+		var constructs = buildLanguage(snip.classList);
+		if (constructs.length > 0) {
+			color(constructs, buildRegex(constructs, false), buildRegex(constructs, true), snip);
+		}
+    }
+}
+function color(constructs, regex, important, node, embedded) {
+    if (node.childNodes.length === 0) {
+        return;
+    }
+
+    for (var i = 0; i < node.childNodes.length; i++) {
+        var oldChild = node.childNodes[i];
+        if (oldChild.nodeType === document.TEXT_NODE) {
+            var text = oldChild.data;
+            var r = embedded ? important : regex;
+
+            var result = r.exec(text);
+            if (result) {
+                var keyword = result[0];
+                var curChild = document.createTextNode(text.substring(0, result.index));
+                node.insertBefore(curChild, oldChild);
+                
+                curChild = document.createElement('span');
+                curChild.classList.add('syntax');
+                curChild.classList.add(getClass(constructs, keyword));
+                curChild.textContent = keyword;
+                node.insertBefore(curChild, oldChild);
+                i += 1;
+
+                if (!embedded) {
+                    color(constructs, regex, important, curChild, true);
+                }
+
+                if (result.index + keyword.length < text.length) {
+                    curChild = document.createTextNode(text.substring(result.index + keyword.length));
+                    node.insertBefore(curChild, oldChild);
+                }
+                node.removeChild(oldChild);
+            }
+        } else {
+            color(constructs, regex, important, oldChild);
+        }
+    }
+}
+function buildLanguage(classList) {
+	var constructs = [];
+    if (classList.length > 0) {
+    	for (var i = 0; i < classList.length; i++) {
+	        var keywords = languages[classList[i]];
+	        if (!keywords) {
+	            continue;
+	        }
+	        for (var j = 0; j < keywords.length; j++) {
+	            constructs.push(keywords[j]);
+	        }
+	    }
+	}
+    return constructs;
+}
+function buildRegex(keywords, important) {
+    var regex = '';
+    for (var j = 0; j < keywords.length; j++) {
+        if (!important || important && keywords[j].important) {
+            if (regex.length > 0) {
+				regex = regex + '|';
+			}
+			var boundary = keywords[j].boundary ? '\\b' : '';
+			regex = regex + boundary + keywords[j].p + boundary;
+        }
+    }
+    return new RegExp('(' + regex + ')', 'm');
+}
+function getClass(constructs, keyword) {
+    for (var j = 0; j < constructs.length; j++) {
+        if (keyword.match('^' + constructs[j].p + '$')) {
+            return constructs[j].c;
+        }
+    }
+    return '';
+}
+
+function updateReferences(elem, label, number) {
+	var name = elem.getAttribute('name');
+	if (name) {
+		var refs = document.getElementsByClassName('ref');
+		for (var i= 0; i < refs.length; i++) {
+			if (refs[i].getAttribute('name') !== name) continue;
+			var link = document.createElement('a');
+			link.classList.add('ref');
+			link.setAttribute('href', '#' + name);
+			link.innerHTML = label + number;
+			refs[i].parentElement.replaceChild(link, refs[i]);
+		}
+	}
+	return name;
+}
+function updateElements(elems, labelTagName, label) {
+	for (var i= 0; i < elems.length; i++) {
+		var name = updateReferences(elems[i], label, i+1);
+		var hook = document.createElement('a');
+		hook.setAttribute('name', name);
+		elems[i].parentElement.insertBefore(hook, elems[i]);
+		var labels = elems[i].getElementsByTagName(labelTagName);
+		if (labels.length > 0) labels[0].setAttribute('name', label + (i + 1) + ': ');
+	}
+};
+
+function initialize() {
+	updateElements(document.getElementsByTagName('table'), 'caption', 'Table ');
+	updateElements(document.getElementsByClassName('image'), 'div', 'Figure ');
+	colorizeCodeSnippets('pre');
+	colorizeCodeSnippets('code');
+};
+
+if (document.addEventListener) {
+	document.addEventListener('DOMContentLoaded', initialize, false);
+} else if (document.attachEvent) {
+	document.attachEvent('onDOMContentLoaded', initialize);
+}
+//]]>
+

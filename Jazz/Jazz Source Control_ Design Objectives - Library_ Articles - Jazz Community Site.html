@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://jazz.net//library/article/525 -->
+<html lang="en-US" class="dj_webkit dj_chrome dj_contentbox"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="IBM.WTMSite" content="JAZZ">
+<script type="text/javascript" async="" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/analytics.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_136" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/survey.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_53" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_162" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/js(1)"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_cormetrics2" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/eluminate.js.download"></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/utag.js.download" type="application/javascript" async=""></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/dbdm-data" type="application/javascript" async=""></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/lt.min.js.download" type="application/javascript" async=""></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/p_12e35305649009fd9870b5ed1c8ccb20b48384e98bfaedb101b89b159caf6dd7.js.download" type="application/javascript" async=""></script><script id="twitter-wjs" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/widgets.js.download"></script><script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/dojo.js.download" data-dojo-config="parseOnLoad: true"></script>
+<link href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/JazzCS.css">
+<link rel="stylesheet" type="text/css" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/NavBar.css">
+<link rel="stylesheet" type="text/css" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/shared.css">
+<link rel="stylesheet" type="text/css" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/ScrollableView.css">
+<script type="text/javascript">
+	dojo.registerModulePath("jazz", "/_scripts/built/jazz");
+	dojo.registerModulePath("jazzshared", "/_scripts");
+	
+	if (window.location.href.indexOf("debug=true") >= 0) {
+		var dojoConfig = {isDebug: true, locale: "en"};
+		window.publicHostname = "jazz.net";
+	}
+</script>
+
+
+<link rel="stylesheet" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/sandbox.css" type="text/css">
+<link rel="stylesheet" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/bootstrap.min.css" type="text/css">
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jquery.min.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/bootstrap.min.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script>
+
+
+<title>Jazz Source Control: Design Objectives - Library: Articles
+- Jazz Community Site</title>
+
+
+<meta name="keywords" content="workflow-management,rational-team-concert,introduction,SCM,source control">
+
+
+<meta name="description" content="Get an overview of the major design objectives of the Jazz Source Control system and how Rational Team Concert delivers on these goals.">
+
+
+<!-- IBM taxonomy meta content -->
+
+	<meta name="dc.subject" scheme="IBM_SubjectTaxonomy" content="SSCP65">
+
+<meta name="dc.type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+
+	<meta name="IBM.BrandProduct" content="A057601Q81405M60">
+
+
+	<meta name="DC.Date" scheme="iso8601" content="2011-05-09">
+
+<!--<base href="#">--><base href=".">
+<link rel="stylesheet" type="text/css" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/docs.css">
+<script type="text/javascript" language="Javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/sbs.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/article.js.download"></script><link rel="stylesheet" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/article.css">
+<link rel="stylesheet" href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/bootstrap-override.css" type="text/css">
+<script type="text/javascript">
+	function init() {
+		fixAnchors();
+		ibmSBS.init();
+		setFbUrl();
+	}
+	function showPrintableVersion() {
+		location='/about/PrintableLearnItem.jsp'+location.search;
+	}
+	function setFbUrl() {
+		console.log(dojo.byId('fb-iframe'));
+		dojo.byId('fb-iframe').setAttribute("src", "//www.facebook.com/plugins/like.php?href="+document.URL +"&amp;send=false&amp;layout=button_count&amp;width=85&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21");
+	}
+	dojo.addOnLoad(init);
+</script><link href="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/sbs.css" rel="stylesheet" type="text/css"><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/usen-utf8.js.download" type="text/javascript"></script><meta property="og:title" content="Jazz Source Control: Design Objectives - Library: Articles - Jazz Community Site"><meta property="og:image" content="https://1.cms.s81c.com/sites/default/files/2018-12-04/4_1.png"><meta property="og:type" content="website"><meta property="og:description" content="Get an overview of the major design objectives of the Jazz Source Control system and how Rational Team Concert delivers on these goals."><meta property="og:url" content="jazz.net//library/article/525"><meta property="og:locale" content="en-US"><meta property="og:published_time" content="2011-05-09"><meta property="article:published_time" content="2011-05-09"><script charset="utf-8" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/button.75a79c54dcfc115f36a5bc654a4d6c25.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_24" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/utag.24.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_53" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/utag.53.js.download"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_136" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/utag.136.js.download"></script><script language="javascript" type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/50200000.js.download"></script><script language="javascript" type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/rules_50200000.js.download"></script><script language="javascript" type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/dispatcher-v3.js.download"></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/yahoo-min.js.download" type="text/javascript"></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/cp-v3.js.download" type="text/javascript"></script><script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/json-min.js.download" type="text/javascript"></script><style type="text/css">@media only screen and (max-width:480px){.truste_box_overlay{width: 100%!important;margin: 0px!important;max-width: 90%!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}@media only screen and (min-width:481px){.truste_box_overlay{width: 80%!important;margin: 20px auto!important;max-width: 800px!important;border-radius:0px!important;padding:20px!important;background:none!important;}.truste_box_overlay_inner{box-shadow: rgb(0, 0, 0, 0.2) 0px 0px 16px 2px!important;}}</style><style type="text/css">@font-face {font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff2") format("woff2");font-family: "ibm-plex-sans"; src: url("https://1.www.s81c.com/common/fonts/plex/v1/ibmplexsans-regular.woff") format("woff");}</style><script type="text/javascript" async="" charset="utf-8" id="tealium_visitor_service_184main_1" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/01774901599a000c121d56d4bb6103073002506b00bd0"></script></head>
+
+<body class="claro">
+<div class="cs-page-wrapper" role="region" aria-label="Site navigation for home">
+
+<div id="jazz-navbar">
+
+
+<div class="cs-header-wrapper">
+	<nav class="navbar navbar-inverse navbar-fixed-top jazz-navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+          <a class="navbar-brand" href="https://jazz.net/">
+	        <img class="main-logo common-sprite jazz-wordmark-dark-med nav-logo" alt="Jazz Home" title="IBM Jazz Community Site" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif">
+	      </a>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav">
+				<li class="hidden-xs"><a id="products-button" data-dropdownnav="#product-nav" href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li class="visible-xs"><a href="https://jazz.net/products" class="nav-button">Products</a></li>
+				<li id="top-download-menu" class="dropdown hidden-xs">
+					<a href="https://jazz.net//library/article/525#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Downloads <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						  <li class="dropdown-submenu">
+						  	<a href="https://jazz.net/downloads/elm" class="menu-highlight">Engineering Lifecycle Management</a>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net//library/article/525#"><span class="caret-right"></span>Products</a>
+						      <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/requirements-management-doors-next" class="menu-highlight">Engineering Requirements Management DOORS Next</a></li>
+							    <li><a href="https://jazz.net/downloads/workflow-management" class="menu-highlight">Engineering Workflow Management</a></li>
+							    <li><a href="https://jazz.net/downloads/test-management" class="menu-highlight">Engineering Test Management</a></li>
+							    <li><a href="https://jazz.net/downloads/rhapsody-model-manager" class="menu-highlight">Engineering Rhapsody Model Manager</a></li>
+							    <li><a href="https://jazz.net/downloads/elo-engineering-insights" class="menu-highlight">Engineering Insights</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-method-composer" class="menu-highlight">Engineering Method Composer</a></li>							    
+						      </ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net//library/article/525#"><span class="caret-right"></span>Reporting</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/elo-publishing" class="menu-highlight">Engineering Publishing</a></li>
+							    <li><a href="https://jazz.net/downloads/jazz-reporting-service" class="menu-highlight">Jazz Reporting Service</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net//library/article/525#"><span class="caret-right"></span>Adapters</a>
+							<ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/ce4iot-connector" class="menu-highlight">ELM Connector for IoT</a></li>
+							    <li><a href="https://jazz.net/downloads/integration-adapters-tasktop-edition" class="menu-highlight">Integration Adapters Tasktop Edition</a></li>
+							    <li><a href="https://jazz.net/downloads/rational-adapters-windchill/" class="menu-highlight">Integration Adapter for Windchill</a></li>
+							</ul>
+						  </li>
+						  <li class="dropdown-submenu"><a class="downloads menu-highlight" href="https://jazz.net//library/article/525#"><span class="caret-right"></span>Other Tools &amp; Products</a>
+						     <ul class="dropdown-menu">
+							    <li><a href="https://jazz.net/downloads/jazz-foundation" class=" menu-highlight">Jazz Foundation</a></li>
+							    <li><a href="https://jazz.net/downloads/ibm-installation-manager/" class="menu-highlight">Installation Manager</a></li>
+                             </ul>
+                          </li>
+                          
+			        </ul>
+			    </li>
+				<li><a href="https://jazz.net/forum" class="nav-button">Forum</a></li>
+				
+				<li><a href="https://jazz.net/blogs" class="nav-button">Blogs</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net//library/article/525#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Library <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="https://jazz.net/library" class="top-menuitem menu-highlight">All media</a></li>
+							<li class="divider"></li>
+							<li class=""><a href="https://www-01.ibm.com/support/knowledgecenter/SSYMRC/clm_family_welcome.html" target="_blank" class="menu-highlight">Engineering Lifecycle Management documentation</a></li>
+						</ul>
+			   	</li>
+			   	<li class="visible-xs"><a href="https://jazz.net/library" class="nav-button">Library</a></li>
+			   	
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net//library/article/525#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Deployment <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a id="deployment" class="top-menuitem menu-highlight" href="https://jazz.net/wiki/bin/view/Deployment/">Deployment wiki</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentPlanningAndDesign" class="menu-highlight">Planning and design</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentInstallingUpgradingAndMigrating" class="menu-highlight">Installing and upgrading</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMigratingAndEvolving" class="menu-highlight">Migrating and evolving</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentIntegrating" class="menu-highlight">Integrating</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentAdminstering" class="menu-highlight">Administering</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentMonitoring" class="menu-highlight">Monitoring</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/DeploymentTroubleshooting" class="menu-highlight">Troubleshooting</a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/jazz02/web/projects/Deployment%20Wiki#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight">Deployment wiki project</a></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/CommunityInformation" class="menu-highlight">Community information </a></li>
+							<li class="divider"></li>
+							<li><a href="https://jazz.net/wiki/bin/view/Deployment/WebSearch" class="menu-highlight">Search</a></li>
+						</ul>
+			   	</li>			   	
+			   	<li class="visible-xs"><a href="https://jazz.net/wiki/bin/view/Deployment/" class="nav-button">Deployment</a></li>
+				
+				<li class="dropdown hidden-xs">
+					<a href="https://jazz.net//library/article/525#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">Support <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a class="top-menuitem menu-highlight" href="https://jazz.net/help">Get help</a></li>							
+							<li><a href="https://www.ibm.com/mysupport" class="menu-highlight" target="_blank">Open a support case</a>
+							</li><li><a href="https://jazz.net/jazz02/web/projects/Community%20Feedback#action=com.ibm.team.dashboard.viewDashboard" class="menu-highlight" target="_blank">Open a ticket for Jazz.net</a>	
+							</li><li class="divider"></li>
+							<li><a href="https://jazz.net/extend/integrations" class="menu-highlight">Integrations</a></li>					
+						</ul>
+			   	</li>			   
+			   	<li class="visible-xs"><a href="https://jazz.net/help" class="nav-button">Support</a></li>
+		 	</ul>
+		 	
+			<ul class="nav navbar-nav navbar-right">
+				
+					<li><a href="https://jazz.net/mystuff" class="nav-button">My Stuff</a></li>
+					<li class="dropdown hidden-xs">
+						<a href="https://jazz.net//library/article/525#" class="dropdown-toggle nav-button" data-toggle="dropdown" role="button" aria-expanded="false">D Z <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="https://jazz.net/action/profile/edit" class="menu-highlight">Change profile</a></li>
+								<li class="divider"></li>
+								<li><a href="https://jazz.net/logout.jsp" class="menu-highlight">Log out</a></li>
+							</ul>
+				   	</li>
+				   	<li class="visible-xs"><a href="https://jazz.net/action/profile/edit" class="nav-button menu-highlight">Change profile</a></li>
+				   	<li class="visible-xs"><a href="https://jazz.net/logout.jsp" class="nav-button menu-highlight">Log out</a></li>
+				   	
+				
+			   	<li class="hidden-xs">
+				   	<form id="search-box" class="navbar-form navbar-right" style="display: none;" method="get" action="https://jazz.net/search">
+						<input name="q" id="search-input" type="text" class="form-control search-input" placeholder="Search Jazz.net">
+					</form>
+				</li>
+			   	<li class="hidden-xs"><a id="search-button" href="https://jazz.net//library/article/525#"></a></li>
+			   	
+			   	<li class="hidden-xs"><a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM"></a>
+				</li>
+			</ul>
+			
+        </div>
+      </div>
+    </nav>
+    
+
+
+	<div id="login-box-modal" class="modal fade login-box" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content login-popup">
+      
+
+<form class="form-horizontal" id="loginForm-5280" name="LoginForm" action="https://jazz.net/auth/login" method="post">
+	<div class="form-group" style="margin-bottom: 0px !important;">
+		<div class="col-sm-12" style="text-align: center;">
+			<div id="login-error-5280" class="alert alert-danger hide" role="alert"></div>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="user-id" class="col-sm-4 control-label">User ID</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" name="j_username" id="user-id" placeholder="User ID">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<label for="pass-word" class="col-sm-4 control-label">Password</label>
+		<div class="col-sm-8">
+			<input type="password" class="form-control" name="j_password" id="pass-word" placeholder="Password">
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="jazz-button auth-button">Log in</button>
+		</div>
+	</div>
+	<div class="form-group form-row">
+		<div class="col-sm-offset-4 col-sm-8">
+			Forgot your <a href="https://jazz.net/pub/user/retrieve-userid.jsp"><strong>user ID</strong></a> or <a href="https://jazz.net/pub/user/password-reset-request.jsp"><strong>password</strong></a>?
+		</div>
+	</div>
+	<input type="hidden" name="redirectPage" id="redirectPage-5280" value="https://jazz.net//library/article/525">
+	<input type="hidden" name="field" id="field-5280">
+</form>
+<script type="text/javascript">
+(function() {
+	dojo.addOnLoad(function() {
+		var s = location.search.substring(1);
+		var node = dojo.byId("redirectPage-5280");
+		if (!node.value || node.value == "") {
+			if (s.indexOf("errno") >= 0) {
+				s = dojo.queryToObject(location.search.substring(1));
+				delete s.errno;
+				s = dojo.objectToQuery(s);
+				node.value = window.location.href.replace(/\?.*/, "") + (s.length > 0 ? "?" + s : "");
+			} else {
+				node.value = window.location.href;
+			}
+		}
+	});	
+	
+	var errno = null;
+	if (!errno) {
+		var loc = location.search.indexOf("errno=")+6;
+		if (loc >= 6 && location.search.length >= loc+1){
+			errno = location.search.substring(loc, loc+1)	
+		}
+	}
+	
+	var userLoggedIn = true;
+	if (errno) {
+		if (!userLoggedIn && !$('#jazz-inline-login').length) {
+			$('#login-box-modal').modal('show');
+		}
+		var message = "";
+		if (errno == 1 || errno == 2) {
+			message = "Invalid user ID or password.";
+		} else if (errno == 3 || errno == 4) {
+			message = "Your account has been locked due to repeated login attempts with an invalid password.  Wait 1 hour or <a href=\"/pub/user/password-reset-request.jsp\">reset your password</a>.";
+		} else if (errno == 5 || errno == 6) {
+			message = "Unable to log in due to a server error.";
+		}
+		if (message) {
+			$('#login-error-5280').removeClass('hide');
+			$('#login-error-5280').html(message);
+			
+		} else {
+			$('#login-error-5280').addClass('hide');
+		}
+	}
+})();
+</script>
+    </div>
+  </div>
+</div>
+	<script>
+		$('#products-button').on("mouseover",function(){
+		   $('.open .dropdown-toggle').dropdown('toggle');
+		 });
+	</script>
+    <script>
+		$(document).ready(function(){
+  			$('li.dropdown-submenu a.downloads').on("click", function(e){
+  				
+  				var currentSelection = $(this).next('ul');
+  				var submenus = $('li.dropdown-submenu a.downloads').parent().not($(this));
+  				submenus.each(function(){
+  					if($(this).children('ul').is(':visible')){
+  					   $(this).children('ul').not(currentSelection).hide();
+  					}
+  				})
+
+  			    $(currentSelection).toggle();
+  				
+   			    e.stopPropagation();
+   			    e.preventDefault();
+  			});
+  			
+  			 $("#top-download-menu.dropdown").on("hidden.bs.dropdown", function(){
+  		      	var submenusParent = $('li.dropdown-submenu a.downloads').parent();
+				  	submenusParent.each(function(){
+				  	  $(this).children('ul').hide();
+					  
+					})
+  		    });
+		});
+	</script>
+    <script>
+    	$('#search-button').click(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').show("fast");
+        		$('#search-input').focus();
+				
+    		} else {
+    			$('#search-box').submit();
+    		}
+    	});
+    	$('#search-input').blur(function() {
+    		if ($('#search-input').val() == "") {
+    			$('#search-box').hide("fast");
+    		}
+    	});
+    	
+    	// fix for anchor item hidden behind the navigation bar, scrolling upward 50px 
+    	function scroll_if_anchor(href) {
+    	   href = typeof(href) == "string" ? href : $(this).attr("href");
+    	   var fromTop = 50;
+    	   // Handle Bootstrap stuff with attributes of "data-slide" and "data-toggle"
+    	   if (!href || href.includes("=") || $(this).attr("data-slide") != null || $(this).attr("data-toggle") != null) { 
+    		   return;
+    	   }
+    	   
+    	   var $target = $(href);
+    		
+    	   if (!$target.length) {  
+    		   var subStr  =href.substring(1);
+    	       var query = "[name='" + subStr + "']";
+    		   $target = $(query);
+    	   }	   
+    	   // animate and scroll
+    	   if ($target.length) {
+    	       $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+    	   }
+    	}    
+
+    	// invoke js function
+    	scroll_if_anchor(window.location.hash);
+
+    	// intercept all anchor events
+    	$("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+</div>
+    	<div id="product-nav" class="nav-dropdown row hidden-xs container">
+    		<div class="col-xs-6 product-nav-column product-nav-names-column">    			
+     			<h2 class="products-header">IBM Engineering Products</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="DOORS" class="product-selector selected"><span></span> Requirements Management DOORS Next</a></li>
+    				<li class="product-item"><a data-product="EWM" class="product-selector"><span></span> Workflow Management</a></li>
+    				<li class="product-item"><a data-product="ETM" class="product-selector"><span></span> Test Management</a></li>
+    				<li class="product-item"><a data-product="RMM" class="product-selector"><span></span> Systems Design Rhapsody - Model Manager</a></li>
+    				<li class="product-item"><a data-product="ENI" class="product-selector"><span></span> Lifecycle Optimization - Engineering Insights</a></li>
+    				<li class="product-item"><a data-product="PUB" class="product-selector"><span></span> Lifecycle Optimization - Publishing</a></li>
+    			</ul> 
+    			<h2 class="products-header" style="padding-top:3px">IBM Engineering Solutions</h2>
+    			<ul id="product-list">
+    			    <li class="product-item"><a data-product="ELM" class="product-selector"><span></span> Lifecycle Management</a></li>
+     			</ul>     			
+    			<a id="explore-button" role="button" class="inline jazz-button jazz-button-clm-blue" href="https://jazz.net/products">Show all</a>
+    		</div>
+    		<div class="col-xs-6 product-nav-column product-nav-descriptor-column">
+    			<div data-product="ELM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management</h3>
+    				<div class="product-text">This solution (formerly known as Collaborative Lifecycle Management) provides a set of seamlessly integrated application lifecycle management (ALM) tools 
+    					that help teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-management-ext">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=clm">Try</a>
+	   				</div>
+    			</div>
+    			<div data-product="ELMSAAS" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Management SaaS</h3>
+    				<div class="product-text">This subscription service (formerly known as IoT CE and CLM on Cloud) provides a single-tenant cloud environment with applications that help 
+    					development and engineering teams increase collaboration, accelerate delivery, and improve quality.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-management-ext">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+     				</div>
+    			</div>
+    			<div data-product="EWM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Workflow Management</h3>    				
+    				<div class="product-text">This software development tool (formerly known as Rational Team Concert) helps teams manage development work, such as 
+    					iteration and release planning, change management, defect tracking, source control, and build automation.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/ibm-engineering-workflow-management">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-team-concert">Try</a>
+    				</div>
+    			</div>
+    			<div data-product="DOORS" class="product-content" style="display: block;">
+    				<h3 class="product-header">IBM Engineering  Requirements Management DOORS Next</h3>    				
+    				<div class="product-text">This requirements management tool (formerly known as Rational DOORS Next Generation) helps teams capture, trace, analyze, and manage 
+    					requirements while complying with industry standards and regulations.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/requirements-management-doors-next">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a> 
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-doors-next-generation">Try</a>
+    				</div>
+    			</div>
+    			<div data-product="ETM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Test Management</h3>    				
+    				<div class="product-text">This quality management tool (formerly known as Rational Quality Manager) helps teams plan, construct, and execute tests throughout the development lifecycle.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/ibm-engineering-test-management">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/previews/">Explore now</a>     					
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/products/sandbox/?tag=rational-quality-manager">Try</a>    					
+    				</div>
+    			</div>
+    			<div data-product="RMM" class="product-content">
+    				<h3 class="product-header">IBM Engineering Systems Design Rhapsody<br>Model Manager</h3>
+     				<div class="product-text">This design and modeling tool helps teams architect and design software and systems in an iterative and collaborative way.
+     				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/rhapsody-model-manager">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/rhapsody-model-manager">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="ENI" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Engineering Insights</h3>    				
+    				<div class="product-text">This tool (formerly known as Rational Engineering Lifecycle Manager) helps teams visualize lifecycle data to make the best engineering decisions.   
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-optimization/engineering-insights">Learn more at IBM.com</a>
+	    				<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-engineering-insights">Download</a>
+    				</div>
+    			</div>
+    			<div data-product="PUB" class="product-content">
+    				<h3 class="product-header">IBM Engineering Lifecycle Optimization<br>Publishing</h3>    				
+    				<div class="product-text">This reporting tool (formerly known as Rational Publishing Engine) automates the generation of document-style reports across deployed Jazz products and third-party tools.
+    				</div><br>
+    				<div class="col-xs-offset-3 col-xs-6 product-button-wrapper">
+    					<a class="jazz-button jazz-button-clm-blue try-button" target="_blank" href="https://www.ibm.com/products/engineering-lifecycle-optimization/publishing">Learn more at IBM.com</a>
+    					<a class="jazz-button jazz-button-clm-blue try-button" href="https://jazz.net/downloads/elo-publishing">Download</a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/mobile.jquery.min.js.download"></script>
+		<script type="text/javascript">
+			if (!jQuery.browser.mobile) {
+				$('a[data-dropdownnav]').each(function() {
+					if (!$("body").hasClass('products-page')) {
+						var showNavTimeout, hideNavTimeout;
+						var dropdownDelay = 250;
+						var dropdownNav = $(this).attr("data-dropdownnav");
+						$(this).mouseover(function() {
+							if (!$(this).hasClass('opened')) {
+								clearTimers();
+								showNavTimeout = setTimeout(function() {
+									$(dropdownNav).show();
+									$(dropdownNav).addClass('visible');
+									$(this).addClass('opened');
+								}.bind(this), dropdownDelay);
+							}
+						}.bind(this));
+						
+						$(this).mouseleave(function(e) {
+							clearTimers();
+							hideNavTimeout = setTimeout(function() {
+								$(dropdownNav).removeClass('visible');
+								$(this).removeClass('opened');
+							}.bind(this), dropdownDelay);
+						}.bind(this));
+					
+						$(dropdownNav).mouseleave(function(e) {
+							hideNavTimeout = setTimeout(function() {
+								var targetElement = (e.toElement || e.relatedTarget);
+								if ((targetElement != null) && (targetElement != this)) {
+									$(dropdownNav).removeClass('visible');
+									$(this).removeClass('opened');
+								};	
+							}.bind(this), dropdownDelay);
+							
+						}.bind(this));
+						
+						$(dropdownNav).mouseenter(function() {
+							clearTimers();
+							$(dropdownNav).addClass('visible');
+							$(this).addClass('opened');
+						}.bind(this));
+						
+						function clearTimers() {
+							clearTimeout(showNavTimeout);
+							clearTimeout(hideNavTimeout);
+						}
+					}
+				});
+			}
+
+			$('.nav-dropdown div[data-product=' + $('.product-selector.selected').data('product') + ']').show();
+			$('.nav-dropdown .product-selector').click(function() {
+				$('.product-content').hide();
+				$('.product-selector.selected').removeClass('selected');
+				$(this).addClass('selected');
+				$('div[data-product=' + $(this).data('product') + ']').show();
+			});
+			
+    </script></div>
+<script>
+$.get("/servlet/navbar", {pathname: window.location.pathname})
+	.done(function(data) {
+		$('#jazz-navbar').html(data);
+	}
+);
+</script>
+
+<div class="main-wrapper">
+	<div class="cs-content-wrapper" id="cs-content-wrapper">
+	<div class="breadcrumbs">
+		<a href="https://jazz.net/library/">Library</a> &gt; 
+		
+			<a href="https://jazz.net/library/article/">Articles</a> &gt;
+		
+	</div>
+	<div class="central-area no-sidebar no-left">
+	
+		<div class="icon-floating">
+			<div class="section-header">
+				<img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/bttn_article52.gif">
+			</div>
+		</div>
+	
+		
+			 <h1>Jazz Source Control: Design Objectives</h1> <p class="byline">Jean-Michel Lemieux, Chief Architect for Rational Team Concert, IBM<br> Last updated: May 9, 2011<br> Build basis: Rational Team Concert 3.0 </p> <p>We started with a rather simple objective of wanting to build a source control tool that made working with others easier and more collaborative. Sounds simple enough, but our experience was that collaboration was often obfuscated by source control systems that leak their implementation details to their users. Instead it should be the other way around: collaborative concepts should be first class. Tasks such as reviewing changes, switching tasks, exchanging changes with others, requiring code reviews during the end game, and setting up enterprise level promotion hierarchies should not require a doctorate in branching or the duct taping of 5 different tools together. </p> <p>When we started development, the buzz around distributed version control was increasing. But what we saw in distributed version control was a set of users asking for easier collaboration but not necessarily the physical side effect of having everyone with their own entire copy of the repository on their personal machines. To us, this was a good reinforcement that users crave more flexible collaboration support, but we viewed distributed as a deployment pattern and not a means to an end. I had always hoped that if our source control model was flexible enough and built on a solid foundation of simple collaboration concepts, distributed would just be an option you had in how you worked with others but you didn’t “have” to be distributed to benefit from these collaboration features. Consequently, we started development not by making Jazz Source Control distributed but instead worked on the collaboration model and how to bring this collaboration model to the user and push on the ALM integrations with the other lifecycle domains such as build and work items. </p> <p>Before outlining the main design goals of Jazz Source Control, let’s talk a bit about the overall product called <a href="http://jazz.net//products/rational-team-concert">Rational Team Concert</a>. Although we have built a source control system included in Rational Team Concert, we recognize the popularity and breadth of usage of other tools. Since Team Concert is more than just about source control, we allow the use of other versioning tools such as Git, ClearCase, or Subversion with the planning and tracking features and scrum/agile development features of Team Concert. If you aren’t in the market for a new source control tool, but you like all the tracking and planning features in Team Concert, you can bring both worlds together. </p> <p>The remainder of this article introduces the top design goals with examples. Note that we haven’t finished implementing all the aspects of the vision, but as you’ll discover, there are many aspects of each design goal which have now been implemented. During the next releases we are working on expanding the support in each one of these areas. </p> <h3>Goal 1 : Give all users access to the version control tool</h3> <p> Separate the right to use of version control with the gesture of sharing your changes with your team. This means that you should be able to collaborate with peers, backup changes, rollback, or show history, independently from when and how you make those changes visible to my team. The desired outcome was to provide a large portion of the benefits of a distributed “mindset” in a central repository, for customers that can’t allow distributed or don’t want to. </p> <p>This is a common theme with distributed tools: you don’t need commit rights to use a version control tool on a code base that you want to work with. We’ve found that many of our customers didn’t want the overhead of allowing every developer to have a repository on their laptops, but they wanted to support a similar model as a distributed one: allowing users to use version control even when they don’t have commit rights or don’t want to be forced to share their work with the team just to back it up. It’s also not practical with some of the code base sizes that we deal with to force all users to have full history replicas just to get this flexibility. </p> <p>To this end, we’ve added server side workspaces, called repository workspaces. They allow users have a private area on the server in which to make their changes, check-in, experiment, and backup. They control this area, and decide when to push their changes (deliver), or pull changes (accept). Users can also accept changes from other users directly or from work items, bypassing a stream entirely. In the figure below users Alize and Gabriel have repository workpaces and they flow their changes to the Hyperbola stream. The unit of change is a change set, which provides atomic grouping of changes. </p> <center><img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/repoworkspaces.png" alt="Jazz Source Control Repository Workspaces"><br> <i>Figure: Overview of the basic source control model</i> </center> <h3>Goal 2 : Stop talking about branching, and just do it!</h3> <p> There is a saying that “people talk more about ‘it’ than they do ‘it'”. Well, this can also be said about branching; people talk about it, plan it, but just do not do it enough. The problem is that branch functionality has often been implemented and presented to the user in ways that make branching seem scary. Instead of leaking implementation details about branching, we wanted to experiment with taking the verbs people use in their day to day conversations, and turn those verbs into gestures that you can do in the version control system. I’ve banned the word branch from our UIs in exchange for finding user terms and gestures for tasks that users had traditionally had to use a branch for. <br> </p> <p>Of course making it easy to have isolation (e.g branching) when needed also means that <a href="http://jazz.net//library/article/39">conflict</a> resolution has to be made a lot easier. For this reason we’ve tried to improve conflict handling in three main areas: </p> <ul>   <li>Store conflicts with the repository workspace so that you can resolve conflicts at your own pace. You could even give your repository to someone else to continue with the merge. Basically, avoiding the merge process of being transient of something that goes away when you accidentally close your session.   </li>   <li>Structural conflicts have to be handled in a first class way, such as moves and renames.   </li>   <li>Allow previews of conflict situations so that you can decide to backout or rebase before accepting changes that would cause merging.</li> </ul> <div style="text-align: center;"><img style="width: 584px; height: 279px;" alt="Conflicts Example" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/conflicts18_modmov_3.png"><br> </div> <h4>Branching all the time without knowing it</h4> <p> Everything is a change set in Jazz Source Control. It’s the unit of work, and we allow operations on these change sets that feel natural such as suspending and resuming them. If you have something else to do, just suspend the changes and we will track them for you — at any time you can resume them. You can suspend as many times as you want. Of course, conflicts can occur because parallel work is happening, but conflict handling across move, renames, edits is supported and tooled in a first class way.<br> </p> <p style="text-align: center;"><img style="width: 424px; height: 195px;" alt="Suspended changes" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/suspend1.png"><br> </p> <p>This model supports several levels of parallel development as a first class concept. You have the following tools available: </p> <ul>   <li><b>Repository workspaces</b>: Provide constant isolation. You don’t have to make your changes visible to the team just to back up or use the repository features. It also allows accepting from team members’ repository workspaces or delivering to your other repository workspaces.<br>   </li>   <li><b>Suspend and Resume</b>: Provide task level isolation for personal work and a very easy mechanism to put changes on the side. </li>   <li><b>Work Item links</b>: Provide light-weight task-level isolation for personal or team work. Work on a feature, attach to a work item, and discard from your workspace. You or someone else continues the work by accepting the change sets back into their repository workspace. </li>   <li><b>Streams</b>: Provide team or feature isolation. </li> </ul> <h3>Goal 3 : It’s never too simple</h3> <p> Even with all these cools features, such as repository workspaces, conflict handling, suspend, and resume, there is a class of users that just don’t want to deal with this perceived complexity. Open source tools really dropped the ball on these users, but I really like the workflows that they make you consider. First, don’t make me merge, ever, unless I opt into it. Secondly, don’t make me deal with the distinction of having user level sandboxes and an extra set of operations to share my changes with the team. This is the classic single line of development with pessimistic locking pattern, which although some may consider un-collaborative, it has its usefulness. </p> <p>We starting supporting some of these <a href="http://jazz.net//library/article/361">simplified workflows in 2.0.0.2</a>. Without modifying the underlying change model, we allow users to edit files directly in a stream without needing to load or create a file area. You can lock and unlock files and make changes in a matter of seconds. This makes it very useful for making quick changes and allowing non-developers without an IDE to do the same. </p> <center><img style="width: 711px; height: 552px;" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/webui.png" alt="Jazz Source Control Web UI"><br> <i>Figure: Editing a file directly in the web. The file is locked and a change set is created, but no repository workspace is required</i> </center> <p> For locking, because we share a lot of the same properties as Git (such as highly distributed changes), it’s hard to define what exactly gets locked when there are many repository workspaces, streams, and possibly clones of the history on other machines. We opted for a simple model that allows users to lock files along a set of streams. They decide which stream hierarchy they deliver to, and lock there only. This means others can continue to fork those files at their own leisure, but if they deliver to the same stream they will get warned and be blocked from delivering until the lock is released.</p> <center><img style="width: 691px; height: 388px;" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/locks.png" alt="Jazz Source Control Locks"><br> <i>Figure: Locking a file in a stream or along a stream hierarchy.</i> </center> <p> The next steps which we haven’t tooled just yet, but for which we have backend support, is allowing developers in their IDEs to work directly off a stream in a traditional “pessimistic” model. We would like to enhance this traditional model and allow users to still attach a change set to a work item or find out about what files other have locked. Then they can transition into the other workflows on demand. </p> <h3>Goal 4 : Enable distributed workflows<br> </h3> <p>Sharing changes shouldn’t be constrained by the physical location of the repository workspaces or streams. Allowing distributed source control is about enabling the design goals discussed previously with the same user interface and gestures as in the single repository model. Users could opt in to distributed based on their corporate policies and collaboration needs with other groups or departments. </p> <p>This also brings up another requirement for corporate-wide repositories: we didn’t want to force users to clone an entire repository for distributed, but instead just the components they need. Jazz Source Control allows partitioning into self-contained groups of changes we called components. In a repository with thousands of components, you can choose to take a small subset onto another server. </p> <p>There are also additional considerations for a distributed model in ALM tools. For example, linking between artifacts, such as change sets or baselines and work items, is important. Once a change set has flowed to a new repository, the process rules that govern the integration of these change sets into streams require cross repository artifact linking.<br> </p> <center><img style="width: 736px; height: 515px;" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/dist-newworkspace.png" alt="Jazz Source Control Locks"><br> <i>Figure: New repository workspaces can be created in other repositories</i> </center> <br> <br> <center><img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/dist-pendingchanges.png" alt="Jazz Source Control Locks"><br> <i>Figure: The <strong>Pending Changes</strong> view showing a flow target to another repository</i> </center> <h3>Conclusion</h3> <p>We believe that our model enables you to benefit from version control and adopt your usage based on your skill level and requirements for central versus distributed configurations. In addition, the tooling of source control in the context of the other roles in a software project will have significant productivity gains over the more narrowly scoped source control tools, which design integrations as an after thought. <br> </p> <p>There are great articles that explain the ideas behind other distributed source control tools, such as the one from <a href="http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/">Better Explained</a> and another from <a href="http://hginit.com/">Joel Spolsky</a>. After you’ve read our design guide and read what others have to say about designs of version control tools, the key differentiators to keep in mind are:<br> </p> <ul>   <li>Our model allows everyone to have a sandbox (e.g. repository workspaces) with the advantages of a central server and without having to replicate an entire repository history to do so.<br>   </li>   <li>Our model makes branching easy with new ways of sharing changes via peer-to-peer exchange between sandboxes and work items.</li>   <li>Our model makes some of the basics such as backing out changes, fixing goofs, and merging a lot simpler. For example, in Joel’s tutorial on Mercurial there are too many steps to perform daily tasks. An example is our support for suspending and resuming, or backing out changes by moving into other change sets or rebasing.<br>   </li>   <li>Our model takes version control and enhances its use by rich integration into the other ALM tools such as build and work items. <br>   </li>   <li>Our model scales using components instead of more individual repositories.</li>   <li>Our model considers locking as something that still makes sense for binary files, it should still be supported in modern source control systems.</li>   <li>Our model keeps things simple and supports users who may not need as much flexibility with easy ways of collaborating.</li> </ul> There are several in depth articles which cover many of the design objectives that are introduced in this article. Here is a suggested reading list:<br> <ul>   <li><a href="http://jazz.net//products/rational-team-concert/learnmore/">Overall reading guide for Team Concert</a></li>   <li><a href="http://jazz.net//library/article/41">Jazz Source Control Tutorial</a><br>   </li>   <li><a href="http://jazz.net//library/article/39">Understanding Conflicts</a> </li>   <li><a href="http://jazz.net//library/LearnItem.jsp?href=content/docs/source-control/mergingbyexample/index.html">Merging by example</a></li>   <li><a href="http://jazz.net//library/article/40">Multi-stream development</a></li>   <li><a href="http://jazz.net//blog/index.php/2009/05/21/patterns-for-read-protecting-source-code-2/">Patterns for read-protecting source code</a></li>   <li><a href="http://jazz.net//blog/index.php/2009/03/23/how-scalable-are-repository-workspaces/">How scalable are repository workspaces?</a></li>   <li><a href="http://jazz.net//blog/index.php/2009/03/11/finding-your-changes-using-releases-builds-and-snapshots/">Finding your changes – using releases, builds, and snapshots</a><br>   </li>   <li><a href="http://jazz.net//library/article/214">Managing vendor and third-party code</a><br>   </li>   <li><a href="http://jazz.net//library/article/125">Advanced source control workflows</a><br>   </li>   <li><a href="http://jazz.net/library/article/535">Flow changes cross repositories with Rational Team Concert</a><br>   </li> </ul> <p class="copyright">Copyright © 2011, 2012 IBM Corporation</p> 
+		
+		
+
+		
+				<div class="dotted-section">
+					
+
+
+
+
+
+
+
+
+
+
+
+<div id="comments" title="Jazz Source Control: Design Objectives" widgetid="comments">
+	<strong>Discussion</strong>
+	<a href="javascript:void(0);" class="subscribe" id="subscribe" dojoattachevent="onclick: _toggleSubscribe" dojoattachpoint="_subscribeButton">Subscribe me</a>
+	<div dojoattachpoint="_comments"><br><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="4c6524a1-75ca-4c0f-9949-a175ba54bc2a" widgetid="4c6524a1-75ca-4c0f-9949-a175ba54bc2a">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>David Anderson</strong> wrote on February 8, 2011 08:48:03:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Excellent article Jean-Michel! I always enjoy reading your articles because you often provide the rationale for the design decisions that are made for the product. I often read articles that explain the mechanics of a feature, but rarely do I find well written articles that provide the rationale and thought process behind any design objective. When I hear of a new product capability, I will always ask myself "what is the value/benefit for this new capability and what are the best practices for use in an implementation?". Keep writing these types of articles; they are extremely beneficial.<br></blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="703c0736-d181-4a7a-8e1a-50cb522503c5" widgetid="703c0736-d181-4a7a-8e1a-50cb522503c5">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Amy Silberbauer</strong> wrote on April 29, 2011 12:23:21:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Great article, thanks. Do you have an idea of when the rest of the capabilities for a pessimistic locking scenario might be implemented or any other information along those lines? </blockquote>
+	</div>
+</div><div class="comment" dojoattachpoint="_comment" dojoattachevent="onmouseover: _hover, onmouseout: _hoverOff" id="421248e2-81cd-4a47-9361-d34e8ca909fd" widgetid="421248e2-81cd-4a47-9361-d34e8ca909fd">
+	<div class="comment-author"><img class="common-sprite icons-userIcon-png" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif"><strong>Christophe Cornu</strong> wrote on April 29, 2011 01:24:40:</div>
+	<div class="comment-delete" dojoattachpoint="_commentDelete" dojoattachevent="onclick: _deleteComment"><img src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/delete.gif"></div>
+	<br>
+	<div class="comment-content">
+		<blockquote>Hi Amy - please follow up on https://jazz.net/jazz/resource/itemName/com.ibm.team.workitem.WorkItem/93617</blockquote>
+	</div>
+</div></div>
+	
+	<div dojoattachpoint="_loggedInBlock" style="display: block;">
+		<label for="comment-field">Add a comment:</label>
+		<textarea dojoattachpoint="_commentField" id="comment-field"></textarea>
+		<br>
+		<input type="button" value="Submit" dojoattachevent="onclick: _submitComment">
+		<span dojoattachpoint="_notify" class="notify"><input type="checkbox" checked="" dojoattachpoint="_checkNotify" id="check-notify"><label for="check-notify">Notify me when a reply is posted</label></span>
+		<div dojoattachpoint="_subscriptionInfo" class="subscription-info" style="clear: both; display: none;">You are following this discussion. <a href="javascript: void(0);" dojoattachevent="onclick: _toggleSubscribe">Unsubscribe</a>.</div>
+	</div>
+	<div dojoattachpoint="_login" style="display: none;"><a onclick="jazz.cs.showLogin(event)" href="https://jazz.net//library/article/525#" "="">Log in</a> to submit a comment.</div>
+
+<br clear="all">
+<div dojoattachpoint="_commentFeedback" class="comment-success" style="display: none;"></div>
+	
+</div>
+
+<script type="text/javascript">
+dojo.addOnLoad(function() {
+	var commentWidget = new jazz.cs.Comments({isSubscribed: false, isLoggedIn: true, isAdmin: false, itemId: "525", title: "Jazz Source Control: Design Objectives", username: "Devper Zero", userId: "devperzero"}, dojo.byId("comments"));
+	
+			commentWidget.addComment("David Anderson", "February 8, 2011 08:48:03", "Excellent article Jean-Michel! I always enjoy reading your articles because you often provide the rationale for the design decisions that are made for the product. I often read articles that explain the mechanics of a feature, but rarely do I find well written articles that provide the rationale and thought process behind any design objective. When I hear of a new product capability, I will always ask myself \"what is the value\/benefit for this new capability and what are the best practices for use in an implementation?\". Keep writing these types of articles; they are extremely beneficial.<br \/>", "4c6524a1-75ca-4c0f-9949-a175ba54bc2a", false);
+			
+			commentWidget.addComment("Amy Silberbauer", "April 29, 2011 12:23:21", "Great article, thanks. Do you have an idea of when the rest of the capabilities for a pessimistic locking scenario might be implemented or any other information along those lines? ", "703c0736-d181-4a7a-8e1a-50cb522503c5", false);
+			
+			commentWidget.addComment("Christophe Cornu", "April 29, 2011 01:24:40", "Hi Amy - please follow up on https:\/\/jazz.net\/jazz\/resource\/itemName\/com.ibm.team.workitem.WorkItem\/93617", "421248e2-81cd-4a47-9361-d34e8ca909fd", false);
+			
+});
+</script>
+
+				</div>
+				<div class="dotted-section">
+					
+
+<script type="text/javascript">dojo.addOnLoad(function() { jazz.cs.ratings.currentRating = 32; });</script>
+<strong>Feedback</strong><br>
+<div class="item-rating" id="item-rating">
+	Was this information helpful? <span id="helpful"> <a href="javascript:void(0);" onclick="jazz.cs.ratings.submitRating(&#39;true&#39;, jazz.cs.ratings.currentRating, &#39;525&#39;);"><img class="common-sprite icons-thumb_up-gif" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">Yes</a> <a href="javascript:void(0);" onclick="jazz.cs.ratings.feedbackDialog();jazz.cs.ratings.submitRating(&#39;false&#39;, &#39;32&#39;, &#39;525&#39;);"><img class="common-sprite icons-thumb_down-gif" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif" align="absmiddle">No</a> </span> <strong style="margin-left: 6px;" id="currentRating">32 people</strong> rated this as helpful.
+	<div style="display: none;">
+	<div id="FeedbackDialog" class="rating-dialog">
+		<label for="FeedbackBody"><strong>Let us know how we can improve this information.</strong></label>
+		<textarea id="FeedbackBody"></textarea>
+		<p><input type="submit" value="Submit" onclick="jazz.cs.ratings.submitFeedback(&#39;525&#39;, &#39;Jazz Source Control: Design Objectives&#39;);"></p><br>
+	</div>
+	</div>
+</div>
+
+
+				</div>
+			
+		<div class="dotted-section">
+			
+			<div style="float:left">
+				<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/tweet_button.0edc1ef9f8b82d9b79c6115bda79f63f.en.html"></iframe>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			
+			<div>
+				<iframe id="fb-iframe" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px; float: left;" allowtransparency="true"></iframe>
+			</div>
+			
+		</div>
+	</div>
+<!-- Close off cs-page-wrapper, main-wrapper, and cs-content-wrapper divs -->
+</div>
+</div>
+</div>
+<!-- End -->
+<div id="jazz-footer"><div class="content container-fluid jazz-footer">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="logos-and-links">
+				<a href="http://www.ibm.com/">
+					<img class="common-sprite footer-ibm-white-png" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/blank.gif" alt="IBM" style="position: relative; bottom: 1px"></a>
+				<a href="https://jazz.net/legal/contact.jsp">Contact</a>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.ibm.com/privacy/us/en/" target="_blank">Privacy Policy</a> 
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="https://jazz.net/pub/terms.jsp">Terms of Use</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="socialize">
+				<a title="Facebook" href="https://www.facebook.com/jazzdotnet"><img alt="Facebook" class="connect-icon" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/facebook.png"></a>
+				<a title="Twitter" href="https://twitter.com/jazzdotnet"><img alt="Twitter" class="connect-icon" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/twitter.png"></a>
+				<a title="LinkedIn" href="https://www.linkedin.com/groups/1822932/"><img alt="LinkedIn" class="connect-icon" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/linkedin.png"></a>
+				<a title="YouTube" href="https://www.youtube.com/ibmjazz"><img alt="YouTube" class="connect-icon" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/youtube.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+<!-- Coremetrics script-->
+<script src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/ida_stats.js.download" type="text/javascript" async="async"></script></div>
+<script>
+$.get("/servlet/footer")
+	.done(function(data) {
+		$('#jazz-footer').html(data);
+	}
+);
+</script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jazznetdojo_en.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jazznetdojo.js.download"></script>
+<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/NavBar.js.download"></script>
+
+	<script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/jazznetarticles.js.download"></script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/widget_iframe.0edc1ef9f8b82d9b79c6115bda79f63f.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="lt_3p_10026" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/lt.iframe.html" title="empty" tabindex="-1" role="presentation" aria-hidden="true" style="border: 0px; width: 0px; height: 0px; display: block;"></iframe><div id="teconsent" data-source="dbdm" class="truste_cookie_prefs" style="position: fixed; height: 40px; background-color: rgb(255, 255, 255); z-index: 2147483647; bottom: 0px; right: 0px; margin: 0px; padding: 0px 16px; line-height: 40px; vertical-align: middle; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 3px; display: block;" consent="0|1|2" aria-label="Open Cookie Preferences Modal" role="complementary"><script type="text/javascript" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/notice" id="truste_0.6872550973462026"></script><script async="async" type="text/javascript" crossorigin="" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/v1.7-226"></script><a role="link" id="icon-id09673485221553344" tabindex="0" lang="en" aria-label="Cookie Preferences" style="cursor: pointer; font-family: ibm-plex-sans; font-size: 12pt; color: #3d3d3d; text-decoration: none">Cookie Preferences</a></div><iframe name="trustarc_notice" id="trustarcNoticeFrame" title="Trustarc Cross-Domain Consent Frame" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/get.html" style="display: none;"></iframe><div id="survey-overlay-backdrop" style="opacity: 0.5;background: #111;bottom: 0;left: 0;position: fixed;right: 0; top: 0; z-index: 900; display:none"></div><script async="" src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/js(2)" id="mm_pp_background"></script><iframe src="./Jazz Source Control_ Design Objectives - Library_ Articles - Jazz Community Site_files/iframe.html" id="mm_sync_back_ground" title="MediaMath Advertising" style="visibility: hidden; display: none;"></iframe></body></html>

@@ -1,0 +1,63 @@
+#! /usr/bin/perl
+
+# /*******************************************************************************
+#  * Licensed Materials - Property of IBM
+#  * (c) Copyright IBM Corporation 2005, 2012. All Rights Reserved.
+#  * 
+#  *******************************************************************************/
+
+# Script to commit files, set comment and complete the change set.
+# Script usage: commit.pl {comment} {file paths...}
+# Script usage example: commit.pl "test comment" .
+
+# Requirements: 
+#   Install JSON module from http://search.cpan.org/~makamaka/JSON-2.53/lib/JSON.pm
+
+
+use JSON;
+
+    my $comment = $ARGV[0];
+    
+    my $filePattern = "";
+    for ($count = 1; $count <= $#ARGV; $count++) {
+        if ($count > 1) {
+            $filePattern = $filePattern . " ";
+        }
+        $filePattern = $filePattern . $ARGV[$count];
+    }
+    
+    # Commit the changes
+    my $result = `lscm checkin $filePattern --json`;
+    quitOnError($?, $result);
+    
+    # Decode the result
+    my @json = @{decode_json($result)};
+
+    # Loop through the workspaces->components->outgoingChangesets
+    foreach $ws (@json) {
+        foreach my $component (@{$ws->{components}}) {
+            foreach my $outgoingChangeset (@{$component->{"outgoing-changes"}}) {
+                $result = `lscm changeset comment $outgoingChangeset->{"uuid"} "$comment"`;
+                quitOnError($?, $result);
+                
+                $result = `lscm changeset complete $outgoingChangeset->{"uuid"}`;
+                quitOnError($?, $result);
+            }        
+        }
+    }
+    
+	
+    #
+    # Routine that prints the error message and quits
+    #
+    sub quitOnError {
+        my $error_code = shift;
+        my $error = shift;
+        
+        if ($error_code != 0) {
+            print $error . "\n";
+            exit($error_code);
+        }
+    }
+
+

@@ -1,0 +1,152 @@
+html, body, select, input, textarea, button {
+	font-size: 10.5pt;
+}
+
+.home p {
+	padding: 0 0 0 0;
+	}
+
+/* TITLES */
+
+h1, .titleL1, h2, .titleL2, h3, .titleL3, h4, .titleL4, h5, .titleL5 {
+	line-height: 1.3;
+	color: #333333;
+	font-weight: 600;
+}
+.orange-title {
+	color:#F19027;
+	line-height:1.5;
+	margin-bottom: 16px;
+}
+h1, .titleL1 {
+	font-size: 18pt;
+	font-style: normal;
+	font-weight: normal;
+	margin-top: 0px;
+	margin-bottom: 0.643em;
+	color: #000000;
+}	
+h2, .titleL2 {
+	font-size: 15pt;
+	font-style: normal;
+	font-weight: normal;
+	margin-top: 8px;
+}
+h3, .titleL3 {
+	font-size: 13.5pt;
+	font-style: normal;
+	font-weight: normal;
+}
+h4, .titleL4 {
+	font-size: 10.5pt;
+	font-style: normal;
+	font-weight: bold;
+	margin-bottom: 0.643em;
+	margin-top: 1.6em;
+}
+p + h4 {
+	margin-top: 3em;
+}
+h5, .titleL4 {
+	font-size: 10.5pt;
+	font-style: normal;
+	font-weight: bold;
+}
+.list-heading {
+	margin: 0;
+}
+.subtitle {
+	font-weight: 400;
+	color: #666666;
+	font-weight: normal;
+	text-align: center;
+	margin-top: -12px;
+	margin-bottom: 44px;
+	line-height: 1.5;
+}
+h3.sub-title {
+	font-size: 10.5pt;
+	margin-bottom: 12px;
+	font-weight: 400;
+}
+
+/* LIBRARY */
+
+.jazz-Library .options-area {
+	line-height: 0px;
+	}
+	
+.jazz-Library .right-links {
+	margin-top: 0px;
+}
+
+td, th {
+	padding:0px 5px;
+	}
+	
+.label {
+	color: rgb(102, 102, 102);
+	display: block;
+	float: left;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 18px;
+	line-height: 18px;
+	}
+	
+.pagination {
+	margin-top: 12px;
+}
+	
+.product-button {
+	box-sizing: content-box;
+}
+
+.product-table-header {
+	
+}
+
+.questions-dropdown {
+	width: 258px;
+}
+
+.view-head {
+	height: 28px;
+}
+
+.view-title {
+	box-sizing: content-box;
+}
+
+.jazz-ui-toolbar-Button-caret {
+	background: none;
+}
+
+.select-halo {
+	height: 21px !important;
+}
+
+.pagination {
+	display: block;
+}
+
+/* DOWNLOAD AREA  */
+
+h4.toc-element {
+    font-size: 12pt;	
+}
+
+.showMd5Toggle {
+	top: 0px;
+}
+
+/* Padding to div bottom for space */
+.bottom-padding{
+  margin-bottom: 30px;
+}
+/* Padding to div bottom for space */
+.bottom-padding-deluxe{
+  margin-bottom: 40px;
+}

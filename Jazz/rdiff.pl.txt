@@ -1,0 +1,101 @@
+#! /usr/bin/perl
+
+# /*******************************************************************************
+#  * Licensed Materials - Property of IBM
+#  * (c) Copyright IBM Corporation 2005, 2012. All Rights Reserved.
+#  * 
+#  *******************************************************************************/
+
+# Script to diff files recursively within a sandbox directory
+# Script usage: rdiff.pl
+# Script usage example: rdiff.pl
+
+# Requirements: 
+#   Install JSON module from http://search.cpan.org/~makamaka/JSON-2.53/lib/JSON.pm
+
+
+use JSON;
+use Cwd;
+
+    # Get the status
+    my $result = `lscm status --json`;
+    quitOnError($?, $result);
+    
+    # Decode the result
+    my $json = decode_json($result);
+
+    # Get the sandbox root
+    # This is required becuase of defect 213514
+    my $sandboxRoot = getSandboxRoot();
+
+    # Loop through all the workspaces, components and unresolved changes
+    foreach my $ws (@{$json->{workspaces}}) {
+        my $repoUri = $ws->{"url"};
+        foreach my $component (@{$ws->{components}}) {
+            foreach my $unresolvedChange (@{$component->{"unresolved"}}) {
+                my $state = $unresolvedChange->{"state"};
+                if ($state->{"content_change"} eq JSON::true) {
+                    my $filePath = $sandboxRoot . $unresolvedChange->{"path"};
+                    diffFile($filePath, $repoUri);
+                }
+            }        
+        }
+    }
+    
+    # Find the sandbox root based on the current directory
+    sub getSandboxRoot {
+        my $sandboxRoot = cwd();
+        
+        while (true) {
+            $sandboxMetaDir = $sandboxRoot . "/.jazz5";
+            if (-d $sandboxMetaDir) {
+               return $sandboxRoot; 
+            }
+            
+            # Remove the last segment
+            my $index = rindex($sandboxRoot, "/");
+            if ($index == -1) {
+                last;                
+            }
+            
+            $sandboxRoot = substr($sandboxRoot, 0, $index);
+        }
+        
+        print "Could not locate the sandbox root\n";
+        exit(1);
+    }
+    
+    sub diffFile() {
+        my $filePath = shift;
+        my $repoUri = shift;
+
+        while (true) {
+            print "Diff file: " . $filePath . " (y|n|q): ";
+            chomp(my $input = <STDIN>);
+            
+            if ($input =~ /^[Y]$/i) {
+                my $result = `lscm diff file -r $repoUri $filePath`;
+                print $result . "\n";
+                last;
+            } elsif ($input =~ /^[N]$/i) {
+                last;
+            } elsif ($input =~ /^[Q]$/i) {
+                exit (0);
+            }
+        }
+    }    
+	
+    #
+    # Routine that prints the error message and quits
+    #
+    sub quitOnError {
+        my $error_code = shift;
+        my $error = shift;
+        
+        if ($error_code != 0) {
+            print $error . "\n";
+            exit($error_code);
+        }
+    }
+
+

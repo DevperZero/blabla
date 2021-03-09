@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# /*******************************************************************************
+#  * Licensed Materials - Property of IBM
+#  * (c) Copyright IBM Corporation 2005, 2012. All Rights Reserved.
+#  * 
+#  *******************************************************************************/
+
+# Script to find a file/folder in a workspace.
+# Script usage: findfile.sh {file pattern} {workspace name/alias/uuid} {repoUri}
+# Script usage example: findfile.sh my*file.txt myWorkspace1 repoUri
+
+# Requirements: 
+#   Install jsawk from http://github.com/micha/jsawk/raw/master/jsawk
+#   Install spidermonkey js interpreter
+
+compArray=`lscm list components $2 -r $3 --json | jsawk "return Q('$..components..uuid', this)" | jsawk -a 'return this.join(" ")'`
+for comp in $compArray
+do
+    fileArray=`lscm list remotefiles $2 $comp -r $3 --depth - --json | jsawk "return Q('..path', this)" | jsawk -a 'return this.join(" ")'`
+    for file in $fileArray
+    do
+        fname=`basename $file`
+        
+        # match the file pattern
+        if [[ $fname = $1 ]]
+        then
+            echo $fname
+        fi
+    done
+done
+

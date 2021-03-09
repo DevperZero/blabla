@@ -1,0 +1,2 @@
+// P851098O55581L37
+ibmSBS.render([{"id":"print","title":"Print this page","url":null},{"id":"email","title":"E-mail this page","url":null},{"id":"facebook","title":"Facebook","url":"http://www.facebook.com/sharer.php?u=%{URL}&t=%{TITLE}"},{"id":"twitter","title":"Twitter","url":"http://twitter.com/?status=%{URL}%20-%20%{TITLE}"},{"id":"linkedin","title":"Linked In","url":"http://www.linkedin.com/shareArticle?mini=true&url=%{URL}&title=%{TITLE}"},{"id":"googleplus","title":"Google+","url":"https://plus.google.com/share?url=%{URL}&t=%{TITLE}"}]);

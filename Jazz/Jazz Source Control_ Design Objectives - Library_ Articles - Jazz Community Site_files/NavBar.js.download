@@ -1,0 +1,98 @@
+/*******************************************************************************
+ * Licensed Materials - Property of IBM
+ * (c) Copyright IBM Corporation 2005-2008. All Rights Reserved.
+ * 
+ * Note to U.S. Government Users Restricted Rights:
+ * Use, duplication or disclosure restricted by GSA ADP Schedule
+ * Contract with IBM Corp.
+ *******************************************************************************/
+(function() {
+
+dojo.provide("jazzshared.NavBar");
+
+dojo.require("dijit._Widget");
+dojo.require("dijit._Templated");
+dojo.require("jazz.ui.MenuPopup");
+dojo.require("jazz.ui.internal.ScrollableView");
+dojo.require("jazz.ui.Menu");
+dojo.require("jazz.ui.menu.NodeMenuItem");
+
+dojo.declare("jazzshared.NavBar", [dijit._Widget, dijit._Templated], {
+	widgetsInTemplate: dojo.getObject("jazz.app.currentApplication") ? false : true,
+	templateString: "<div class=\"jazz-NavBar\">" +
+						"<div class=\"navbarLeft\" dojoattachpoint=\"_leftArea\">" +  
+							"<a class=\"navbarItem\" href=\"/products\"><span dojotype=\"jazz.cs.TextShadow\" shadowColor=\"#c8dde8\">Products</span></a>" +
+							"<a class=\"navbarItem\" href=\"/downloads\"><span dojotype=\"jazz.cs.TextShadow\" shadowColor=\"#c8dde8\">Downloads</span></a>" +
+							"<a class=\"navbarItem\" href=\"/community/\"><span dojotype=\"jazz.cs.TextShadow\" shadowColor=\"#c8dde8\">Community</span></a>" +
+							"<a class=\"navbarItem\" href=\"/story\"><span dojotype=\"jazz.cs.TextShadow\" shadowColor=\"#c8dde8\">Our Story</span></a>" +
+						"</div>" +
+						
+						"<div class=\"navbarRight\" id='navbar-shadow-node'>" +
+							"<div class=\"navbarRightInner\">" +
+								"<a class=\"navbarItem\" href=\"/mystuff\">My Stuff</a>" +
+								"<a class=\"navbarItem\" href=\"/help\">Get Help</a>" +
+								"<a class=\"navbarItem\" href=\"/extend/integrations\">Integrations</a>" +
+								"<a class=\"navbarItem\" href=\"/wiki/bin/view/Deployment/\">Deployment</a>" +
+								"<a class=\"navbarItem\" href=\"/library\">Library</a>" +
+								"<a class=\"navbarItem\" href=\"/forum\">Forum</a>" +
+								"<a class=\"navbarItem\" href=\"/blogs\">Blogs</a>" +
+							"</div>" +
+						"</div>" +  
+					"</div>",
+	
+	postCreate: function() {
+		var path = window.location.pathname.split("/")[1];
+	
+		if (path !== "") {
+			var anchors = dojo.query("a", this.domNode);
+			for (var i = 0; i < anchors.length; i++) {
+				var anchor = anchors[i];
+				var url = new dojo._Url(anchor.href);
+				url = url.path.split("/")[1];
+				if (url && (path === url || (path == "planet" && url == "blog") || (path == "agile" && url == "products"))) {
+					dojo.addClass(anchor, "selected");
+					return;
+				} 
+			}
+		}
+		
+	}
+});
+
+
+
+dojo.provide("jazz.theme.AboveBannerWidget");
+
+var sandboxPaths = ["/sandbox/", "/sandbox02/"];
+
+dojo.declare("jazz.theme.AboveBannerWidget", jazzshared.NavBar, {
+	isSandboxSetup: false,
+	isSandbox: false,
+	postCreate: function() {
+		var href = document.location.href;
+		if (dojo.some(sandboxPaths, function(path) { return href.indexOf(path+"setup/") >= 0 })) {
+			this.isSandboxSetup = true;
+		} else if (dojo.some(sandboxPaths, function(path) { return href.indexOf(path) >= 0 })) {
+			this.isSandbox = true;
+		}
+		dojo.addClass(this.domNode, "jazz-NavBar-product");
+		if (!this.isSandboxSetup) {
+			var homeLink = dojo.create("a", {"class": "navbarItem cs-home-link", href: "https://jazz.net", title: "Jazz.net home"});
+			homeLink.innerHTML = "<span dojotype=\"jazz.cs.TextShadow\" shadowcolor=\"#c8dde8\">Jazz</span>";
+			dojo.place(homeLink, this._leftArea, "first");
+			if (this.isSandbox) {
+				var div = document.createElement("div");
+				div.className = "sandbox-nav";
+				var sandboxUrl = (href.indexOf("/sandbox02/") >= 0) ? "https://jazz.net/sandbox02/setup/web" : "https://jazz.net/sandbox/setup/web";
+				div.innerHTML = "<a href='" + sandboxUrl + "'>Sandbox Home</a> <a href='/forums'>Forums</a> <a href='http://www-01.ibm.com/software/rational/products/rtc/'>Buy @ IBM.com</a> <a href='https://jazz.net/downloads/rational-team-concert/latest'>Download</a>";
+				this.domNode.insertBefore(div,this.domNode.firstChild);
+			}
+		}
+		
+		var dwLink = dojo.create("a",{href:"http://www.ibm.com/developerworks", "class":"navbarItem dwItem"}, this._leftArea, "first");
+		dwLink.innerHTML = "<span class=\"dwItemIBM\">IBM</span> <span class=\"dwItemIBMd\">d</span><span class=\"dwItemIBMW\">W</span>";
+	    
+		this.inherited(arguments);
+	}
+});
+})();

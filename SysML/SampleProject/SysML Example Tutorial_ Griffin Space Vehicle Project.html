@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://sysml.org/tutorials/sysml-example-tutorial/ -->
+<html class="js no-touchevents csstransitions" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+	<title>SysML Example Tutorial: Griffin Space Vehicle Project</title>
+
+    <meta name="theme-version" content="1.8.1">
+    <meta name="foundation-version" content="5.5.4">
+    <meta name="modernizr-version" content="3.6.0">
+
+	
+<link rel="stylesheet" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/css(1)" media="all"><script src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/osd.js.download"></script><script src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(4).txt"></script><script src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(5).txt" id="google_shimpl"></script><script type="text/javascript" async="" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/ga.js.download"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-346954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style type="text/css">
+   label {
+   	font: normal 14px 'Open Sans' !important;
+         }
+</style>
+
+		<meta name="PRIORITY" content="0.991629">
+		<meta name="CHANGEFREQ" content="weekly">
+		<meta name="description" content="This " sysml="" by="" example="" tutorial"="" features="" a="" hypothetical="" "griffin="" space="" vehicle="" project"="" to="" illustrate="" best="" practices="" for="" specifying="" system-of-system="" (sos)="" complexity="" using="" the="" systems="" modeling="" language="" (sysml).="" llustrates="" numerous="" recursive="" mbse="" +="" analysis,="" design="" and="" architecture="" patterns="" that="" are="" both="" scalable="" simulatable."="">
+		<meta name="robots" content="index, follow">
+		
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="SysML Example Tutorial: Griffin Space Vehicle Project">
+	<meta name="twitter:description" content="This " sysml="" by="" example="" tutorial"="" features="" a="" hypothetical="" "griffin="" space="" vehicle="" project"="" to="" illustrate="" best="" practices="" for="" specifying="" system-of-system="" (sos)="" complexity="" using="" the="" systems="" modeling="" language="" (sysml).="" llustrates="" numerous="" recursive="" mbse="" +="" analysis,="" design="" and="" architecture="" patterns="" that="" are="" both="" scalable="" simulatable."="">
+	<meta name="twitter:url" content="https://sysml.org/res//tutorials/sysml-example-tutorial/index.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="SysML.org">
+	<meta property="og:title" content="SysML Example Tutorial: Griffin Space Vehicle Project">
+	<meta property="og:description" content="This " sysml="" by="" example="" tutorial"="" features="" a="" hypothetical="" "griffin="" space="" vehicle="" project"="" to="" illustrate="" best="" practices="" for="" specifying="" system-of-system="" (sos)="" complexity="" using="" the="" systems="" modeling="" language="" (sysml).="" llustrates="" numerous="" recursive="" mbse="" +="" analysis,="" design="" and="" architecture="" patterns="" that="" are="" both="" scalable="" simulatable."="">
+	<meta property="og:url" content="https://sysml.org/res//tutorials/sysml-example-tutorial/index.html">
+
+	<link rel="stylesheet" type="text/css" media="all" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/consolidated.css">
+		
+	<script>var foundation={};</script>
+	<script>function loadCSS(a,b,c){"use strict";var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),d.onloadcssdefined=function(a){for(var b,c=0;c<f.length;c++)f[c].href&&f[c].href===d.href&&(b=!0);b?a():setTimeout(function(){d.onloadcssdefined(a)})},d.onloadcssdefined(function(){d.media=c||"all"}),d}</script>
+
+	
+
+			<link rel="stylesheet" type="text/css" media="all" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/stacks.css">
+		<link rel="stylesheet" type="text/css" media="all" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/stacks_page_page8.css">
+        <script type="text/javascript" charset="utf-8" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/jquery-2.2.4.min.js.download"></script>
+        
+        <link rel="stylesheet" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/font-awesome.min.css">
+        
+		
+		<script type="text/javascript" charset="utf-8" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/stacks_page_page8.js.download"></script>
+        <meta name="formatter" content="Stacks v4.1.3 (5361)">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.topbar.s3" name="Top Bar" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.clearing.image" name="Clearing Image" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.2col.s3" name="2 Column Foundation" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.clearing" name="Clearing Gallery" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.divider.s3" name="Divider" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.styles.s3" name=" Site Styles" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.header" name="Header" content="1.9.2">
+		<meta class="stacks4 stack version" id="uk.co.doobox.obscureemail" name="Obscure Email" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.topbar.dropzone" name="Top Bar Dropzone" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.FoundationButtonPlus2" name="ButtonPlus2" content="2.0.5">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.blockquote" name="Blockquote" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.footertext" name="Footer Text" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.1col.s3" name="1 Column Foundation" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.reveal" name="Reveal Lightbox" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.printer" name="Printer" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.cssbox" name="CSS Box" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.foundationTBSMenu" name="TBS Menus" content="1.0.8">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.image" name="Image" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.button" name="Button" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.tabs" name="Tabs" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.breadcrumb" name="Breadcrumb" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.markdownpro" name="Scribe" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.3col.s3" name="3 Column Foundation" content="1.9.2">
+		
+
+
+
+
+
+	<script>var jQuery=stacks.jQuery,$=jQuery;</script>
+	
+<style></style><meta class="foundation-mq-topbar"><link href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/css(2)" rel="stylesheet" media="" type="text/css"><meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><link rel="preload" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(6).txt" as="script"><script type="text/javascript" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(6).txt"></script><link rel="preload" href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(7).txt" as="script"><script type="text/javascript" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(7).txt"></script></head>
+
+<body class="antialiased">
+
+<div id="foundation-loader"></div>
+
+
+<div id="stacks_out_639" class="stacks_top" style="height: auto !important;"><div id="stacks_in_639" class="" style="height: auto !important;"><div id="stacks_out_95195" class="stacks_out"><div id="stacks_in_95195" class="stacks_in "><div id="stacks_out_95195_33639" class="stacks_out"><div id="stacks_in_95195_33639" class="stacks_in stack_stack">   <!--[if lt IE 9]> <meta http-equiv="refresh" content="0; url="> <![endif]-->       
+<div id="stacks_out_95195_33645" class="stacks_out"><div id="stacks_in_95195_33645" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95195_33643" class="stacks_out"><div id="stacks_in_95195_33643" class="stacks_in "><div id="stacks_out_95195_33643_5" class="stacks_out"><div id="stacks_in_95195_33643_5" class="stacks_in "><div id="stacks_out_95195_33643_5_3" class="stacks_out"><div id="stacks_in_95195_33643_5_3" class="stacks_in html_stack"><style type="text/css">
+a:link { color: blue; text-decoration: none }
+a:active { color: red; text-decoration: none }
+a:visited { color: blue; text-decoration: none }
+a:hover { color: green; text-decoration: underline }
+</style></div></div></div></div><div id="stacks_out_95195_33643_7" class="stacks_out"><div id="stacks_in_95195_33643_7" class="stacks_in "><div id="stacks_out_95195_33643_7_2" class="stacks_out"><div id="stacks_in_95195_33643_7_2" class="stacks_in com_bigwhiteduck_stacks_foundationTBSMenu_stack"><div id="tbStylerstacks_in_95195_33643_7_2"></div>
+
+</div></div></div></div><div id="stacks_out_95195_33643_6" class="stacks_out"><div id="stacks_in_95195_33643_6" class="stacks_in "><div id="stacks_out_95195_33643_6_2" class="stacks_out"><div id="stacks_in_95195_33643_6_2" class="stacks_in uk_co_doobox_obscureemail_stack"><!-- Start Obscure Emails stack template -->
+
+
+
+
+<!-- Start Obscure Emails stack template --></div></div></div></div></div></div> </div> 
+</div></div><div id="stacks_out_95195_33649" class="stacks_out" style="overflow: visible;"><div id="stacks_in_95195_33649" class="stacks_in com_joeworkman_stacks_foundation_topbar_s3_stack">
+
+
+<div class="top-bar-wrapper full-width     contain-to-grid matchPadding solid    submenuIndicator menu-align-right zone-align-left">
+    <nav class="top-bar" data-topbar="" data-options="is_hover:true;custom_back_text:true;back_text:Back;mobile_show_parent_link:true;scrolltop:false;" role="navigation">
+        <ul class="title-area title-area-site-setup">
+            <li class="name">
+                
+                    <a href="https://sysml.org/">
+                        
+                            <span class=""><img src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Logo-77x60-140601b.png" width="76" height="59" alt="SysML.org"></span>
+                        
+                        
+                            <h1 class="site-title font-family-h1 ">
+                                SysML.org
+                                
+                            </h1>
+                        
+                    </a>
+                
+
+                
+            </li>
+            <li class="toggle-topbar menu-icon">
+                <a href="https://sysml.org/tutorials/sysml-example-tutorial/#">
+                    <span>Menu</span>
+                </a>
+            </li>
+        </ul>
+
+        
+    <section class="top-bar-section  menu-rw">
+
+
+
+
+
+
+
+    <ul class="menu right" role="navigation"><li class="not-click" role="menuitem"><a href="https://sysml.org/" rel=""><i class="fa fa-home"></i></a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-specs/" rel="">Specs</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-partners/" rel="">SysML Partners</a></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/" rel=""> FAQ</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/"> FAQ</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-sysml.html" rel="">What is SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/why-use-sysml.html" rel="">Why use SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/who-created-sysml.html" rel="">Who created SysML?</a></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html" rel="">What are SysML diagram types?</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html">What are SysML diagram types?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-requirement-diagram.html" rel="">What is a Requirement diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-use-case-diagram.html" rel="">What is a Use Case diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-activity-diagram.html" rel="">What is a Activity diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-block-definition-diagram.html" rel="">What is a Block Definition Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-internal-block-diagram.html" rel="">What is an Internal Block Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-parametric-diagram.html" rel="">What is a Parametric Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-sequence-diagram.html" rel="">What is a Sequence diagram? </a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-state-machine-diagram.html" rel="">What is a State Machine diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-package-diagram.html" rel="">What is a Package diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-allocation-table.html" rel="">What is an Allocation Table?</a></li></ul></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/what-is-current-version-of-sysml.html" rel="">What is current version of SysML?</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/what-is-current-version-of-sysml.html">What is current version of SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-new-in-omg-sysml-1.6.html" rel="">What is new in OMG SysML 1.6?</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-mbse.html" rel="">What is MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-applied-mbse.html" rel="">...SysML be applied to MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-sysml-and-uml.html" rel="">…relation between SysML &amp; UML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-sysml-and-mbse.html" rel="">…relation between SysML &amp; MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-mbse-and-similar-acronyms.html" rel="">…relation between MBSE &amp; similar…?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-and-uml-combined-in-same-model.html" rel="">…SysML &amp; UML in same model?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-as-architecture-modeling-language.html" rel="">...SysML as architecture modeling language...</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-best-way-to-learn-sysml.html" rel="">What is the best way to learn SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/how-to-report-sysml-issue.html" rel="">How can I report a SysML issue?</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-tools/" rel="">Tools</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-training/" rel="">Training</a></li><li class="active has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/res/">Resources</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/res/">Resources</a></li><li class="active has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/tutorials/">Tutorials</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/tutorials/">Tutorials</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/tutorials/sysml-diagram-tutorial/" rel="">SysML Diagram Tutorial</a></li><li class="active not-click" role="menuitem"><a href="https://sysml.org/tutorials/sysml-example-tutorial/">SysML Example Tutorial</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/discussions/" rel="">Discussion Group</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/contact/" rel="">Contact</a></li></ul></li></ul>
+
+
+
+
+
+<ul class="zone">
+
+
+
+
+    
+    <li><div class="slice empty out"><div class="slice empty in"></div></div></li> 
+
+
+
+</ul>
+
+
+
+
+
+
+        </section></nav>
+</div>
+
+
+
+</div></div></div></div></div></div><div id="stacks_out_95000" class="stacks_out"><div id="stacks_in_95000" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95001" class="stacks_out"><div id="stacks_in_95001" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h1 class="text-left     "><span id="stacks_in_95002">SysML Example Tutorial: Griffin Space Vehicle Project</span></h1> 
+</div></div><div id="stacks_out_95592" class="stacks_out"><div id="stacks_in_95592" class="stacks_in "><div id="stacks_out_95592_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95592_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95592_4" class="stacks_out"><div id="stacks_in_95592_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95592_2" class="stacks_out"><div id="stacks_in_95592_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqn0">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95592_8">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95592_10" class="stacks_out"><div id="stacks_in_95592_10" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqn1">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95369" class="stacks_out"><div id="stacks_in_95369" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95602" class="stacks_out"><div id="stacks_in_95602" class="stacks_in com_joeworkman_stacks_foundation_2col_s3_stack"> 
+<div class="row     "> <div class="columns small-12    medium-6     ">  <div id="stacks_out_95604" class="stacks_out"><div id="stacks_in_95604" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>This <strong><em>SysML Example Tutorial</em></strong> features a hypothetical <em>Griffin Space Vehicle Project</em> example to illustrate best practices for specifying System-of-System (SoS) complexity using the Systems Modeling Language (SysML). This SysML example applies the <strong>MBSE + SysML System Architecture Framework Pattern</strong>, and llustrates numerous recursive <a href="https://mbseworks.com/">MBSE</a> Analysis and Design and Patterns that are both scalable and simulatable.</p>
+
+<p>For a SysML primer that provides an overview of the <a href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html">nine (9) SysML diagram types</a> and complementary <a href="https://sysml.org/sysml-faq/what-is-allocation-table.html">Allocation Tables</a> that constitute this <em>de facto</em> <a href="https://mbseworks.com/">MBSE </a> architecture modeling language standard, check out the <a href="https://sysml.org/res/sysml-diagram-tutorial/">SysML Diagram Tutorial</a>.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95612" class="stacks_out"><div id="stacks_in_95612" class="stacks_in "><div id="stacks_out_95612_5" class="stacks_out"><div id="stacks_in_95612_5" class="stacks_in stack_stack"><div id="stacks_out_95612_3" class="stacks_out"><div id="stacks_in_95612_3" class="stacks_in com_joeworkman_stacks_foundation_blockquote_stack"><blockquote class=""> For the things we have to learn before we can do them, we learn by doing them.  <cite>Aristotle, <em>The Nicomachean Ethics</em></cite>  </blockquote> 
+</div></div></div></div></div></div><div id="stacks_out_95607" class="stacks_out"><div id="stacks_in_95607" class="stacks_in "><div id="stacks_out_95607_4" class="stacks_out"><div id="stacks_in_95607_4" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>Please <a href="https://sysml.org/res/contact/">contact us</a> with your constructive ideas to correct and improve this section.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div></div></div>  </div> <div class="columns small-12    medium-6     ">  <div id="stacks_out_95370" class="stacks_out"><div id="stacks_in_95370" class="stacks_in "><div id="stacks_out_95370_6" class="stacks_out"><div id="stacks_in_95370_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95370_4" class="stacks_out"><div id="stacks_in_95370_4" class="stacks_in com_joeworkman_stacks_foundation_reveal_stack">  <div data-reveal-id="reveal_stacks_in_95370_4" class="reveal-launcher"> <div id="stacks_out_95370_2" class="stacks_out"><div id="stacks_in_95370_2" class="stacks_in "><div id="stacks_out_95370_2_2" class="stacks_out"><div id="stacks_in_95370_2_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/">  <img class="" oncontextmenu="return false;" draggable="false" itemprop="image" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/Agile-MBSE-6D-Sys-M.png" data-interchange="[https://pivotpt.com/.res/images/mbse/Agile-MBSE-6D-Sys-M.png,(default)]" alt="Agile MBSE™: 6D System M-Model" data-uuid="interchange-km192nqn2">   </a>   </div> 
+</div></div></div></div> </div>   <div id="reveal_stacks_in_95370_4" class="reveal-lightbox reveal-modal   " style="" aria-hidden="true" role="dialog" data-reveal=""> <div id="stacks_out_95370_7" class="stacks_out"><div id="stacks_in_95370_7" class="stacks_in "><div id="stacks_out_95370_7_2" class="stacks_out"><div id="stacks_in_95370_7_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/">  <img class="" oncontextmenu="return false;" draggable="false" itemprop="image" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/Agile-MBSE-6D-Sys-M.png" data-interchange="[https://pivotpt.com/.res/images/mbse/Agile-MBSE-6D-Sys-M.png,(default)]" alt="Agile MBSE™: 6D System M-Model" data-uuid="interchange-km192nqn3">   </a>   </div> 
+</div></div></div></div> <a class="close-reveal-modal" aria-label="close" style="">×</a> </div> 
+</div></div> </div> 
+</div></div><div id="stacks_out_95370_9" class="stacks_out"><div id="stacks_in_95370_9" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h6 class="text-center     "><a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification"><span id="stacks_in_95370_10">Agile MBSE™: 6D System M-Model</span></a></h6> 
+</div></div></div></div><div id="stacks_out_95610" class="stacks_out"><div id="stacks_in_95610" class="stacks_in "><div id="stacks_out_95610_2" class="stacks_out"><div id="stacks_in_95610_2" class="stacks_in com_joeworkman_stacks_foundation_button_stack">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button   centered  custom round expand" target="" rel=""><i class="fa fa-graduation-cap"></i> Agile MBSE™ + SysML Expert <br>Training &amp; Certification... <i class="fa fa-graduation-cap"></i></a>   
+</div></div></div></div>  </div> </div> 
+</div></div><div id="stacks_out_95528" class="stacks_out"><div id="stacks_in_95528" class="stacks_in com_joeworkman_stacks_foundation_tabs_stack"> <ul class="tabs vertical " data-tab="" role="tablist"> <li class="tab-title active" role="presentational"><a href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel1" id="stacks_in_95528_panel1_heading" role="tab" tabindex="0" aria-selected="true" controls="stacks_in_95528_panel1"><span id="stacks_in_95529">Architecture «view»</span></a></li>   <li class="tab-title" role="presentational"><a id="stacks_in_95528_panel2_heading" href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel2" role="tab" tabindex="0" aria-selected="false" controls="stacks_in_95528_panel2"><span id="stacks_in_95530">Requirement «view»</span></a></li>  <li class="tab-title" role="presentational"><a id="stacks_in_95528_panel3_heading" href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel3" role="tab" tabindex="0" aria-selected="false" controls="stacks_in_95528_panel3"><span id="stacks_in_95531">System Analysis «view»</span></a></li>  <li class="tab-title" role="presentational"><a id="stacks_in_95528_panel4_heading" href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel4" role="tab" tabindex="0" aria-selected="false" controls="stacks_in_95528_panel4"><span id="stacks_in_95532">System Design «view»</span></a></li>  <li class="tab-title" role="presentational"><a id="stacks_in_95528_panel5_heading" href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel5" role="tab" tabindex="0" aria-selected="false" controls="stacks_in_95528_panel5"><span id="stacks_in_95539">Implementation «view»</span></a></li>  <li class="tab-title" role="presentational"><a id="stacks_in_95528_panel6_heading" href="https://sysml.org/tutorials/sysml-example-tutorial/#stacks_in_95528_panel6" role="tab" tabindex="0" aria-selected="false" controls="stacks_in_95528_panel6"><span id="stacks_in_95540">Test «view»</span></a></li>   </ul>  <div class="tabs-content vertical">  <section class="content active" id="stacks_in_95528_panel1" role="tabpanel" aria-labelledby="stacks_in_95528_panel1_heading" aria-hidden="false"> <div id="stacks_out_95571" class="stacks_out"><div id="stacks_in_95571" class="stacks_in "><div id="stacks_out_95571_5" class="stacks_out"><div id="stacks_in_95571_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95571_25" class="stacks_out"><div id="stacks_in_95571_25" class="stacks_in "><div id="stacks_out_95571_25_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95571_25_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95571_25_4" class="stacks_out"><div id="stacks_in_95571_25_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95571_25_2" class="stacks_out"><div id="stacks_in_95571_25_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqn4">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95571_25_12">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95571_25_10" class="stacks_out"><div id="stacks_in_95571_25_10" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqn5">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95571_3" class="stacks_out"><div id="stacks_in_95571_3" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">Architecture «view»</h3> 
+</div></div><div id="stacks_out_95571_8" class="stacks_out"><div id="stacks_in_95571_8" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>Architecture «view»</em></strong> layer provides a System Architecture overview applies the <strong>MBSE + SysML System Architecture Framework Pattern</strong>. The SysML Package diagrams in this layer illustrate how the System Architecture is organized into complementary Views and Viewpoints, consistent with international standards (<a href="https://en.wikipedia.org/wiki/ISO/IEC_42010">ISO/IEC/IEEE 42010 Systems and software engineering — Architecture description</a>)and <a href="https://mbseworks.com/">Model-Based Systems Engineering (MBSE)</a> best practices.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95571_19" class="stacks_out"><div id="stacks_in_95571_19" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95571_12" class="stacks_out"><div id="stacks_in_95571_12" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95571_12" class="small-block-grid-3    " data-clearing="">   <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-A.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-A.png" alt="SysML Package Diagram (PKG): System Architecture Framework" data-caption="SysML Package Diagram (PKG): System Architecture Framework"> <p class="text-left">SysML Package Diagram (PKG): System Architecture Framework</p>  </a> </li>  
+ <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-B.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-B.png" alt="SysML Package Diagram (PKG): Requirement View" data-caption="SysML Package Diagram (PKG): Requirement View"> <p class="text-left">SysML Package Diagram (PKG): Requirement View</p>  </a> </li>  
+ <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-C.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-C.png" alt="SysML Package Diagram (PKG): System Analysis View" data-caption="SysML Package Diagram (PKG): System Analysis View"> <p class="text-left">SysML Package Diagram (PKG): System Analysis View</p>  </a> </li>  
+ <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-D.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-D.png" alt="SysML Package Diagram (PKG): System Design View" data-caption="SysML Package Diagram (PKG): System Design View"> <p class="text-left">SysML Package Diagram (PKG): System Design View</p>  </a> </li>  
+ <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-E.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-E.png" alt="SysML Package Diagram (PKG): Implementation View" data-caption="SysML Package Diagram (PKG): Implementation View"> <p class="text-left">SysML Package Diagram (PKG): Implementation View</p>  </a> </li>  
+ <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-F.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-F.png" alt="SysML Package Diagram (PKG): Test View" data-caption="SysML Package Diagram (PKG): Test View"> <p class="text-left">SysML Package Diagram (PKG): Test View</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div><div id="stacks_out_95571_24" class="stacks_out"><div id="stacks_in_95571_24" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95571_20" class="stacks_out"><div id="stacks_in_95571_20" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95571_20" class="small-block-grid-3    " data-clearing="">   <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Allocation-Table-A.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Allocation-Table-A.png" alt="SysML Allocation Table: Requirement Satisfy Matrix" data-caption="SysML Allocation Table: Requirement Satisfy Matrix"> <p class="text-left">SysML Allocation Table: Requirement Satisfy Matrix</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Allocation-Table-B.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Allocation-Table-B.png" alt="SysML Allocation Table: Function-to-Structure Matrix" data-caption="SysML Allocation Table: Function-to-Structure Matrix"> <p class="text-left">SysML Allocation Table: Function-to-Structure Matrix</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div> </section>    <section class="content" id="stacks_in_95528_panel2" role="tabpanel" aria-labelledby="stacks_in_95528_panel2_heading" aria-hidden="true"><div id="stacks_out_95570" class="stacks_out"><div id="stacks_in_95570" class="stacks_in "><div id="stacks_out_95570_5" class="stacks_out"><div id="stacks_in_95570_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95570_25" class="stacks_out"><div id="stacks_in_95570_25" class="stacks_in "><div id="stacks_out_95570_25_38" class="stacks_out stacks_s_hidden"><div id="stacks_in_95570_25_38" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95570_25_4" class="stacks_out"><div id="stacks_in_95570_25_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95570_25_28" class="stacks_out"><div id="stacks_in_95570_25_28" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqn6">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95570_25_36">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95570_25_29" class="stacks_out"><div id="stacks_in_95570_25_29" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqn7">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95570_7" class="stacks_out"><div id="stacks_in_95570_7" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">Requirement «view»</h3> 
+</div></div><div id="stacks_out_95570_10" class="stacks_out"><div id="stacks_in_95570_10" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>Requirement «view»</em></strong> layer specifies the Functional Requirements and the Non-Functional Requirements (NFRs) of the subject System-of-interest, that must be satisfied by Unit, Integration, and System Test Cases (TCs). Requirements are typically defined on the upper "Left-Side" of the <a href="https://en.wikipedia.org/wiki/V-Model">System V-Model</a>, whereas Test Cases are typically defined on the Right-Side of the System V-Model. See <em>Test «view»</em> section to compare and contrast.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95570_23" class="stacks_out"><div id="stacks_in_95570_23" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95570_14" class="stacks_out"><div id="stacks_in_95570_14" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95570_14" class="small-block-grid-3    " data-clearing="">   <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-B.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-B.png" alt="SysML Package Diagram (PKG): Requirement View" data-caption="SysML Package Diagram (PKG): Requirement View"> <p class="text-left">SysML Package Diagram (PKG): Requirement View</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Diagram-A.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Diagram-A.png" alt="SysML Requirement Diagram (REQ): Top-Level" data-caption="SysML Requirement Diagram (REQ): Top-Level"> <p class="text-left">SysML Requirement Diagram (REQ): Top-Level</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Diagram-B.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Diagram-B.png" alt="SysML REQ Diagram: Requirement Cluster Pattern" data-caption="SysML REQ Diagram: Requirement Cluster Pattern"> <p class="text-left">SysML REQ Diagram: Requirement Cluster Pattern</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Trace-Pattern.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Requirement-Trace-Pattern.png" alt="SysML REQ Diagram: Requirement Transitive Trace Pattern" data-caption="SysML REQ Diagram: Requirement Transitive Trace Pattern"> <p class="text-left">SysML REQ Diagram: Requirement Transitive Trace Pattern</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div><div id="stacks_out_95570_24" class="stacks_out"><div id="stacks_in_95570_24" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95570_20" class="stacks_out"><div id="stacks_in_95570_20" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95570_20" class="small-block-grid-3    " data-clearing="">   <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-A.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-A.png" alt="SysML Use Case Diagram (UC): Top-Level" data-caption="SysML Use Case Diagram (UC): Top-Level"> <p class="text-left">SysML Use Case Diagram (UC): Top-Level</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-B.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-B.png" alt="SysML UC Diagram: Use Case Decomp" data-caption="SysML UC Diagram: Use Case Decomp"> <p class="text-left">SysML UC Diagram: Use Case Decomp</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-C.png" class="th radius"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Use-Case-Diagram-C.png" alt="SysML UC Diagram: Use Case Decomp" data-caption="SysML UC Diagram: Use Case Decomp"> <p class="text-left">SysML UC Diagram: Use Case Decomp</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div></section>   <section class="content" id="stacks_in_95528_panel3" role="tabpanel" aria-labelledby="stacks_in_95528_panel3_heading" aria-hidden="true"><div id="stacks_out_95569" class="stacks_out"><div id="stacks_in_95569" class="stacks_in "><div id="stacks_out_95569_5" class="stacks_out"><div id="stacks_in_95569_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95569_21" class="stacks_out"><div id="stacks_in_95569_21" class="stacks_in "><div id="stacks_out_95569_21_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95569_21_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95569_21_4" class="stacks_out"><div id="stacks_in_95569_21_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95569_21_2" class="stacks_out"><div id="stacks_in_95569_21_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqn8">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95569_21_8">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95569_21_10" class="stacks_out"><div id="stacks_in_95569_21_10" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqn9">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95569_7" class="stacks_out"><div id="stacks_in_95569_7" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">System Analysis «view»</h3> 
+</div></div><div id="stacks_out_95569_10" class="stacks_out"><div id="stacks_in_95569_10" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>System Analysis «view»</em></strong> layer specifies the high-level functions, logical components, and logical data of the subject System-of-interest. In general, the System Analysis <em>satisfies</em> the <em>Requirement «view»</em>, and in turn it is refined by the <em>System Design «view»</em>.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95569_19" class="stacks_out"><div id="stacks_in_95569_19" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95569_14" class="stacks_out"><div id="stacks_in_95569_14" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95569_14" class="small-block-grid-3    " data-clearing="">   <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-C.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-C.png" alt="SysML Package Diagram (PKG): System Analysis View" data-caption="SysML Package Diagram (PKG): System Analysis View"> <p class="text-left">SysML Package Diagram (PKG): System Analysis View</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Analysis-Cluster-Pattern.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Analysis-Cluster-Pattern.png" alt="MBSE + SysML System Analysis Cluster Pattern" data-caption="MBSE + SysML System Analysis Cluster Pattern"> <p class="text-left">MBSE + SysML System Analysis Cluster Pattern</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-A.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-A.png" alt="SysML Activity Diagram (ACT): Top-Level" data-caption="SysML Activity Diagram (ACT): Top-Level"> <p class="text-left">SysML Activity Diagram (ACT): Top-Level</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-B.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-B.png" alt="SysML ACT Diagram: Activity Decomp # 1" data-caption="SysML ACT Diagram: Activity Decomp # 1"> <p class="text-left">SysML ACT Diagram: Activity Decomp # 1</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-C.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-C.png" alt="SysML ACT Diagram: Activity Decomp # 2" data-caption="SysML ACT Diagram: Activity Decomp # 2"> <p class="text-left">SysML ACT Diagram: Activity Decomp # 2</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-C.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Activity-Diagram-C.png" alt="SysML ACT Diagram: Activity Decomp # 3" data-caption="SysML ACT Diagram: Activity Decomp # 3"> <p class="text-left">SysML ACT Diagram: Activity Decomp # 3</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div></section>   <section class="content" id="stacks_in_95528_panel4" role="tabpanel" aria-labelledby="stacks_in_95528_panel4_heading" aria-hidden="true"><div id="stacks_out_95568" class="stacks_out"><div id="stacks_in_95568" class="stacks_in "><div id="stacks_out_95568_5" class="stacks_out"><div id="stacks_in_95568_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95568_31" class="stacks_out"><div id="stacks_in_95568_31" class="stacks_in "><div id="stacks_out_95568_31_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95568_31_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95568_31_4" class="stacks_out"><div id="stacks_in_95568_31_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95568_31_12" class="stacks_out"><div id="stacks_in_95568_31_12" class="stacks_in "><div id="stacks_out_95568_31_12_2" class="stacks_out"><div id="stacks_in_95568_31_12_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/digital-engineering/" title="Cybersecurity &amp; Crytocurrency">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/Dig-Eng-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/de/Dig-Eng-Logo-400x400.png,(default)]" alt="Digital Engineering Training &amp; Certification" data-uuid="interchange-km192nqna">   </a>   </div> 
+</div></div></div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95568_31_8">  <a role="button" href="https://pivotpt.com/training/digital-engineering/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> DIGITAL ENGINEERING Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Live Digital Engineering Experts | • Secure Virtual (Online) Classrooms <br>• Choose Tools: Open Source &amp; Commercial...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95568_31_15" class="stacks_out"><div id="stacks_in_95568_31_15" class="stacks_in "><div id="stacks_out_95568_31_15_2" class="stacks_out"><div id="stacks_in_95568_31_15_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/digital-engineering/" title="Cybersecurity Architecture &amp; Design">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/Digital-Twin.png" data-interchange="[https://pivotpt.com/.res/images/de/Digital-Twin.png,(default)]" alt="Digital Twin Training &amp; Certification" data-uuid="interchange-km192nqnb">   </a>   </div> 
+</div></div></div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95568_7" class="stacks_out"><div id="stacks_in_95568_7" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">System Design «view»</h3> 
+</div></div><div id="stacks_out_95568_10" class="stacks_out"><div id="stacks_in_95568_10" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>System Design «view»</em></strong> layer specifies the low-level (detailed) functions, physical components, and physical data of the subject System-of-interest. In general, the System Design <em>refines</em> the <em>System Analysis «view»</em>, and in this manner transitive refines System Requirements traceability on the Left-Side of the System V-Model.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95568_28" class="stacks_out"><div id="stacks_in_95568_28" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95568_14" class="stacks_out"><div id="stacks_in_95568_14" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95568_14" class="small-block-grid-3    " data-clearing="">   <li> <a href="https://pivotpt.com/.res/images/mbse/patterns/SysML-Design-Cluster-Pattern.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Analysis-Cluster-Pattern.png" alt="MBSE + SysML System Design Cluster Pattern" data-caption="MBSE + SysML System Design Cluster Pattern"> <p class="text-left">MBSE + SysML System Design Cluster Pattern</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-A.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-A.png" alt="SysML Block Definition Diagram (BDD): System Block Anatomy" data-caption="SysML Block Definition Diagram (BDD): System Block Anatomy"> <p class="text-left">SysML Block Definition Diagram (BDD): System Block Anatomy</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-B.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-B.png" alt="SysML BDD: System Context" data-caption="SysML BDD: System Context"> <p class="text-left">SysML BDD: System Context</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-C.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-C.png" alt="SysML BDD: System Interfaces" data-caption="SysML BDD: System Interfaces"> <p class="text-left">SysML BDD: System Interfaces</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-D.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Block-Definition-Diagram-D.png" alt="SysML BDD: System Parts" data-caption="SysML BDD: System Parts"> <p class="text-left">SysML BDD: System Parts</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-System-Relativity-Pattern.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-System-Relativity-Pattern.png" alt="SysML BDD: System Structural Relativity Pattern" data-caption="SysML BDD: System Structural Relativity Pattern"> <p class="text-left">SysML BDD: System Structural Relativity Pattern</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div><div id="stacks_out_95568_29" class="stacks_out"><div id="stacks_in_95568_29" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95568_22" class="stacks_out"><div id="stacks_in_95568_22" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95568_22" class="small-block-grid-3    " data-clearing="">   <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Sequence-Diagram-A.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Sequence-Diagram-A.png" alt="SysML Sequence Diagram (SD): Top-Level" data-caption="SysML Sequence Diagram (SD): Top-Level"> <p class="text-left">SysML Sequence Diagram (SD): Top-Level</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Sequence-Diagram-B.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Sequence-Diagram-B.png" alt="SysML SD: Reference Decomp" data-caption="SysML SD: Reference Decomp"> <p class="text-left">SysML SD: Reference Decomp</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div><div id="stacks_out_95568_30" class="stacks_out"><div id="stacks_in_95568_30" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95568_26" class="stacks_out"><div id="stacks_in_95568_26" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95568_26" class="small-block-grid-3    " data-clearing="">   <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-State-Machine-Diagram-A.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-State-Machine-Diagram-A.png" alt="SysML State Machine Diagram (SMD): Top-Level" data-caption="SysML State Machine Diagram (SMD): Top-Level"> <p class="text-left">SysML State Machine Diagram (SMD): Top-Level</p>  </a> </li>  
+ <li> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-State-Machine-Diagram-B.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-State-Machine-Diagram-B.png" alt="SysML SMD: Submachine Decomp" data-caption="SysML SMD: Submachine Decomp"> <p class="text-left">SysML SMD: Submachine Decomp</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div></section>   <section class="content" id="stacks_in_95528_panel5" role="tabpanel" aria-labelledby="stacks_in_95528_panel5_heading" aria-hidden="true"><div id="stacks_out_95567" class="stacks_out"><div id="stacks_in_95567" class="stacks_in "><div id="stacks_out_95567_5" class="stacks_out"><div id="stacks_in_95567_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95567_16" class="stacks_out"><div id="stacks_in_95567_16" class="stacks_in "><div id="stacks_out_95567_16_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95567_16_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95567_16_4" class="stacks_out"><div id="stacks_in_95567_16_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95567_16_2" class="stacks_out"><div id="stacks_in_95567_16_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqnc">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95567_16_12">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95567_16_10" class="stacks_out"><div id="stacks_in_95567_16_10" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqnd">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95567_7" class="stacks_out"><div id="stacks_in_95567_7" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">Implementation «view»</h3> 
+</div></div><div id="stacks_out_95567_10" class="stacks_out"><div id="stacks_in_95567_10" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>Implementation «view»</em></strong> layer specifies the construction of the physical Software Components, Hardware Components, and Mechanical Components that implement the subject physical System-of-interest. In general, the Implementation &amp; Fabrication is the "Bottom" of the traditional System V-Model: all "Left Side" System V-Model elements must trace from System Requirements to the Implementation &amp; Fabrication components; similarly, all "Right Side" of the System V-Model Test Cases must black-box and white-box validate all Implementation &amp; Fabication components. </p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95567_15" class="stacks_out"><div id="stacks_in_95567_15" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95567_14" class="stacks_out"><div id="stacks_in_95567_14" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95567_14" class="small-block-grid-3    " data-clearing="">   <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-E.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-E.png" alt="SysML Package Diagram (PKG): Implementation View" data-caption="SysML Package Diagram (PKG): Implementation View"> <p class="text-left">SysML Package Diagram (PKG): Implementation View</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div></section>   <section class="content" id="stacks_in_95528_panel6" role="tabpanel" aria-labelledby="stacks_in_95528_panel6_heading" aria-hidden="true"><div id="stacks_out_95566" class="stacks_out"><div id="stacks_in_95566" class="stacks_in "><div id="stacks_out_95566_5" class="stacks_out"><div id="stacks_in_95566_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95566_3" class="stacks_out"><div id="stacks_in_95566_3" class="stacks_in "><div id="stacks_out_95566_3_38" class="stacks_out stacks_s_hidden"><div id="stacks_in_95566_3_38" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95566_3_4" class="stacks_out"><div id="stacks_in_95566_3_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95566_3_28" class="stacks_out"><div id="stacks_in_95566_3_28" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km192nqne">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95566_3_36">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95566_3_29" class="stacks_out"><div id="stacks_in_95566_3_29" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km192nqnf">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95566_7" class="stacks_out"><div id="stacks_in_95566_7" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h3 class="text-center     ">Test «view»</h3> 
+</div></div><div id="stacks_out_95566_10" class="stacks_out"><div id="stacks_in_95566_10" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<p>The <strong><em>Test «view»</em></strong> layer specifies the System Test Cases on the "Right Side" of the System V-Model that must exhaustively test the System Design and Implementation using black-box and white-box Test Cases at the Unit, Integration, and System levels.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95566_15" class="stacks_out"><div id="stacks_in_95566_15" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95566_14" class="stacks_out"><div id="stacks_in_95566_14" class="stacks_in com_joeworkman_stacks_foundation_clearing_stack"> <div class="clearing-assembled"><div><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-close">×</a><div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><p class="clearing-caption"></p><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-prev"><span></span></a><a href="https://sysml.org/tutorials/sysml-example-tutorial/#" class="clearing-main-next"><span></span></a></div><img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt=""><div class="carousel"><ul id="clearing_stacks_in_95566_14" class="small-block-grid-3    " data-clearing="">   <li class="clearing-featured-img"> <a href="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-F.png" class="th"> <img oncontextmenu="return false;" draggable="false" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/SysML-Package-Diagram-F.png" alt="SysML Package Diagram (PKG): Test View" data-caption="SysML Package Diagram (PKG): Test View"> <p class="text-left">SysML Package Diagram (PKG): Test View</p>  </a> </li>  
+ </ul></div></div></div> 
+</div></div> </div> </div> 
+</div></div></div></div></section>   </div>  
+</div></div> </div> </div> 
+</div></div><div id="stacks_out_95197" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95197" class="stacks_in " style="height: auto !important;"><div id="stacks_out_95197_33621" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95197_33621" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack" style="height: auto !important;"> 
+<div class="row        " style="height: auto !important;"> <div class="columns small-12      " style="height: auto !important;"> <div id="stacks_out_95197_33674" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95197_33674" class="stacks_in " style="height: auto !important;"><div id="stacks_out_95197_33674_3" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95197_33674_3" class="stacks_in html_stack" style="height: auto !important;"><script async="" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/f(8).txt"></script>
+<!-- Auto-Size-Responsive -->
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-4503054387132604" data-ad-slot="1227520675" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:956px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor" style="display: block; border: none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 956px; background-color: transparent; overflow: visible;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:956px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="956" height="280" frameborder="0" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="CL3Tvrz0oe8CFUYClgodf_cBSg" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div></div></div><div id="stacks_out_95197_33675" class="stacks_out"><div id="stacks_in_95197_33675" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95197_33671" class="stacks_out"><div id="stacks_in_95197_33671" class="stacks_in "><div id="stacks_out_95197_33671_1" class="stacks_out"><div id="stacks_in_95197_33671_1" class="stacks_in text_stack"><span id="stacks_in_95197_33671_2">UML, BPMN, OMG SYSML and UPDM are trademarks of the Object Management Group.<br><span style="color:#000000;">TOGAF and ARCHIMATE are trademarks of The Open Group.<br>ENTERPRISE ARCHITECT is a trademark of Sparx Systems Pty Ltd. MAGICDRAW and CAMEO are trademarks of No Magic, Inc. RATIONAL RHAPSODY is a trademark of IBM.<br>All other trademarks are the property of their respective owners.</span></span></div></div></div></div><div id="stacks_out_95197_33628" class="stacks_out"><div id="stacks_in_95197_33628" class="stacks_in com_joeworkman_stacks_foundation_footertext_stack"><p class="copyright text-left ">  © 2003-2021 SysML.org <a href="mailto:info@sysml.org?subject=Request%20for%20info" id="rw_email_contact">Contact Us</a><script type="text/javascript">var _rwObsfuscatedHref0 = "mai";var _rwObsfuscatedHref1 = "lto";var _rwObsfuscatedHref2 = ":in";var _rwObsfuscatedHref3 = "fo@";var _rwObsfuscatedHref4 = "sys";var _rwObsfuscatedHref5 = "ml.";var _rwObsfuscatedHref6 = "org";var _rwObsfuscatedHref7 = "?su";var _rwObsfuscatedHref8 = "bje";var _rwObsfuscatedHref9 = "ct=";var _rwObsfuscatedHref10 = "Req";var _rwObsfuscatedHref11 = "ues";var _rwObsfuscatedHref12 = "t f";var _rwObsfuscatedHref13 = "or ";var _rwObsfuscatedHref14 = "inf";var _rwObsfuscatedHref15 = "o";var _rwObsfuscatedHref = _rwObsfuscatedHref0+_rwObsfuscatedHref1+_rwObsfuscatedHref2+_rwObsfuscatedHref3+_rwObsfuscatedHref4+_rwObsfuscatedHref5+_rwObsfuscatedHref6+_rwObsfuscatedHref7+_rwObsfuscatedHref8+_rwObsfuscatedHref9+_rwObsfuscatedHref10+_rwObsfuscatedHref11+_rwObsfuscatedHref12+_rwObsfuscatedHref13+_rwObsfuscatedHref14+_rwObsfuscatedHref15; document.getElementById("rw_email_contact").href = _rwObsfuscatedHref;</script> </p> 
+</div></div><div id="stacks_out_95197_33665" class="stacks_out"><div id="stacks_in_95197_33665" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95197_33629" class="stacks_out"><div id="stacks_in_95197_33629" class="stacks_in com_joeworkman_stacks_foundation_breadcrumb_stack">
+
+
+
+	<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs"><li role="menuitem"><a href="https://sysml.org/"><i class="fa fa-home"></i></a></li><li role="menuitem"><a href="https://sysml.org/res/">Resources</a></li><li role="menuitem"><a href="https://sysml.org/tutorials/">Tutorials</a></li><li role="menuitem" class="current"><a href="https://sysml.org/tutorials/sysml-example-tutorial/">SysML Example Tutorial</a></li></nav>
+
+
+
+
+
+</div></div><div id="stacks_out_95197_33673" class="stacks_out"><div id="stacks_in_95197_33673" class="stacks_in "><div class="cssbox" style="text-align: center;"> <div id="stacks_out_95197_33673_3" class="stacks_out"><div id="stacks_in_95197_33673_3" class="stacks_in text_stack"><div id="cssbox"> <p style="font-size: 80%; text-align:right;"> Web designed &amp; powered by <a href="https://pivotpt.com/about/contact/">PivotPoint Technology™</a></p></div></div></div></div>
+
+</div></div> </div> 
+</div></div> </div> </div> 
+</div></div></div></div></div></div>
+
+
+
+<script data-cfasync="true" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/foundation.min.js.download"></script>
+
+
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_1_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/ads(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-load-complete="true"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_302556923568" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/saved_resource(1).html"></iframe></body><iframe id="google_esf" name="google_esf" src="./SysML Example Tutorial_ Griffin Space Vehicle Project_files/zrt_lookup.html" data-ad-client="ca-pub-4503054387132604" style="display: none;"></iframe></html>

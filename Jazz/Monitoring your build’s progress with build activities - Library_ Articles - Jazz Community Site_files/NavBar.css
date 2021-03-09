@@ -1,0 +1,337 @@
+.jazz-NavBar-product {
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #4d698f;
+	background-color: #141723;
+	position: relative;
+	padding: 5px 5px 2px 1px;
+	color: #99a9bf;
+	font-size: 8pt;
+	min-height: 20px;
+	zoom: 1;
+	z-index: 99;
+	margin: 0 -10px 5px -10px;
+	font-family: Arial, sans-serif;
+}
+.jazz-NavBar-product:before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-bottom: 1px solid #00285e;
+}
+.jazz-NavBar-product .dw-tab {
+	background: url('https://jazz.net/_images/header/dw-tab.png') no-repeat;
+	height: 23px;
+	width: 43px;
+	float: right;
+	margin-top: -2px;
+	margin-bottom: -1px;
+}
+.dj_ie .jazz-NavBar-product, .dj_ie #jazz_theme_AboveBannerWidget_0 {
+	padding-top: 3px;
+}
+.com-ibm-team-sandbox-UI .jazz-NavBar-product {
+	color:#80C7E2;
+	font-size:8pt;
+	margin:0 auto;
+	min-height:18px;
+	padding:0;
+	position:relative;
+	z-index:2;
+	width:968px;
+	background: 0;
+	border: 0;
+}
+.jazz-ui-PageTemplate .jazz-NavBar-product {
+	margin: 0;
+	padding: 1px 0 2px;
+}
+.jazz-NavBar.jazz-NavBar-product a.navbarItem {
+	color: #99a9bf;
+	padding: 5px 0 3px;
+}
+.jazz-NavBar-product > .sandbox-nav {
+	background: url('/_images/sandbox-navbar-orange.png') no-repeat;
+	height: 22px;
+	width: 314px;
+	position: absolute;
+	padding: 5px 2px 0 2px;
+	top: 1px;
+	right: -1px;
+	font-size: 8pt;
+	text-align: center;
+	white-space: nowrap;
+}
+.jazz-NavBar-product > .sandbox-nav a {
+	color: white;
+	margin-right: 7px;
+	margin-left: 7px;
+}
+.jazz-NavBar-product > .sandbox-nav a:hover {
+	color: white;
+}
+.com-ibm-team-sandbox-UI .jazz-NavBar-product a {
+	color:#80C7E2;
+}
+.jazz-NavBar {
+	overflow: hidden;
+	line-height: 1;
+	padding: 0 1px 1px;
+	margin: 0 -1px;
+}
+.jazz-NavBar a.navbarItem {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 24px;
+	color: #a0d6ea;
+	padding: 6px 2px 13px 2px;
+}
+.jazz-NavBar .navbarLeft a.navbarItem, .jazz-NavBar .navbarMenus a.navbarItem {
+	line-height: 51px;
+	padding: 0 15px;
+	margin-right: 0;
+}
+.jazz-NavBar .navbarLeft .dwItem {
+	background: #34322e;
+	padding: 0px 10px 0px 10px !important;
+	position: absolute;
+	height: 100%;
+	top: 0px;
+}
+.jazz-NavBar .navbarLeft .dwItemIBM {
+	color: #999999;
+	position: relative;
+	top: 1px;
+}
+.jazz-NavBar .navbarLeft .dwItemIBMd {
+	color: #ffffff;
+	position: relative;
+	top: 1px;
+}
+.jazz-NavBar .navbarLeft .dwItemIBMW {
+	color: #F19027;
+	position: relative;
+	top: 1px;
+}
+.jazz-NavBar-product .navbarLeft a.navbarItem, .jazz-NavBar-product .navbarMenus a.navbarItem {
+	line-height: 20px;
+	padding: 0;
+	margin-right: 18px;
+}
+.jazz-NavBar .navbarLeft a.navbarItem.selected, .jazz-NavBar .navbarLeft a.navbarItem:hover, .jazz-NavBar .navbarMenus a.navbarItem.selected, .jazz-NavBar .navbarMenus a.navbarItem:hover {
+	background: rgb(90,171,213); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(90,171,213,1) 0%, rgba(61,107,135,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(90,171,213,1)), color-stop(100%,rgba(61,107,135,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(90,171,213,1) 0%,rgba(61,107,135,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(90,171,213,1) 0%,rgba(61,107,135,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(90,171,213,1) 0%,rgba(61,107,135,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(90,171,213,1) 0%,rgba(61,107,135,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5aabd5', endColorstr='#3d6b87',GradientType=0 ); /* IE6-9 */
+	text-shadow: 0px 0px 5px #c8dde8;
+	text-decoration: none;
+}
+
+.jazz-NavBar .navbarMenus {
+	position: absolute;
+	top: 0;
+	right: 210px;
+}
+
+.jazz-NavBar .navbarMenus a.navbarSocial {
+	padding: 0 5px;
+}
+
+.jazz-NavBar .navbarIcon {
+	margin-right: 5px;
+	width: 38px;
+	vertical-align: middle;
+}
+
+.jazz-NavBar .navbarIconText {
+	display: inline-block;
+	line-height: 1.3;
+	vertical-align: middle;
+	text-transform: uppercase;
+}
+
+.jazz-NavBar-product .navbarLeft a.navbarItem:hover, .jazz-NavBar-product .navbarMenus a.navbarItem:hover {
+	background: transparent;
+}
+.jazz-NavBar .navbarLeft a.navbarItem .shadow, .jazz-NavBar .navbarMenus a.navbarItem .shadow {
+	visibility: hidden;
+	top: -3px;
+    left: -3px;
+}
+.jazz-NavBar .navbarLeft a.navbarItem.selected .shadow, .jazz-NavBar .navbarLeft a.navbarItem:hover .shadow, .jazz-NavBar .navbarMenus a.navbarItem.selected .shadow, .jazz-NavBar .navbarMenus a.navbarItem:hover .shadow {
+	visibility: visible;
+}
+.jazz-NavBar .navbarRight a.navbarItem {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 0;
+}
+.jazz-NavBar .navbarRight a.navbarItem.selected, .jazz-NavBar .navbarRight a.navbarItem:hover {
+	color: black;
+	text-decoration: none;
+	border-bottom: 3px solid #f58b0f;
+	padding-bottom: 2px;
+}		
+.jazz-ui-PageTemplate .jazz-NavBar-product a.navbarItem:hover {
+	color: white;
+	border-bottom: none;
+	text-shadow: none;
+}
+.dijit_a11y .jazz-NavBar a.navbarItem {
+	color: black;
+}
+.jazz-NavBar-product .cs-home-link {
+	margin: 0 18px 0 9px;
+	display: inline-block;
+	padding-left: 65px !important;
+}
+.jazz-NavBar-product .cs-home-link img {
+	vertical-align: middle;
+}
+.jazz-NavBar .navbarLeft {
+	float: left;
+	font-size: 16px;
+}
+.jazz-NavBar .navbarRight a {
+	padding-top: 9px;
+}
+.jazz-NavBar .navbarRight {
+	float: right;
+	font-size: 11px;
+	text-transform: uppercase;
+	padding-right: 12px;
+}
+.jazz-NavBar-product.jazz-NavBar .navbarLeft, .jazz-NavBar-product.jazz-NavBar .navbarMenus {
+	font-size: 8pt;
+	font-family: Tahoma, Arial, sans-serif;
+}
+.jazz-NavBar-product.jazz-NavBar .navbarRight {
+	font-size: 8pt;
+	margin-right: -5px;
+}
+.jazz-app-Banner .left-buttons:first-child {
+	margin-top: 33px;
+}
+.jazz-app-Banner .left-buttons + .jazz-NavBar-product .homeLink img {
+	margin-left: -46px;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView {
+	border: 1px solid #A8C9E5;
+	margin-top: 1px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.15);
+	box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.15);
+	padding: 2px 1px 8px 1px;
+	position: relative;
+	background: white url(../../../jazz/ui/graphics/Menu/menu-bottom-gradient.png) bottom repeat-x;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView {
+	padding: 0px;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView:focus {
+	outline: 0px;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView .scrollbar {
+	width: 15px;
+}
+	
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView .container {
+	padding: 0 13px 0 0;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView .container:focus {
+	outline: 0;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView .scroller {
+	width: 15px;
+}
+
+.jazz-cs-DropDownMenu.jazz-ui-ScrollableView .scroller div {
+	width: 12px;
+}
+
+.jazz-cs-DropDownMenu .jazz-ui-Menu-border {
+	border: 0;
+	-webkit-box-shadow: 0;
+	padding: 0;
+}
+
+.jazz-cs-DropDownMenu .dijitMenu:focus {
+	outline: 0;
+}
+
+.jazz-cs-DropDownMenu .dijitMenuItem {
+	white-space: normal;
+}
+
+.jazz-cs-DropDownMenu .dijitMenu {
+	width: 400px;
+}
+/*
+.jazz-cs-DropDownMenu .itemContainer {
+	cursor: pointer;
+	overflow: hidden;
+	border: solid #cccccc;
+	border-width: 0 0 1px 0;
+	background-color: #FFFFCC;
+}
+*/
+.jazz-cs-DropDownMenu .itemContainer {
+	cursor: pointer;
+	overflow: hidden;
+	border: solid #cccccc;
+	border-width: 0 0 1px 0;
+	background-color: #FFFFFF;
+}
+
+.jazz-cs-DropDownMenuHeader {
+	padding-top: 7px;
+	padding-bottom: 5px;
+}
+
+.jazz-cs-DropDownMenuHeaderBold {
+	font-weight: bold;
+}
+
+.jazz-cs-DropDownMenuHeaderGray {
+	color: #666666;
+}
+
+.jazz-cs-DropDownMenuDate {
+	float: right;
+	color: #666666;
+}
+
+.jazz-cs-DropDownMenuImage {
+	min-width: 30px;
+	max-width: 30px;
+	float: left;
+	margin: 10px;
+}
+
+.jazz-cs-DropDownMenuContent {
+	margin-left: 50px;
+}
+
+.jazz-cs-DropDownMenu a{
+	margin-left: 50px;
+	float: left;
+}
+
+.jazz-cs-DropDownMenuUnhovered {
+	background-color: #FFFFFF;
+}

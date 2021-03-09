@@ -1,0 +1,110 @@
+/*
+ * This stylesheet contains styles used exclusively for documents included by
+ * formatting JSPs like LearnItem.jsp or DevelopmentItem.jsp. It should not
+ * be directly included because its styles may clash with styles for the outer
+ * containers.
+ */
+
+/* article like headings */
+h2, .titleL2 {
+    padding-top: 20px;
+}
+
+ 
+/* code snippets */
+pre {
+	margin: 10px;
+	background-color: #f5f5f5;
+	border: solid 1px #cccccc;
+	padding: 10px;
+}
+
+/* copyright */
+.copyright {
+	font-size: 8pt;
+	color: #793579;
+}
+
+/* byline */
+.byline {
+	color: gray;
+}
+
+/* tables */
+:not(.index, .LoginForm) > table  {
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+	border-collapse: collapse;
+	width: 100%;
+}
+:not(.index, .LoginForm) > table caption {
+	color: #999999;
+	font-style: italic;
+}
+:not(.index, .LoginForm) > table th, :not(.index, .LoginForm) > table td {
+	padding: 3px 5px 3px 5px;
+	border-right: solid 2px white;
+	border-left: solid 2px white;
+}
+:not(.index, .LoginForm) > table tr:not(:last-child) {
+    border-bottom: solid 1px #e1e1e1;
+} 
+:not(.index, .LoginForm) > table th {
+	background-color: #f0f0f0;
+	color: #666666;
+	font-weight: bold;
+	text-align: left;
+	height: 25px;
+}
+:not(.index, .LoginForm) > table td {
+	vertical-align: top;
+}
+
+/* figures */
+div.image {
+	margin: 1em 0; 
+	text-align: center;
+}
+div.image img {
+	border: solid 1px #cccccc;
+}
+div.image img.noborder  {
+    border: 0pt none;
+}
+div.image div {
+	color: #999999;
+	font-style: italic;
+}
+
+/* style for highlighting text parts in the document */
+.mark { 
+	background: none repeat scroll 0 0 #FFFFCC;
+	padding: 3px;
+}
+
+/* style for FIXMEs in draft versions of the document */ 
+.todo:before {
+	content: "TODO: ";
+    font-weight: bold;
+    color: red;
+}
+.todo {
+	font-weight: bold;
+}
+
+/* fix alignment issues in library articles */
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignleft {
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0.5em 0 0.5em 1em;
+}

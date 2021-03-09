@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://sysml.org/sysml-faq/what-is-allocation-table.html -->
+<html class="js no-touchevents csstransitions" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+	<title>SysML FAQ: What is an Allocation Table?</title>
+
+    <meta name="theme-version" content="1.8.1">
+    <meta name="foundation-version" content="5.5.4">
+    <meta name="modernizr-version" content="3.6.0">
+
+	
+<link rel="stylesheet" href="./SysML FAQ_ What is an Allocation Table__files/css(1)" media="all"><link rel="stylesheet" href="./SysML FAQ_ What is an Allocation Table__files/css(1)" media="all"><script src="./SysML FAQ_ What is an Allocation Table__files/osd.js.download"></script><script src="./SysML FAQ_ What is an Allocation Table__files/f(4).txt"></script><script src="./SysML FAQ_ What is an Allocation Table__files/f(5).txt" id="google_shimpl"></script><script type="text/javascript" async="" src="./SysML FAQ_ What is an Allocation Table__files/ga.js.download"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-346954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style type="text/css">
+   label {
+   	font: normal 14px 'Open Sans' !important;
+         }
+</style>
+
+		<meta name="robots" content="index, follow">
+		<meta name="generator" content="RapidWeaver">
+		
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="SysML FAQ: What is an Allocation Table?">
+	<meta name="twitter:url" content="https://sysml.org/sysml-faq//sysml-faq//sysml-faq/what-is-allocation-table.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="SysML.org">
+	<meta property="og:title" content="SysML FAQ: What is an Allocation Table?">
+	<meta property="og:url" content="https://sysml.org/sysml-faq//sysml-faq//sysml-faq/what-is-allocation-table.html">
+
+	<link rel="stylesheet" type="text/css" media="all" href="./SysML FAQ_ What is an Allocation Table__files/consolidated-25.css">
+		
+	<script>var foundation={};</script>
+	<script>function loadCSS(a,b,c){"use strict";var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),d.onloadcssdefined=function(a){for(var b,c=0;c<f.length;c++)f[c].href&&f[c].href===d.href&&(b=!0);b?a():setTimeout(function(){d.onloadcssdefined(a)})},d.onloadcssdefined(function(){d.media=c||"all"}),d}</script>
+
+	
+
+			<link rel="stylesheet" type="text/css" media="all" href="./SysML FAQ_ What is an Allocation Table__files/stacks.css">
+		<link rel="stylesheet" type="text/css" media="all" href="./SysML FAQ_ What is an Allocation Table__files/stacks_page_page25.css">
+        <script type="text/javascript" charset="utf-8" src="./SysML FAQ_ What is an Allocation Table__files/jquery-2.2.4.min.js.download"></script>
+        
+        <link rel="stylesheet" href="./SysML FAQ_ What is an Allocation Table__files/font-awesome.min.css">
+        
+		
+		<script type="text/javascript" charset="utf-8" src="./SysML FAQ_ What is an Allocation Table__files/stacks_page_page25.js.download"></script>
+        <meta name="formatter" content="Stacks v4.1.3 (5361)">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.topbar.s3" name="Top Bar" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.2col.s3" name="2 Column Foundation" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.divider.s3" name="Divider" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.styles.s3" name=" Site Styles" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.header" name="Header" content="1.9.2">
+		<meta class="stacks4 stack version" id="uk.co.doobox.obscureemail" name="Obscure Email" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.topbar.dropzone" name="Top Bar Dropzone" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.FoundationButtonPlus2" name="ButtonPlus2" content="2.0.5">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.footertext" name="Footer Text" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.cssbox" name="CSS Box" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.1col.s3" name="1 Column Foundation" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.reveal" name="Reveal Lightbox" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.printer" name="Printer" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.foundationTBSMenu" name="TBS Menus" content="1.0.8">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.image" name="Image" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.button" name="Button" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.breadcrumb" name="Breadcrumb" content="1.9.2">
+		<meta class="stacks4 stack version" id="com.bigwhiteduck.stacks.markdownpro" name="Scribe" content="1.1.0">
+		<meta class="stacks4 stack version" id="com.joeworkman.stacks.foundation.3col.s3" name="3 Column Foundation" content="1.9.2">
+		
+
+
+
+
+
+	<script>var jQuery=stacks.jQuery,$=jQuery;</script>
+	
+<meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><style></style><meta class="foundation-mq-topbar"><link href="./SysML FAQ_ What is an Allocation Table__files/css(2)" rel="stylesheet" media="" type="text/css"><link rel="preload" href="./SysML FAQ_ What is an Allocation Table__files/f(6).txt" as="script"><script type="text/javascript" src="./SysML FAQ_ What is an Allocation Table__files/f(6).txt"></script><link rel="preload" href="./SysML FAQ_ What is an Allocation Table__files/f(7).txt" as="script"><script type="text/javascript" src="./SysML FAQ_ What is an Allocation Table__files/f(7).txt"></script></head>
+
+<body class="antialiased">
+
+<div id="foundation-loader"></div>
+
+
+<div id="stacks_out_2264" class="stacks_top" style="height: auto !important;"><div id="stacks_in_2264" class="" style="height: auto !important;"><div id="stacks_out_95314" class="stacks_out"><div id="stacks_in_95314" class="stacks_in "><div id="stacks_out_95314_33639" class="stacks_out"><div id="stacks_in_95314_33639" class="stacks_in stack_stack">   <!--[if lt IE 9]> <meta http-equiv="refresh" content="0; url="> <![endif]-->       
+<div id="stacks_out_95314_33645" class="stacks_out"><div id="stacks_in_95314_33645" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95314_33643" class="stacks_out"><div id="stacks_in_95314_33643" class="stacks_in "><div id="stacks_out_95314_33643_5" class="stacks_out"><div id="stacks_in_95314_33643_5" class="stacks_in "><div id="stacks_out_95314_33643_5_3" class="stacks_out"><div id="stacks_in_95314_33643_5_3" class="stacks_in html_stack"><style type="text/css">
+a:link { color: blue; text-decoration: none }
+a:active { color: red; text-decoration: none }
+a:visited { color: blue; text-decoration: none }
+a:hover { color: green; text-decoration: underline }
+</style></div></div></div></div><div id="stacks_out_95314_33643_7" class="stacks_out"><div id="stacks_in_95314_33643_7" class="stacks_in "><div id="stacks_out_95314_33643_7_2" class="stacks_out"><div id="stacks_in_95314_33643_7_2" class="stacks_in com_bigwhiteduck_stacks_foundationTBSMenu_stack"><div id="tbStylerstacks_in_95314_33643_7_2"></div>
+
+</div></div></div></div><div id="stacks_out_95314_33643_6" class="stacks_out"><div id="stacks_in_95314_33643_6" class="stacks_in "><div id="stacks_out_95314_33643_6_2" class="stacks_out"><div id="stacks_in_95314_33643_6_2" class="stacks_in uk_co_doobox_obscureemail_stack"><!-- Start Obscure Emails stack template -->
+
+
+
+
+<!-- Start Obscure Emails stack template --></div></div></div></div></div></div> </div> 
+</div></div><div id="stacks_out_95314_33649" class="stacks_out" style="overflow: visible;"><div id="stacks_in_95314_33649" class="stacks_in com_joeworkman_stacks_foundation_topbar_s3_stack">
+
+
+<div class="top-bar-wrapper full-width     contain-to-grid matchPadding solid    submenuIndicator menu-align-right zone-align-left">
+    <nav class="top-bar" data-topbar="" data-options="is_hover:true;custom_back_text:true;back_text:Back;mobile_show_parent_link:true;scrolltop:false;" role="navigation">
+        <ul class="title-area title-area-site-setup">
+            <li class="name">
+                
+                    <a href="https://sysml.org/">
+                        
+                            <span class=""><img src="./SysML FAQ_ What is an Allocation Table__files/SysML-Logo-77x60-140601b.png" width="76" height="59" alt="SysML.org"></span>
+                        
+                        
+                            <h1 class="site-title font-family-h1 ">
+                                SysML.org
+                                
+                            </h1>
+                        
+                    </a>
+                
+
+                
+            </li>
+            <li class="toggle-topbar menu-icon">
+                <a href="https://sysml.org/sysml-faq/what-is-allocation-table.html#">
+                    <span>Menu</span>
+                </a>
+            </li>
+        </ul>
+
+        
+    <section class="top-bar-section  menu-rw">
+
+
+
+
+
+
+
+    <ul class="menu right" role="navigation"><li class="not-click" role="menuitem"><a href="https://sysml.org/" rel=""><i class="fa fa-home"></i></a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-specs/" rel="">Specs</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-partners/" rel="">SysML Partners</a></li><li class="active has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/"> FAQ</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/"> FAQ</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-sysml.html" rel="">What is SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/why-use-sysml.html" rel="">Why use SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/who-created-sysml.html" rel="">Who created SysML?</a></li><li class="active has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html">What are SysML diagram types?</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html">What are SysML diagram types?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-requirement-diagram.html" rel="">What is a Requirement diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-use-case-diagram.html" rel="">What is a Use Case diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-activity-diagram.html" rel="">What is a Activity diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-block-definition-diagram.html" rel="">What is a Block Definition Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-internal-block-diagram.html" rel="">What is an Internal Block Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-parametric-diagram.html" rel="">What is a Parametric Diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-sequence-diagram.html" rel="">What is a Sequence diagram? </a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-state-machine-diagram.html" rel="">What is a State Machine diagram?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-package-diagram.html" rel="">What is a Package diagram?</a></li><li class="active not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-allocation-table.html">What is an Allocation Table?</a></li></ul></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/sysml-faq/what-is-current-version-of-sysml.html" rel="">What is current version of SysML?</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/sysml-faq/what-is-current-version-of-sysml.html">What is current version of SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-new-in-omg-sysml-1.6.html" rel="">What is new in OMG SysML 1.6?</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-mbse.html" rel="">What is MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-applied-mbse.html" rel="">...SysML be applied to MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-sysml-and-uml.html" rel="">…relation between SysML &amp; UML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-sysml-and-mbse.html" rel="">…relation between SysML &amp; MBSE?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-relation-between-mbse-and-similar-acronyms.html" rel="">…relation between MBSE &amp; similar…?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-and-uml-combined-in-same-model.html" rel="">…SysML &amp; UML in same model?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/sysml-as-architecture-modeling-language.html" rel="">...SysML as architecture modeling language...</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/what-is-best-way-to-learn-sysml.html" rel="">What is the best way to learn SysML?</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-faq/how-to-report-sysml-issue.html" rel="">How can I report a SysML issue?</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-tools/" rel="">Tools</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/sysml-training/" rel="">Training</a></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/res/" rel="">Resources</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/res/">Resources</a></li><li class="has-dropdown not-click" role="menuitem" aria-haspopup="true"><a href="https://sysml.org/tutorials/" rel="">Tutorials</a><ul class="dropdown" role="navigation"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="https://sysml.org/tutorials/">Tutorials</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/tutorials/sysml-diagram-tutorial/" rel="">SysML Diagram Tutorial</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/tutorials/sysml-example-tutorial/" rel="">SysML Example Tutorial</a></li></ul></li><li class="not-click" role="menuitem"><a href="https://sysml.org/discussions/" rel="">Discussion Group</a></li><li class="not-click" role="menuitem"><a href="https://sysml.org/contact/" rel="">Contact</a></li></ul></li></ul>
+
+
+
+
+
+<ul class="zone">
+
+
+
+
+    
+    <li><div class="slice empty out"><div class="slice empty in"></div></div></li> 
+
+
+
+</ul>
+
+
+
+
+
+
+        </section></nav>
+</div>
+
+
+
+</div></div></div></div></div></div><div id="stacks_out_95296" class="stacks_out"><div id="stacks_in_95296" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_8437" class="stacks_out"><div id="stacks_in_8437" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h1 class="text-left     "><span id="stacks_in_8438">SysML FAQ: What is an Allocation Table and how is it used?</span></h1> 
+</div></div><div id="stacks_out_95437" class="stacks_out"><div id="stacks_in_95437" class="stacks_in "><div id="stacks_out_95437_6" class="stacks_out stacks_s_hidden"><div id="stacks_in_95437_6" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95437_4" class="stacks_out"><div id="stacks_in_95437_4" class="stacks_in com_joeworkman_stacks_foundation_3col_s3_stack"> 
+<div class="row     "> <div class="columns small-2     ">  <div id="stacks_out_95437_2" class="stacks_out"><div id="stacks_in_95437_2" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML FAQ_ What is an Allocation Table__files/MBSE-Logo-400x400.png" data-interchange="[https://pivotpt.com/.res/images/MBSE-Logo-400x400.png,(default)]" alt="MBSE &amp; SysML" data-uuid="interchange-km194cip0">   </a>   </div> 
+</div></div>  </div> <div class="columns small-8     ">  
+
+<div class="bp-wrap bp-centered com_bigwhiteduck_stacks_FoundationButtonPlus2_stack   flex-width         theme  glyph-static   " id="stacks_in_95437_8">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button b-p hov-target  centered  custom not-vault  expand-large   use-icon     " target="" rel="">    <span class="bp-text"><span style="font-size:110%;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> AGILE MBSE™ + SYSML Live Virtual Training <i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span style="font-size:90%;"> <br>• Taught by LIVE MBSE EXPERTS | • Secure VIRTUAL CLASSROOMS<br>• Tool-independent or choose: CAMEO, MAGICDRAW, SPARX EA...</span></span>   <span class="bp-icon icon-right"><i class="bp-glyph fa fa-caret-down"></i></span>  </a>   <div class="slice empty out"><div class="slice empty in"></div></div>  </div>
+
+  </div> <div class="columns small-2     ">  <div id="stacks_out_95437_10" class="stacks_out"><div id="stacks_in_95437_10" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="MBSE + SysML Training &amp; Certification">  <img class="" oncontextmenu="return false;" draggable="false" src="./SysML FAQ_ What is an Allocation Table__files/SysML-115x90.png" data-interchange="[https://pivotpt.com/.res/images/SysML-115x90.png,(default)]" alt="SysML Logo" data-uuid="interchange-km194cip1">   </a>   </div> 
+</div></div>  </div> </div> 
+</div></div> </div> 
+</div></div></div></div><div id="stacks_out_95426" class="stacks_out"><div id="stacks_in_95426" class="stacks_in "><div id="stacks_out_95426_5" class="stacks_out"><div id="stacks_in_95426_5" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      ">    <!--[if lt IE 9]> <meta http-equiv="refresh" content="0; url="> <![endif]-->       
+<div id="stacks_out_95426_9" class="stacks_out"><div id="stacks_in_95426_9" class="stacks_in com_joeworkman_stacks_foundation_2col_s3_stack"> 
+<div class="row     "> <div class="columns small-12    medium-6     ">  <div id="stacks_out_95426_7" class="stacks_out"><div id="stacks_in_95426_7" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<h4 id="whatisasysmlallocationtable">What is a SysML Allocation Table?</h4>
+
+<p><strong><em>Definitions:</em></strong> <br><strong>Allocation</strong>: An <em>Allocation</em> Dependency arrow (dashed-line with open-arrow notation and keyword = «allocate») associates or maps model elements of different types, or in different hierarchies. Allocate Dependency patterns are generally useful for improving model architecture integrity (a.k.a., well-formedness) and consistency. SysML predefines the following Allocation Dependencies:</p>
+
+<ul>
+<li>allocations for Requirement dependencies</li>
+<li>allocations for Activities to Partitions (swimlanes)</li>
+</ul>
+
+<p>Users are encourage to define their own Allocation Dependencies as needed. (See <em>Best Practice Patterns</em> below for examples of user-defined Allocations.)</p>
+
+<p><strong>Allocation Table</strong>: An <em>Allocation Table</em> is a tabular (matrix) notation for Allocation relationships, but the SysML standard does not prescribe a particular format for these so they tend to be vendor specific.</p>
+
+<h5 id="purpose">Purpose</h5>
+
+<p>The purpose of an Allocation Table is to define relationship matrices within and across diagram types to improve model architectural integrity (well-formedness) and consistency.</p>
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div><div id="stacks_out_95426_30" class="stacks_out"><div id="stacks_in_95426_30" class="stacks_in "><div id="stacks_out_95426_30_2" class="stacks_out"><div id="stacks_in_95426_30_2" class="stacks_in com_joeworkman_stacks_foundation_button_stack">  <a role="button" href="https://pivotpt.com/training/mbse-sysml/" class=" button   centered  custom round expand" target="" rel=""><i class="fa fa-graduation-cap"></i> Agile MBSE™ + SysML Expert <br>Training &amp; Certification... <i class="fa fa-graduation-cap"></i></a>   
+</div></div></div></div>  </div> <div class="columns small-12    medium-6     ">  <div id="stacks_out_95426_24" class="stacks_out"><div id="stacks_in_95426_24" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack"> 
+<div class="row        "> <div class="columns small-12      "> <div id="stacks_out_95426_23" class="stacks_out"><div id="stacks_in_95426_23" class="stacks_in "><div id="stacks_out_95426_23_4" class="stacks_out"><div id="stacks_in_95426_23_4" class="stacks_in com_joeworkman_stacks_foundation_reveal_stack">  <div data-reveal-id="reveal_stacks_in_95426_23_4" class="reveal-launcher"> <div id="stacks_out_95426_23_9" class="stacks_out"><div id="stacks_in_95426_23_9" class="stacks_in "><div id="stacks_out_95426_23_9_3" class="stacks_out"><div id="stacks_in_95426_23_9_3" class="stacks_in stack_stack"><div id="stacks_out_95426_23_9_4" class="stacks_out"><div id="stacks_in_95426_23_9_4" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="Training">  <img class="" oncontextmenu="return false;" draggable="false" itemprop="image" src="./SysML FAQ_ What is an Allocation Table__files/SysML-Allocation-Table-A.png" data-interchange="[https://pivotpt.com/.res/images/mbse/sysml/SysML-Allocation-Table-A.png,(default)]" alt="SysML Allocation Table Example" data-uuid="interchange-km194cip2">   </a>   </div> 
+</div></div></div></div></div></div> </div>   <div id="reveal_stacks_in_95426_23_4" class="reveal-lightbox reveal-modal   " style="" aria-hidden="true" role="dialog" data-reveal=""> <div id="stacks_out_95426_23_10" class="stacks_out"><div id="stacks_in_95426_23_10" class="stacks_in "><div id="stacks_out_95426_23_10_3" class="stacks_out"><div id="stacks_in_95426_23_10_3" class="stacks_in stack_stack"><div id="stacks_out_95426_23_10_4" class="stacks_out"><div id="stacks_in_95426_23_10_4" class="stacks_in com_joeworkman_stacks_foundation_image_stack"><div class="text-center  ">  <a href="https://pivotpt.com/training/mbse-sysml/" title="Training">  <img class="" oncontextmenu="return false;" draggable="false" itemprop="image" src="./SysML FAQ_ What is an Allocation Table__files/SysML-Allocation-Table-A.png" data-interchange="[https://pivotpt.com/.res/images/mbse/sysml/SysML-Allocation-Table-A.png,(default)]" alt="SysML Allocation Table Example" data-uuid="interchange-km194cip3">   </a>   </div> 
+</div></div></div></div></div></div> <a class="close-reveal-modal" aria-label="close" style="">×</a> </div> 
+</div></div><div id="stacks_out_95426_23_11" class="stacks_out"><div id="stacks_in_95426_23_11" class="stacks_in com_joeworkman_stacks_foundation_header_stack"><h5 class="text-center     ">SysML Allocation Table Example</h5> 
+</div></div></div></div><div id="stacks_out_95426_31" class="stacks_out"><div id="stacks_in_95426_31" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div> </div> </div> 
+</div></div>  </div> </div> 
+</div></div><div id="stacks_out_95426_35" class="stacks_out"><div id="stacks_in_95426_35" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95426_32" class="stacks_out"><div id="stacks_in_95426_32" class="stacks_in com_bigwhiteduck_stacks_markdownpro_stack">
+
+
+
+<div class="mdp 0  p-inherit  h-inherit l-left l-txt-left                   " draggable="false">
+
+
+<h5 id="diagramproperties">Diagram Properties</h5>
+
+<table>
+<colgroup>
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+<col style="text-align:left;">
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="5"><center> DIAGRAM PROPERTIES </center></th>
+	<th style="text-align:left;" colspan="3"><center>EXECUTABLE SEMANTICS </center></th>
+	<th style="text-align:left;" colspan="3"><center>FORMAL SEMANTICS</center></th>
+</tr>
+<tr>
+	<th style="text-align:left;">Diagram Name</th>
+	<th style="text-align:left;">Diagram Type</th>
+	<th style="text-align:left;">UML 2 Analog</th>
+	<th style="text-align:left;"><a href="https://en.wikipedia.org/wiki/Systems_development_life_cycle">SDLC</a> Usage</th>
+	<th style="text-align:left;">Essential <br>AGILE SYSML?</th>
+	<th style="text-align:left;">Dynamic<br>Sim †</th>
+	<th style="text-align:left;">Math <br>Sim ‡</th>
+	<th style="text-align:left;">Auto <br>Code <br>Gen</th>
+	<th style="text-align:left;">Rigor</th>
+	<th style="text-align:left;">Semi</th>
+	<th style="text-align:left;">Informal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;"><a href="https://sysml.org/sysml-faq/what-is-allocation-table.html">Allocation Table</a></td>
+	<td style="text-align:left;">N/A <br>[Relationship Matrix]</td>
+	<td style="text-align:left;">N/A</td>
+	<td style="text-align:left;">All SDLC phases</td>
+	<td style="text-align:left;"><i class="fa fa-check-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-square-o" aria-hidden="true"></i></td>
+	<td style="text-align:left;"><i class="fa fa-check-square-o" aria-hidden="true"></i></td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="usagenotes">Usage Notes</h5>
+
+<table>
+<colgroup>
+<col style="text-align:left;">
+<col style="text-align:left;">
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">BEST PRACTICE PATTERNS</th>
+	<th style="text-align:left;">ANTI-PATTERNS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">* Use Allocation Tables to define system architecture integrity (well-formedness rules) for System Analysis and System Design.</td>
+	<td style="text-align:left;">* Rely on the anemic subset of Allcoation Tables defined by the OMG SysML specification and SysML tool vendors.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">* Use Allocation Tables to define system Verification &amp; Validation (V&amp;V) relationships on both sides of the System V-Model.</td>
+	<td style="text-align:left;"></td>
+</tr>
+</tbody>
+</table>
+
+
+
+	<div class="mdp-cntrls ">
+	<div class="slice empty out"><div class="slice empty in"></div></div>
+	</div>
+</div>
+
+
+</div></div> </div> </div> 
+</div></div></div></div><div id="stacks_out_95316" class="stacks_out"><div id="stacks_in_95316" class="stacks_in "><div id="stacks_out_95316_5" class="stacks_out"><div id="stacks_in_95316_5" class="stacks_in stack_stack"><div id="stacks_out_95316_8" class="stacks_out"><div id="stacks_in_95316_8" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95316_7" class="stacks_out"><div id="stacks_in_95316_7" class="stacks_in com_yourhead_stack_button_stack"><div id="stacks_in_95316_7_button"><a href="https://sysml.org/sysml-faq/" title=" FAQ">Return to Top of SysML FAQ...</a></div></div></div></div></div></div></div> </div> </div> 
+</div></div><div id="stacks_out_95313" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95313" class="stacks_in " style="height: auto !important;"><div id="stacks_out_95313_33621" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95313_33621" class="stacks_in com_joeworkman_stacks_foundation_1col_s3_stack" style="height: auto !important;"> 
+<div class="row        " style="height: auto !important;"> <div class="columns small-12      " style="height: auto !important;"> <div id="stacks_out_95313_33674" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95313_33674" class="stacks_in " style="height: auto !important;"><div id="stacks_out_95313_33674_3" class="stacks_out" style="height: auto !important;"><div id="stacks_in_95313_33674_3" class="stacks_in html_stack" style="height: auto !important;"><script async="" src="./SysML FAQ_ What is an Allocation Table__files/f(8).txt"></script>
+<!-- Auto-Size-Responsive -->
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-4503054387132604" data-ad-slot="1227520675" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:956px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor" style="display: block; border: none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 956px; background-color: transparent; overflow: visible;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:956px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="956" height="280" frameborder="0" src="./SysML FAQ_ What is an Allocation Table__files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="COLiid_0oe8CFZDQfAod0xMJcw" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div></div></div><div id="stacks_out_95313_33675" class="stacks_out"><div id="stacks_in_95313_33675" class="stacks_in com_joeworkman_stacks_foundation_divider_s3_stack"><hr class=""> 
+</div></div><div id="stacks_out_95313_33671" class="stacks_out"><div id="stacks_in_95313_33671" class="stacks_in "><div id="stacks_out_95313_33671_1" class="stacks_out"><div id="stacks_in_95313_33671_1" class="stacks_in text_stack"><span id="stacks_in_95313_33671_2">UML, BPMN, OMG SYSML and UPDM are trademarks of the Object Management Group.<br><span style="color:#000000;">TOGAF and ARCHIMATE are trademarks of The Open Group.<br>ENTERPRISE ARCHITECT is a trademark of Sparx Systems Pty Ltd. MAGICDRAW and CAMEO are trademarks of No Magic, Inc. RATIONAL RHAPSODY is a trademark of IBM.<br>All other trademarks are the property of their respective owners.</span></span></div></div></div></div><div id="stacks_out_95313_33628" class="stacks_out"><div id="stacks_in_95313_33628" class="stacks_in com_joeworkman_stacks_foundation_footertext_stack"><p class="copyright text-left ">  © 2003-2021 SysML.org <a href="mailto:info@sysml.org?subject=Request%20for%20info" id="rw_email_contact">Contact Us</a><script type="text/javascript">var _rwObsfuscatedHref0 = "mai";var _rwObsfuscatedHref1 = "lto";var _rwObsfuscatedHref2 = ":in";var _rwObsfuscatedHref3 = "fo@";var _rwObsfuscatedHref4 = "sys";var _rwObsfuscatedHref5 = "ml.";var _rwObsfuscatedHref6 = "org";var _rwObsfuscatedHref7 = "?su";var _rwObsfuscatedHref8 = "bje";var _rwObsfuscatedHref9 = "ct=";var _rwObsfuscatedHref10 = "Req";var _rwObsfuscatedHref11 = "ues";var _rwObsfuscatedHref12 = "t f";var _rwObsfuscatedHref13 = "or ";var _rwObsfuscatedHref14 = "inf";var _rwObsfuscatedHref15 = "o";var _rwObsfuscatedHref = _rwObsfuscatedHref0+_rwObsfuscatedHref1+_rwObsfuscatedHref2+_rwObsfuscatedHref3+_rwObsfuscatedHref4+_rwObsfuscatedHref5+_rwObsfuscatedHref6+_rwObsfuscatedHref7+_rwObsfuscatedHref8+_rwObsfuscatedHref9+_rwObsfuscatedHref10+_rwObsfuscatedHref11+_rwObsfuscatedHref12+_rwObsfuscatedHref13+_rwObsfuscatedHref14+_rwObsfuscatedHref15; document.getElementById("rw_email_contact").href = _rwObsfuscatedHref;</script> </p> 
+</div></div><div id="stacks_out_95313_33665" class="stacks_out"><div id="stacks_in_95313_33665" class="stacks_in com_joeworkman_stacks_foundation_printer_stack"><div class="hide-for-print"> <div id="stacks_out_95313_33629" class="stacks_out"><div id="stacks_in_95313_33629" class="stacks_in com_joeworkman_stacks_foundation_breadcrumb_stack">
+
+
+
+	<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs"><li role="menuitem"><a href="https://sysml.org/"><i class="fa fa-home"></i></a></li><li role="menuitem"><a href="https://sysml.org/sysml-faq/"> FAQ</a></li><li role="menuitem"><a href="https://sysml.org/sysml-faq/what-are-sysml-diagram-types.html">What are SysML diagram types?</a></li><li role="menuitem" class="current"><a href="https://sysml.org/sysml-faq/what-is-allocation-table.html">What is an Allocation Table?</a></li></nav>
+
+
+
+
+
+</div></div><div id="stacks_out_95313_33673" class="stacks_out"><div id="stacks_in_95313_33673" class="stacks_in "><div class="cssbox" style="text-align: center;"> <div id="stacks_out_95313_33673_3" class="stacks_out"><div id="stacks_in_95313_33673_3" class="stacks_in text_stack"><div id="cssbox"> <p style="font-size: 80%; text-align:right;"> Web designed &amp; powered by <a href="https://pivotpt.com/about/contact/">PivotPoint Technology™</a></p></div></div></div></div>
+
+</div></div> </div> 
+</div></div> </div> </div> 
+</div></div></div></div></div></div>
+
+
+
+<script data-cfasync="true" src="./SysML FAQ_ What is an Allocation Table__files/foundation.min.js.download"></script>
+
+
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_1_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="./SysML FAQ_ What is an Allocation Table__files/ads(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-load-complete="true"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_5109099382915" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./SysML FAQ_ What is an Allocation Table__files/saved_resource(1).html"></iframe></body><iframe id="google_esf" name="google_esf" src="./SysML FAQ_ What is an Allocation Table__files/zrt_lookup.html" data-ad-client="ca-pub-4503054387132604" style="display: none;"></iframe></html>

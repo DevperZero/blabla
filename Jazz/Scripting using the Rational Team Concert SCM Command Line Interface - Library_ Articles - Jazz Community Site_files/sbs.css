@@ -1,0 +1,109 @@
+/*!
+ * $Id$
+ * SBS CSS file
+ */
+ 
+#ibm-sbs-icons {
+	height:				16px;
+	margin:				2px;
+	padding:			0;
+}
+
+#ibm-sbs-icons li {
+	float:				left;
+	padding:			0 2px 0 0;
+	margin:				0;
+}
+
+#ibm-sbs-icons ul {
+	list-style-type:	none;
+	margin:				0;
+	padding:			0;
+	clear:				both;
+}
+
+#ibm-sbs-icons ul a {
+	display:			block;
+	height:				16px;
+	margin:				0;
+	padding:			0;
+	width:				16px;
+	border:				0px;
+}
+
+
+/* DEFAULT STATE - OFF */
+a.ibm-share-email		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -52px;}
+a.ibm-share-print		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -130px;}
+a.ibm-share-delicious	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px 0px;}
+a.ibm-share-digg		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -26px;}
+a.ibm-share-facebook	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -78px;}
+a.ibm-share-linkedin	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -104px;}
+a.ibm-share-twitter		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -52px -156px;}
+
+/* HOVER ALL */
+.ibm-active a.ibm-share-email		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -52px;}
+.ibm-active a.ibm-share-print		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -130px;}
+.ibm-active a.ibm-share-delicious	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px 0px;}
+.ibm-active a.ibm-share-digg		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -26px;}
+.ibm-active a.ibm-share-facebook	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -78px;}
+.ibm-active a.ibm-share-linkedin	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -104px;}
+.ibm-active a.ibm-share-twitter		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -26px -156px;}
+
+/* HOVER SINGLE ITEM */
+.ibm-active a.ibm-share-email:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -52px;}
+.ibm-active a.ibm-share-print:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -130px;}
+.ibm-active a.ibm-share-delicious:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px 0px;}
+.ibm-active a.ibm-share-digg:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -26px;}
+.ibm-active a.ibm-share-facebook:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -78px;}
+.ibm-active a.ibm-share-linkedin:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -104px;}
+.ibm-active a.ibm-share-twitter:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat -78px -156px;}
+
+/* HOVER + MOUSE DOWN */
+.ibm-active a.ibm-share-active-email:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -52px;}
+.ibm-active a.ibm-share-active-print:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -130px;}
+.ibm-active a.ibm-share-active-delicious:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px 0px;}
+.ibm-active a.ibm-share-active-digg:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -26px;}
+.ibm-active a.ibm-share-active-facebook:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -78px;}
+.ibm-active a.ibm-share-active-linkedin:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -104px;}
+.ibm-active a.ibm-share-active-twitter:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.png) no-repeat 0px -156px;}
+
+
+/* IE6 hack to use GIF instead of PNG */
+/* DEFAULT STATE - OFF */
+* html a.ibm-share-email		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -52px;}
+* html a.ibm-share-print		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -130px;}
+* html a.ibm-share-delicious	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px 0px;}
+* html a.ibm-share-digg		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -26px;}
+* html a.ibm-share-facebook	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -78px;}
+* html a.ibm-share-linkedin	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -104px;}
+* html a.ibm-share-twitter		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -52px -156px;}
+
+/* HOVER ALL */
+* html .ibm-active a.ibm-share-email		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -52px;}
+* html .ibm-active a.ibm-share-print		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -130px;}
+* html .ibm-active a.ibm-share-delicious	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px 0px;}
+* html .ibm-active a.ibm-share-digg		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -26px;}
+* html .ibm-active a.ibm-share-facebook	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -78px;}
+* html .ibm-active a.ibm-share-linkedin	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -104px;}
+* html .ibm-active a.ibm-share-twitter		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -26px -156px;}
+
+/* HOVER SINGLE ITEM */
+* html .ibm-active a.ibm-share-email:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -52px;}
+* html .ibm-active a.ibm-share-print:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -130px;}
+* html .ibm-active a.ibm-share-delicious:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px 0px;}
+* html .ibm-active a.ibm-share-digg:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -26px;}
+* html .ibm-active a.ibm-share-facebook:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -78px;}
+* html .ibm-active a.ibm-share-linkedin:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -104px;}
+* html .ibm-active a.ibm-share-twitter:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat -78px -156px;}
+
+/* HOVER + MOUSE DOWN */
+* html .ibm-active a.ibm-share-active-email:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -52px;}
+* html .ibm-active a.ibm-share-active-print:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -130px;}
+* html .ibm-active a.ibm-share-active-delicious:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px 0px;}
+* html .ibm-active a.ibm-share-active-digg:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -26px;}
+* html .ibm-active a.ibm-share-active-facebook:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -78px;}
+* html .ibm-active a.ibm-share-active-linkedin:hover	{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -104px;}
+* html .ibm-active a.ibm-share-active-twitter:hover		{background:url(//www.ibm.com/i/v16/icons/sprites-pt-all.gif) no-repeat 0px -156px;}
+
+

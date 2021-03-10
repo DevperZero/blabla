@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://stackabuse.com/reading-and-writing-html-tables-with-pandas/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Reading and Writing HTML Tables with Pandas_files/quant.js.download" async="" type="text/javascript"></script><script src="./Reading and Writing HTML Tables with Pandas_files/osd.js.download"></script><script type="text/javascript" async="" src="./Reading and Writing HTML Tables with Pandas_files/localstore.js.download"></script><script src="./Reading and Writing HTML Tables with Pandas_files/rules-p-fTfJtcPmQDwZG.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/rules-p-31iz6hfFutd16.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/quant.js.download" async="" type="text/javascript"></script><script async="" type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/cmp2.js.download"></script><script type="text/javascript" async="" src="./Reading and Writing HTML Tables with Pandas_files/videoplayer.js.download"></script><script async="" type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/gpt.js.download"></script><script async="" type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/choice.js.download"></script><script type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/visit"></script>
+<script type="text/javascript" async="" src="./Reading and Writing HTML Tables with Pandas_files/client.js.download"></script><script async="" src="./Reading and Writing HTML Tables with Pandas_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Reading and Writing HTML Tables with Pandas_files/2930764.js.download"></script><script id="repixel" async="" src="./Reading and Writing HTML Tables with Pandas_files/r.js.download"></script><script src="./Reading and Writing HTML Tables with Pandas_files/525232124909042" async=""></script><script async="" src="./Reading and Writing HTML Tables with Pandas_files/fbevents.js.download"></script><script data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer="">var __ez=__ez||{};__ez.stms=Date.now();__ez.evt={};__ez.script={};__ez.ck=__ez.ck||{};__ez.template={};__ez.template.isOrig=true;__ez.queue=(function(){var count=0,incr=0,items=[],timeDelayFired=false,hpItems=[],lpItems=[],allowLoad=true;var obj={func:function(name,funcName,parameters,isBlock,blockedBy,deleteWhenComplete,proceedIfError){var self=this;this.name=name;this.funcName=funcName;this.parameters=parameters===null?null:(parameters instanceof Array)?parameters:[parameters];this.isBlock=isBlock;this.blockedBy=blockedBy;this.deleteWhenComplete=deleteWhenComplete;this.isError=false;this.isComplete=false;this.isInitialized=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){log("... func = "+name);self.isInitialized=true;self.isComplete=true;log("... func.apply: "+name);var funcs=self.funcName.split('.');var func=null;if(funcs.length>3){}else if(funcs.length===3){func=window[funcs[0]][funcs[1]][funcs[2]];}else if(funcs.length===2){func=window[funcs[0]][funcs[1]];}else{func=window[self.funcName];}
+if(typeof func!=='undefined'&&func!==null){func.apply(null,this.parameters);}
+if(self.deleteWhenComplete===true)delete items[name];if(self.isBlock===true){log("----- F'D: "+self.name);processAll();}}},file:function(name,path,isBlock,blockedBy,async,defer,proceedIfError){var self=this;this.name=name;this.path=path;this.async=async;this.defer=defer;this.isBlock=isBlock;this.blockedBy=blockedBy;this.isInitialized=false;this.isError=false;this.isComplete=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){self.isInitialized=true;log("... file = "+name);var scr=document.createElement('script');scr.src=path;if(async===true)scr.async=true;else if(defer===true)scr.defer=true;scr.onerror=function(){log("----- ERR'D: "+self.name);self.isError=true;if(self.isBlock===true){processAll();}};scr.onreadystatechange=scr.onload=function(){var state=scr.readyState;log("----- F'D: "+self.name);if((!state||/loaded|complete/.test(state))){self.isComplete=true;if(self.isBlock===true){processAll();}}};document.getElementsByTagName('head')[0].appendChild(scr);}}};function init(){window.addEventListener("load",function(){setTimeout(function(){timeDelayFired=true;log('TDELAY -----');processAll();},5000);},false);}
+function addFile(name,path,isBlock,blockedBy,async,defer,proceedIfError,priority){var item=new obj.file(name,path,isBlock,blockedBy,async,defer,proceedIfError);if(priority===true){hpItems[name]=item}else{lpItems[name]=item}
+items[name]=item;checkIfBlocked(item);}
+function setallowLoad(settobool){allowLoad=settobool}
+function addFunc(name,func,parameters,isBlock,blockedBy,autoInc,deleteWhenComplete,proceedIfError,priority){if(autoInc===true)name=name+"_"+incr++;var item=new obj.func(name,func,parameters,isBlock,blockedBy,deleteWhenComplete,proceedIfError);if(priority===true){hpItems[name]=item}else{lpItems[name]=item}
+items[name]=item;checkIfBlocked(item);}
+function addTimeDelayFile(name,path){var item=new obj.file(name,path,false,[],false,false,true);item.isTimeDelay=true;log(name+' ... '+' FILE! TDELAY');lpItems[name]=item;items[name]=item;checkIfBlocked(item);}
+function addTimeDelayFunc(name,func,parameters){var item=new obj.func(name,func,parameters,false,[],true,true);item.isTimeDelay=true;log(name+' ... '+' FUNCTION! TDELAY');lpItems[name]=item;items[name]=item;checkIfBlocked(item);}
+function checkIfBlocked(item){if(isBlocked(item)===true||allowLoad==false)return;item.process();}
+function isBlocked(item){if(item.isTimeDelay===true&&timeDelayFired===false){log(item.name+" blocked = TIME DELAY!");return true;}
+if(item.blockedBy instanceof Array){for(var i=0;i<item.blockedBy.length;i++){var block=item.blockedBy[i];if(items.hasOwnProperty(block)===false){log(item.name+" blocked = "+block);return true;}else if(item.proceedIfError===true&&items[block].isError===true){return false;}else if(items[block].isComplete===false){log(item.name+" blocked = "+block);return true;}}}
+return false;}
+function log(msg){var href=window.location.href;var reg=new RegExp('[?&]ezq=([^&#]*)','i');var string=reg.exec(href);var res=string?string[1]:null;if(res==="1")console.debug(msg);}
+function processAll(){count++;if(count>200)return;log("let's go");processItems(hpItems);processItems(lpItems);}
+function processItems(list){for(var i in list){if(list.hasOwnProperty(i)===false)continue;var item=list[i];if(item.isComplete===true||isBlocked(item)||item.isInitialized===true||item.isError===true){if(item.isError===true){log(item.name+': error')}else if(item.isComplete===true){log(item.name+': complete already')}else if(item.isInitialized===true){log(item.name+': initialized already')}}else{item.process();}}}
+init();return{addFile:addFile,addDelayFile:addTimeDelayFile,addFunc:addFunc,addDelayFunc:addTimeDelayFunc,items:items,processAll:processAll,setallowLoad:setallowLoad};})();__ez.evt.add=function(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n()},__ez.evt.remove=function(e,t,n){e.removeEventListener?e.removeEventListener(t,n,!1):e.detachEvent?e.detachEvent("on"+t,n):delete e["on"+t]};__ez.script.add=function(e){var t=document.createElement("script");t.src=e,t.async=!0,t.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(t)};__ez.dot={};__ez.queue.addFile('/detroitchicago/boise.js', '/detroitchicago/boise.js?gcb=192-0&cb=1', false, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/memphis.js', '/detroitchicago/memphis.js?gcb=192-0&cb=5', false, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/minneapolis.js', '/detroitchicago/minneapolis.js?gcb=192-0&cb=3', false, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/rochester.js', '/detroitchicago/rochester.js?gcb=192-0&cb=3', false, ['/detroitchicago/memphis.js','/detroitchicago/minneapolis.js'], true, false, true, false);__ez.vep=(function(){var pixels=[],pxURL="/detroitchicago/grapefruit.gif";function AddPixel(vID,pixelData){if(__ez.dot.isDefined(vID)&&__ez.dot.isValid(pixelData)){pixels.push({type:'video',video_impression_id:vID,domain_id:__ez.dot.getDID(),t_epoch:__ez.dot.getEpoch(0),data:__ez.dot.dataToStr(pixelData)});}}
+function Fire(){if(typeof document.visibilityState!=='undefined'&&document.visibilityState==="prerender"){return;}
+if(__ez.dot.isDefined(pixels)&&pixels.length>0){while(pixels.length>0){var j=5;if(j>pixels.length){j=pixels.length;}
+var pushPixels=pixels.splice(0,j);var pixelURL=__ez.dot.getURL(pxURL)+"?orig="+(__ez.template.isOrig===true?1:0)+"&v="+btoa(JSON.stringify(pushPixels));__ez.dot.Fire(pixelURL);}}
+pixels=[];}
+return{Add:AddPixel,Fire:Fire};})();</script><script src="./Reading and Writing HTML Tables with Pandas_files/boise.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/memphis.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/minneapolis.js.download" async=""></script><script data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer="">__ez.pel=(function(){var pixels=[],pxURL="/porpoiseant/army.gif";function AddAndFirePixel(adSlot,pixelData){AddPixel(adSlot,pixelData,0,0,0,0,0);Fire();}
+function AddAndFireOrigPixel(adSlot,pixelData){AddPixel(adSlot,pixelData,0,0,0,0,0,true);Fire();}
+function GetCurrentPixels(){return pixels;}
+function AddPixel(adSlot,pixelData,revenue,est_revenue,bid_floor_filled,bid_floor_prev,stat_source_id,isOrig){if(!__ez.dot.isDefined(adSlot)||__ez.dot.isAnyDefined(adSlot.getSlotElementId,adSlot.ElementId)==false){return;}
+var ad_position_id=parseInt(__ez.dot.getTargeting(adSlot,'ap'));var impId=__ez.dot.getSlotIID(adSlot),adUnit=__ez.dot.getAdUnit(adSlot,isOrig);var compId=parseInt(__ez.dot.getTargeting(adSlot,"compid"));var lineItemId=0;var creativeId=0;var ezimData=getEzimData(adSlot);if(typeof ezimData=='object'){if(ezimData.creative_id!==undefined){creativeId=ezimData.creative_id;}
+if(ezimData.line_item_id!==undefined){lineItemId=ezimData.line_item_id;}}
+if(__ez.dot.isDefined(impId,adUnit)&&__ez.dot.isValid(pixelData)){pixels.push({type:"impression",impression_id:impId,domain_id:__ez.dot.getDID(),unit:adUnit,t_epoch:__ez.dot.getEpoch(0),revenue:revenue,est_revenue:est_revenue,ad_position:ad_position_id,ad_size:"",bid_floor_filled:bid_floor_filled,bid_floor_prev:bid_floor_prev,stat_source_id:stat_source_id,country_code:__ez.dot.getCC(),pageview_id:__ez.dot.getPageviewId(),comp_id:compId,line_item_id:lineItemId,creative_id:creativeId,data:__ez.dot.dataToStr(pixelData),is_orig:isOrig||__ez.template.isOrig,});}}
+function AddPixelById(impFullId,pixelData,isOrig){var vals=impFullId.split('/');if(__ez.dot.isDefined(impFullId)&&vals.length===3&&__ez.dot.isValid(pixelData)){var adUnit=vals[0],impId=vals[2];pixels.push({type:"impression",impression_id:impId,domain_id:__ez.dot.getDID(),unit:adUnit,t_epoch:__ez.dot.getEpoch(0),pageview_id:__ez.dot.getPageviewId(),data:__ez.dot.dataToStr(pixelData),is_orig:isOrig||__ez.template.isOrig});}}
+function Fire(){if(typeof document.visibilityState!=='undefined'&&document.visibilityState==="prerender")return;if(__ez.dot.isDefined(pixels)&&pixels.length>0){var allPixels=[pixels.filter(function(pixel){return pixel.is_orig}),pixels.filter(function(pixel){return!pixel.is_orig})];allPixels.forEach(function(pixels){while(pixels.length>0){var isOrig=pixels[0].is_orig||false;var j=5;if(j>pixels.length){j=pixels.length;}
+var pushPixels=pixels.splice(0,j);var pixelURL=__ez.dot.getURL(pxURL)+"?orig="+(isOrig===true?1:0)+"&sts="+btoa(JSON.stringify(pushPixels));if(typeof window.isAmp!=='undefined'&&isAmp&&typeof window._ezaq!=='undefined'&&_ezaq.hasOwnProperty("domain_id")){pixelURL+="&visit_uuid="+_ezaq['visit_uuid'];}
+__ez.dot.Fire(pixelURL);}})}
+pixels=[];}
+function getEzimData(adSlot){if(typeof _ezim_d=="undefined"){return false}
+var adUnitName=__ez.dot.getAdUnitPath(adSlot).split('/').pop();if(typeof _ezim_d==='object'&&_ezim_d.hasOwnProperty(adUnitName)){return _ezim_d[adUnitName];}
+for(var ezimKey in _ezim_d){if(ezimKey.split('/').pop()===adUnitName){return _ezim_d[ezimKey];}}
+return false;}
+return{Add:AddPixel,AddAndFire:AddAndFirePixel,AddAndFireOrig:AddAndFireOrigPixel,AddById:AddPixelById,Fire:Fire,GetPixels:GetCurrentPixels,};})();__ez.queue.addFile('/detroitchicago/raleigh.js', '/detroitchicago/raleigh.js?gcb=192-0&cb=5', false, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/tampa.js', '/detroitchicago/tampa.js?gcb=192-0&cb=3', false, [], true, false, true, false);</script><script src="./Reading and Writing HTML Tables with Pandas_files/raleigh.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/tampa.js.download" async=""></script>
+<script data-ezscrex="false" data-cfasync="false">(function(){if("function"===typeof window.CustomEvent)return!1;window.CustomEvent=function(c,a){a=a||{bubbles:!1,cancelable:!1,detail:null};var b=document.createEvent("CustomEvent");b.initCustomEvent(c,a.bubbles,a.cancelable,a.detail);return b}})();</script><script data-ezscrex="false" data-cfasync="false">__ez.queue.addFile('/detroitchicago/tulsa.js', '/detroitchicago/tulsa.js?gcb=192-0&cb=5', false, [], true, false, true, false);</script><script src="./Reading and Writing HTML Tables with Pandas_files/tulsa.js.download" async=""></script>
+    <link href="https://cdn.thisiswaldo.com/" rel="dns-prefetch">
+    <link href="https://fonts.googleapis.com/" rel="dns-prefetch">
+
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Reading and Writing HTML Tables with Pandas</title>
+    <meta name="HandheldFriendly" content="True">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- fav icons -->
+	<link rel="shortcut icon" href="https://stackabuse.com/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://stackabuse.com/assets/images/apple-touch-icon.png?v=afe260f3e5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://stackabuse.com/assets/images/favicon-32x32.png?v=afe260f3e5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://stackabuse.com/assets/images/favicon-16x16.png?v=afe260f3e5">
+    <!-- header scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                var e = document.createElement("script");
+                e.type="text/javascript",
+                e.src="//cdn.thisiswaldo.com/static/js/3873.js",
+                document.getElementsByTagName("head")[0].appendChild(e);
+            }, 1000);
+        }, false);
+    </script>
+	<!-- stylesheets -->
+    <link href="./Reading and Writing HTML Tables with Pandas_files/css" rel="stylesheet">
+	<link rel="stylesheet" href="./Reading and Writing HTML Tables with Pandas_files/bootstrap.min.css">
+	<link rel="stylesheet" href="./Reading and Writing HTML Tables with Pandas_files/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./Reading and Writing HTML Tables with Pandas_files/screen.css">
+	<link rel="stylesheet" type="text/css" href="./Reading and Writing HTML Tables with Pandas_files/atom_one_dark.css">
+	<script>
+/*====================================================
+  THEME SETTINGS & GLOBAL VARIABLES
+====================================================*/
+//  1. Disqus comment settings
+var disqus_shortname = 'stackabuse'; // required: replace example with your forum shortname
+
+//	2. Sidebar Position
+var sidebar_left = false; // Set true or flase for positioning sidebar on left
+
+//  3. Recent Post count
+var recent_post_count = 3;
+
+//	4. Google+ badge settings
+var badge_type = 'page'; // person / page / community ----- three type of google badge
+var google_plus_url = 'https://plus.google.com/111813546240107028721';
+
+//	5. Facebook Page Setting
+var facebook_page_url = 'https://www.facebook.com/stackabuse';
+
+//	6. Twitter Setting
+var twitter_url = 'https://twitter.com/ScottWRobinson';
+var twitter_widget_id = '722928793669607425';
+var number_of_tweet = 3;
+
+//	7. Mailchimp signup form Setting
+var mailchimp_form_url = '//stackabuse.us10.list-manage.com/subscribe/post?u=90b216fdbe02b25619ec94fc3&amp;id=bc2bb312cd';
+var success_message = "Please check your inbox and confirm your email address. Thank you!";
+
+//	8. Flickr Setting
+//var flickr_id = '52617155@N08';
+var flickr_id = '';
+</script>
+    <meta name="description" content="In this article, we will learn how to load and export HTML table data to and from a Pandas DataFrame.">
+    <link rel="shortcut icon" href="https://stackabuse.com/favicon.png" type="image/png">
+    <link rel="canonical" href="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Stack Abuse">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Reading and Writing HTML Tables with Pandas">
+    <meta property="og:description" content="Introduction
+Hypertext Markup Language  (HTML) is the standard markup language for building
+web pages. We can render tabular data using HTML&#39;s &lt;table&gt;  element. The Pandas
+data analysis library provides functions like read_html()  and to_html()  so we
+can import and export data to DataFrames.
+
+In this article, we will learn how to read tabular data from an HTML file and
+load it into a Pandas DataFrame. We&#39;ll also learn how to write data from a
+Pandas DataFrame and to an HTML file.
+
+Note:  In thi">
+    <meta property="og:url" content="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="pandas">
+    <meta property="article:tag" content="html">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Reading and Writing HTML Tables with Pandas">
+    <meta name="twitter:description" content="Introduction
+Hypertext Markup Language  (HTML) is the standard markup language for building
+web pages. We can render tabular data using HTML&#39;s &lt;table&gt;  element. The Pandas
+data analysis library provides functions like read_html()  and to_html()  so we
+can import and export data to DataFrames.
+
+In this article, we will learn how to read tabular data from an HTML file and
+load it into a Pandas DataFrame. We&#39;ll also learn how to write data from a
+Pandas DataFrame and to an HTML file.
+
+Note:  In thi">
+    <meta name="twitter:url" content="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Naazneen Jatu">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="python, pandas, html">
+    <meta name="twitter:site" content="@ScottWRobinson">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Stack Abuse",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Naazneen Jatu",
+        "url": "https://stackabuse.com/author/naazneen/",
+        "sameAs": []
+    },
+    "headline": "Reading and Writing HTML Tables with Pandas",
+    "url": "https://stackabuse.com/reading-and-writing-html-tables-with-pandas/",
+    "keywords": "python, pandas, html",
+    "description": "Introduction\nHypertext Markup Language  (HTML) is the standard markup language for building\nweb pages. We can render tabular data using HTML&#x27;s &lt;table&gt;  element. The Pandas\ndata analysis library provides functions like read_html()  and to_html()  so we\ncan import and export data to DataFrames.\n\nIn this article, we will learn how to read tabular data from an HTML file and\nload it into a Pandas DataFrame. We&#x27;ll also learn how to write data from a\nPandas DataFrame and to an HTML file.\n\nNote:  In thi",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://stackabuse.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.23">
+    <link rel="alternate" type="application/rss+xml" title="Stack Abuse" href="https://stackabuse.com/rss/">
+    <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '525232124909042');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=525232124909042&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Repixel Code -->
+<script>
+  (function(w, d, s, id, src){
+  w.Repixel = r = {
+    init: function(id) {
+      w.repixelId = id;
+    }
+  };
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)){ return; }
+  js = d.createElement(s); 
+  js.id = id;
+  js.async = true;
+  js.onload = function(){
+      Repixel.init(w.repixelId);
+  };
+  js.src = src;
+  fjs.parentNode.insertBefore(js, fjs);
+  }(window, document, 'script', 'repixel', 
+  'https://sdk.repixel.co/r.js'));
+  Repixel.init('5cefff7fce3aad00089e44e5');
+</script>
+<!-- Repixel Code -->
+<script type="text/javascript">var ezouid = "1";</script><!--<base href="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/">--><base href="."><script type="text/javascript">
+var ezoTemplate = 'old_site_noads';
+if(typeof ezouid == 'undefined')
+{
+    var ezouid = 'none';
+}
+var ezoFormfactor = '1';
+var ezo_elements_to_check = Array();
+</script><!-- START EZHEAD -->
+<script data-ezscrex="false" type="text/javascript">
+var soc_app_id = '0';
+var did = 248604;
+var ezdomain = 'stackabuse.com';
+var ezoicSearchable = 1;
+</script>
+<!--{jquery}-->
+<!-- END EZHEAD -->
+<script data-ezscrex="false" type="text/javascript" data-cfasync="false">var _ezaq = {"ad_cache_level":0,"ad_lazyload_version":0,"city":"Ho Chi Minh City","country":"VN","days_since_last_visit":-1,"domain_id":248604,"engaged_time_visit":0,"ezcache_level":1,"ezcache_skip_code":0,"form_factor_id":1,"framework_id":1,"is_return_visitor":false,"is_sitespeed":0,"last_page_load":"","last_pageview_id":"","lt_cache_level":0,"metro_code":0,"page_ad_positions":"","page_view_count":0,"page_view_id":"c8564018-d1b4-4346-6f06-5eedc756aaf3","position_selection_id":0,"postal_code":"","pv_event_count":0,"response_size_orig":59485,"response_time_orig":1004,"serverid":"13.212.96.67:14309","state":"SG","t_epoch":1615297636,"template_id":120,"time_on_site_visit":0,"url":"https://stackabuse.com/reading-and-writing-html-tables-with-pandas/","user_id":0,"weather_precipitation":0,"weather_summary":"","weather_temperature":0,"word_count":1819,"worst_bad_word_level":0};var _ezExtraQueries = "&ez_orig=1";</script>
+<script data-ezscrex="false" data-pagespeed-no-defer="" data-cfasync="false">
+function create_ezolpl(pvID, rv) {
+    var d = new Date();
+    d.setTime(d.getTime() + (365*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    __ez.ck.setByCat("ezux_lpl_248604=" + new Date().getTime() + "|" + pvID + "|" + rv + "; " + expires, 3);
+}
+function attach_ezolpl(pvID, rv) {
+    if (document.readyState === "complete") {
+        create_ezolpl(pvID, rv);
+    }
+    if(window.attachEvent) {
+        window.attachEvent("onload", create_ezolpl, pvID, rv);
+    } else {
+        if(window.onload) {
+            var curronload = window.onload;
+            var newonload = function(evt) {
+                curronload(evt);
+                create_ezolpl(pvID, rv);
+            };
+            window.onload = newonload;
+        } else {
+            window.onload = create_ezolpl.bind(null, pvID, rv);
+        }
+    }
+}
+
+__ez.queue.addFunc("attach_ezolpl", "attach_ezolpl", ["c8564018-d1b4-4346-6f06-5eedc756aaf3", "false"], false, ['/detroitchicago/boise.js'], true, false, false, false);
+</script><script src="./Reading and Writing HTML Tables with Pandas_files/gumroad-overlay-3673fbdd8b2bb7a8cfcd94e747dc7669f4909655eb89a1b6782ef1c926d573e0.js.download"></script><script src="./Reading and Writing HTML Tables with Pandas_files/gumroad-overlay-3673fbdd8b2bb7a8cfcd94e747dc7669f4909655eb89a1b6782ef1c926d573e0.js.download"></script><script src="./Reading and Writing HTML Tables with Pandas_files/gumroad-overlay-3673fbdd8b2bb7a8cfcd94e747dc7669f4909655eb89a1b6782ef1c926d573e0.js.download"></script><script src="./Reading and Writing HTML Tables with Pandas_files/jellyfish.webp" async=""></script><style type="text/css">.hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}</style><script type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/3873.js.download"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">#waldo-sticky-footer-wrapper {position: fixed; width: 100%; bottom: 0px; left: 0px; text-align: center; z-index: 9999;margin-bottom: 0 !important;}#waldo-sticky-footer-wrapper > div {position: relative; display: inline-block; margin-bottom: 0 !important;}#waldo-sticky-footer-wrapper iframe, #waldo-sticky-footer-wrapper div {margin-left: auto;margin-right: auto;}.waldo-sticky-sidebar{position: fixed; top: 10px;z-index: 90}.waldo-bfleft {position: fixed; left: 0; top: 10px;z-index:101;}.waldo-bfright {position: fixed; right: 0; top: 10px;z-index:101;}#nm-ccpa-widget {width: 400px;}#nm-ccpa-widget {position: fixed; right: 20px; z-index: 9999; margin-bottom: 15px;box-shadow: 0 3px 36px 0 rgba(0,0,0,0.3); background-color: #fff;border-radius: 10px;bottom: 20px;margin-top: 10px;font-size: 14px;}.nm-ccpa-widget-header {background: #179f84;color: #fff;padding: 20px;}.nm-ccpa-widget-header .nm-ccpa-widget-main-title {margin-bottom: 0;margin-top: 0;font-size: 16px;font-weight: bold;}.nm-ccpa-widget-body {padding: 20px;background: #fff;}.nm-ccpa-widget-body label {font-size: 16px;}.nm-ccpa-widget-submit-btn {margin-top: 15px;padding-left: 25px;}.nm-ccpa-widget-submit-btn input {background: #179f84;color: #fff;padding: 10px 20px;border-radius: 8px;border: 0;outline: 0;}.nm-ccpa-widget-submit-btn input:hover,.nm-ccpa-widget-submit-btn input:focus {cursor: pointer;}.nm-ccpa-widget-checkbox-label {font-size: 20px;}.nm-ccpa-widget-header {position: relative;}.nm-ccpa-widget-close-btn {position: absolute;right: 10px;top: 10px;}.nm-ccpa-widget-close-btn a {color: #fff;font-size: 20px;text-decoration: none;}.nm-ccpa-widget-message {padding-left: 25px;}#waldo-tag-6038 {clear: both !important;}div[class^="app_gdpr-"] a {color: #41afbb !important; text-decoration: underline !important}#waldo-close-button {position: absolute; right: 0;top: -24px;}#waldo-close-button a {border: 1px solid rgba(0,0,0,.35) !important;padding: 3px !important;font-size: 12px !important;color: #fff !important;font-weight: bold !important;background-color: #777 !important;}</style><script type="text/javascript">googletag.cmd.push(function() {googletag.pubads().addEventListener('slotRenderEnded', function(event) {waldoPassbackCheck(event);waldoAddCloseBtn(event);});googletag.pubads().enableSingleRequest();googletag.enableServices();gptAdSlots[3874] = googletag.defineSlot('/124067137/stackabuse300x250FL_1', [[300, 250], [300, 600]], 'waldo-tag-3874').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3874');gptAdSlots[3878] = googletag.defineSlot('/124067137/stackabuse728x90FS_1', [[728, 90], [320, 50]], 'waldo-tag-3878').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3878');gptAdSlots[3880] = googletag.defineSlot('/124067137/stackabuse728x90FS_2', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3880').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3880');gptAdSlots[3884] = googletag.defineSlot('/124067137/stackabuse728x90FS_3', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3884').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3884');gptAdSlots[7184] = googletag.defineSlot('/124067137/stackabuse300x250FL_3', [[300, 250], [300, 600]], 'waldo-tag-7184').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-7184');gptAdSlots[7611] = googletag.defineSlot('/124067137/stackabuse300x250FL_4', [[300, 250], [300, 600]], 'waldo-tag-7611').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-7611');gptAdSlots[9728] = googletag.defineSlot('/124067137/stackabuse728x90FS_4', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-9728').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-9728');});</script><meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script src="./Reading and Writing HTML Tables with Pandas_files/pubads_impl_2021030401.js.download" async=""></script><style type="text/css"> .qc-cmp-button.qc-cmp-secondary-button:hover {    background-color: #368bd6 !important;    border-color: transparent !important;  }  .qc-cmp-button.qc-cmp-secondary-button:hover {    color: #ffffff !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    color: #368bd6 !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    background-color: #eee !important;    border-color: transparent !important;  } </style><link rel="preload" href="./Reading and Writing HTML Tables with Pandas_files/f.txt" as="script"><script type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/f.txt"></script><link rel="preload" href="./Reading and Writing HTML Tables with Pandas_files/f(1).txt" as="script"><script type="text/javascript" src="./Reading and Writing HTML Tables with Pandas_files/f(1).txt"></script><link rel="prefetch" href="https://0d326ffc35d979d2d7a6a9f149a18a50.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"><style type="text/css">a.gumroad-button { background-color: white !important; background-image: url("https://gumroad.com/button/button_bar.jpg") !important; background-repeat: repeat-x !important; border-radius: 4px !important; box-shadow: rgba(0, 0, 0, 0.4) 0 0 2px !important; color: #999 !important; display: inline-block !important; font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-size: 16px !important; font-style: normal !important; font-weight: 500 !important; line-height: 50px !important; padding: 0 15px !important; text-shadow: none !important; text-decoration: none !important; } .gumroad-button-logo { background-image: url("https://gumroad.com/button/button_logo.png") !important; background-size: cover !important; height: 17px !important; width: 16px !important; display: inline-block !important; margin-bottom: -3px !important; margin-right: 15px !important; } .gumroad-loading-indicator { background: white; border-radius: 50%; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); box-sizing: border-box; display: none; height: 60px; left: 50% !important; margin-left: -30px !important; margin-top: -30px !important; padding: 10px; position: fixed; top: 50% !important; width: 60px; z-index: 99997; } .gumroad-loading-indicator i { background: url("https://gumroad.com/js/loading-rainbow.svg"); height: 40px; width: 40px; display: inline-block; background-size: contain; animation: gumroad-spin 1.5s infinite linear; } .gumroad-scroll-container { -webkit-overflow-scrolling: touch; overflow-y: auto; position: fixed !important; z-index: 99998 !important; top: 0 !important; right: 0 !important; -ms-overflow-style: none; scrollbar-width: none; } .gumroad-scroll-container::-webkit-scrollbar { display: none; } .gumroad-overlay-iframe { position: absolute; min-width: 100%; min-height: 100%; border: none !important; text-align: left; } @keyframes gumroad-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(359deg); } } </style><script src="./Reading and Writing HTML Tables with Pandas_files/rochester.js.download" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/edmonton.webp" async=""></script><script src="./Reading and Writing HTML Tables with Pandas_files/audins.js.download" async="" type="text/javascript"></script></head>
+<body class="post-template tag-python tag-pandas tag-html"><div id="MathJax_Message" style="display: none;"></div>
+    <nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="https://stackabuse.com/">Stack <span style="color:#f16334;">Abuse</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" role="navigation" aria-label="Site navigation">
+	<li class="nav-javascript"><a href="https://stackabuse.com/tag/javascript/">JavaScript</a></li>
+	<li class="nav-python"><a href="https://stackabuse.com/tag/python">Python</a></li>
+	<li class="nav-java"><a href="https://stackabuse.com/tag/java/">Java</a></li>
+    <li class="nav-hireremote">
+        <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Nav-Link">
+            Jobs
+        </a>
+    </li>
+</ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+    <!-- start site's main content area -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+			<!-- start main post area -->
+			<div class="col-md-8 main-content">
+				<!-- start post -->
+				<article id="5fd0026f2c5e1a08f1ec6790" class="post tag-python tag-pandas tag-html">
+					<div class="post-head">
+                        <!-- Ezoic - top_of_page - top_of_page -->
+<div id="ezoic-pub-ad-placeholder-106"> </div>
+<!-- End Ezoic - top_of_page - top_of_page -->
+						<h2 class="post-title">Reading and Writing HTML Tables with Pandas</h2>
+						<div class="post-meta">
+							<span class="author">
+                                By
+                                Naazneen Jatu
+                            </span> •
+							<span class="comment-count"><a href="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/#disqus_thread">0 Comments</a></span>
+						</div>
+					</div>
+                    <div class="post-ad">
+                        <!-- Ezoic - under_page_title - under_page_title -->
+                        <div id="ezoic-pub-ad-placeholder-107">
+                            <!-- 728x90/320x50 -->
+<div id="waldo-tag-3878" data-processed="true" data-google-query-id="CNqknNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse728x90FS_1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse728x90FS_1_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse728x90FS_1_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(3).html"></iframe></div></div>
+                        </div>
+                        <!-- End Ezoic - under_page_title - under_page_title -->
+                    </div>
+					<div class="post-content">
+						<!--kg-card-begin: markdown--><h3 id="introduction">Introduction</h3>
+<p><em>Hypertext Markup Language</em> (HTML) is the standard markup language for building web pages. We can render tabular data using HTML's <code>&lt;table&gt;</code> element. The Pandas data analysis library provides functions like <code>read_html()</code> and <code>to_html()</code> so we can import and export data to DataFrames.</p>
+<p>In this article, we will learn how to read tabular data from an HTML file and load it into a Pandas DataFrame. We'll also learn how to write data from a Pandas DataFrame and to an HTML file.</p>
+<p><strong>Note:</strong> In this article, we will read and write HTML <code>&lt;table&gt;</code> elements. This article does not include parsing the entire HTML file.</p>
+<h3 id="readinghtml">Reading HTML</h3>
+<p>We can read tables of an HTML file using the <code>read_html()</code> function. This function read tables of HTML files as Pandas DataFrames. It can read from a file or a URL.</p>
+<p>Let's have a look at each input source one by one.</p><p></p><div id="ezoic-pub-ad-placeholder-114"></div><p></p>
+<h4 id="readinghtmldatafromafile">Reading HTML Data From a File</h4>
+<p>For this section, we'll use one set of input data. One table contains programming languages and the year of their creation. The other table has land sizes and their cost in USD.</p>
+<p>Save the following HTML content in a file called <code>table_data.html</code>:</p>
+<pre><code class="language-html hljs"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Table Data<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Programming Language<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Creator<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Year<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dennis Ritchie<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1972<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Python<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Guido Van Rossum<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1989<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Ruby<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Yukihiro Matsumoto<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1995<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>
+          Area (sq.ft)
+        <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>
+          Price (USD)
+        <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+          12000
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+          500
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+          32000
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+          700
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Pandas needs help from another library, called <code>lxml</code> to parse HTML and XML files. For the <code>read_html()</code> function to work you need to install <code>lxml</code>:</p>
+<pre><code class="language-console hljs"><span class="hljs-meta">$</span><span class="bash"> pip install lxml</span>
+</code></pre>
+<p>Once <code>lmxl</code> is installed, we can use the <code>read_html()</code> function. It returns a list of DataFrames, where each DataFrame is an entire table element of the given HTML file. We access each table as a DataFrame by indexing the list.</p>
+<p>The code below demonstrates use of <code>read_html()</code> function to read tables from HTML file:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+tables = pd.read_html(<span class="hljs-string">'table_data.html'</span>)
+print(<span class="hljs-string">'Tables found:'</span>, len(tables))
+df1 = tables[<span class="hljs-number">0</span>]  <span class="hljs-comment"># Save first table in variable df1</span>
+df2 = tables[<span class="hljs-number">1</span>]  <span class="hljs-comment"># Saving next table in variable df2</span>
+
+print(<span class="hljs-string">'First Table'</span>)
+print(df1)
+print(<span class="hljs-string">'Another Table'</span>)
+print(df2)
+</code></pre>
+<p><strong>Note</strong>: While you need <code>lxml</code> installed, you don't need to import it in your program for Pandas to work.</p>
+<p>Running the above code on a Python interpreter will produce the following output:</p>
+<pre><code class="language-python hljs">Tables found: <span class="hljs-number">2</span>
+First Table
+  Programming Language             Creator  Year
+<span class="hljs-number">0</span>                    C      Dennis Ritchie  <span class="hljs-number">1972</span>
+<span class="hljs-number">1</span>               Python    Guido Van Rossum  <span class="hljs-number">1989</span>
+<span class="hljs-number">2</span>                 Ruby  Yukihiro Matsumoto  <span class="hljs-number">1995</span>
+Another Table
+   Area (sq.ft)  Price (USD)
+<span class="hljs-number">0</span>         <span class="hljs-number">12000</span>          <span class="hljs-number">500</span>
+<span class="hljs-number">1</span>         <span class="hljs-number">32000</span>          <span class="hljs-number">700</span>
+</code></pre>
+<h4 id="readinghtmldatafromurl">Reading HTML Data From URL</h4>
+<p>Just as we read table elements from an HTML file, we can also read table elements from an HTML web page into a DataFrame with <code>read_html()</code>. However, in place of the file name, we will provide a URL like this:</p>
+<pre><code class="language-python hljs">read_html(<span class="hljs-string">'https://en.wikipedia.org/wiki/Python_(programming_language)'</span>)
+</code></pre>
+<p>And it will return a list of DataFrames where each DataFrame represents a table element from the given URL.</p>
+<p>Here is an example code to read table elements from a website URL using Pandas:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+tables = pd.read_html(<span class="hljs-string">'https://en.wikipedia.org/wiki/Python_(programming_language)'</span>)
+print(<span class="hljs-string">'Tables found:'</span>, len(tables))
+df1 = tables[<span class="hljs-number">0</span>]  <span class="hljs-comment"># Save first table in variable df1</span>
+print(<span class="hljs-string">'First Table'</span>)
+print(df1.head())  <span class="hljs-comment"># To print first 5 rows</span>
+</code></pre>
+<p>If we successfully run the above code, we can see the output as:</p><p></p><div id="ezoic-pub-ad-placeholder-115"><div><!-- 728x90/300x250/320x50 --><div id="waldo-tag-3880" data-processed="true" data-google-query-id="CNuknNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse728x90FS_2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse728x90FS_2_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse728x90FS_2_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="3" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(4).html"></iframe></div></div></div></div><p></p>
+<pre><code class="language-python hljs">Tables found: <span class="hljs-number">10</span>
+First Table
+                <span class="hljs-number">0</span>                                                  <span class="hljs-number">1</span>
+<span class="hljs-number">0</span>             NaN                                                NaN
+<span class="hljs-number">1</span>        Paradigm  Multi-paradigm: functional, imperative, object...
+<span class="hljs-number">2</span>     Designed by                                   Guido van Rossum
+<span class="hljs-number">3</span>       Developer                         Python Software Foundation
+<span class="hljs-number">4</span>  First appeared                              <span class="hljs-number">1991</span>; <span class="hljs-number">29</span> years ago[<span class="hljs-number">1</span>]
+</code></pre>
+<h4 id="readinghtmldatafromurlthatrequiresauthentication">Reading HTML Data From URL That Requires Authentication</h4>
+<p>We know that we can read table elements from a website. However, when the site requires authentication, the code runs into the following exception:</p>
+<pre><code class="language-plaintext hljs">raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 401: UNAUTHORIZED
+</code></pre>
+<p>To read data from such URLs we will use the <code>requests</code> module. You can install it with <code>pip</code>:</p>
+<pre><code class="language-console hljs"><span class="hljs-meta">$</span><span class="bash"> pip install requests</span>
+</code></pre>
+<p>Now, we will use the <code>get()</code> method from the <code>requests</code> library to make a request to a website URL while providing the optional <code>auth</code> parameter if the site requires authentication.</p>
+<p>This method returns a response object from the web page. We can check the status code (to make sure the content is definitely there) and get the text from the response object, and then convert the table to a DataFrame.</p>
+<p>Let's see an example of using <code>requests</code> to get data that requires authentication. For this purpose, we are using <a href="https://httpbin.org/" target="_blank" rel="noopener nofollow">https://httpbin.org</a>:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> requests
+
+r = requests.get(<span class="hljs-string">'https://httpbin.org/basic-auth/john/johnspassword'</span>, auth=(<span class="hljs-string">'john'</span>, <span class="hljs-string">'johnspassword'</span>))
+
+print(r.status_code)
+print(r.text)
+</code></pre>
+<p>On executing the above code, we can see the following output:</p>
+<pre><code class="language-python hljs"><span class="hljs-number">200</span>
+{
+  <span class="hljs-string">"authenticated"</span>: true, 
+  <span class="hljs-string">"user"</span>: <span class="hljs-string">"john"</span>
+}
+</code></pre>
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/#" method="post" class="form-inline validate" novalidate="">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    
+<p>This shows that we successfully accessed the web page content of an authenticated URL. However, this website only contains JSON data and we need HTML table elements as DataFrames.</p>
+<p>Let's stick to the earlier URL and use <code>requests</code> to read HTML tables as DataFrames. While the previous site was public, the steps to access authenticated content is the same.</p>
+<p>Once we get a response, we can pass the <code>r.text</code> to <code>read_html()</code> method. And as usual, we'll get a list of tables it contains as DataFrames:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> requests
+
+<span class="hljs-comment"># Can use auth parameter for authenticated URLs</span>
+r = requests.get(<span class="hljs-string">'https://en.wikipedia.org/wiki/Python_(programming_language)'</span>,
+                 auth=(<span class="hljs-string">'john'</span>, <span class="hljs-string">'johnspassword'</span>))
+tables = pd.read_html(r.text)
+print(<span class="hljs-string">'Tables found:'</span>, len(tables))
+df1 = tables[<span class="hljs-number">0</span>]
+print(<span class="hljs-string">'First Table'</span>)
+print(df1.head())
+</code></pre>
+<p>Running this code will generate the following output:</p>
+<pre><code class="language-python hljs">Tables found: <span class="hljs-number">10</span>
+First Table
+                <span class="hljs-number">0</span>                                                  <span class="hljs-number">1</span>
+<span class="hljs-number">0</span>             NaN                                                NaN
+<span class="hljs-number">1</span>        Paradigm  Multi-paradigm: functional, imperative, object...
+<span class="hljs-number">2</span>     Designed by                                   Guido van Rossum
+<span class="hljs-number">3</span>       Developer                         Python Software Foundation
+<span class="hljs-number">4</span>  First appeared                              <span class="hljs-number">1991</span>; <span class="hljs-number">29</span> years ago[<span class="hljs-number">1</span>]
+</code></pre>
+<h3 id="writinghtmltableswithpythonspandas">Writing HTML Tables with Python's Pandas</h3>
+<p>We have successfully read data from HTML tables. Let's write Pandas DataFrame in an HTML file. This can be achieved by using the <code>to_html()</code> method.</p>
+<p>The <code>to_html()</code> takes the path of the file you want the data exported to. If you don't provide an absolute path, it would save a file relative to the current directory.</p><p></p><div id="ezoic-pub-ad-placeholder-116"><div><!-- 728x90/300x250/320x50 --><div id="waldo-tag-3884" data-processed="true" data-google-query-id="CNyknNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse728x90FS_3_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse728x90FS_3_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse728x90FS_3_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="4" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(5).html"></iframe></div></div></div></div><p></p>
+<p>You can export a DataFrame to an HTML table like this:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+df = pd.DataFrame({<span class="hljs-string">'A'</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], <span class="hljs-string">'B'</span>: [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]})
+df.to_html(<span class="hljs-string">'write_html.html'</span>)
+</code></pre>
+<p>This code will produce the following file <code>write_html.html</code> in the current directory:</p>
+<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dataframe"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: right;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>Note that the export isn't an entire HTML document, but just the HTML table itself.</p>
+<h4 id="writingstyledhtmltableswithpythonspandas">Writing Styled HTML Tables with Python's Pandas</h4>
+<p>As we can see, by default the table border is 1, alignment is right and it has also DataFrame indices in <code>&lt;th&gt;</code> tags. We can change this default structure by providing a few optional parameters.</p>
+<h5 id="hideindex">Hide Index</h5>
+<p>If we don't want to include the index in the table output, we can set <code>index=False</code> in the <code>to_html()</code>:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+df = pd.DataFrame({<span class="hljs-string">'A'</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], <span class="hljs-string">'B'</span>: [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]})
+df.to_html(<span class="hljs-string">'write_html.html'</span>, index=<span class="hljs-literal">False</span>)
+</code></pre>
+<p>This code produces <code>write_html.html</code> file with the following content:</p>
+<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dataframe"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: right;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<h5 id="changingtableborder">Changing Table Border</h5>
+<p>The default table border is 1 pixel. To change this default, we can set the <code>border</code> parameter to a value in pixels.</p>
+<p>The following code changes the border to 3 pixels:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+df = pd.DataFrame({<span class="hljs-string">'A'</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], <span class="hljs-string">'B'</span>: [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]})
+df.to_html(<span class="hljs-string">'write_html.html'</span>, border=<span class="hljs-number">3</span>)
+</code></pre>
+<p>The generated file now sets the border attribute of the table to "3":</p>
+<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dataframe"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: right;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<h5 id="justifytext">Justify Text</h5>
+<p>By default, the table's head text is right-aligned. We change this alignment with the <code>justify</code> parameter. For example, doing <code>justify="center"</code> will add <code>style="text-align: center;"</code> in the <code>&lt;tr&gt;</code> tag of the <code>&lt;thead&gt;</code> tag.</p><p></p><div id="ezoic-pub-ad-placeholder-117"></div><p></p>
+<p>Let's try aligning the head text to center and see results:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+df = pd.DataFrame({<span class="hljs-string">'A'</span>: [<span class="hljs-number">1</span>, <span class="hljs-string">'AAA'</span>], <span class="hljs-string">'B'</span>: [<span class="hljs-string">'BBB'</span>, <span class="hljs-number">4</span>]})
+df.to_html(<span class="hljs-string">'write_html.html'</span>, justify=<span class="hljs-string">'center'</span>)
+</code></pre>
+<p>The table created by above code looks like this:</p>
+<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dataframe"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: center;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>BBB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>AAA<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>The text of the table head is now beautifully aligned to the center.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>In this tutorial, we have learned how to import and export HTML table data with Pandas DataFrames. We loaded HTML table data from files, as well as from webpage URLs. In the case of authenticated URLs, we used the requests module to authenticate and retrieve the site's data, and then pass the response text into the <code>read_html()</code> function.</p>
+<p>We have also written a Pandas DataFrame as an HTML file using the <code>to_html()</code> function. We then styled the generated table by passing a few optional parameters like <code>index</code>, <code>border</code> and <code>justify</code>. This makes it easy to write the data of DataFrame in a presentational manner.</p>
+<!--kg-card-end: markdown-->
+					</div>
+                    <div class="post-ad">
+                        <!-- Ezoic - bottom_of_page - bottom_of_page -->
+                        <div id="ezoic-pub-ad-placeholder-108">
+                            <!-- 728x90/300x250/320x50 -->
+<div id="waldo-tag-9728" data-processed="true" data-google-query-id="CN-knNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse728x90FS_4_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse728x90FS_4_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse728x90FS_4_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="7" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(6).html"></iframe></div></div>
+                        </div>
+                        <!-- End Ezoic - bottom_of_page - bottom_of_page -->
+                    </div>
+					<footer class="post-footer clearfix">
+						<div class="pull-left tag-list">
+							<i class="fa fa-folder-open-o"></i>
+							<a href="https://stackabuse.com/tag/python/">python</a>,<a href="https://stackabuse.com/tag/pandas/">pandas</a>,<a href="https://stackabuse.com/tag/html/">html</a>
+						</div>
+						<div class="pull-right share">
+							<div>
+	<ul class="share-icons">
+		<!-- twitter -->
+		<li>
+			<a aria-label="Share on Twitter" href="https://twitter.com/share?text=Reading%20and%20Writing%20HTML%20Tables%20with%20Pandas&amp;url=https://stackabuse.com/reading-and-writing-html-tables-with-pandas/" onclick="window.open(this.href, &#39;twitter-share&#39;, &#39;width=550,height=235&#39;);return false;"><i class="fa fa-twitter" style="color:#55acee;"></i></a>
+		</li>
+		<!-- facebook -->
+		<li>
+			<a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stackabuse.com/reading-and-writing-html-tables-with-pandas/" onclick="window.open(this.href, &#39;facebook-share&#39;,&#39;width=580,height=296&#39;);return false;"><i class="fa fa-facebook" style="color:#3b5998;"></i></a>
+		</li>
+		<!-- linkedin -->
+		<li>
+			<a aria-label="Share on Linkedin" href="https://www.linkedin.com/shareArticle?mini=true%26url=https://stackabuse.com/reading-and-writing-html-tables-with-pandas/%26source=https://stackabuse.com" onclick="window.open(this.href, &#39;linkedin-share&#39;, &#39;width=490,height=530&#39;);return false;"><i class="fa fa-linkedin" style="color:#0077b5;"></i></a>
+		</li>
+	</ul>
+</div>
+						</div>
+					</footer>
+                    <!-- start about the author -->
+<div class="about-author clearfix">
+		<a href="https://stackabuse.com/author/naazneen/"><img src="./Reading and Writing HTML Tables with Pandas_files/default-user-image.jpg" alt="Author image" class="avatar pull-left"></a>
+	<div class="details">
+		<div class="author">
+			About <a href="https://stackabuse.com/author/naazneen/">Naazneen Jatu</a>
+		</div>
+		<div class="meta-info" style="font-style: normal;">
+			<span class="location"><i class="fa fa-home"></i>India</span>
+		</div>
+		<div class="bio" rel="nofollow noopener" target="_blank">
+            Freelance Python Developer
+        </div>
+	</div>
+</div>
+<!-- end about the author -->
+				</article>
+                <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/#" method="post" class="form-inline validate" novalidate="">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+				<div class="comment-wrap">
+					<!-- start disqus comment -->
+<div class="disqus-container">
+	<div id="disqus_thread"></div>
+	    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<!-- end disqus comment -->
+				</div>
+				<!-- start prev next wrap -->
+<div class="prev-next-wrap clearfix">
+		<a class="btn btn-default pull-left" href="https://stackabuse.com/how-to-create-a-confirmation-dialogue-in-vue-js/" title="How to Create a Confirmation Dialogue in Vue.js"><i class="fa fa-angle-left fa-fw"></i> Previous Post</a>
+		&nbsp;
+        <a class="btn btn-default pull-right" href="https://stackabuse.com/using-slots-to-store-object-data-in-python/" title="Using __slots__ to Store Object Data in Python">Next Post <i class="fa fa-angle-right fa-fw"></i></a>
+</div>				<!-- end post -->
+			</div>
+			<!-- end main post area -->
+			<!-- start sidebar -->
+<div class="col-md-4 sidebar">
+    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- Ezoic - sidebar_top - sidebar -->
+        <div id="ezoic-pub-ad-placeholder-109">
+            <!-- 300x250/300x600 -->
+<div id="waldo-tag-3874" data-processed="true" data-google-query-id="CNmknNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse300x250FL_1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse300x250FL_1_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse300x250FL_1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(7).html"></iframe></div></div>
+        </div>
+        <!-- End Ezoic - sidebar_top - sidebar -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <div id="dvp-book">
+        <a rel="noopener nofollow" target="_blank" class="ebook-link" href="https://gum.co/data-visualization-in-python" style="text-decoration: none;" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            <h4 class="title">Data Visualization in Python</h4>
+        </a>
+        <div class="content product">
+            <a class="ebook-link" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank">
+                <img class="img-responsive" src="./Reading and Writing HTML Tables with Pandas_files/data-viz-python-book-transparent.png">
+            </a>
+            <p style="margin-bottom:10px;">
+                <strong>Understand your data better with visualizations!</strong>
+                With over 330+ pages, you'll learn the ins and outs of visualizing data in Python with popular libraries like Matplotlib, Seaborn, Bokeh, and more.
+            </p>
+            <p style="margin-bottom:15px;">
+                Includes a <strong><em>free</em></strong> 30 page Seaborn guide!
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <script src="./Reading and Writing HTML Tables with Pandas_files/gumroad.js.download"></script>
+                    <span style="display:inline;">
+                        <a class="gumroad-button ebook-link" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank"><span class="gumroad-button-logo"></span>Learn more</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="awsn-book" style="display: none;">
+        <a rel="noopener nofollow" target="_blank" class="ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" style="text-decoration: none;" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            <h4 class="title">Getting Started with AWS in Node</h4>
+        </a>
+        <div class="content product">
+            <a class="ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank">
+                <img class="img-responsive" src="./Reading and Writing HTML Tables with Pandas_files/aws-in-node-book-transparent.png">
+            </a>
+            <p>
+                <strong>Just released!</strong>
+                Build the foundation you'll need to provision, deploy, and run Node.js applications in the AWS cloud. Learn Lambda, EC2, S3, SQS, and more!
+            </p>
+            <div class="row">
+                <div class="col-md-8">
+                    <script src="./Reading and Writing HTML Tables with Pandas_files/gumroad.js.download"></script>
+                    <a class="gumroad-button ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank"><span class="gumroad-button-logo"></span>Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="git-book" style="display: none;">
+        <a rel="noopener nofollow" target="_blank" class="ebook-link" href="https://gum.co/git-essentials" style="text-decoration: none;" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            <h4 class="title">Git Essentials</h4>
+        </a>
+        <div class="content product">
+            <a class="ebook-link" href="https://gum.co/git-essentials" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank">
+                <img class="img-responsive" src="./Reading and Writing HTML Tables with Pandas_files/git-essentials-cover-transparent-cropped.png">
+            </a>
+            <p>
+                <strong>Just released!</strong>
+                Check out this hands-on, practical guide to learning Git, with best-practices and industry-accepted standards. Stop Googling Git commands and <em>actually learn</em> it!
+            </p>
+            <div class="row">
+                <div class="col-md-8">
+                    <script src="./Reading and Writing HTML Tables with Pandas_files/gumroad.js.download"></script>
+                    <a class="gumroad-button ebook-link" href="https://gum.co/git-essentials" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank"><span class="gumroad-button-logo"></span>Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- NOTE: JS to handle switching of these divs is now in main.js -->
+</div>
+<!-- end widget -->
+    <!-- start newsletter widget -->
+<div class="widget">
+    <h4 class="title">Newsletter</h4>
+    <div class="content newsletter">
+        <p style="font-size: 16px;">Subscribe to our newsletter! Get occassional tutorials, guides, and reviews in your inbox.</p>
+        <form action="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/#" method="post" class="validate" novalidate="">
+            <div class="input-group">
+                <label class="control-label sr-only" for="widget-newsletter">Newsletter Signup</label>
+                <input id="widget-newsletter" type="email" value="" name="email" class="required email input-lg" placeholder="Enter your email...">
+            </div>
+            <div class="input-group">
+                <button type="submit" name="subscribe" class="btn btn-lg btn-default" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                    <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                    Subscribe
+                </button>
+            </div>
+            <span style="color: #7f7f7f;">No spam ever. Unsubscribe at any time.</span>
+        </form>
+        <div class="message"></div>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- Ezoic - sidebar_middle - sidebar_middle -->
+        <div id="ezoic-pub-ad-placeholder-110">
+            <!-- 300x250/300x600 -->
+<div id="waldo-tag-7184" data-processed="true" data-google-query-id="CN2knNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse300x250FL_3_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse300x250FL_3_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse300x250FL_3_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="5" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(8).html"></iframe></div></div>
+        </div>
+        <!-- End Ezoic - sidebar_middle - sidebar_middle -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Want a remote job?</h4>
+    <div class="content jobs hr">
+        <ul style="margin-bottom: 0px;">
+        <li><a aria-label="Senior Data Scientist, Customer Analytics" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/4629-senior-data-scientist-customer-analytics" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Senior Data Scientist, Customer Analytics<br><span class="job-company"></span>&nbsp;<span class="job-posted-at">1 day ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-senior-jobs"><span class="job-tag">senior</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a></div><hr></li><li><a aria-label="Senior Data Scientist" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/4622-senior-data-scientist" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Senior Data Scientist<br><span class="job-company"></span>&nbsp;<span class="job-posted-at">1 day ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-senior-jobs"><span class="job-tag">senior</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-data-science-jobs"><span class="job-tag">data science</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-machine-learning-jobs"><span class="job-tag">machine learning</span></a></div><hr></li><li><a aria-label="Senior Full-stack Software Developer" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/4620-senior-full-stack-software-developer-at-goodway-group" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Senior Full-stack Software Developer<br><span class="job-company">Goodway Group</span>&nbsp;<span class="job-posted-at">1 day ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-node-js-jobs"><span class="job-tag">node-js</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-amazon-redshift-jobs"><span class="job-tag">amazon-redshift</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-react-native-jobs"><span class="job-tag">react-native</span></a></div></li></ul>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                    <a rel="noopener nofollow" target="_blank" class="btn btn-default" href="https://hireremote.io/" style="margin-top: 10px;" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-More-Link">
+                        <i class="fa fa-arrow-circle-right"></i>&nbsp; More jobs
+                    </a>
+                </strong>
+            </div>
+            <div class="col-md-8 text-right" style="margin-top: 18px;">
+                Jobs via
+                <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/" class="hr-link" style="color: #f16334;" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="HR-Link">
+                    HireRemote.io
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <a rel="noopener nofollow" target="_blank" class="dcp-link" href="https://stackabu.se/daily-coding-problem" style="text-decoration: none;" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="DCP-Link">
+        <h4 class="title">Prepping for an interview?</h4>
+    </a>
+    <div class="content product">
+        <style type="text/css">
+            #product-features li {
+                margin: 5px 0;
+            }
+        </style>
+        <div id="product-features" style="font-size: 16px;line-height: 1.7em;">
+            <ul style="list-style: initial;">
+                <li>
+                    Improve your skills by solving one coding problem every day
+                </li>
+                <li>
+                    Get the solutions the next morning via email
+                </li>
+                <li>
+                    Practice on <strong>actual problems</strong> asked by top companies, like:
+                    <div style="margin: 15px 0px;">
+                        <img src="./Reading and Writing HTML Tables with Pandas_files/logo-google.svg" style="height: 16px;">
+                        &nbsp;
+                        <img src="./Reading and Writing HTML Tables with Pandas_files/logo-facebook.svg" style="height: 13px;margin-bottom: 3px;">
+                        &nbsp;
+                        <img src="./Reading and Writing HTML Tables with Pandas_files/logo-amazon.svg" style="height: 19px;">
+                        &nbsp;
+                        <img src="./Reading and Writing HTML Tables with Pandas_files/logo-microsoft.svg" style="height: 18px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <a rel="noopener nofollow" target="_blank" class="btn btn-default dcp-link" href="https://stackabu.se/daily-coding-problem" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="DCP-Link">
+                    <i class="fa fa-code"></i>
+                    &nbsp;
+                    Daily Coding Problem
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <div class="widget-sticky" style="width: 403.328px; position: fixed; top: 10px;">
+        <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- Ezoic - sidebar_floating_1 - sidebar_floating_1 -->
+        <div id="ezoic-pub-ad-placeholder-111">
+            <!-- 300x250/300x600 -->
+<div id="waldo-tag-7611" data-processed="true" data-google-query-id="CN6knNKso-8CFQhfYAod5aIL0g" class="ezfound"><div id="google_ads_iframe_/124067137/stackabuse300x250FL_4_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/stackabuse300x250FL_4_0" title="3rd party ad content" name="google_ads_iframe_/124067137/stackabuse300x250FL_4_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="6" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(9).html"></iframe></div></div>
+        </div>
+        <!-- End Ezoic - sidebar_floating_1 - sidebar_floating_1 -->
+    </div>
+</div>
+<!-- end widget -->
+    </div>
+</div>
+<!-- end sidebar -->
+		</div>
+	</div>
+</section>
+<!-- end site's main content area -->
+
+
+    <!-- start main-footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<!-- start first footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Recent Posts</h4>
+    <div class="content recent-post">
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/how-to-access-property-file-values-in-spring-boot/" class="post-title">How to Access Property File Values in Spring Boot</a>
+            <!--<div class="date">March 09, 2021</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/how-to-sort-a-pandas-dataframe-by-date/" class="post-title">How to Sort a Pandas DataFrame by Date</a>
+            <!--<div class="date">March 08, 2021</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/python-check-if-array-or-list-cotains-element-or-value/" class="post-title">Python: Check if Array/List Contains Element/Value</a>
+            <!--<div class="date">March 05, 2021</div>-->
+        </div>
+    </div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end first footer widget area -->
+				<!-- start second footer widget area -->
+				<div class="col-sm-4">
+					<!-- start tag cloud widget -->
+<div class="widget">
+    <h4 class="title">Tags</h4>
+    <div class="content tag-cloud">
+        <a href="https://stackabuse.com/tag/ai/">ai</a><a href="https://stackabuse.com/tag/algorithms/">algorithms</a><a href="https://stackabuse.com/tag/amqp/">amqp</a><a href="https://stackabuse.com/tag/angular/">angular</a><a href="https://stackabuse.com/tag/announcements/">announcements</a><a href="https://stackabuse.com/tag/apache/">apache</a><a href="https://stackabuse.com/tag/apache-commons/">apache commons</a><a href="https://stackabuse.com/tag/api/">api</a><a href="https://stackabuse.com/tag/arduino/">arduino</a><a href="https://stackabuse.com/tag/artificial-intelligence/">artificial intelligence</a>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+				</div>
+				<!-- end second footer widget area -->
+				<!-- start third footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+				</div>
+				<!-- end third footer widget area -->
+			</div>
+		</div>
+	</footer>
+	<!-- end main-footer -->
+	<!-- start copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				Copyright © 2021, <a href="https://stackabuse.com/">Stack Abuse</a>.  All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end copyright section -->	<div class="footer-links">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="https://stackabuse.com/disclosure">Disclosure</a>
+					•
+					<a href="https://stackabuse.com/privacy-policy">Privacy Policy</a>
+					•
+					<a href="https://stackabuse.com/terms-of-service">Terms of Service</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a aria-label="Back to Top" href="https://stackabuse.com/reading-and-writing-html-tables-with-pandas/#" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+	<!--
+<script src="//my.hellobar.com/4dd9990be00532b0fc7961824b7d7a0930e9e2b7.js" type="text/javascript" charset="utf-8" async="async"></script>
+-->
+<!-- Drip -->
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '2930764';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/2930764.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+<!-- end Drip -->
+	<!-- scripts -->
+    <script id="dsq-count-scr" src="https://stackabuse.disqus.com/count.js" async=""></script>
+    <script>
+      var disqus_config = function() {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.href;
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://stackabuse.disqus.com/embed.js';
+    </script>
+
+    <!-- HTML templates for use in JS code -->
+    <script id="newsletter-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+    <script id="email-capture-git-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <div>
+            <img src="/assets/images/logo-git.png?v=afe260f3e5" style="height: 64px;">
+            <h4 class="title" style="color:#303030;display:inline;">Finally Learn Git</h4>
+        </div>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>We're writing a book about Git! Don't just copy-paste <code>git</code> commands - <em>actually understand</em> what you're doing. Sign up to get notified about the release and a <strong>30% discount</strong>!</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Git Book Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Email"
+                            ga-event-action="Signup"
+                            ga-event-label="Git-Book-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Get notified
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+    <script id="section-ad-git" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter" style="padding-bottom: 0px;">
+        <div class="text-center">
+            <!-- <img src="/assets/images/logo-git.png?v=afe260f3e5" style="height: 64px;"> -->
+            <h4 class="title" style="color:#303030;display:inline;">Learn the Git Essentials</h4>
+        </div>
+        <div class="content">
+            <div class="row" style="margin-right: 10px;margin-bottom: 10px;">
+                <div class="col-md-4 col-xs-12">
+                    <img alt="Git Essentials: Developer's Guide to Git"
+                        src="https://s3.stackabuse.com/media/ebooks/git-essentials/git-essentials-cover-transparent-cropped.png"
+                    />
+                </div>
+                <div class="col-md-8 col-xs-12" style="margin-top: 10px;">
+                    <!-- <p>
+                        Stop turning to Google every time you need to commit some code, create a feature branch, or
+                        tag a release - <em>actually understand</em> what you're doing. We'll cover everything from
+                        why working with Git is a fundamental skill, to the basics of using Git, to advanced operations
+                        and best practices. Pre-order now and a <strong>20% discount</strong>!
+                    </p> -->
+                    <ul style="padding-inline-start:20px;">
+                        <li>
+                            <strong>Stop turning to Google</strong> every time you need to commit some code - <em>actually understand</em> what you're doing
+                        </li>
+                        <li>
+                            We cover everything from the fundamentals of Git to some more advanced operations and best practices
+                        </li>
+                        <li>
+                            Includes a bonus cheat sheet for the many commands you'll still never remember 😉
+                        </li>
+                        <li>
+                            Just released!
+                        </li>
+                    </ul>
+                    <a href="https://gum.co/git-essentials" rel="nofollow noopener" target="_blank"
+                        class="ebook-link btn btn-default btn-lg"
+                        style="padding: 8px 20px;"
+                    >
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+
+    <script src="./Reading and Writing HTML Tables with Pandas_files/jquery.min.js.download" type="text/javascript"></script>
+    <script src="./Reading and Writing HTML Tables with Pandas_files/highlight.min.js.download"></script>
+    <script src="./Reading and Writing HTML Tables with Pandas_files/dockerfile.min.js.download"></script>
+    <script src="./Reading and Writing HTML Tables with Pandas_files/yaml.min.js.download"></script>
+    <script src="./Reading and Writing HTML Tables with Pandas_files/bootstrap-custom.min.js.download" async=""></script>
+	<script src="./Reading and Writing HTML Tables with Pandas_files/main.min.js.download" async=""></script>
+    <script src="./Reading and Writing HTML Tables with Pandas_files/MathJax.js.download" type="text/javascript" async=""></script>
+	<!-- Add your analytic code below -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  if (window.location.hostname !== 'localhost') {
+    ga('create', 'UA-43140675-1', 'auto');
+    ga('require', 'eventTracker');
+
+    ga('set', 'dimension1', 'Naazneen Jatu');
+    
+    ga('send', 'pageview');
+  }
+
+</script>
+<script async="true" src="./Reading and Writing HTML Tables with Pandas_files/autotrack.js.download"></script>
+<script type="text/javascript" style="display:none;" async="">
+__ez.queue.addFile('edmonton.php', '/detroitchicago/edmonton.webp?a=a&cb=0&shcb=34', true, ['/detroitchicago/minneapolis.js'], true, false, false, false);
+__ez.queue.addFile('jellyfish.php', '/porpoiseant/jellyfish.webp?a=a&cb=0&shcb=34', false, [], true, false, false, false);
+</script>
+
+<script>var _audins_dom="stackabuse_com",_audins_did=248604;__ez.queue.addDelayFunc("audins.js","__ez.script.add", "//go.ezoic.net/detroitchicago/audins.js?cb=192-0");</script><noscript><div style="display:none;"><img src="//pixel.quantserve.com/pixel/p-31iz6hfFutd16.gif?labels=Domain.stackabuse_com,DomainId.248604" border="0" height="1" width="1" alt="Quantcast"/></div></noscript>
+<script type="text/javascript" data-cfasync="false"></script>
+
+<iframe name="__tcfapiLocator" style="display: none;" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(10).html"></iframe><iframe src="./Reading and Writing HTML Tables with Pandas_files/sync.html" style="display: none; visibility: hidden;"></iframe><img src="./Reading and Writing HTML Tables with Pandas_files/favicon.ico" style="display: none !important; width: 1px !important; height: 1px !important;"><img src="./Reading and Writing HTML Tables with Pandas_files/px.gif" style="display: none !important; width: 1px !important; height: 1px !important;"><div class="gumroad-loading-indicator"><i></i></div><div class="gumroad-scroll-container" style="max-width: 1920px; max-height: 979px; width: 0px; height: 0px;"><iframe scrolling="no" allowfullscreen="allowfullscreen" class="gumroad-overlay-iframe" src="./Reading and Writing HTML Tables with Pandas_files/overlay_page.html"></iframe></div><iframe id="google_osd_static_frame_4414296599161" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Reading and Writing HTML Tables with Pandas_files/saved_resource(11).html"></iframe></body><iframe sandbox="allow-scripts allow-same-origin" id="2748cdd29ac3deeb" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Reading and Writing HTML Tables with Pandas_files/cs.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="275faa915550eb87" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Reading and Writing HTML Tables with Pandas_files/usersync.html">
+    </iframe></html>

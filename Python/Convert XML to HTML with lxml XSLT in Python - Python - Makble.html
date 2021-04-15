@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://makble.com/convert-xml-to-html-with-lxml-xslt-in-python -->
+<html class="i-ua_js_yes i-ua_css_standard i-ua_svg_yes i-ua_inlinesvg_yes i-ua_placeholder_yes" lang="en" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convert XML to HTML with lxml XSLT in Python - Python - Makble</title>
+  <meta name="referrer" content="always">
+  <link rel="stylesheet" href="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/main.css" type="text/css" media="all">
+  <style>
+.codediv {
+border: 2px solid #ddd;
+padding: 5px;
+text-indent: 0px !important;
+overflow-x: auto;
+/* width: 620px; */
+overflow-y: hidden;
+}
+</style>
+  
+<style>
+@font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400; src: url(http://fonts.gstatic.com/s/oswald/v11/-WzdRTzRa5k6HlJK6-dK9Q.eot); }
+
+
+@font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400; src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v11/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff'); }
+
+
+@font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400; src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v11/pEobIV_lL25TKBpqVI_a2w.woff2) format('woff2'); }
+
+
+@font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400; src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/l/font?kit=lvX543xfU1-yV4ZhBKmRFw&skey=653237e53512d0de&v=v11#Oswald) format('svg'); }
+
+
+@font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400; src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v11/Y_TKV6o8WovbUd3m_X9aAA.ttf) format('truetype'); }
+  .toc-contents html, .toc-contents body, .toc-contents div, .toc-contents span, .toc-contents object, .toc-contents iframe, .toc-contentsh1, .toc-contents h2, .toc-contents h3, .toc-contents h4, .toc-contents h5, .toc-contents h6, .toc-contents p, .toc-contents blockquote, .toc-contents pre, .toc-contentsabbr, .toc-contents address, .toc-contents cite, .toc-contents code, .toc-contentsdel, .toc-contents dfn, .toc-contents em, .toc-contents img, .toc-contents ins, .toc-contents kbd, .toc-contents q, .toc-contents samp, .toc-contentssmall, .toc-contents strong, .toc-contents sub, .toc-contents sup, .toc-contents var, .toc-contentsb, .toc-contents i, .toc-contentsdl, .toc-contents dt, .toc-contents dd, .toc-contents ol, .toc-contents ul, .toc-contents li, .toc-contentsfieldset, .toc-contents form, .toc-contents label, .toc-contents legend, .toc-contentstable, .toc-contents caption, .toc-contents tbody, .toc-contents tfoot, .toc-contents thead, .toc-contents tr, .toc-contents th, .toc-contents td, .toc-contentsarticle, .toc-contents aside, .toc-contents canvas, .toc-contents details, .toc-contents figcaption, .toc-contents figure, .toc-contents footer, .toc-contents header, .toc-contents hgroup, .toc-contents menu, .toc-contents nav, .toc-contents section, .toc-contents summary, .toc-contentstime, .toc-contents mark, .toc-contents audio, .toc-contents video
+ {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+
+:focus {
+  outline: 1;
+}
+
+.toc-contents article, .toc-contents aside, .toc-contents canvas, .toc-contents details, .toc-contents figcaption, .toc-contents figure, .toc-contents footer, .toc-contents header, .toc-contents hgroup, .toc-contents menu, .toc-contents nav, .toc-contents section, .toc-contents summary { 
+    display:block;
+}
+
+.toc-contents ul, .toc-contents nav ul {
+    list-style:none;
+}
+
+
+
+.toc-contents a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+
+
+.toc-contents hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+.toc-contents input, .toc-contents select {
+    vertical-align:middle;
+}
+
+.toc-contents li {
+    padding-left: 10px;
+}
+
+.toc-contents a {
+  text-decoration: underline;
+  font-family: 'Oswald';
+  color: black;
+  font-size: 1.248em;
+}
+
+.toc-contents > ul > li {
+    padding-left: 0px;
+}
+.toc-part h1 {
+    font-family: 'Oswald';
+    color: #AC2F23;
+    border-bottom: 1px solid black;
+    line-height: 1.5em;/*32px;*/
+    overflow: initial;
+    font-size: 2em;
+}
+
+.toc-part > ul > li {
+    padding-left: 60px;
+}
+
+.toc-chapter > ul > li {
+    padding-left: 20px;
+}
+
+
+
+.toc-chapter h2 {
+    font-family: 'Georgia','Oswald';
+    font-size: 18px;
+    font-style: italic;
+    color: #AC2F23;
+    line-height: 28px; 
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+.toc-section h3 {
+  font-family: 'Georgia';
+  font-size: 1.4em;
+  line-height: 30px;
+}
+
+
+
+
+</style>
+  <style>
+hr {
+   margin: 20px 0;
+   border: 0;
+   border-top: 1px solid #eee;
+   border-bottom: 1px solid #fff;
+}
+
+tt {
+   padding: 0 3px 2px;
+   font-family: Monaco,Andale Mono,Courier New,monospace;
+   font-size: .9em;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+   background-color: #E9FFD4;
+   color: #005071;
+   /*background-color: #CCE5B4; #fee9cc;*/
+   /*color: #0095D8; rgba(0,0,0,0.75);*/
+   padding: 1px 3px;
+}
+
+.quote
+{
+    background:url(images/quote.gif) no-repeat 0% 0%;
+    font-style:italic;
+    height:auto !important;
+    height:50px;
+    min-height:50px;
+    padding:0px 0px 0px 60px;
+    font-family:Georgia,'Times New Roman',Times,serif;
+    font-size:18px;
+    color:rgb(34,34,34);
+}
+
+.quote p
+{
+    line-height:25px;
+    margin:0px 0px 10px 0px ;
+}
+
+  </style>
+  <style>
+/*
+ mobile
+*/
+
+@media only screen and ( max-width : 700px) {
+	
+}
+
+@media only screen and (max-width: 31.25em) {
+	.post p {
+		
+		text-align: left;
+	}
+}
+
+@media only screen and (max-width: 28.75em) {
+	#searchformcontainer {
+		display:none;
+	}
+}
+
+@media only screen and (min-width: 1033px) {
+    
+    #content-wrap2 {        
+        margin:0 0px 0 0px;
+    }		
+    
+    #contentbox { 
+
+        width: 770px;
+
+    }    
+}
+
+@media only screen and (max-width: 730px) {
+	#outerwrap , #contentbox  {
+		width:100%;
+		float:none;
+	}
+
+    .content__left {
+        width: 100% !important; 
+	}
+	
+	.content__right {
+	    display:block !important;
+	    width: 100% !important;
+	    margin-left: 0px !important;
+	}
+
+	.main__center {
+	    margin-left: 0px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+	}
+    .post img {
+         /* basic responsive img */
+    	max-width: 100%;
+    	height: auto;
+    	width: auto\9; /* IE8 */
+    }
+	
+	.codediv  {
+		width:100%;
+		overflow:visible;
+		border: 0px;
+	}
+	
+	#headerbar {
+		width:100%;
+		min-width:100%;
+	}
+	
+	#navcontainer {
+		display:none;
+	}
+	
+	#sidebar {
+		float: none;
+	}
+    
+    #content-wrap2 {        
+        margin:0 20px 0 20px;
+    }
+    
+    h1 {
+        overflow:auto;
+        text-overflow: clip;
+        white-space: normal;
+    }		
+}  
+  </style>
+  
+  <style>
+  .page-item{
+  text-decoration:none
+  }
+  .currentpage {
+  cursor: default;
+  background-color: #f3f1ed;
+  }
+  .page-number {
+  position: relative;
+  margin: 0 4px;
+  text-decoration:none;
+  margin-left: -4px;
+  font-size: 18px;
+  line-height: 38px;
+  display: inline-block;
+  min-width: 38px;
+  text-align: center;
+  }
+  </style>
+  <style data-role="css" data-stylesheet="header">
+  
+  @font-face {
+}
+
+body {
+	position: relative;
+	z-index: 0;
+	margin: 0;
+	padding: 0 0 1em;
+	font: .8em Arial,Helvetica,sans-serif;
+	color: #000;
+	background: #fff
+}
+
+wbr {
+	display: inline-block
+}
+
+:link:hover,:visited:hover {
+	color: red!important
+}
+
+.i-ua_platform_ios.b-page__body {
+	cursor: pointer
+}
+
+html {
+	height: 100%
+}
+
+body.b-page__body {
+	height: 100%;
+	padding: 0
+}
+  
+  
+  @media (ya-dock-fade:true){.b-page .footer{padding-bottom:42px}.b-page .b-mooa{bottom:42px}}
+  
+body.b-page__body {
+	font-size: 13px;
+	line-height: 1.154
+}
+
+.b-page_theme_normal {
+	background-color: #f6f5f3
+}
+
+.b-page_initial-scroll_yes {
+	overflow-y: scroll
+}
+
+.b-page_initial-scroll_yes.b-page_js_inited {
+	overflow-y: auto
+}
+
+.b-page_initial-scroll_yes.b-page_js_inited.b-page_overflow_yes {
+	overflow: hidden
+}
+
+.serp-header {
+	position: relative;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+.serp-header__main {
+	display: table;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-shadow: none!important;
+	box-shadow: none!important
+}
+
+.serp-header__under {
+	position: relative
+}
+
+.serp-header__progress {
+	position: absolute;
+	top: 10px
+}
+
+.serp-header__logo,.serp-header__search2 {
+	display: table-cell;
+	vertical-align: top;
+	height: 39px
+}
+
+.serp-header__nav {
+	display: table-cell;
+	height: 39px
+}
+
+.serp-header__logo {
+	width: 110px;
+	padding-top: 3px
+}
+
+.serp-header__logo_lang_en {
+	padding: 0
+}
+
+.serp-header__search2 {
+	padding-top: 3px
+}
+
+.serp-header__nav {
+	padding-left: 20px;
+	text-align: right;
+	vertical-align: middle
+}
+
+.serp-header {
+	min-height: 70px;
+	margin-bottom: 20px
+}
+
+.serp-header__wrapper {
+	width: 100%;
+	background: #fff;
+	transform: translateZ(0)
+}
+
+.serp-header__search2 {
+	width: 638px
+}
+
+.serp-header__nav {
+	position: relative;
+	z-index: 1
+}
+
+.logo {
+	display: block;
+}
+
+.logo .logo__link {
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+	height: 36px;
+	outline: 0
+}
+</style>
+  <link rel="shortcut icon" href="http://makble.com/fav.ico">
+ <meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A0OysezhLoCRYomumeYlubLurZTCmsjTb087OvtCy95jNM65cfEsbajrJnhaGwiTxhz38ZZbm+UhUwQuXfVPTg0AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxoOxdZQmIoA1WeAPDixRAeWDdgs7ZtVFfH2y19ziTgD1iaHE5ZGz2UdSjubkWvob9C5PrjUfkWi4ZSLgWk3Xg8AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7+rMYR5onPnACrz+niKSeFdH3xw1IyHo2AZSHmxrofRk9w4HcQPMYcpBUKu6OQ6zsdxf4m/vqa6tG6Na4OLpAQAAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A0OysezhLoCRYomumeYlubLurZTCmsjTb087OvtCy95jNM65cfEsbajrJnhaGwiTxhz38ZZbm+UhUwQuXfVPTg0AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxoOxdZQmIoA1WeAPDixRAeWDdgs7ZtVFfH2y19ziTgD1iaHE5ZGz2UdSjubkWvob9C5PrjUfkWi4ZSLgWk3Xg8AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7+rMYR5onPnACrz+niKSeFdH3xw1IyHo2AZSHmxrofRk9w4HcQPMYcpBUKu6OQ6zsdxf4m/vqa6tG6Na4OLpAQAAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A0OysezhLoCRYomumeYlubLurZTCmsjTb087OvtCy95jNM65cfEsbajrJnhaGwiTxhz38ZZbm+UhUwQuXfVPTg0AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxoOxdZQmIoA1WeAPDixRAeWDdgs7ZtVFfH2y19ziTgD1iaHE5ZGz2UdSjubkWvob9C5PrjUfkWi4ZSLgWk3Xg8AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7+rMYR5onPnACrz+niKSeFdH3xw1IyHo2AZSHmxrofRk9w4HcQPMYcpBUKu6OQ6zsdxf4m/vqa6tG6Na4OLpAQAAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><link rel="preload" href="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(4).txt" as="script"><script src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/osd.js.download"></script><script type="text/javascript" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(4).txt"></script><link rel="preload" href="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(5).txt" as="script"><script type="text/javascript" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(5).txt"></script></head>
+ <body class="b-page b-page_tld_com b-page_ajax_yes b-page_initial-scroll_yes b-page_tmpl_bemhtml b-page__body i-global i-ua i-ua_interaction_yes i-default-search i-default-search_tech_ibem i-device-info user-location-updater serp-metrika i-bem i-global_js_inited b-page_js_inited i-ua_platform_other i-ua_hi-dpi_yes i-ua_js_inited i-device-info_js_inited user-location-updater_js_inited">
+  <div class="serp-header z-index-group z-index-group_level_9 header i-bem serp-header_js_inited z-index-group_js_inited" "="">
+   <div class="serp-header__wrapper">
+    <div class="serp-header__main" style="background-color: #f1f1f1;border-bottom: 1px solid #666;border-color: #e5e5e5;height: 69px;">
+     <div class="serp-header__logo serp-header__logo_lang_en">
+      <div class="logo logo_lang_en" style="padding-top: 15px;padding-left: 18px;">
+       <a style="text-decoration: none;font-size: 30px;color:black;" class="logo__link" href="http://makble.com/" tabindex="-1"><img class="logo-img" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/logo-makble.png" style="vertical-align:middle"><span style="display: block;line-height: 0px;text-indent: -1000px;}">Makble</span></a>
+	   <style>.logo_lang_en{margin-left:2px}
+.logo .logo__link {
+font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+</style>
+      </div>
+     </div>
+    </div>
+    <div class="serp-header__under">
+     <div class="progress serp-header__progress i-bem progress_js_inited progress_timing_hide" data-bem="{&quot;progress&quot;:{}}" style="width: 100%;"></div>
+    </div>
+   </div>
+  </div>
+
+  <style data-role="css" data-stylesheet="main">.main{position:relative;-moz-box-sizing:border-box;box-sizing:border-box;min-height:100%;margin-top:-190px;padding-top:190px;padding-bottom:40px}.main_hidden-content_yes{display:table;width:100%;height:100%}
+
+  .main_hidden-content_yes .main__center,.main_hidden-content_yes .main__left,.main_hidden-content_yes .main__right,.main_hidden-content_yes.main_kind_advanced-search .advanced-search,.main_right-panel-hidden_yes .main__right {
+  display:none
+}
+
+.progress {
+	width: 0;
+	height: 2px;
+	background-color: #fc0
+}
+
+.progress_timing_linear {
+	-webkit-transition: width .2s linear;
+	transition: width .2s linear
+}
+
+.progress_timing_pending {
+	-webkit-transition: width .4s cubic-bezier(.44,.61,.44,.61);
+	transition: width .4s cubic-bezier(.44,.61,.44,.61)
+}
+
+.progress_timing_finish {
+	-webkit-transition: width .2s ease-in-out;
+	transition: width .2s ease-in-out
+}
+
+.progress_timing_hide {
+	visibility: hidden;
+	-webkit-transition: opacity .15s linear,visibility 0s linear .15s;
+	transition: opacity .15s linear,visibility 0s linear .15s;
+	opacity: 0
+}
+
+.main__center {
+    z-index:0;
+    padding-left:30px;
+    margin-left:150px
+}
+
+
+.footeryc {
+    font-size:13px;
+    line-height:18px;
+    padding:20px;
+    text-align:center;
+    border-top:0;
+    background-color:#f3f1ed
+}
+
+.footeryc .copyright {
+    display:inline
+}
+.footeryc .footer__link,.footeryc .footer__link:link,.footeryc .footer__link:visited {
+    color:#999
+}
+
+.footer__line{line-height:30px}
+
+.footeryc {
+    position:relative;
+    z-index:1;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    user-select:none
+}
+
+.footeryc .footer__link:hover {
+    color:#000!important
+}
+
+.footer__column{display:inline-block}.footer__column_side_right{float:right}.footer__link{text-decoration:none}.footer__link,.footer__link+.copyright{margin-left:16px}.footer__link:first-child{margin-left:0}.footer__link:link,.footer__link:visited{color:#8792a8}.copyright{white-space:nowrap;color:#999}.clearfixyc:after{display:block;clear:both;height:0;content:" "}
+.b-keyboard-loader{position:relative;display:none;cursor:pointer}.i-ua_js_yes .b-keyboard-loader{display:inline-block}span.b-keyboard-loader:hover .b-link_pseudo_yes{color:red!important}
+.b-keyboard-loader__progress{position:absolute;bottom:-4px;left:0;width:100%;height:5px;font:0/0 a;background:url("//yastatic.net/islands-romochka/_/ACaplGGucdbQGmgLs7pJSLAUQAk.gif") repeat-x}.i-hidden{display:none!important}.content{white-space:nowrap}
+
+.content__left, .content__right{display:inline-block;vertical-align:top;white-space:normal}
+
+.content__left {
+    width:750px
+}
+
+.content__right_visibility_hidden{display:none}.content__right{margin-left:34px;width:260px;counter-reset:cols-6}
+
+@media screen and (min-width:1094px){.content__right{width:352px;counter-reset:cols-8}}
+
+@media screen and (min-width:1186px){.content__right{width:444px;counter-reset:cols-10}}
+
+@media screen and (min-width:1278px){.content__right{width:261px;counter-reset:cols-12}}
+
+@media screen and (min-width:1296px) {
+	.content__right {
+		z-index: 7;
+		margin-left: 636px;
+		-webkit-transition: margin-left .25s;
+		transition: margin-left .25s
+	}
+}
+
+.main_right-panel-hidden_yes .content__right {
+	position: static;
+	margin-left: 34px;
+	-webkit-transition: margin-left .25s;
+	transition: margin-left .25s
+}
+
+.main_right-panel-hidden_yes.main_right-panel-animate_no .content__right {
+	-webkit-transition: none;
+	transition: none
+}
+
+@media screen and (min-width:843px) and (max-width:1692px){.content__right_hidden_yes{display:none}}
+
+
+
+.serp-list_right_yes:not(:empty) {
+	margin-bottom: 26px
+}
+
+.serp-list_right_yes:not(:first-child):not(:empty) {
+	margin-top: 20px
+}
+
+.content-placeholder {
+	background: rgba(0,0,0,.06)
+}
+
+.serp-sitelinks__link:hover .extended-meta__icon_type_map {
+	background-position: -10px 0
+}
+
+
+@media all and (min-width:0){.button{border:0;background:0 0}}
+
+a.button:hover,a.button:link,a.button:visited{text-decoration:none;outline:hidden}.button{cursor:pointer}.button_hidden_yes{display:none}.b-page .button.link{color:#000}.button.link:active,.button.link:hover,.button.link:visited,.button.link:visited:hover{color:#000!important}.button__text{position:relative;pointer-events:none}.button_disabled_yes,a.button_disabled_yes .button__text{color:#aaa!important}
+
+@media all and (min-width:0){.button_disabled_yes.button:before{border:0;background:0 0}.button_disabled_yes.button{background:rgba(0,0,0,.08)!important}}
+
+.button_disabled_yes{cursor:default!important}.button_theme_normal,a.button_theme_normal{font-family:Arial,sans-serif;color:#000}
+
+
+
+
+.main_pseudolabel_yes .content__left .serp-adv-item .serp-item__greenurl:before{font-family:Verdana;font-size:11px;line-height:15px;display:inline-block;margin-right:12px;padding:0 6px 1px;content:'';vertical-align:baseline;color:#332f1e;border-radius:3px;background-color:#fef5cd}
+
+
+
+.serp-item {
+	color: #333
+}
+
+.serp-item__greenurl {
+	margin-bottom: 2px
+}
+
+.serp-item__greenurl:last-child {
+	margin-bottom: 0
+}
+
+
+.serp-item{
+    margin-top: 0.9em;
+    line-height:16px;
+    margin-bottom:26px}
+    
+.serp-item__greenurl{font-size:14px;line-height:17px}.serp-item__text{line-height:17px;word-wrap:break-word}.serp-item_feedback_yes{margin:-13px -20px 13px -30px;padding:13px 20px 13px 30px;box-shadow:inset 0 0 0 2px #ca362c}.favicon{position:absolute;top:3px;left:-22px}.favicon__icon{display:block;width:16px;height:16px}.serp-item__mime-icon{width:39px;height:45px;border:0}.serp-item__mime-size{line-height:45px;display:inline-block;min-width:45px;margin-left:4px;text-align:right;vertical-align:top;white-space:nowrap}.serp-item__title{position:relative;margin:0;padding:0}.serp-item__title-link{display:inline-block;overflow:hidden;max-width:100%;margin:-10px 0 0 -10px;padding:10px 0 0 10px;vertical-align:top;white-space:nowrap;text-decoration:none;text-overflow:ellipsis;color:#00c}.serp-item__title-link.link_cropped_no{overflow:visible;white-space:normal}.b-page_tld_com-tr .serp-item__title-link{color:#1a0dab}
+
+.serp-item__title{
+    font-size:18px;
+    font-weight:400;
+    border: 0px;
+    line-height:24px;
+}
+
+.serp-item__title-link:focus {
+	outline: none
+}
+
+.serp-item__doc-number {
+	font-weight: 700;
+	position: relative;
+	top: 40px;
+	left: -25px;
+	width: 17px;
+	text-align: right
+}
+
+.serp-item_glue_fresh .serp-item__extra_type_right {
+	font-weight: 700;
+	width: 100px;
+	margin: 15px 0 10px 20px
+}
+
+.serp-item_glue_fresh.serp-item_has-preview_yes .serp-item__extra_type_right {
+	margin-bottom: 30px
+}
+
+
+.serp-item__extra-wrap_main_recipe .link_inner_yes .image,.serp-item_main_recipe .link_inner_yes .image {
+	width: 120px;
+	margin-right: 0
+}
+
+.serp-item__extra-wrap_main_recipe .serp-item__data,.serp-meta_recipe_yes {
+	margin-top: 3px
+}
+
+.serp-meta_recipe_yes {
+	padding-top: 0
+}
+
+.serp-item__extra-wrap_main_recipe .serp-item__extra_type_left {
+	margin-top: 2px;
+	margin-bottom: 2px
+}
+
+.image {
+	font: 0/0 a;
+	border: 0
+}
+
+.image__wrapper,.test-market {
+	text-align: center
+}
+
+.link_inner_yes .link__inner {
+	color: inherit
+}
+
+.link_inner_yes .image {
+	margin-right: 5px;
+	vertical-align: middle
+}
+
+.serp-item_snippet_review .extended-meta__count,.serp-item_snippet_review .extended-meta__date {
+	display: inline-block
+}
+
+
+
+.serp-item__extra {
+	margin-top: 3px
+}
+
+.serp-item__extra-wrap .serp-item__data {
+	overflow: hidden
+}
+
+.serp-item__extra-wrap .serp-item__greenurl {
+	white-space: nowrap
+}
+
+.serp-item__extra .serp-item__extra-link {
+	display: block;
+	text-decoration: none;
+	color: #000
+}
+
+.serp-item_controls_yes .serp-item__extra-link .serp-item__mime {
+	margin-bottom: -100%
+}
+
+.serp-item__extra .link {
+	outline: none
+}
+
+.serp-item_glue_fresh .serp-item__extra-date_fresh_bold {
+	font-weight: 700;
+	display: inline-block;
+	margin-right: 16px;
+	color: #000
+}
+
+.serp-item__extra-date_fresh_bold,.serp-item__extra-date_fresh_bold+.serp-item__greenurl {
+	vertical-align: middle
+}
+
+.serp-item__extra-wrap_fresh_bold .serp-item__greenurl,wbr {
+	display: inline-block
+}
+
+.serp-item_glue_fresh .serp-item__extra-date_fresh_gray {
+	color: #888
+}
+
+.serp-item__extra .serp-item__extra-link:hover,.serp-item__extra .serp-item__extra-link:link,.serp-item__extra .serp-item__extra-link:visited {
+	color: #000!important
+}
+
+.serp-item__extra_type_left {
+	float: left;
+	margin-right: 10px
+}
+
+.serp-item__extra_type_right {
+	float: right;
+	margin-left: 10px
+}
+
+.serp-item__passages {
+	margin-top: 6px;
+	color: #888
+}
+
+.serp-item__passage {
+	color: #888
+}
+
+.serp-item__image-snippet {
+	border: 0
+}
+
+.serp-url {
+	color: #070
+}
+
+.serp-url__link,.serp-url__text {
+	-webkit-font-smoothing: antialiased
+}
+
+.serp-url__mark {
+	-webkit-font-smoothing: auto
+}
+
+.b-page_tld_com-tr .serp-url__link:visited,.serp-url__link,.serp-url__link:link,.serp-url__link:visited,.serp_url__text {
+	text-decoration: none;
+	color: #070;
+	outline: 0
+}
+
+.serp-url__link:hover,.serp-url__link:link:hover,.serp-url__link:visited:hover {
+	color: #d00
+}
+
+.serp-url__mark {
+	font-family: Verdana;
+	line-height: 0;
+	margin: 0 .3em
+}
+
+.serp-url__popup {
+	margin-left: -1px
+}
+
+.serp-url__item {
+	display: inline-block;
+	color: #070;
+	overflow: hidden;
+	max-width: 95%;
+	margin-top: -2px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: middle
+}
+
+
+.serp-item__footer {
+	font-size: 11px;
+	line-height: 18px;
+	text-align: right;
+	margin-bottom: 11px;
+	padding-top: 5px;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	color: #999
+}
+
+.serp-item__footer-inner {
+	padding-bottom: 5px
+}
+
+.serp-item__footer .link {
+	color: #669
+}
+
+
+
+
+@media screen and (min-width:1269px){.z-entity-separator{width:536px}}
+
+.content__right .z-entity-separator{width:536px;max-width:100%}
+
+@media screen and (max-width:1269px){.content__right .z-entity-separator{width:auto}}
+
+
+
+.label {
+	font-family: Verdana;
+	display: inline-block;
+	vertical-align: baseline;
+	border-radius: 3px;
+	position: relative
+}
+
+.label::before {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	border-radius: 3px;
+	background: #ffeba0
+}
+
+.label_color_red {
+	color: #fff
+}
+
+.label_color_red::before {
+	background: #fc191c
+}
+
+.label_color_yellow {
+	color: #332f1e
+}
+
+.label_color_yellow::before {
+	background: #fef5cd
+}
+
+.label_font_arial {
+	font-family: Arial
+}
+
+.label {
+	font-size: 11px;
+	line-height: 15px;
+	padding: 0 6px 1px
+}
+
+
+
+@media all and (min-width:0){.button_size_m{line-height:32px}}
+
+.i-ua_js_yes .link_pseudo_yes {
+	cursor: pointer;
+	text-decoration: none
+}
+
+.i-ua_js_yes .link_pseudo_yes .link__inner {
+	text-decoration: none;
+	color: inherit;
+	border-bottom: 1px dotted
+}
+
+@-webkit-keyframes show {
+	0% {
+		margin-left: 50px
+	}
+
+	to {
+		margin-left: 0
+	}
+}
+
+@keyframes show {
+	0% {
+		margin-left: 50px
+	}
+
+	to {
+		margin-left: 0
+	}
+}
+</style>
+
+  <style>
+.object-footer {
+	font: 11px/18px verdana,sans-serif;
+	margin-top: 12px;
+	text-align: right
+}
+
+.object-footer_separated_yes {
+	padding-top: 6px;
+	margin-top: 28px;
+	border-top: 1px solid rgba(0,0,0,.1)
+}
+
+.object-footer__link {
+	display: inline-block
+}
+
+.object-footer__link+.object-footer__link {
+	margin-left: 16px
+}
+  </style>
+
+  
+<style>
+
+:root {
+	--color-link: #04b;
+	--color-link-visited: #551a8b;
+	--color-link-active: #d00;
+	--color-link-minor: #669;
+	--color-black: #000;
+	--color-grey: #999;
+	--color-blue-link: #00c;
+	--color-grey-link: #669;
+	--color-black-text: #333;
+	--color-grey-text: #999;
+	--color-green-url: #070;
+	--color-arrow: #fc0;
+	--color-border: rgba(0,0,0,.1);
+	--color-selection: #ffeba0;
+	--color-red-hover: #d00;
+	--color-neowhite: #f3f1ed;
+	--font-thin: HelveticaNeue-thin,sans-serif-thin;
+	--font-light: HelveticaNeue-Light,sans-serif-light;
+	--font-regular: Arial,Helvetica,sans-serif;
+	--font-medium: HelveticaNeue-Light,sans-serif-light;
+	--text-s-line-s: 1em;
+	--text-s-line-l: 1em;
+	--text-m-line-l: 1em;
+	--text-l-line-s: 1em;
+	--text-l-line-l: 1em;
+	--text-xl-line-s: 1em;
+	--text-xl-line-l: 1em;
+	--text-s: 11px;
+	--text-s-line-m: 15px;
+	--text-m: 13px;
+	--text-m-line-s: 16px;
+	--text-m-line-m: 17px;
+	--text-l: 18px;
+	--text-l-line-m: 24px;
+	--text-xl: 28px;
+	--text-xl-line-m: 32px;
+	--typo-caps: 11px;
+	--typo-greenurl: 14px;
+	--typo-greenurl-line-height: 17px
+}
+
+
+:root {
+	--color-link: #04b;
+	--color-link-visited: #551a8b;
+	--color-link-active: #d00;
+	--color-link-minor: #669;
+	--color-black: #000;
+	--color-grey: #999;
+	--color-blue-link: #00c;
+	--color-grey-link: #669;
+	--color-black-text: #333;
+	--color-grey-text: #999;
+	--color-green-url: #070;
+	--color-arrow: #fc0;
+	--color-border: rgba(0,0,0,.1);
+	--color-selection: #ffeba0;
+	--color-red-hover: #d00;
+	--color-neowhite: #f3f1ed;
+	--font-thin: HelveticaNeue-thin,sans-serif-thin;
+	--font-light: HelveticaNeue-Light,sans-serif-light;
+	--font-regular: Arial,Helvetica,sans-serif;
+	--font-medium: HelveticaNeue-Light,sans-serif-light;
+	--text-s-line-s: 1em;
+	--text-s-line-l: 1em;
+	--text-m-line-l: 1em;
+	--text-l-line-s: 1em;
+	--text-l-line-l: 1em;
+	--text-xl-line-s: 1em;
+	--text-xl-line-l: 1em;
+	--text-s: 11px;
+	--text-s-line-m: 15px;
+	--text-m: 13px;
+	--text-m-line-s: 16px;
+	--text-m-line-m: 17px;
+	--text-l: 18px;
+	--text-l-line-m: 24px;
+	--text-xl: 28px;
+	--text-xl-line-m: 32px;
+	--typo-caps: 11px;
+	--typo-greenurl: 14px;
+	--typo-greenurl-line-height: 17px
+}
+
+
+.typo {
+	font-family: Arial,Helvetica,sans-serif;
+	font-family: var(--font-regular)
+}
+
+.typo_text_m,.typo_text_s {
+	font-size: 11px;
+	font-size: var(--text-s);
+	line-height: 1em
+}
+
+.typo_text_m {
+	font-size: 13px;
+	font-size: var(--text-m)
+}
+
+.typo_text_l,.typo_text_xl {
+	font-size: 18px;
+	font-size: var(--text-l);
+	line-height: 1em
+}
+
+.typo_text_xl {
+    font-weight: bold;
+	font-size: 28px;
+	font-size: var(--text-xl)
+}
+
+.typo_line_s.typo_text_s {
+	line-height: 1em;
+	line-height: var(--text-s-line-s)
+}
+
+.typo_line_s.typo_text_m {
+	line-height: 16px;
+	line-height: var(--text-m-line-s)
+}
+
+.typo_line_s.typo_text_l {
+	line-height: 1em;
+	line-height: var(--text-l-line-s)
+}
+
+.typo_line_s.typo_text_xl {
+	line-height: 1em;
+	line-height: var(--text-xl-line-s)
+}
+
+.typo_line_m.typo_text_s {
+	line-height: 15px;
+	line-height: var(--text-s-line-m)
+}
+
+.typo_line_m.typo_text_m {
+	line-height: 17px;
+	line-height: var(--text-m-line-m)
+}
+
+.typo_line_m.typo_text_l {
+	line-height: 24px;
+	line-height: var(--text-l-line-m)
+}
+
+.typo_line_m.typo_text_xl {
+	line-height: 32px;
+	line-height: var(--text-xl-line-m)
+}
+
+.typo_line_l.typo_text_s {
+	line-height: 1em;
+	line-height: var(--text-s-line-l)
+}
+
+.typo_line_l.typo_text_m {
+	line-height: 1em;
+	line-height: var(--text-m-line-l)
+}
+
+.typo_line_l.typo_text_l {
+	line-height: 1em;
+	line-height: var(--text-l-line-l)
+}
+
+.typo_line_l.typo_text_xl {
+	line-height: 1em;
+	line-height: var(--text-xl-line-l)
+}
+
+.typo_type_greenurl {
+	font-size: 14px;
+	font-size: var(--typo-greenurl);
+	line-height: 17px;
+	line-height: var(--typo-greenurl-line-height)
+}
+
+.typo_type_caps {
+	font-size: 11px;
+	font-size: var(--typo-caps);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .08em
+}
+
+.typo_type_thin {
+	font-family: HelveticaNeue-thin,sans-serif-thin;
+	font-family: var(--font-thin)
+}
+
+.typo_type_light {
+	font-family: HelveticaNeue-Light,sans-serif-light;
+	font-family: var(--font-light)
+}
+
+.typo_type_regular {
+	font-family: Arial,Helvetica,sans-serif;
+	font-family: var(--font-regular)
+}
+
+.typo_type_medium {
+	font-family: HelveticaNeue-Light,sans-serif-light;
+	font-family: var(--font-medium)
+}
+
+.typo_type_bold,.typo_type_italic {
+	font-family: Arial,Helvetica,sans-serif;
+	font-family: var(--font-regular)
+}
+
+.typo_type_bold {
+	font-weight: 700
+}
+
+.typo_type_italic {
+	font-style: italic
+}
+
+
+</style>
+  
+  <div class="main main_right-panel-hidden_yes serp i-bem main_js_inited serp_js_inited">
+   <div class="main__center">
+    <div class="main__advanced-search"></div>
+    <div class="main__content">
+     <div class="content i-bem content_js_inited">
+      <!--div class="content__left"-->
+	   <!--div class="serp-list" role="main"-->
+	     
+<style>
+/*in post page, title h1 just fix*/
+h1 {
+        overflow:auto;
+        text-overflow: clip;
+        white-space: normal;
+    }
+</style>
+      <div class="content__left">
+        <div class="serp-list" role="main">
+          <div id="contentbox">
+            <div id="riseup">
+              <div id="news-summary">
+                <div id="center">
+                        <div class="post">
+          <h1 class="post-title">Convert XML to HTML with lxml XSLT in Python</h1>
+           <div class="news-submitted">
+                    </div>
+          <div class="hr3" width="100%" style="margin-top: 5px; margin-bottom: 10px;border:0;padding-top: 30px"></div>
+          <div class="post-content">
+            <p>The source document is a table of contents written in XML format, and we want to get it displayed in HTML. We will use XSLT module of the <tt>lxml</tt> library in Python</p><div class="codediv"><pre class="xml" style="font-family:monospace;">&nbsp;
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;contents<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;part</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Basics(or Fundamentals)"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;chapter</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Searching"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;section</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">"internal"</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Scoring"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;leaf</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"How Lucene scoring works"</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">"how-lucene-scoring-works"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/leaf<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/section<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>    
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;section</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">"terminal"</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">""</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">""</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;leaf</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"hello world"</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">"how-lucene-scoring-works"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/leaf<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/section<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/chapter<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/part<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+&nbsp;
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;part</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Index"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;chapter</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Searching"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;section</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">"internal"</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Scoring"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;leaf</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"How Lucene indexing works"</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">"how-lucene-indexing-works"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/leaf<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;leaf</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">"Lucene Index tutorial"</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">"lucene-index-tutorial"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/leaf<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/section<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>    
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;section</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">"terminal"</span> <span style="color: #000066;">title</span>=<span style="color: #ff0000;">""</span> <span style="color: #000066;">seotitle</span>=<span style="color: #ff0000;">""</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/section<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/chapter<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/part<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>  
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/contents<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+&nbsp;</pre></div><p>And the XSLT template used to transform it to HTML</p><div class="codediv"><pre class="xml" style="font-family:monospace;">&nbsp;
+ <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:stylesheet</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">"1.0"</span></span>
+<span style="color: #009900;">     <span style="color: #000066;">xmlns:xsl</span>=<span style="color: #ff0000;">"http://www.w3.org/1999/XSL/Transform"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:template</span> <span style="color: #000066;">match</span>=<span style="color: #ff0000;">"/"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;div</span> <span style="color: #000066;">class</span>=<span style="color: #ff0000;">"toc-contents"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+             <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+                 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:apply-templates</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+             <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:template<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:template</span> <span style="color: #000066;">match</span>=<span style="color: #ff0000;">"part"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;div</span> <span style="color: #000066;">class</span>=<span style="color: #ff0000;">"toc-part"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;h1<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">"@title"</span><span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/h1<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+                  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:apply-templates</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">"chapter"</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:template<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:template</span> <span style="color: #000066;">match</span>=<span style="color: #ff0000;">"chapter"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;div</span> <span style="color: #000066;">class</span>=<span style="color: #ff0000;">"toc-chapter"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;h2<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">"@title"</span><span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/h2<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+                  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:apply-templates</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">".//leaf"</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/ul<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>             
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:template<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:template</span> <span style="color: #000066;">match</span>=<span style="color: #ff0000;">"leaf"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+&nbsp;
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+             <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;a<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+                 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:attribute</span> <span style="color: #000066;">name</span>=<span style="color: #ff0000;">"href"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+                     http://makble.com/<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">"@seotitle"</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+                <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:attribute<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+              <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">"@title"</span><span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/a<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/li<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:template<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+ <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:stylesheet<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+&nbsp;</pre></div><p>The python code: </p>            <p></p><div class="post">
+<script src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(6).txt"></script><script src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(7).txt" id="google_shimpl"></script><script async="" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(8).txt"></script>
+<!-- makble middle rectangle -->
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-7444703284027926" data-ad-slot="7388259541" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:336px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="336" height="280" frameborder="0" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="CJuAxtTZgPACFVe0lgodc_0Krw" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div><p></p>    
+    <div class="codediv"><pre class="python" style="font-family:monospace;">&nbsp;
+<span style="color: #ff7700;font-weight:bold;">import</span> lxml.<span style="color: black;">html</span>
+<span style="color: #ff7700;font-weight:bold;">from</span> lxml <span style="color: #ff7700;font-weight:bold;">import</span> etree
+&nbsp;
+xslt_doc <span style="color: #66cc66;">=</span> etree.<span style="color: black;">parse</span><span style="color: black;">(</span><span style="color: #483d8b;">"test-xslt.xslt"</span><span style="color: black;">)</span>
+xslt_transformer <span style="color: #66cc66;">=</span> etree.<span style="color: black;">XSLT</span><span style="color: black;">(</span>xslt_doc<span style="color: black;">)</span>
+&nbsp;
+source_doc <span style="color: #66cc66;">=</span> etree.<span style="color: black;">parse</span><span style="color: black;">(</span><span style="color: #483d8b;">"toc-test.xml"</span><span style="color: black;">)</span>
+output_doc <span style="color: #66cc66;">=</span> xslt_transformer<span style="color: black;">(</span>source_doc<span style="color: black;">)</span>
+&nbsp;
+<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: #008000;">str</span><span style="color: black;">(</span>output_doc<span style="color: black;">)</span><span style="color: black;">)</span>
+output_doc.<span style="color: black;">write</span><span style="color: black;">(</span><span style="color: #483d8b;">"output-toc.html"</span><span style="color: #66cc66;">,</span> pretty_print<span style="color: #66cc66;">=</span><span style="color: #008000;">True</span><span style="color: black;">)</span>
+&nbsp;</pre></div><p>In HTML it may looks like this</p><p style="text-indent: 0;"> <a href="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/2016-12-27_11-49-46.png"><img src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/2016-12-27_11-49-46.png" alt=""></a></p>
+            <p></p><div class="post">
+<script async="" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(8).txt"></script>
+<!-- makble_bottom -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7444703284027926" data-ad-slot="1488425944" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:728px;height:90px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="728" height="90" frameborder="0" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/ads(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-google-query-id="CPWaxtTZgPACFZu7lgod8twNUw" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div><p></p>    
+              
+            
+            
+                        
+            <div class="socialbutton">
+                      </div>
+            <div class="clearfix"></div>
+          </div>
+         </div>
+            
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+       <!--/div-->
+      <!--/div-->
+       <div class="content__right grid grid_cols_12 i-bem grid_js_inited">
+                 <div class="serp-list serp-list_right_yes" role="complementary" aria-label="Additional information by query">
+           <div class="template-composite template-composite_gap_m template-composite_separated_no serp-item t-construct-adapter__entity-card z-entity-search image-stats t-entity-search i-bem image-stats_js_inited" data-bem="{&quot;image-stats&quot;:{&quot;region&quot;:&quot;183.134.114571.109372&quot;}}" data-cid="10">
+             <div class="template-composite template-composite_gap_m template-composite_separated_no serp-item t-construct-adapter__entity-card template-composite__item">
+               <div class="template-composite template-composite_gap_s template-composite_separated_no serp-item t-construct-adapter__entity-card template-composite__item">
+                 <div class="template-composite template-composite_gap_none template-composite_separated_no serp-item t-construct-adapter__entity-card template-composite__item">
+                   <div class="template-composite__item">
+                     <div class="serp-title serp-title_type_supertitle typo typo_text_xl typo_line_m">Ad</div>
+                   </div>
+                 </div>
+                 <div class="template-composite template-composite_gap_s template-composite_separated_no serp-item t-construct-adapter__entity-card template-composite__item">
+                   <div class="template-composite__item">
+                     <script async="" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/f(8).txt"></script>
+<!-- 300600 -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7444703284027926" data-ad-slot="3460269543" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_2_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/ads(2).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!3" data-google-query-id="CK7MwpnZgPACFUdmlgodFgMIbw" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>                   </div>
+                 </div>
+               </div>
+               <div class="template-composite__item">
+                 <div class="object-footer object-footer_separated_yes">
+                   <!--a class="link link_ghost_yes object-footer__link" target="_blank" href="" ></a-->
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div><!-- content__right -->
+     </div>
+     <div class="inquire i-bem inquire_js_inited"></div>
+    </div>
+   </div>
+  </div>
+<style>
+.footeryc a {
+text-decoration:none;
+color: #999;
+}
+</style>
+  <div class="footeryc clearfixyc" role="contentinfo">
+   <div class="footer__column">
+    <div class="footer__line footer__line_last_yes">
+     <div class="copyright">
+      © 2021&nbsp;&nbsp;
+  <a href="http://makble.com/"><span class="copyright__name">Makble</span></a>
+  <a href="http://makble.com/about"><span class="copyright__name">About</span></a>
+  <a href="http://makble.com/contact"><span class="copyright__name">Contact</span></a>
+  <a href="http://makble.com/privacy"><span class="copyright__name">Privacy</span></a>
+     </div>
+    </div>
+   </div>
+  </div>
+ 
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_3_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/ads(3).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!4" data-load-complete="true"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_1063748069862" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/saved_resource.html"></iframe></body><iframe id="google_esf" name="google_esf" src="./Convert XML to HTML with lxml XSLT in Python - Python - Makble_files/zrt_lookup.html" data-ad-client="ca-pub-7444703284027926" style="display: none;"></iframe></html>
